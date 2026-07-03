@@ -1,0 +1,16 @@
+{
+  "package": "Huddle Sprint 0 Codex Execution Pack",
+  "version": "1.0",
+  "created_utc": "2026-06-28T10:33:46Z",
+  "files": [
+    "00_README.md",
+    "01_Batch_1_Repo_Routes.md",
+    "02_Batch_2_Brand_Tokens_UI.md",
+    "03_Batch_3_Database_Prisma_Identity.md",
+    "04_Batch_4_Auth_Permissions_Guards.md",
+    "05_Batch_5_API_Validation_Audit.md",
+    "06_Batch_6_Layouts_Placeholders_QA_README.md",
+    "Huddle_Sprint_0_Codex_Execution_Pack_FULL.md",
+    "manifest.json"
+  ]
+}
