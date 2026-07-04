@@ -1,0 +1,82 @@
+﻿phase,epic,task_id,title,priority,dependencies,deliverable,quality_gate
+Phase 0,Foundation,S0-001,Initialize project repository,P0,-,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-002,Create route group architecture,P0,S0-001,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-003,Add approved brand assets and logo components,P0,S0-002,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-004,Implement design token foundation,P0,S0-003,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-005,Create primitive UI components,P0,S0-004,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-006,Configure database and Prisma,P0,S0-005,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-007,Implement User / Role / UserRole models,P0,S0-006,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-008,Seed roles,P0,S0-007,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-009,Create Supabase Auth skeleton,P0,S0-008,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-010,Create permission helpers,P0,S0-009,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-011,Create route guards,P0,S0-010,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-012,Create API response and error helpers,P0,S0-011,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-013,Create validation pattern,P0,S0-012,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-014,Create audit helper and AuditLog base,P0,S0-013,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-015,Create base layouts,P0,S0-014,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-016,Create canonical placeholder pages,P0,S0-015,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-017,Create Sprint 0 QA checklist,P0,S0-016,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Foundation,S0-018,Create developer README,P0,S0-017,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 1,Identity,P1-001,Implement User/AuthIdentity reconciliation,P0,S0-018,Canonical business identity linked to Supabase subjects,E2E + accessibility + security review
+Phase 1,Authorization,P1-002,Implement Capability and ScopedGrant model,P0,P1-001,RBAC + scoped authorization service,E2E + accessibility + security review
+Phase 1,Auth,P1-003,Implement signup/login/recovery UI,P0,P1-001,set35 auth surfaces,E2E + accessibility + security review
+Phase 1,Auth,P1-004,Implement phone verification and account linking,P0,P1-003,verified phone identity flow,E2E + accessibility + security review
+Phase 1,Onboarding,P1-005,Implement resumable onboarding state machine,P0,P1-003,set35 steps and persistence,E2E + accessibility + security review
+Phase 1,Family,P1-006,Implement FamilyProfile/FamilyMember,P0,P1-005,family core and privacy-safe DTOs,E2E + accessibility + security review
+Phase 1,Consent,P1-007,Implement consent records and policy versions,P0,P1-005,set60 consent management foundation,E2E + accessibility + security review
+Phase 1,App Shell,P1-008,Implement canonical /app shell and role context,P0,P1-002,set39 shell,E2E + accessibility + security review
+Phase 1,Responsive,P1-009,Implement responsive navigation contract,P0,P1-008,set61 + set39 behavior,E2E + accessibility + security review
+Phase 1,Media,P1-010,Implement secure media upload pipeline,P0,P1-006,"signed upload, scan/quarantine hooks",E2E + accessibility + security review
+Phase 2,Discovery,P2-001,Implement global search provider and endpoint,P0,P1-008,Postgres FTS/trigram adapter,P0 launch gate
+Phase 2,Experiences,P2-002,Implement Experience/Occurrence model,P0,P1-010,event/activity shared core,P0 launch gate
+Phase 2,Experiences,P2-003,Implement public/app discovery,P0,P2-002,set37 discovery,P0 launch gate
+Phase 2,Experiences,P2-004,Implement registration/cancellation,P0,P2-002,registration invariants,P0 launch gate
+Phase 2,Listings,P2-005,Implement Listing draft lifecycle,P0,P1-010,set36 create flow,P0 launch gate
+Phase 2,Listings,P2-006,Implement listing discovery/detail,P0,P2-005,set36 discovery/detail,P0 launch gate
+Phase 2,Community,P2-007,Implement feed/post/comment/reaction core,P0,P1-008,set38 core,P0 launch gate
+Phase 2,Connections,P2-008,Implement connection request/block core,P0,P1-006,set46,P0 launch gate
+Phase 2,Notifications,P2-009,Implement in-app notification core,P0,P1-008,notification/preferences models,P0 launch gate
+Phase 2,Safety,P2-010,Implement user report/block surfaces,P0,"P2-006,P2-007,P2-008",set52,P0 launch gate
+Phase 2,Admin Safety,P2-011,Implement moderation case workflow,P0,"P2-010,P1-002",set56,P0 launch gate
+Phase 2,Audit,P2-012,Enforce privileged mutation audit coverage,P0,P2-011,audit coverage gate,P0 launch gate
+Phase 3,Messaging,P3-001,Implement Conversation/Participant core,P0,"P2-008,P1-002",shared context-aware conversations,reconnect/idempotency/load tests
+Phase 3,Messaging,P3-002,Implement message send/read/pagination,P0,P3-001,set44 inbox/chat,reconnect/idempotency/load tests
+Phase 3,Realtime,P3-003,Implement RealtimeGateway adapter,P0,P3-002,persist-then-broadcast,reconnect/idempotency/load tests
+Phase 3,Messaging,P3-004,Implement attachments/mentions/search/settings,P1,"P3-003,P1-010",set44 extended,reconnect/idempotency/load tests
+Phase 3,Notifications,P3-005,Implement delivery pipeline and preferences,P0,P2-009,"outbox, retries, channel adapters",reconnect/idempotency/load tests
+Phase 3,Notifications,P3-006,Implement email/push template registry,P1,P3-005,set58 versioned templates,reconnect/idempotency/load tests
+Phase 4,Groups,P4-001,Implement Group/Membership model,P1,P2-007,set53,privacy threat model + abuse tests
+Phase 4,Groups,P4-002,Implement group feed/members/files/settings,P1,"P4-001,P1-010",set53 full flow,privacy threat model + abuse tests
+Phase 4,Content,P4-003,Implement richer post/media lifecycle,P1,"P2-007,P1-010",set48,privacy threat model + abuse tests
+Phase 4,Matching,P4-004,Implement opt-in preferences,P1,"P1-006,P2-008",privacy-safe match inputs,privacy threat model + abuse tests
+Phase 4,Matching,P4-005,Implement candidate computation and explanation,P1,P4-004,"coarse geo, no child sensitive leakage",privacy threat model + abuse tests
+Phase 4,Matching,P4-006,Implement match-to-connection flow,P1,P4-005,set55/555 + connection policy,privacy threat model + abuse tests
+Phase 5,Services,P5-001,Implement ExpertProfile onboarding/state,P1,"P1-002,P1-010",set21 supply side,concurrency/timezone/E2E tests
+Phase 5,Services,P5-002,Implement ServiceOffering/availability,P1,P5-001,set47/set40,concurrency/timezone/E2E tests
+Phase 5,Bookings,P5-003,Implement booking request/confirm lifecycle,P1,P5-002,set47,concurrency/timezone/E2E tests
+Phase 5,Bookings,P5-004,Implement reschedule/cancel/no-show,P1,P5-003,edge cases,concurrency/timezone/E2E tests
+Phase 5,Organizer,P5-005,Implement experience creation operations,P1,"P2-002,P1-002",set17,concurrency/timezone/E2E tests
+Phase 5,Organizer,P5-006,Implement check-in/ticket operations,P1,"P2-004,P5-005",set16/set57,concurrency/timezone/E2E tests
+Phase 6,Catalog,P6-001,Implement Partner/Store/Product core,P1,P1-002,set49/catalog boundary,financial reconciliation + idempotency gate
+Phase 6,Catalog,P6-002,Implement partner feed sync run model,P2,P6-001,set14/set55,financial reconciliation + idempotency gate
+Phase 6,Cart,P6-003,Implement cart and server pricing,P1,P6-001,set49/set43,financial reconciliation + idempotency gate
+Phase 6,Orders,P6-004,Implement Order/OrderItem lifecycle,P1,P6-003,set49,financial reconciliation + idempotency gate
+Phase 6,Payments,P6-005,Implement provider-neutral payment interfaces,P1,P6-004,no live mode without gate,financial reconciliation + idempotency gate
+Phase 6,Payments,P6-006,Implement webhook inbox/idempotency,P1,P6-005,safe event processing,financial reconciliation + idempotency gate
+Phase 6,Fulfillment,P6-007,Implement shipment/pickup/tracking,P1,P6-004,set12/set43,financial reconciliation + idempotency gate
+Phase 6,Returns,P6-008,Implement return/refund request lifecycle,P1,P6-004,set12,financial reconciliation + idempotency gate
+Phase 6,Affiliate,P6-009,Implement outbound attribution boundary,P2,P6-001,separate from native order,financial reconciliation + idempotency gate
+Phase 7,Public Web,P7-001,Implement localized public shell,P1,P1-009,/en and /no,WCAG/SEO/privacy gates
+Phase 7,SEO,P7-002,Implement city/category/age/season templates,P1,"P7-001,P2-001",set41/42/59,WCAG/SEO/privacy gates
+Phase 7,SEO,P7-003,Implement metadata/canonical/hreflang/sitemap,P1,P7-002,SEO contract tests,WCAG/SEO/privacy gates
+Phase 7,Accessibility,P7-004,Implement user accessibility preferences,P0,P1-009,set60,WCAG/SEO/privacy gates
+Phase 7,Privacy,P7-005,Implement data request workflow,P0,P1-007,set60,WCAG/SEO/privacy gates
+Phase 7,Privacy,P7-006,Implement delete-account orchestration,P0,P7-005,retention/anonymization aware,WCAG/SEO/privacy gates
+Phase 8,Admin,P8-001,Implement core admin dashboard/user management,P0,"P1-002,P2-012",set25,privileged audit + least privilege
+Phase 8,Support,P8-002,Implement ticket/helpdesk core,P2,P1-002,set28,privileged audit + least privilege
+Phase 8,Finance,P8-003,Implement refund/dispute/payout operations,P2,"P6-006,P1-002",set62,privileged audit + least privilege
+Phase 8,Privacy Ops,P8-004,Implement governance dashboard/policies,P0,"P7-005,P1-002",set63,privileged audit + least privilege
+Phase 8,Municipality,P8-005,Implement org scopes/programs,P2,P1-002,set23,privileged audit + least privilege
+Phase 8,Municipality,P8-006,Implement aggregate reporting pipeline,P2,"P8-005,P8-004",threshold/suppression,privileged audit + least privilege
+Phase 8,Analytics,P8-007,Implement metric/report definitions,P2,P2-001,set27,privileged audit + least privilege
+Phase 8,Platform Ops,P8-008,Implement real-backed settings/feature flags/jobs UI,P3,P1-002,sets26-29; no fake controls,privileged audit + least privilege
