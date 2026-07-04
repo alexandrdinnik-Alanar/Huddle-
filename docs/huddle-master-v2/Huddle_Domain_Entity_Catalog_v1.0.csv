@@ -1,0 +1,101 @@
+﻿domain,entity,kind,data_sensitivity,scope,lifecycle,key_relations,implementation_notes
+Identity & Access,User,aggregate_root,CONFIDENTIAL,global,ACTIVE|SUSPENDED|DEACTIVATED|DELETED,"AuthIdentity, UserRole, UserPreference",Business identity; never use provider user id as domain foreign key.
+Identity & Access,AuthIdentity,entity,RESTRICTED,global,ACTIVE|REVOKED,User,"provider, providerSubject, verifiedEmail/Phone metadata."
+Identity & Access,Role,reference,INTERNAL,global,ACTIVE,UserRole,Seeded stable RoleKey.
+Identity & Access,UserRole,association,INTERNAL,global,ACTIVE|REVOKED,"User, Role",Coarse role assignment; auditable.
+Identity & Access,Capability,reference,INTERNAL,global,ACTIVE,ScopedGrant,Code-defined key mirrored for admin display.
+Identity & Access,ScopedGrant,entity,RESTRICTED,organization/scope,ACTIVE|REVOKED|EXPIRED,"User, Capability, Organization",Fine-grained scoped grant; optional resource/geo scope.
+Identity & Access,Organization,aggregate_root,CONFIDENTIAL,organization,PENDING|ACTIVE|SUSPENDED|CLOSED,OrganizationMembership,"Partner, municipality, provider organizations."
+Identity & Access,OrganizationMembership,association,CONFIDENTIAL,organization,INVITED|ACTIVE|SUSPENDED|LEFT,"Organization, User",Membership separate from platform RoleKey.
+Identity & Access,UserPreference,entity,CONFIDENTIAL,user,ACTIVE,User,"Locale, timezone, accessibility, communication settings."
+Identity & Access,AuditLog,append_only,RESTRICTED,global/scope,IMMUTABLE,"User, Organization","Actor, action, target, before/after hash, request id, IP risk metadata."
+Family,FamilyProfile,aggregate_root,RESTRICTED,family,ACTIVE|HIDDEN|DELETED,"User, FamilyMember, FamilyVisibilityRule",Parent-owned family unit.
+Family,FamilyMember,entity,HIGHLY_RESTRICTED,family,ACTIVE|REMOVED|ANONYMIZED,FamilyProfile,Child/member data minimized; age stage preferred over birthdate in discovery.
+Family,Interest,reference,PUBLIC,global,ACTIVE,FamilyInterest,Controlled taxonomy.
+Family,FamilyInterest,association,CONFIDENTIAL,family,ACTIVE,"FamilyProfile, Interest",Matching/discovery preference input.
+Family,FamilyVisibilityRule,entity,RESTRICTED,family,ACTIVE,FamilyProfile,Field-level audience policy.
+Connections & Matching,MatchPreference,aggregate_root,RESTRICTED,user/family,ACTIVE|PAUSED,FamilyProfile,Explicit opt-in; coarse geography.
+Connections & Matching,MatchCandidateSnapshot,derived,RESTRICTED,user/family,EPHEMERAL,FamilyProfile,Derived score explanation; no sensitive raw feature dump.
+Connections & Matching,ConnectionRequest,aggregate_root,CONFIDENTIAL,user,PENDING|ACCEPTED|DECLINED|CANCELLED|EXPIRED,"User, FamilyProfile",Rate-limited and reportable.
+Connections & Matching,Connection,aggregate_root,CONFIDENTIAL,user,ACTIVE|BLOCKED|REMOVED,User,Mutual relationship; messaging eligibility policy.
+Connections & Matching,BlockRelation,entity,RESTRICTED,user,ACTIVE|REVOKED,User,Always checked by search/matching/messaging.
+Community,Group,aggregate_root,CONFIDENTIAL,group,DRAFT|ACTIVE|ARCHIVED|DELETED,"GroupMembership, Post, Experience",Visibility PUBLIC|PRIVATE|SECRET.
+Community,GroupMembership,association,CONFIDENTIAL,group,PENDING|ACTIVE|MUTED|BANNED|LEFT,"Group, User",Group-level roles OWNER|ADMIN|MODERATOR|MEMBER.
+Community,Post,aggregate_root,CONFIDENTIAL,context,DRAFT|PUBLISHED|HIDDEN|DELETED,"Comment, Reaction, MediaAsset",Author/context visibility enforced server-side.
+Community,Comment,entity,CONFIDENTIAL,context,PUBLISHED|HIDDEN|DELETED,"Post, User",Thread parent optional.
+Community,Reaction,association,CONFIDENTIAL,context,ACTIVE|REMOVED,"User, Post/Comment",Unique actor+target+type.
+Community,Poll,entity,CONFIDENTIAL,context,OPEN|CLOSED,"Post, PollOption, PollVote",Vote privacy explicit.
+Messaging,Conversation,aggregate_root,RESTRICTED,context,ACTIVE|ARCHIVED|LOCKED,"ConversationParticipant, Message",ContextType DIRECT|GROUP|LISTING|BOOKING|EVENT|SUPPORT.
+Messaging,ConversationParticipant,association,RESTRICTED,conversation,ACTIVE|LEFT|REMOVED|BLOCKED,"Conversation, User","lastReadMessageId, notification state."
+Messaging,Message,aggregate_root,HIGHLY_RESTRICTED,conversation,SENT|EDITED|DELETED|REMOVED,"Conversation, MediaAsset",Text encrypted at rest by platform storage; excluded from analytics.
+Messaging,MessageMention,association,RESTRICTED,conversation,ACTIVE,"Message, User",Mention permission and notification.
+Messaging,MessageReceipt,entity,RESTRICTED,conversation,DELIVERED|READ,"Message, User",Optional; avoid unnecessary retention.
+Listings,Listing,aggregate_root,CONFIDENTIAL,owner,DRAFT|PENDING_REVIEW|PUBLISHED|RESERVED|SOLD|ARCHIVED|REJECTED,"User, ListingMedia, Category",P2P listing only.
+Listings,ListingMedia,association,CONFIDENTIAL,owner,PENDING|READY|QUARANTINED|DELETED,"Listing, MediaAsset",Ordered media.
+Listings,ListingInquiry,aggregate_root,CONFIDENTIAL,listing,OPEN|CLOSED|BLOCKED,"Listing, Conversation",Creates contextual conversation after policy checks.
+Listings,ListingReservation,aggregate_root,CONFIDENTIAL,listing,PENDING|CONFIRMED|CANCELLED|EXPIRED,"Listing, User",Concurrency-safe reservation.
+Catalog & Partner Feed,Partner,aggregate_root,CONFIDENTIAL,organization,PENDING|ACTIVE|SUSPENDED|CLOSED,"Organization, Store, PartnerFeed",Commercial partner profile.
+Catalog & Partner Feed,Store,aggregate_root,CONFIDENTIAL,organization,DRAFT|ACTIVE|SUSPENDED,"Partner, Product",Public storefront settings.
+Catalog & Partner Feed,Product,aggregate_root,CONFIDENTIAL,organization,DRAFT|ACTIVE|OUT_OF_STOCK|ARCHIVED,"Store, ProductVariant",Partner/native catalog product; never P2P Listing.
+Catalog & Partner Feed,ProductVariant,entity,CONFIDENTIAL,organization,ACTIVE|INACTIVE,Product,SKU/price/stock attributes.
+Catalog & Partner Feed,PartnerFeed,aggregate_root,RESTRICTED,organization,ACTIVE|PAUSED|ERROR,"Partner, FeedSyncRun",Source configuration/credentials by secret reference.
+Catalog & Partner Feed,FeedSyncRun,entity,INTERNAL,organization,QUEUED|RUNNING|SUCCEEDED|FAILED|PARTIAL,PartnerFeed,Operational trace and error summary.
+Catalog & Partner Feed,AffiliateClick,append_only,CONFIDENTIAL,global,RECORDED,"Product, User?",Pseudonymous attribution; explicit retention.
+Orders & Fulfillment,Cart,aggregate_root,CONFIDENTIAL,user,ACTIVE|CONVERTED|ABANDONED|EXPIRED,CartItem,Server recalculates price.
+Orders & Fulfillment,CartItem,entity,CONFIDENTIAL,user,ACTIVE|REMOVED,"Cart, ProductVariant",Snapshot commercial terms.
+Orders & Fulfillment,Order,aggregate_root,RESTRICTED,user/org,PENDING_PAYMENT|PAID|PROCESSING|SHIPPED|READY_PICKUP|COMPLETED|CANCELLED|REFUNDED|DISPUTED,"OrderItem, Payment, Shipment",Immutable order number and totals snapshot.
+Orders & Fulfillment,OrderItem,entity,RESTRICTED,user/org,ACTIVE|CANCELLED|REFUNDED,"Order, ProductVariant",Product/title/price tax snapshot.
+Orders & Fulfillment,Shipment,aggregate_root,RESTRICTED,order,PENDING|SHIPPED|IN_TRANSIT|DELIVERED|FAILED|RETURNED,Order,Tracking token protected.
+Orders & Fulfillment,ReturnRequest,aggregate_root,RESTRICTED,order,REQUESTED|APPROVED|REJECTED|RECEIVED|REFUNDED|CLOSED,OrderItem,Evidence/media optional.
+Payments & Settlement,Payment,aggregate_root,RESTRICTED,order,CREATED|REQUIRES_ACTION|AUTHORIZED|CAPTURED|FAILED|CANCELLED|REFUNDED|DISPUTED,"Order, PaymentAttempt",Provider-neutral references only; no PAN.
+Payments & Settlement,PaymentAttempt,append_only,RESTRICTED,order,CREATED|SUCCEEDED|FAILED,Payment,Idempotency and provider event refs.
+Payments & Settlement,Refund,aggregate_root,RESTRICTED,order,REQUESTED|APPROVED|PROCESSING|SUCCEEDED|FAILED|REJECTED,Payment,Amount/currency/reason/audit.
+Payments & Settlement,Dispute,aggregate_root,RESTRICTED,order,OPEN|EVIDENCE_REQUIRED|WON|LOST|CLOSED,Payment,Provider state mirrored.
+Payments & Settlement,Payout,aggregate_root,RESTRICTED,organization/user,PENDING|ON_HOLD|APPROVED|PROCESSING|PAID|FAILED,Organization/User,KYC gate externalized.
+Payments & Settlement,Commission,append_only,RESTRICTED,transaction,ACCRUED|ADJUSTED|SETTLED,"Order, Partner",Immutable ledger-style line.
+Payments & Settlement,Invoice,aggregate_root,RESTRICTED,organization,DRAFT|ISSUED|PAID|VOID|OVERDUE,Organization,Tax fields approval gate.
+Payments & Settlement,WebhookInbox,append_only,RESTRICTED,global,RECEIVED|PROCESSED|FAILED|IGNORED,Provider,Unique provider event id; safe retries.
+Events & Activities,Experience,aggregate_root,CONFIDENTIAL,owner/org,DRAFT|PENDING_REVIEW|PUBLISHED|CANCELLED|COMPLETED|ARCHIVED,"ExperienceOccurrence, Registration",Kind EVENT|ACTIVITY; common discovery fields.
+Events & Activities,EventDetails,entity,CONFIDENTIAL,experience,ACTIVE,Experience,Ticketing/host/event specifics.
+Events & Activities,ActivityDetails,entity,CONFIDENTIAL,experience,ACTIVE,Experience,Age range/recurrence/activity specifics.
+Events & Activities,ExperienceOccurrence,aggregate_root,CONFIDENTIAL,experience,SCHEDULED|CANCELLED|COMPLETED,Experience,Timezone-aware start/end/capacity.
+Events & Activities,Registration,aggregate_root,RESTRICTED,experience,PENDING|CONFIRMED|WAITLISTED|CANCELLED|ATTENDED|NO_SHOW,"ExperienceOccurrence, User/FamilyMember",Family member data minimized.
+Events & Activities,Ticket,entity,RESTRICTED,registration,ACTIVE|USED|VOID,Registration,Opaque QR token; rotate/revoke.
+Events & Activities,CheckIn,append_only,RESTRICTED,experience,RECORDED|REVERSED,"Registration, User",Auditable operator/time/device.
+Services & Experts,ExpertProfile,aggregate_root,CONFIDENTIAL,user/org,DRAFT|PENDING_REVIEW|ACTIVE|SUSPENDED,"User, ServiceOffering",Credentials separately verified.
+Services & Experts,ServiceOffering,aggregate_root,CONFIDENTIAL,expert,DRAFT|ACTIVE|PAUSED|ARCHIVED,"ExpertProfile, AvailabilityRule",Duration/price/location mode.
+Services & Experts,AvailabilityRule,entity,CONFIDENTIAL,expert,ACTIVE|INACTIVE,ServiceOffering,Timezone-aware recurring availability.
+Services & Experts,Booking,aggregate_root,RESTRICTED,customer/provider,REQUESTED|CONFIRMED|DECLINED|CANCELLED|COMPLETED|NO_SHOW,"ServiceOffering, User",Concurrency and cancellation policy.
+Services & Experts,Review,aggregate_root,CONFIDENTIAL,booking,PUBLISHED|HIDDEN|DELETED,"Booking, User",Only eligible completed transactions.
+Advertising,Campaign,aggregate_root,CONFIDENTIAL,organization,DRAFT|PENDING_REVIEW|ACTIVE|PAUSED|COMPLETED|REJECTED,"Creative, Placement",Budget and dates.
+Advertising,Creative,entity,CONFIDENTIAL,organization,DRAFT|APPROVED|REJECTED|ARCHIVED,"Campaign, MediaAsset",Policy review.
+Advertising,Placement,reference,INTERNAL,global,ACTIVE|INACTIVE,Campaign,Allowed surfaces.
+Municipality,PublicProgram,aggregate_root,CONFIDENTIAL,organization,DRAFT|PUBLISHED|ARCHIVED,"Organization, Experience?",Municipality-owned program.
+Municipality,MunicipalityScope,entity,RESTRICTED,organization,ACTIVE,Organization,Allowed geography/data scope.
+Municipality,AggregateReport,derived,RESTRICTED,organization,GENERATING|READY|SUPPRESSED|EXPIRED,ReportDefinition,No row-level personal data.
+Trust & Safety,SafetyReport,aggregate_root,HIGHLY_RESTRICTED,global,SUBMITTED|TRIAGED|IN_REVIEW|RESOLVED|CLOSED,"Reporter, target, ModerationCase",Reporter identity protected.
+Trust & Safety,ModerationCase,aggregate_root,HIGHLY_RESTRICTED,global,OPEN|ASSIGNED|INVESTIGATING|DECIDED|CLOSED,"SafetyReport, EnforcementAction",Case access is capability/scoped.
+Trust & Safety,EnforcementAction,aggregate_root,HIGHLY_RESTRICTED,global,PROPOSED|ACTIVE|REVOKED|EXPIRED,"ModerationCase, User/Content","Warning, restriction, suspension, removal."
+Trust & Safety,Appeal,aggregate_root,HIGHLY_RESTRICTED,global,SUBMITTED|IN_REVIEW|UPHELD|OVERTURNED|CLOSED,EnforcementAction,Independent reviewer policy.
+Notifications,Notification,aggregate_root,CONFIDENTIAL,user,CREATED|READ|ARCHIVED,"User, NotificationDelivery",Semantic intent and deep link.
+Notifications,NotificationDelivery,entity,RESTRICTED,user,PENDING|SENDING|DELIVERED|FAILED|SUPPRESSED,Notification,Channel attempt with idempotency.
+Notifications,NotificationPreference,aggregate_root,CONFIDENTIAL,user,ACTIVE,User,Per event/channel quiet hours.
+Notifications,NotificationTemplate,versioned_reference,INTERNAL,global,DRAFT|ACTIVE|RETIRED,NotificationDelivery,Locale/channel/version.
+Support,SupportTicket,aggregate_root,RESTRICTED,user/org,OPEN|PENDING_USER|PENDING_INTERNAL|RESOLVED|CLOSED,TicketReply,"Category, priority, assignment."
+Support,TicketReply,entity,RESTRICTED,ticket,PUBLISHED|REDACTED,"SupportTicket, User",Internal/public visibility flag.
+Support,KnowledgeBaseArticle,aggregate_root,PUBLIC,global,DRAFT|PUBLISHED|ARCHIVED,User,Versioned localized content.
+Analytics & Reporting,AnalyticsEvent,append_only,PSEUDONYMOUS,global,RECORDED,User?,Versioned schema; no prohibited sensitive payload.
+Analytics & Reporting,MetricDefinition,versioned_reference,INTERNAL,global,DRAFT|ACTIVE|RETIRED,ReportDefinition,"Owner, formula, dimensions."
+Analytics & Reporting,ReportDefinition,versioned_reference,INTERNAL,scope,DRAFT|ACTIVE|RETIRED,MetricDefinition,Access and privacy policy.
+Privacy & Governance,ConsentRecord,append_only,RESTRICTED,user,GRANTED|WITHDRAWN|EXPIRED,"User, PolicyVersion","Purpose, source, timestamp, evidence."
+Privacy & Governance,PolicyVersion,versioned_reference,PUBLIC,global,DRAFT|ACTIVE|RETIRED,ConsentRecord,Legal source reference.
+Privacy & Governance,DataRequest,aggregate_root,HIGHLY_RESTRICTED,user,SUBMITTED|VERIFYING|IN_PROGRESS|READY|COMPLETED|REJECTED|CANCELLED,User,Access/export/delete/correct.
+Privacy & Governance,RetentionPolicy,versioned_reference,RESTRICTED,global,DRAFT|ACTIVE|RETIRED,Data class,Cannot be silently disabled.
+Privacy & Governance,AnonymizationRule,versioned_reference,RESTRICTED,global,DRAFT|ACTIVE|RETIRED,Data class,Audited transform definition.
+Privacy & Governance,ExportApproval,aggregate_root,HIGHLY_RESTRICTED,scope,REQUESTED|APPROVED|REJECTED|EXPIRED,"User, Organization",Four-eyes policy for sensitive exports.
+Privacy & Governance,PrivacyIncident,aggregate_root,HIGHLY_RESTRICTED,global,OPEN|CONTAINED|INVESTIGATING|REMEDIATED|CLOSED,User?,Restricted access and timeline.
+Platform Operations,FeatureFlag,aggregate_root,INTERNAL,global/scope,DRAFT|ACTIVE|DISABLED|ARCHIVED,FlagRule,P2/P3 admin only.
+Platform Operations,BackgroundJob,entity,INTERNAL,global,QUEUED|RUNNING|SUCCEEDED|FAILED|DEAD,OutboxEvent,"Operational record, not queue implementation itself."
+Platform Operations,OutboxEvent,append_only,INTERNAL,global,PENDING|PUBLISHED|FAILED,Aggregate,Transactional domain event.
+Platform Operations,MediaAsset,aggregate_root,RESTRICTED,owner/context,PENDING|SCANNING|READY|QUARANTINED|DELETED,User/context,"Storage key, MIME, size, checksum, variants."
+Platform Operations,IdempotencyKey,entity,INTERNAL,actor/scope,ACTIVE|EXPIRED,Request,Mutation result replay protection.
