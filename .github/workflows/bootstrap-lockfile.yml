@@ -4,13 +4,14 @@ on:
   push:
     branches:
       - feat/s0-001-foundation
+  pull_request:
 
 permissions:
   contents: write
 
 jobs:
   lockfile:
-    if: ${{ !contains(github.event.head_commit.message, '[lockfile]') }}
+    if: ${{ github.event_name == 'pull_request' || !contains(github.event.head_commit.message, '[lockfile]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +23,15 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --lockfile-only
-      - name: Commit lockfile
+      - name: Upload generated lockfile
+        if: ${{ github.event_name == 'pull_request' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: pnpm-lock
+          path: pnpm-lock.yaml
+          if-no-files-found: error
+      - name: Commit lockfile on branch push
+        if: ${{ github.event_name == 'push' }}
         run: |
           if git diff --quiet -- pnpm-lock.yaml; then
             echo "Lockfile is already current."
