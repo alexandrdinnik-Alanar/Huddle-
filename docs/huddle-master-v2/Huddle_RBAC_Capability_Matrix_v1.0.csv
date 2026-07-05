@@ -1,0 +1,62 @@
+﻿capability,domain,description,GUEST,PARENT,SELLER,ORGANIZER,EXPERT,PARTNER,MUNICIPALITY_USER,MODERATOR,ADMIN,SUPER_ADMIN,SYSTEM
+public.read,Public,Read public content,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y,Y
+profile.read_self,Identity,Read own profile,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+profile.update_self,Identity,Update own profile,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+family.manage_self,Family,Manage own family profile/members,N,Y,N,N,N,N,N,N,S,S,N
+family.view_connected,Family,View visibility-filtered connected family,N,S,N,N,N,N,N,S,S,S,N
+matching.manage_preferences,Matching,Manage own matching preferences,N,Y,N,N,N,N,N,N,S,S,N
+matching.view_candidates,Matching,View privacy-filtered candidates,N,S,N,N,N,N,N,S,S,S,N
+connection.request,Connections,Send connection request,N,S,S,S,S,N,N,N,N,N,N
+connection.block,Connections,Block/mute a user,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+community.post.create,Community,Create community post,N,S,S,S,S,S,N,S,S,S,N
+community.post.moderate,Community,Moderate community content,N,N,N,N,N,N,N,S,Y,Y,N
+group.create,Groups,Create group,N,S,N,S,S,N,N,N,S,S,N
+group.manage,Groups,Manage group where owner/admin,N,S,N,S,S,N,N,S,S,S,N
+message.send,Messaging,Send message in authorized conversation,N,S,S,S,S,S,S,S,S,S,N
+message.moderate,Messaging,Review reported message content,N,N,N,N,N,N,N,S,Y,Y,N
+listing.create,Listings,Create own P2P listing,N,S,Y,N,N,N,N,N,S,S,N
+listing.manage_own,Listings,Manage own listing,N,S,Y,N,N,N,N,N,S,S,N
+listing.moderate,Listings,Approve/remove listing,N,N,N,N,N,N,N,S,Y,Y,N
+catalog.manage_partner,Catalog,Manage scoped partner catalog/feed,N,N,N,N,N,S,N,N,S,S,I
+catalog.approve,Catalog,Approve partner/store/product feed,N,N,N,N,N,N,N,N,S,Y,N
+order.create,Orders,Create order,N,S,S,S,S,N,N,N,S,S,N
+order.read_own,Orders,Read own buyer order,N,Y,S,S,S,N,N,N,S,S,N
+order.fulfill,Orders,Fulfill scoped seller/partner order,N,N,S,N,N,S,N,N,S,S,N
+order.refund_request,Orders,Request refund,N,S,S,N,N,N,N,N,S,S,N
+finance.refund_execute,Finance,Execute approved refund,N,N,N,N,N,N,N,N,S,Y,I
+finance.dispute_manage,Finance,Manage payment disputes,N,N,N,N,N,N,N,N,S,Y,N
+finance.payout_review,Finance,Review payout,N,N,N,N,N,N,N,N,S,Y,N
+finance.ledger_read,Finance,Read financial operations ledger,N,N,N,N,N,N,N,N,S,Y,N
+experience.register,Experiences,Register self/family for experience,N,S,S,S,S,N,N,N,S,S,N
+experience.create,Experiences,Create organizer-owned event/activity,N,N,N,Y,N,N,N,N,S,S,N
+experience.manage_own,Experiences,Manage own experience,N,N,N,Y,N,N,N,N,S,S,N
+experience.checkin,Experiences,Check in registered participant,N,N,N,S,N,N,N,N,S,S,N
+experience.admin,Experiences,Administer any experience,N,N,N,N,N,N,N,N,S,Y,N
+service.book,Services,Book service,N,S,S,S,S,N,N,N,S,S,N
+service.manage_own,Services,Manage own service offering,N,N,N,N,Y,N,N,N,S,S,N
+booking.manage_provider,Bookings,Manage provider bookings,N,N,N,N,S,N,N,N,S,S,N
+booking.manage_customer,Bookings,Manage own customer booking,N,S,S,S,N,N,N,N,S,S,N
+partner.manage_org,Partner,Manage partner organization,N,N,N,N,N,S,N,N,S,S,N
+municipality.program_manage,Municipality,Manage scoped public programs,N,N,N,N,N,N,S,N,S,S,N
+municipality.report_read,Municipality,Read approved aggregated scoped reports,N,N,N,N,N,N,S,N,S,S,N
+municipality.raw_data,Municipality,Read row-level personal data,N,N,N,N,N,N,N,N,N,N,N
+safety.report.create,Safety,Create safety report,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+safety.case.read,Safety,Read assigned moderation case,N,N,N,N,N,N,N,S,Y,Y,N
+safety.case.decide,Safety,Issue moderation decision,N,N,N,N,N,N,N,S,Y,Y,N
+safety.enforcement.manage,Safety,Manage enforcement action,N,N,N,N,N,N,N,S,Y,Y,N
+safety.appeal.review,Safety,Review appeal,N,N,N,N,N,N,N,S,Y,Y,N
+support.ticket.create,Support,Create support ticket,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+support.ticket.manage,Support,Manage assigned support ticket,N,N,N,N,N,N,N,N,S,Y,N
+notification.preference.manage,Notifications,Manage own notification preferences,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+analytics.product.read,Analytics,Read product analytics,N,N,N,N,N,N,N,N,S,Y,N
+privacy.consent.manage_self,Privacy,Manage own consent records,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+privacy.request.create,Privacy,Create own data request,N,Y,Y,Y,Y,Y,Y,Y,Y,Y,N
+privacy.request.process,Privacy,Process privacy request,N,N,N,N,N,N,N,N,S,Y,N
+privacy.policy.manage,Privacy,Manage retention/anonymization rules,N,N,N,N,N,N,N,N,N,S,N
+privacy.export.approve,Privacy,Approve governed export,N,N,N,N,N,N,N,N,S,Y,N
+admin.user.manage,Admin,Manage user status/roles,N,N,N,N,N,N,N,N,S,Y,N
+admin.role.grant,Admin,Grant coarse role/scoped capability,N,N,N,N,N,N,N,N,S,Y,N
+admin.audit.read,Admin,Read audit log,N,N,N,N,N,N,N,S,Y,Y,N
+platform.settings.manage,Platform,Manage platform settings,N,N,N,N,N,N,N,N,N,Y,N
+platform.jobs.manage,Platform,Manage background jobs,N,N,N,N,N,N,N,N,N,S,I
+system.internal,System,Internal service capability,N,N,N,N,N,N,N,N,N,N,I
