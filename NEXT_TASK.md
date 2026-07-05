@@ -1,17 +1,15 @@
 # NEXT TASK
 
-Current repository baseline is pre-Sprint-0.
-
-Start with:
+S0-001 is merged. The current task is:
 
 ```text
-S0-001 — Initialize project repository
+S0-002 — Create route group architecture
 ```
 
 Task contract:
 
 ```text
-tasks/phase-0/S0-001.md
+tasks/phase-0/S0-002.md
 ```
 
-Do not start S0-002 until S0-001 is merged and its gates pass.
+Execute S0-002 only. Do not start S0-003 until S0-002 is merged and its gates pass.
