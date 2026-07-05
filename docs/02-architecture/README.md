@@ -1,10 +1,9 @@
 # Architecture
 
-Canonical architecture material lives here.
+Canonical architecture files:
+- adr-register.csv
+- domain-entity-catalog.csv
+- canonical-route-map.csv
+- repository-layout.md
 
-- `adr-register.csv` — accepted architecture decisions.
-- `domain-entity-catalog.csv` — bounded contexts, entities and data sensitivity.
-- `canonical-route-map.csv` — public, authenticated, role and admin routes.
-- `repository-layout.md` — required runtime repository structure.
-
-Implementation must follow these documents together with `.ai/HUDDLE_RULES.md`.
+Implementation must follow these files together with .ai/HUDDLE_RULES.md.

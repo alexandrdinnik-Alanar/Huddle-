@@ -11,4 +11,4 @@
 
 ## Handoff
 
-Add the related handoff path under `docs/execution/`.
+Add the related handoff path under docs/execution/.
