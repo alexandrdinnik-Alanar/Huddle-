@@ -26,7 +26,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
       - run: pnpm install --lockfile-only
       - name: Upload generated lockfile
         if: ${{ github.event_name == 'pull_request' }}
