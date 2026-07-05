@@ -9,7 +9,20 @@ Status: S0-001 foundation baseline.
 - React: 19.2.4
 - React DOM: 19.2.4
 - Next.js: 16.2.0
-- TypeScript: 5.9.x resolved by lockfile
+- TypeScript: 5.9.3
+
+## Resolved foundation tooling
+
+The committed `pnpm-lock.yaml` resolves the initial toolchain to:
+
+- Playwright: 1.61.1
+- `@types/node`: 22.20.0
+- `@types/react`: 19.2.17
+- `@types/react-dom`: 19.2.3
+- ESLint: 9.39.4
+- `eslint-config-next`: 16.2.0
+- Prettier: 3.9.4
+- Vitest: 4.1.9
 
 ## Rationale
 
@@ -20,4 +33,4 @@ Next.js 16.2 is the approved Sprint 0 framework line. React is pinned to 19.2.4 
 - Official Next.js 16.2 release: March 18, 2026.
 - Official React security guidance: 19.2.4 contains the backported fixes for the disclosed follow-up React Server Components vulnerabilities.
 
-Exact transitive dependency versions are authoritative in `pnpm-lock.yaml` after bootstrap.
+Exact direct and transitive dependency resolution is authoritative in the committed `pnpm-lock.yaml`.
