@@ -8,7 +8,7 @@ Start with:
 S0-001 — Initialize project repository
 ```
 
-Task file:
+Task contract:
 
 ```text
 tasks/phase-0/S0-001.md
