@@ -1,0 +1,87 @@
+{
+  "status": "blocked_missing_approved_binaries",
+  "trackingIssue": 6,
+  "policy": {
+    "preserveOriginalBytesOnImport": true,
+    "sha256RequiredBeforeComponentUse": true,
+    "allowCropFromReferenceBoard": false,
+    "allowGeneratedReplacement": false,
+    "allowCssRecolor": false
+  },
+  "logotype": [
+    {
+      "variant": "copperTransparent",
+      "path": "/brand/logotype/Huddle_logotype_copper_transparent_APPROVED.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "darkGreenTransparent",
+      "path": "/brand/logotype/Huddle_logotype_dark_green_transparent.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "whiteTransparent",
+      "path": "/brand/logotype/Huddle_logotype_white_transparent.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "copperOnDeepGreen",
+      "path": "/brand/logotype/Huddle_logotype_copper_on_deep_green.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "darkGreenOnIvory",
+      "path": "/brand/logotype/Huddle_logotype_dark_green_on_ivory.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "whiteOnDeepGreen",
+      "path": "/brand/logotype/Huddle_logotype_white_on_deep_green.png",
+      "sha256": null,
+      "present": false
+    }
+  ],
+  "icon": [
+    {
+      "variant": "copperTransparent",
+      "path": "/brand/icon/Huddle_icon_copper_transparent_SELECTED.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "blackTransparent",
+      "path": "/brand/icon/Huddle_icon_black_transparent.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "whiteTransparent",
+      "path": "/brand/icon/Huddle_icon_white_transparent.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "copperOnDeepGreen",
+      "path": "/brand/icon/Huddle_icon_copper_on_deep_green.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "darkGreenOnIvory",
+      "path": "/brand/icon/Huddle_icon_dark_green_on_ivory.png",
+      "sha256": null,
+      "present": false
+    },
+    {
+      "variant": "whiteOnDeepGreen",
+      "path": "/brand/icon/Huddle_icon_white_on_deep_green.png",
+      "sha256": null,
+      "present": false
+    }
+  ]
+}
