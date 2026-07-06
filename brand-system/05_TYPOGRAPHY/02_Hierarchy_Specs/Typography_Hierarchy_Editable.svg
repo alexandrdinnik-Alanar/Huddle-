@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<rect width="1600" height="1000" fill="#F6F1EA"/>
+<text x="100" y="110" font-family="Inter,Arial" font-size="20" letter-spacing="4" fill="#C47A4A">HUDDLE TYPOGRAPHY SYSTEM</text>
+<text x="100" y="250" font-family="Playfair Display,Georgia" font-size="92" fill="#2F3E34">Hero headline</text>
+<text x="100" y="340" font-family="Playfair Display,Georgia" font-size="58" fill="#2F3E34">Section headline</text>
+<text x="100" y="420" font-family="Playfair Display,Georgia" font-size="36" fill="#2F3E34">Subheading / editorial title</text>
+<text x="100" y="520" font-family="Inter,Arial" font-size="26" fill="#4F4A43">Body Large — warm, clear and people-centered.</text>
+<text x="100" y="575" font-family="Inter,Arial" font-size="20" fill="#4F4A43">Body — Functional copy for product, marketing and brand communications.</text>
+<text x="100" y="655" font-family="Inter,Arial" font-size="15" letter-spacing="3" fill="#C47A4A">EYEBROW / LABEL / CATEGORY</text>
+<text x="100" y="735" font-family="Playfair Display,Georgia" font-size="30" font-style="italic" fill="#C47A4A">Editorial accent — use sparingly.</text>
+<line x1="100" y1="820" x2="1500" y2="820" stroke="#C47A4A" opacity=".35"/>
+<text x="100" y="875" font-family="Inter,Arial" font-size="18" fill="#4F4A43">Recommended: Playfair Display + Inter. Font files are not included.</text>
+</svg>
