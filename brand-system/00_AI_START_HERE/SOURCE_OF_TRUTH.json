@@ -1,0 +1,16 @@
+{
+  "brand": "Huddle",
+  "concept": "Closer by Design",
+  "identity_source": "02_MASTER_IDENTITY",
+  "approved_visual_reference": "01_BRAND_GUIDELINES/02_APPROVED_REFERENCE_PNG",
+  "editable_guidelines_source": "01_BRAND_GUIDELINES/01_LAYERED_SOURCE",
+  "design_tokens": "04_DESIGN_TOKENS",
+  "editable_graphics": "03_EDITABLE_GRAPHIC_SYSTEM",
+  "rules": {
+    "do_not_redraw_identity": true,
+    "do_not_ai_recreate_identity": true,
+    "apparel_front": "approved Huddle wordmark centered",
+    "apparel_back": "large approved Community Mark centered",
+    "apparel_forbidden_text": "Closer by Design"
+  }
+}
