@@ -1,6 +1,27 @@
 # Huddle Master Brand System Audit
 
-Status: source package verified; S0-003 binary repository import pending.
+Status: **FOUNDER-APPROVED CANONICAL VISUAL IDENTITY**; S0-003 exact binary repository import pending.
+
+## Founder decision
+
+The owner has explicitly decided that the uploaded `Brand_Guidelines.zip` is the canonical source for Huddle visual identity.
+
+This decision covers:
+
+- brand colors;
+- wordmark/logotype;
+- community mark and icon system;
+- visual identity rules;
+- typography direction;
+- graphic elements;
+- photography direction;
+- branded digital touchpoints;
+- branded marketplace, community, activities, events, services and safety references;
+- campaign, social, stationery, apparel, vehicle and environmental branding references.
+
+Where older set50-derived visual values or older visual references conflict with this package, the uploaded master brand package wins for visual identity. Older set50 materials remain historical/reference material only unless explicitly retained for non-conflicting product-system behavior.
+
+Accepted engineering/security/privacy ADRs remain authoritative outside visual-identity scope.
 
 ## Audited package
 
@@ -43,13 +64,11 @@ Identity rules:
 
 All 12 required web PNG assets are present in the owner-supplied nested `Logotype.zip` and `Icon.zip` archives. Exact checksums are recorded in `public/brand/expected-assets.json`.
 
-## Decision gate before S0-004
+## Canonical brand palette
 
-The uploaded master system contains a supplemental editable color reference whose values differ from the current set50-derived ADR baseline.
+The master guideline values below supersede the older set50-derived brand palette for visual identity:
 
-### Uploaded master guideline values
-
-| Token | Value |
+| Token | Canonical value |
 |---|---|
 | Ivory | `#F6F1EA` |
 | Warm Cream | `#EFE7D9` |
@@ -61,41 +80,35 @@ The uploaded master system contains a supplemental editable color reference whos
 | Taupe | `#C8B7A3` |
 | Soft White | `#FBF8F3` |
 
-### Current repository ADR-008 values
+The old brand values `#163A2F`, `#A8BFAE`, `#C6683D`, `#FAF7F2`, `#F1E9D8`, `#D9D5CC`, `#1F1F1F` are superseded for canonical brand identity.
 
-| Token | Value |
-|---|---|
-| Deep Green | `#163A2F` |
-| Sage | `#A8BFAE` |
-| Copper | `#C6683D` |
-| Ivory | `#FAF7F2` |
-| Sand | `#F1E9D8` |
-| Stone | `#D9D5CC` |
-| Charcoal | `#1F1F1F` |
-| Success | `#2E7D4F` |
-| Warning | `#E2A23B` |
-| Error | `#D64545` |
-| Info | `#4A7BD3` |
+Semantic application colors such as success/warning/error/info are not automatically discarded by this decision; they remain functional UI semantics until S0-004 maps or replaces them explicitly.
 
-These are not equivalent palettes. S0-004 must not proceed by silently choosing one.
+## Canonical typography direction
 
-## Typography conflict
-
-The uploaded supplemental typography hierarchy recommends:
+The uploaded master guideline establishes:
 
 - Playfair Display for hero, section and editorial headings;
 - Inter for body and functional copy;
-- Playfair Display + Inter as the pairing;
-- font files are not included.
+- Playfair Display + Inter as the recommended pairing.
 
-The current repository baseline uses a production-safe system UI stack and set50-derived metrics. This is also a real conflict requiring an ADR update before S0-004.
+Font files are not included in the package. Production implementation must use licensed/approved delivery sources and must not redistribute font binaries from local or system sources.
+
+Until S0-004 completes production font loading, the current system stack may remain only as a temporary runtime fallback, not as canonical brand typography.
+
+## GitHub reconciliation result
+
+The repository already contains a large visual product corpus under `assets/screens/`, including 638 screen/reference assets and set50 design-system references. This is valuable implementation/reference material.
+
+However, exact searches for the master identity filenames (`Huddle_logotype_*`, `Huddle_icon_*`, `Huddle_Brand_Guidelines_*`) did not find those original master files in indexed `main` paths. Therefore:
+
+- existing GitHub visual corpus remains product/reference evidence;
+- uploaded master guideline becomes visual-identity authority;
+- exact approved identity binaries are imported separately under `public/brand/`;
+- duplicate or conflicting older visual rules must not override the master package.
 
 ## Completeness caveat
 
 The package's own `FOLDER_MAP.json` reports zero files in several declared top-level folders, including identity masters, design tokens and typography, while the outer archive separately supplies `Logotype.zip` and `Icon.zip` and the QA supplemental area supplies editable color and typography references.
 
-Therefore:
-
-- S0-003 identity PNG assets are verified and usable;
-- the package hierarchy is authoritative policy evidence;
-- token and typography authority must be explicitly reconciled rather than inferred from folder names alone.
+This does not block the Founder decision. It means implementation must use the verified files actually present and record exact provenance/checksums rather than infer missing files from folder names.
