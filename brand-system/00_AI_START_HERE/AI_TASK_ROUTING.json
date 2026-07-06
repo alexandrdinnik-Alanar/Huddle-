@@ -1,0 +1,32 @@
+{
+  "edit_brand_guidelines": {
+    "primary": "01_BRAND_GUIDELINES/01_LAYERED_SOURCE",
+    "visual_reference": "01_BRAND_GUIDELINES/02_APPROVED_REFERENCE_PNG",
+    "identity": "02_MASTER_IDENTITY"
+  },
+  "create_presentation": {
+    "primary": "06_EDITABLE_PRESENTATION_TEMPLATES",
+    "graphic_assets": "03_EDITABLE_GRAPHIC_SYSTEM",
+    "brand_reference": "01_BRAND_GUIDELINES/02_APPROVED_REFERENCE_PNG"
+  },
+  "create_social": {
+    "primary": "07_EDITABLE_MARKETING_TEMPLATES",
+    "photography_rules": "13_PHOTOGRAPHY_AND_CAMPAIGN"
+  },
+  "create_ui": {
+    "primary": "08_UI_AND_DIGITAL_ASSETS",
+    "tokens": "04_DESIGN_TOKENS"
+  },
+  "create_merch": {
+    "primary": "10_MERCH_AND_APPAREL",
+    "identity": "02_MASTER_IDENTITY"
+  },
+  "create_vehicle": {
+    "primary": "11_VEHICLE_BRANDING",
+    "identity": "02_MASTER_IDENTITY"
+  },
+  "create_office": {
+    "primary": "12_OFFICE_ENVIRONMENTAL",
+    "tokens": "04_DESIGN_TOKENS"
+  }
+}
