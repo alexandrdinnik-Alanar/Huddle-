@@ -4,8 +4,6 @@ Status: canonical visual identity approved by project owner; exact binary reposi
 
 The uploaded `Brand_Guidelines.zip` is authoritative for Huddle colors, logotype, icon/community mark, typography direction and broader visual identity. Where older set50 visual values conflict, the uploaded master guideline wins.
 
-See the existing audit history and verified asset manifest for provenance and checksums.
-
 Canonical palette:
 
 - Ivory `#F6F1EA`
