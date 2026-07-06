@@ -11,7 +11,7 @@ S0-003 — Add approved brand assets and logo components
 Status:
 
 ```text
-BLOCKED — approved binary brand assets are missing
+IN PROGRESS — master visual identity approved; exact binary repo import pending
 ```
 
 Task contract:
@@ -20,10 +20,12 @@ Task contract:
 tasks/phase-0/S0-003.md
 ```
 
-Tracking issue:
+Canonical visual identity source:
 
 ```text
-#6 — BLOCKER: S0-003 approved Huddle brand assets are missing
+Brand_Guidelines.zip
 ```
 
-Do not generate, redraw, crop, trace, type or recolor substitute logo assets. Do not start S0-004 while S0-003 remains blocked.
+The uploaded package is authoritative for Huddle colors, logotype, icon/community mark, typography direction and broader visual identity. Older set50-derived visual values are reference-only when conflicting.
+
+All 12 required PNG identity assets were found and SHA-256 verified. Do not start S0-004 until exact binaries are present in repository paths, repository checksums match, CI passes and S0-003 is merged.
