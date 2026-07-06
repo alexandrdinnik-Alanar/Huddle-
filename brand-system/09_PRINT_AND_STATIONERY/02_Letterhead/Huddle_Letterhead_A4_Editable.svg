@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="1754" viewBox="0 0 1240 1754">
+<rect width="1240" height="1754" fill="#F6F1EA"/>
+<line x1="90" y1="110" x2="1150" y2="110" stroke="#C47A4A" opacity=".45"/>
+<text x="90" y="80" font-family="Inter,Arial" font-size="24" letter-spacing="4" fill="#C47A4A">HUDDLE</text>
+<text x="90" y="240" font-family="Playfair Display,Georgia" font-size="60" fill="#2F3E34">Letter title</text>
+<text x="90" y="330" font-family="Inter,Arial" font-size="24" fill="#4F4A43">Editable A4 letterhead template. Replace identity placeholder with approved master asset.</text>
+<path d="M0 1460 C260 1340 480 1580 760 1430 C980 1310 1090 1370 1240 1280 L1240 1754 L0 1754 Z" fill="#EFE7D9"/>
+<circle cx="1080" cy="1530" r="150" fill="none" stroke="#C47A4A" opacity=".22"/>
+<text x="90" y="1650" font-family="Inter,Arial" font-size="18" fill="#4F4A43">huddle.no  ·  hello@huddle.no  ·  Oslo, Norway</text>
+</svg>
