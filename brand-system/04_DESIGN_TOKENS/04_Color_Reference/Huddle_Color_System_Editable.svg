@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="780" viewBox="0 0 780 780">
+<rect width="780" height="780" fill="#F6F1EA"/>
+<rect x="10" y="10" width="240" height="240" rx="24" fill="#F6F1EA"/>
+<text x="28" y="190" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Ivory</text>
+<text x="28" y="222" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#F6F1EA</text>
+<rect x="270" y="10" width="240" height="240" rx="24" fill="#EFE7D9"/>
+<text x="288" y="190" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Warm Cream</text>
+<text x="288" y="222" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#EFE7D9</text>
+<rect x="530" y="10" width="240" height="240" rx="24" fill="#DCCBAE"/>
+<text x="548" y="190" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Sand</text>
+<text x="548" y="222" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#DCCBAE</text>
+<rect x="10" y="270" width="240" height="240" rx="24" fill="#A2AC95"/>
+<text x="28" y="450" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Sage</text>
+<text x="28" y="482" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#A2AC95</text>
+<rect x="270" y="270" width="240" height="240" rx="24" fill="#2F3E34"/>
+<text x="288" y="450" font-family="Inter,Arial" font-size="24" fill="#FFFFFF">Deep Forest</text>
+<text x="288" y="482" font-family="Inter,Arial" font-size="18" fill="#FFFFFF">#2F3E34</text>
+<rect x="530" y="270" width="240" height="240" rx="24" fill="#C47A4A"/>
+<text x="548" y="450" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Copper</text>
+<text x="548" y="482" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#C47A4A</text>
+<rect x="10" y="530" width="240" height="240" rx="24" fill="#4F4A43"/>
+<text x="28" y="710" font-family="Inter,Arial" font-size="24" fill="#FFFFFF">Charcoal</text>
+<text x="28" y="742" font-family="Inter,Arial" font-size="18" fill="#FFFFFF">#4F4A43</text>
+<rect x="270" y="530" width="240" height="240" rx="24" fill="#C8B7A3"/>
+<text x="288" y="710" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Taupe</text>
+<text x="288" y="742" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#C8B7A3</text>
+<rect x="530" y="530" width="240" height="240" rx="24" fill="#FBF8F3"/>
+<text x="548" y="710" font-family="Inter,Arial" font-size="24" fill="#2F3E34">Soft White</text>
+<text x="548" y="742" font-family="Inter,Arial" font-size="18" fill="#2F3E34">#FBF8F3</text>
+</svg>
