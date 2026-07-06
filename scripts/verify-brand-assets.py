@@ -28,7 +28,7 @@ def main() -> int:
 
     for record in records:
         relative_path = record["path"].lstrip("/")
-        path = repo_root / "public" / relative_path.removeprefix("brand/")
+        path = repo_root / "public" / relative_path
         expected = record["sha256"]
         repo_present = bool(record.get("repoPresent"))
 
@@ -67,3 +67,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

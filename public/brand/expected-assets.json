@@ -1,5 +1,5 @@
 {
-  "status": "source_verified_repo_import_pending",
+  "status": "repo_verified",
   "trackingIssue": 6,
   "sourcePackage": "Brand_Guidelines.zip",
   "sourceAudit": {
@@ -28,7 +28,7 @@
       "width": 1025,
       "height": 316,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "darkGreenTransparent",
@@ -37,7 +37,7 @@
       "width": 1025,
       "height": 316,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "whiteTransparent",
@@ -46,7 +46,7 @@
       "width": 1025,
       "height": 316,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "copperOnDeepGreen",
@@ -55,7 +55,7 @@
       "width": 1225,
       "height": 516,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "darkGreenOnIvory",
@@ -64,7 +64,7 @@
       "width": 1225,
       "height": 516,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "whiteOnDeepGreen",
@@ -73,7 +73,7 @@
       "width": 1225,
       "height": 516,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     }
   ],
   "icon": [
@@ -84,7 +84,7 @@
       "width": 660,
       "height": 571,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "blackTransparent",
@@ -93,7 +93,7 @@
       "width": 660,
       "height": 571,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "whiteTransparent",
@@ -102,7 +102,7 @@
       "width": 660,
       "height": 571,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "copperOnDeepGreen",
@@ -111,7 +111,7 @@
       "width": 880,
       "height": 791,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "darkGreenOnIvory",
@@ -120,7 +120,7 @@
       "width": 880,
       "height": 791,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     },
     {
       "variant": "whiteOnDeepGreen",
@@ -129,7 +129,7 @@
       "width": 880,
       "height": 791,
       "sourceVerified": true,
-      "repoPresent": false
+      "repoPresent": true
     }
   ]
 }
