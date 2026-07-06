@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1200" viewBox="0 0 800 1200">
+<rect width="800" height="1200" rx="40" fill="#F6F1EA"/>
+<rect x="0" y="0" width="800" height="170" rx="40" fill="#2F3E34"/>
+<text x="70" y="110" font-family="Inter,Arial" font-size="30" letter-spacing="5" fill="#F6F1EA">HUDDLE EVENT</text>
+<circle cx="400" cy="420" r="150" fill="#EFE7D9" stroke="#C47A4A" stroke-width="3"/>
+<text x="400" y="430" text-anchor="middle" font-family="Inter,Arial" font-size="24" fill="#C47A4A">PHOTO</text>
+<text x="400" y="700" text-anchor="middle" font-family="Playfair Display,Georgia" font-size="54" fill="#2F3E34">Name Surname</text>
+<text x="400" y="770" text-anchor="middle" font-family="Inter,Arial" font-size="26" fill="#C47A4A">ORGANIZER / TEAM</text>
+<rect x="230" y="900" width="340" height="110" rx="55" fill="#EFE7D9"/>
+<text x="400" y="967" text-anchor="middle" font-family="Inter,Arial" font-size="24" fill="#2F3E34">QR / CHECK-IN</text>
+</svg>
