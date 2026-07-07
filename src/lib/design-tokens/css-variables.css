@@ -1,0 +1,97 @@
+:root {
+  color-scheme: light;
+
+  --color-background-base: #f6f1ea;
+  --color-background-soft: #efe7d9;
+  --color-background-sage: #a2ac95;
+  --color-background-deep-green: #2f3e34;
+
+  --color-surface-card: #fbf8f3;
+  --color-surface-elevated: #ffffff;
+
+  --color-text-primary: #4f4a43;
+  --color-text-secondary: #6a645d;
+  --color-text-muted: #8a837a;
+  --color-text-inverse: #ffffff;
+
+  --color-brand-copper: #c47a4a;
+  --color-brand-green: #2f3e34;
+
+  --color-cta-primary: #2f3e34;
+  --color-cta-primary-hover: #243129;
+  --color-cta-secondary: #efe7d9;
+
+  --color-border-subtle: #c8b7a3;
+  --color-border-strong: #8b8174;
+
+  --color-status-success: #4b6b4f;
+  --color-status-warning: #a56a2a;
+  --color-status-danger: #a1463c;
+  --color-status-info: #5d7a7a;
+
+  --font-family-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-family-body: Inter, "Segoe UI", Arial, sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 3rem;
+
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.08em;
+
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --radius-none: 0;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 9999px;
+
+  --shadow-none: none;
+  --shadow-sm: 0 8px 24px rgba(79, 74, 67, 0.08);
+  --shadow-md: 0 16px 40px rgba(79, 74, 67, 0.12);
+  --shadow-lg: 0 24px 60px rgba(47, 62, 52, 0.16);
+
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 96rem;
+
+  --z-index-base: 0;
+  --z-index-raised: 10;
+  --z-index-sticky: 100;
+  --z-index-overlay: 400;
+  --z-index-modal: 500;
+  --z-index-toast: 600;
+  --z-index-tooltip: 700;
+}
