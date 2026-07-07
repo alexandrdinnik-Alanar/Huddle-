@@ -54,3 +54,46 @@ body {
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
+
+.ui-focus-ring:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-brand-copper) 35%, transparent);
+  outline-offset: 2px;
+}
+
+.ui-button:hover:not(:disabled) {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.ui-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.ui-spinner {
+  animation: ui-spin 0.85s linear infinite;
+  block-size: 1em;
+  border: 2px solid currentColor;
+  border-inline-end-color: transparent;
+  border-radius: 50%;
+  inline-size: 1em;
+}
+
+.ui-skeleton {
+  animation: ui-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ui-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
