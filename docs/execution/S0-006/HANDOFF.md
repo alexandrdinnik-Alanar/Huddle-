@@ -6,7 +6,7 @@
 
 ## Summary
 
-Configured the repository-level PostgreSQL + Prisma foundation only. Added Prisma package configuration, a foundation `schema.prisma`, a Next.js-safe database client helper, and database scripts without introducing product or identity models.
+Configured the repository-level PostgreSQL + Prisma foundation only. Added Prisma package configuration, a foundation `schema.prisma`, a Next.js-safe database client helper, install-time Prisma Client generation for clean CI environments, and database scripts without introducing product or identity models.
 
 ## Exact changed files
 
@@ -48,6 +48,7 @@ None.
 
 ## Package scripts
 
+- `postinstall`
 - `db:generate`
 - `db:migrate`
 - `db:seed`
@@ -79,6 +80,16 @@ None.
 
 ## Exact results
 
+- Original CI failure:
+  - step: `pnpm typecheck`
+  - error: `src/lib/db/client.ts(1,10): error TS2305: Module '"@prisma/client"' has no exported member 'PrismaClient'.`
+- Root cause:
+  - the CI workflow did not have an explicit repository-level Prisma Client generation guarantee before `typecheck`
+  - `src/lib/db/client.ts` imports `PrismaClient` from generated `@prisma/client` typings
+  - a clean checkout therefore depended on generated client artifacts existing already, which is not a safe CI assumption
+- Exact fix:
+  - added root `postinstall: "prisma generate"` in `package.json`
+  - kept the workflow unchanged so `pnpm install --frozen-lockfile` now generates Prisma Client before `lint`, `typecheck`, `test`, and `build`
 - `python scripts/verify-brand-assets.py` - success
 - initial `pnpm.cmd db:generate` attempt - blocked by local `ERR_PNPM_IGNORED_BUILDS` policy before script execution
 - initial `pnpm.cmd lint` attempt - blocked by local `ERR_PNPM_IGNORED_BUILDS` policy before script execution
