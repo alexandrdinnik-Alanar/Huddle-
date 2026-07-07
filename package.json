@@ -15,7 +15,7 @@
     "typecheck": "tsc --noEmit",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "node -e \"console.log('S0-008 will implement prisma/seed.ts; S0-006 intentionally does not seed data.')\"",
+    "db:seed": "node --experimental-strip-types prisma/seed.ts",
     "db:studio": "prisma studio",
     "test": "vitest run",
     "test:e2e": "playwright test",
