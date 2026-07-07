@@ -7,5 +7,65 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// S0-006 establishes Prisma and PostgreSQL only.
-// Identity and product models begin in later approved tasks.
+enum UserStatus {
+  ACTIVE
+  PENDING_VERIFICATION
+  SUSPENDED
+  DELETED
+}
+
+enum RoleKey {
+  PARENT
+  SELLER
+  ORGANIZER
+  EXPERT
+  PARTNER
+  MUNICIPALITY_USER
+  MODERATOR
+  ADMIN
+  SUPER_ADMIN
+  SYSTEM
+}
+
+model User {
+  id                String      @id @default(cuid())
+  email             String      @unique
+  emailVerifiedAt   DateTime?
+  name              String?
+  avatarUrl         String?
+  status            UserStatus  @default(PENDING_VERIFICATION)
+  preferredLanguage String?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  deletedAt         DateTime?
+  roles             UserRole[]  @relation("UserRoleAssignments")
+  assignedRoles     UserRole[]  @relation("UserRoleAssignedBy")
+
+  @@index([status])
+}
+
+model Role {
+  id          String     @id @default(cuid())
+  key         RoleKey    @unique
+  name        String
+  description String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  users       UserRole[] @relation("RoleUserAssignments")
+}
+
+model UserRole {
+  id           String    @id @default(cuid())
+  userId       String
+  roleId       String
+  assignedById String?
+  assignedAt   DateTime  @default(now())
+  revokedAt    DateTime?
+  user         User      @relation("UserRoleAssignments", fields: [userId], references: [id])
+  role         Role      @relation("RoleUserAssignments", fields: [roleId], references: [id])
+  assignedBy   User?     @relation("UserRoleAssignedBy", fields: [assignedById], references: [id])
+
+  @@index([userId])
+  @@index([roleId])
+  @@index([assignedById])
+}
