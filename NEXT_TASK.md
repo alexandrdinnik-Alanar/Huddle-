@@ -1,43 +1,58 @@
 # NEXT TASK
 
-S0-001, S0-002, S0-003, S0-004, S0-005, S0-006, S0-007, S0-008 and S0-009 are merged.
+S0-001 through S0-010 are completed and merged.
 
 Current task:
 
 ```text
-S0-010 - Create permission helpers
+S0-011 - Create route guards
 ```
 
 Status:
 
 ```text
-READY - S0-009 is merged. S0-010 depends on S0-009 and must implement only pure static permission helpers. Do not implement route guards, DB permission models, auth wiring, feature code, or any S0-011 work.
+READY - S0-010 is merged. S0-011 depends on S0-010 and must create the corrected official route-guard contract and implementation within the S0-009/S0-010 architecture boundaries.
 ```
 
 Task contract:
 
 ```text
-tasks/phase-0/S0-010.md
+tasks/phase-0/S0-011.md
 ```
 
-Canonical visual identity source:
+Tracking title: `Create route guards`
 
-```text
-Brand_Guidelines.zip
-```
+Sprint 0 source title: `Create Huddle route guards`
 
-The uploaded package is authoritative for Huddle colors, logotype, icon/community mark, typography direction and broader visual identity. Older set50-derived visual values are reference-only when conflicting.
+Source precedence:
 
-Tracking title: `Create permission helpers`
+1. accepted ADRs and architecture corrections
+2. actual merged repository implementation through S0-010
+3. roadmap for ordering, dependency, and tracking title
+4. Sprint 0 source for S0-011 intent where not superseded
 
-Sprint 0 source title: `Create Huddle permission helper system`
+S0-011 must respect the accepted S0-009 architecture correction:
 
-S0-010 must implement only the Sprint 0 static permission-helper system on top of the merged S0-009 auth/session skeleton. Do not implement route guards, Permission/RolePermission DB models, auth wiring, protected-route implementation, feature code, or any S0-011 work in this task.
+- `getCurrentUser()` and `requireUser()` provide authenticated Supabase identity only
+- identity shape is `id` and `email`
+- no canonical application `User` reconciliation exists in S0-009
+- no resolved application roles exist in S0-009
+- no active-user status exists in S0-009
+- no onboarding completion source exists in S0-009
+- P1-001 remains deferred
+- P1-005 remains deferred
 
-S0-010 must respect the corrected S0-009 architecture boundary:
+S0-011 must respect the accepted S0-010 pure-permission boundary:
 
-- defer canonical Supabase identity -> application `User` reconciliation to `P1-001`
-- defer onboarding completion persistence/derivation to `P1-005`
-- do not assume `src/lib/auth/**` provides resolved application roles
-- do not import `SupabaseAuthenticatedIdentity` as if it were a canonical app user
-- do not implement route guards or any S0-011 behavior here
+- permission helpers are pure evaluators
+- permission-helper input is an explicit trusted role-bearing subject
+- minimal permission subject shape is `{ roles: readonly RoleKey[] }`
+- S0-010 does not authenticate
+- S0-010 does not load roles
+- S0-010 does not query the database
+- S0-010 does not reconcile identities
+- S0-010 does not guard routes
+
+S0-011 must not implement P1-001 work, P1-005 work, S0-012 work, fake runtime role loading, app-user reconciliation, active-user resolution, onboarding state, route-wide fake admin wiring, or client-only privileged authorization.
+
+S0-011 must require server-authoritative authorization. Client-side checks may only support user experience and must not be treated as privileged enforcement.
