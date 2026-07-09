@@ -1,58 +1,56 @@
 # NEXT TASK
 
-S0-001 through S0-010 are completed and merged.
+S0-001 through S0-011 are completed and merged.
 
 Current task:
 
 ```text
-S0-011 - Create route guards
+S0-012 - Create API response and error helpers
 ```
 
 Status:
 
 ```text
-READY - S0-010 is merged. S0-011 depends on S0-010 and must create the corrected official route-guard contract and implementation within the S0-009/S0-010 architecture boundaries.
+READY - S0-011 is merged. S0-012 depends on S0-011 and must create reusable API response, error, pagination, and API type helpers only. Do not build real product APIs.
 ```
 
 Task contract:
 
 ```text
-tasks/phase-0/S0-011.md
+tasks/phase-0/S0-012.md
 ```
 
-Tracking title: `Create route guards`
+Tracking title: `Create API response and error helpers`
 
-Sprint 0 source title: `Create Huddle route guards`
+Sprint 0 source title: `Create standard API response and error helpers`
+
+Dependency: `S0-011`
 
 Source precedence:
 
-1. accepted ADRs and architecture corrections
-2. actual merged repository implementation through S0-010
+1. accepted ADRs and repository architecture rules
+2. actual merged repository implementation through S0-011
 3. roadmap for ordering, dependency, and tracking title
-4. Sprint 0 source for S0-011 intent where not superseded
+4. Sprint 0 source for detailed S0-012 scope where not superseded
 
-S0-011 must respect the accepted S0-009 architecture correction:
+S0-012 must create only backend API foundation helpers:
 
-- `getCurrentUser()` and `requireUser()` provide authenticated Supabase identity only
-- identity shape is `id` and `email`
-- no canonical application `User` reconciliation exists in S0-009
-- no resolved application roles exist in S0-009
-- no active-user status exists in S0-009
-- no onboarding completion source exists in S0-009
-- P1-001 remains deferred
-- P1-005 remains deferred
+- standard `{ data, error }` response envelope
+- typed API error codes
+- safe API error normalization
+- pagination helper
+- API response types
+- documentation and focused tests
 
-S0-011 must respect the accepted S0-010 pure-permission boundary:
+S0-012 must not:
 
-- permission helpers are pure evaluators
-- permission-helper input is an explicit trusted role-bearing subject
-- minimal permission subject shape is `{ roles: readonly RoleKey[] }`
-- S0-010 does not authenticate
-- S0-010 does not load roles
-- S0-010 does not query the database
-- S0-010 does not reconcile identities
-- S0-010 does not guard routes
+- build marketplace, event, report, admin, family, community, messaging, or other product APIs
+- create real business endpoints
+- add Prisma models or migrations
+- change authentication or route-guard architecture
+- expose raw internal errors, stack traces, secrets, tokens, or PII
+- trust client-provided authorization state
+- implement S0-013 validation work
+- implement S0-014 audit work
 
-S0-011 must not implement P1-001 work, P1-005 work, S0-012 work, fake runtime role loading, app-user reconciliation, active-user resolution, onboarding state, route-wide fake admin wiring, or client-only privileged authorization.
-
-S0-011 must require server-authoritative authorization. Client-side checks may only support user experience and must not be treated as privileged enforcement.
+A placeholder example route is optional only if strictly useful and explicitly justified; it is not required by default.
