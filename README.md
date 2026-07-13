@@ -4,7 +4,11 @@ Huddle is a privacy-first local family platform built as one React codebase for 
 
 ## Current status
 
-The repository is in a documentation-first, pre-Sprint-0 state. The next executable task is `S0-001`.
+The repository is in Sprint 0 foundation execution.
+
+S0-001 through S0-010 are completed and merged. The current executable task is S0-011: create route guards.
+
+This repository is not launch-ready and should not be represented as a working product. It contains a structured technical foundation, canonical documentation, visual corpus, and task contracts for continued implementation.
 
 ## Technology baseline
 
@@ -46,10 +50,10 @@ The repository is in a documentation-first, pre-Sprint-0 state. The next executa
 └── tasks/
     ├── README.md
     └── phase-0/
-        └── S0-001.md
+        └── S0-011.md
 ```
 
-Runtime application folders are intentionally created by `S0-001`, not as empty placeholders:
+Runtime application folders are governed by merged Sprint 0 tasks and the current task contract. Do not create or modify runtime folders outside the active task scope.
 
 ```text
 src/
@@ -90,8 +94,8 @@ Claude Code and Codex use the same architecture and task contracts.
 1. Read `AGENTS.md` or `CLAUDE.md`.
 2. Read `.ai/HUDDLE_RULES.md`.
 3. Read `NEXT_TASK.md`.
-4. Execute `tasks/phase-0/S0-001.md` only.
-5. Do not start S0-002 until S0-001 is merged and its gates pass.
+4. Execute the current task contract only.
+5. Do not start the next task until the current task is merged and its gates pass.
 
 ## Launch readiness
 
