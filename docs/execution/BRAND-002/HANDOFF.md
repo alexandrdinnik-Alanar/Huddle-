@@ -10,6 +10,7 @@ Repaired the canonical Huddle Family brand integration after BRAND-001:
 - removed legacy dark-green and black variants from new production component exports;
 - updated the importer to verify the current Logo Master Package or outer Brand Guidelines archive;
 - corrected Git LFS patterns by listing extensions individually;
+- updated CI to download LFS objects and verify the canonical manifest schema;
 - added asset-presence, manifest-alignment, token-synchronization, and WCAG contrast tests.
 
 The six runtime web assets were imported directly from
@@ -18,6 +19,7 @@ The six runtime web assets were imported directly from
 ## Changed files
 
 - `.gitattributes`
+- `.github/workflows/ci.yml`
 - `assets/brand/README.md`
 - `docs/00-source-of-truth/brand-system.md`
 - `public/brand/README.md`
@@ -26,6 +28,7 @@ The six runtime web assets were imported directly from
 - `public/brand/huddle-family-logo.webp`
 - `public/brand/icons/*`
 - `scripts/import-brand-assets.py`
+- `scripts/verify-brand-assets.py`
 - `src/app/globals.css`
 - `src/components/huddle/BrandLogo.tsx`
 - `src/components/huddle/IconWatermark.tsx`
@@ -57,6 +60,7 @@ None.
 ## Tests run and results
 
 - canonical archive importer: passed, 6/6 runtime assets SHA-256 verified;
+- canonical repository verifier: passed, 7/7 manifest records verified;
 - targeted Prettier check for all changed supported files: passed;
 - ESLint: passed;
 - TypeScript `tsc --noEmit`: passed;
