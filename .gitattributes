@@ -1,0 +1,21 @@
+# Huddle canonical brand binaries are stored with Git LFS.
+# Git attributes do not expand shell-style brace patterns, so every extension
+# is listed explicitly.
+assets/brand/**/*.zip filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.pptx filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.png filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.webp filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.ico filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.svg filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.eps filter=lfs diff=lfs merge=lfs -text
+assets/brand/**/*.ai filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.png filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.jpeg filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.webp filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.ico filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.svg filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.pdf filter=lfs diff=lfs merge=lfs -text

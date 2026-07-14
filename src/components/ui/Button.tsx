@@ -2,7 +2,12 @@ import type { ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 import { cx } from "./utils";
 
-export const BUTTON_VARIANTS = ["primary", "secondary", "ghost", "danger"] as const;
+export const BUTTON_VARIANTS = [
+  "primary",
+  "secondary",
+  "ghost",
+  "danger",
+] as const;
 export const BUTTON_SIZES = ["sm", "md", "lg"] as const;
 
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
@@ -24,13 +29,13 @@ const variantStyles: Record<ButtonVariant, CSSProperties> = {
   },
   secondary: {
     background: "var(--color-cta-secondary)",
-    border: "1px solid var(--color-border-subtle)",
-    color: "var(--color-text-primary)",
+    border: "1px solid var(--color-cta-secondary)",
+    color: "var(--color-text-inverse)",
   },
   ghost: {
     background: "transparent",
     border: "1px solid transparent",
-    color: "var(--color-brand-green)",
+    color: "var(--color-action-copper)",
   },
   danger: {
     background: "var(--color-status-danger)",
@@ -96,7 +101,11 @@ export function Button({
       }}
       type={type}
     >
-      {loading ? <span aria-hidden="true" className="ui-spinner" /> : leadingIcon}
+      {loading ? (
+        <span aria-hidden="true" className="ui-spinner" />
+      ) : (
+        leadingIcon
+      )}
       <span>{children}</span>
       {!loading ? trailingIcon : null}
     </button>

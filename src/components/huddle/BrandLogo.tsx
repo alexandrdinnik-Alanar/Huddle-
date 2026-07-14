@@ -1,12 +1,9 @@
 import Image from "next/image";
 
-import {
-  brandLogoAssets,
-  type BrandLogoVariant,
-} from "./brand-assets";
+import { brandLogoAssets, type BrandLogoAsset } from "./brand-assets";
 
 type BrandLogoProps = Readonly<{
-  variant?: BrandLogoVariant;
+  variant?: BrandLogoAsset;
   alt?: string;
   width?: number;
   height?: number;
@@ -15,10 +12,10 @@ type BrandLogoProps = Readonly<{
 }>;
 
 export function BrandLogo({
-  variant = "copperTransparent",
-  alt = "Huddle",
-  width = 1025,
-  height = 316,
+  variant = "familyLockupPng",
+  alt = "Huddle Family",
+  width = 2048,
+  height = 782,
   className,
   priority = false,
 }: BrandLogoProps) {

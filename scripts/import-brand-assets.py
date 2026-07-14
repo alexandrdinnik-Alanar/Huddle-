@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Import exact Huddle identity PNGs from the approved Brand_Guidelines.zip.
-
-No image decoding, re-encoding, resizing, recoloring, or metadata rewriting occurs.
-Bytes are copied directly from nested source archives after SHA-256 verification.
-"""
+"""Import exact canonical Huddle Family web assets without image re-encoding."""
 
 from __future__ import annotations
 
@@ -15,28 +11,34 @@ import sys
 import zipfile
 from pathlib import Path
 
-EXPECTED: dict[str, dict[str, str]] = {
-    "logotype": {
-        "Huddle_logotype_copper_transparent_APPROVED.png": "cb7e029940f79b0e68dce375d9948fb48b02633d2358254c5ff4bb96413e23cf",
-        "Huddle_logotype_dark_green_transparent.png": "f58198d04c4995bc31752a858c2931fbdb31526b8685aab7f1b35509d5801f56",
-        "Huddle_logotype_white_transparent.png": "bfdc7ca4390d4ac709576c8f12d723b708d5de86038e306d377b44ed3c51b6e4",
-        "Huddle_logotype_copper_on_deep_green.png": "b15f0888d5c41b80bc171ceb86e96ef96570f8d4e6ec05967b5d77f0281bd6d6",
-        "Huddle_logotype_dark_green_on_ivory.png": "3321be74dbeebf9457eb16817c459cedcbaeac0a72e192e9f9815b96ee55f621",
-        "Huddle_logotype_white_on_deep_green.png": "3c3cd6c9995049bc851a2ce97179c83b8b7967303e13e6aa0fc5629519c399ac",
-    },
-    "icon": {
-        "Huddle_icon_copper_transparent_SELECTED.png": "d8c6570e6ffe62e3fa7525dbf7e0d26bc874c7f0b74274c8d00265bd5f77c64d",
-        "Huddle_icon_black_transparent.png": "76b5553e9eb6e886384057b11099a63ef4e72c5252f94f6cadbdb89c8a295d26",
-        "Huddle_icon_white_transparent.png": "b77c46ed441a72f6ea3be5b3b7037e95ebb99ec31741283ed1740de3b1e8ab04",
-        "Huddle_icon_copper_on_deep_green.png": "bb5f159e124f10cc65d22b4dd89146b59b214a3adba6e811732530595fe1aeb5",
-        "Huddle_icon_dark_green_on_ivory.png": "6087be385c3630eef306161fb83a7cc914b897db89a4be3f23cefc921ee167f2",
-        "Huddle_icon_white_on_deep_green.png": "ae820bba3b679fefa6ae6281863469e9929a13479a9404ffb40a5e756d14a1be",
-    },
-}
+MASTER_ARCHIVE = "Huddle_Family_Logo_Master_Package_FULL.zip"
+WEB_ASSET_DIRECTORY = "06_Web_Assets"
 
-NESTED = {
-    "logotype": "Brand_Guidelines/Logotype.zip",
-    "icon": "Brand_Guidelines/Icon.zip",
+EXPECTED: dict[str, tuple[str, str]] = {
+    "huddle-family-logo.png": (
+        "huddle-family-logo.png",
+        "8b7705a30e08b335b8d5c836b463e2441e46d5829e589dca1194f79398dda82c",
+    ),
+    "huddle-family-logo.webp": (
+        "huddle-family-logo.webp",
+        "1f3720e669e61e345e39cbd06f8fe23314bdf32a24a1db4625ea324889a22e0a",
+    ),
+    "favicon.ico": (
+        "icons/favicon.ico",
+        "6ee54123392b898c1c1463f8f7a8b51454f08b71ea0c54330af01c6adb58145f",
+    ),
+    "apple-touch-icon.png": (
+        "icons/apple-touch-icon.png",
+        "09533a33a2b89efa440313f2587344f61571805c3597d5450142810666660c8d",
+    ),
+    "icon-192.png": (
+        "icons/icon-192.png",
+        "f503bd57bdb0acef97c65980f596a20dcd1448c63502971514053f374833554a",
+    ),
+    "icon-512.png": (
+        "icons/icon-512.png",
+        "25dd857477b7f2482de5787366c35c3eb1ac218c4c159487847f73a06de60444",
+    ),
 }
 
 
@@ -44,88 +46,84 @@ def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
 
-def member_by_basename(archive: zipfile.ZipFile, filename: str) -> str:
+def find_member(archive: zipfile.ZipFile, suffix: str) -> str:
     matches = [
         name
         for name in archive.namelist()
-        if not name.endswith("/") and Path(name).name == filename
+        if not name.endswith("/") and name.replace("\\", "/").endswith(suffix)
     ]
     if len(matches) != 1:
-        raise RuntimeError(
-            f"Expected exactly one {filename!r} in nested archive; found {len(matches)}"
-        )
+        raise RuntimeError(f"Expected exactly one {suffix!r}; found {len(matches)}")
     return matches[0]
 
 
-def update_manifest(repo_root: Path) -> None:
+def open_master_archive(source_zip: Path) -> tuple[zipfile.ZipFile, io.BytesIO | None]:
+    outer = zipfile.ZipFile(source_zip)
+    if any(f"/{WEB_ASSET_DIRECTORY}/" in f"/{name}" for name in outer.namelist()):
+        return outer, None
+
+    nested_name = find_member(outer, MASTER_ARCHIVE)
+    nested_bytes = io.BytesIO(outer.read(nested_name))
+    outer.close()
+    return zipfile.ZipFile(nested_bytes), nested_bytes
+
+
+def verify_manifest(repo_root: Path) -> None:
     manifest_path = repo_root / "public" / "brand" / "expected-assets.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
 
-    for group in ("logotype", "icon"):
-        for record in manifest[group]:
-            filename = Path(record["path"]).name
-            expected = EXPECTED[group][filename]
-            destination = repo_root / "public" / "brand" / group / filename
-            actual = sha256(destination.read_bytes())
-            if actual != expected:
-                raise RuntimeError(
-                    f"Repository verification failed for {destination}: {actual} != {expected}"
-                )
-            record["repoPresent"] = True
-            record["sha256"] = expected
-
-    manifest["status"] = "repo_verified"
-    manifest_path.write_text(
-        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
-        encoding="utf-8",
-    )
+    for record in manifest["assets"]:
+        destination = repo_root / "public" / record["path"].lstrip("/")
+        actual = sha256(destination.read_bytes())
+        if actual != record["sha256"]:
+            raise RuntimeError(
+                f"Repository verification failed for {destination}: "
+                f"{actual} != {record['sha256']}"
+            )
 
 
 def import_assets(source_zip: Path, repo_root: Path) -> None:
     if not source_zip.is_file():
         raise FileNotFoundError(source_zip)
 
-    with zipfile.ZipFile(source_zip) as outer:
-        for group, nested_path in NESTED.items():
-            try:
-                nested_bytes = outer.read(nested_path)
-            except KeyError as exc:
-                raise RuntimeError(f"Missing nested archive: {nested_path}") from exc
+    master, buffer = open_master_archive(source_zip)
+    try:
+        brand_root = repo_root / "public" / "brand"
+        for filename, (relative_destination, expected_hash) in EXPECTED.items():
+            source_member = find_member(master, f"/{WEB_ASSET_DIRECTORY}/{filename}")
+            data = master.read(source_member)
+            actual_hash = sha256(data)
+            if actual_hash != expected_hash:
+                raise RuntimeError(
+                    f"Source verification failed for {filename}: "
+                    f"{actual_hash} != {expected_hash}"
+                )
 
-            with zipfile.ZipFile(io.BytesIO(nested_bytes)) as nested:
-                destination_dir = repo_root / "public" / "brand" / group
-                destination_dir.mkdir(parents=True, exist_ok=True)
+            destination = brand_root / relative_destination
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_bytes(data)
+            print(f"verified {destination.relative_to(repo_root)} {expected_hash}")
+    finally:
+        master.close()
+        if buffer is not None:
+            buffer.close()
 
-                for filename, expected_hash in EXPECTED[group].items():
-                    source_member = member_by_basename(nested, filename)
-                    data = nested.read(source_member)
-                    actual_hash = sha256(data)
-                    if actual_hash != expected_hash:
-                        raise RuntimeError(
-                            f"Source verification failed for {filename}: "
-                            f"{actual_hash} != {expected_hash}"
-                        )
-
-                    destination = destination_dir / filename
-                    destination.write_bytes(data)
-                    if sha256(destination.read_bytes()) != expected_hash:
-                        raise RuntimeError(
-                            f"Post-write verification failed for {destination}"
-                        )
-                    print(f"verified {group}/{filename} {expected_hash}")
-
-    update_manifest(repo_root)
-    print("Imported and repository-verified 12/12 Huddle identity assets.")
+    verify_manifest(repo_root)
+    print("Imported and repository-verified 6/6 canonical Huddle Family web assets.")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("source_zip", type=Path, help="Path to approved Brand_Guidelines.zip")
+    parser.add_argument(
+        "source_zip",
+        type=Path,
+        help="Path to the Logo Master Package or the outer Huddle Brand Guidelines archive",
+    )
     parser.add_argument(
         "--repo-root",
         type=Path,
         default=Path(__file__).resolve().parents[1],
-        help="Repository root (defaults to script parent repository)",
+        help="Repository root (defaults to the script parent repository)",
     )
     args = parser.parse_args()
 

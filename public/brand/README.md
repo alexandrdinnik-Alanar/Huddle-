@@ -1,36 +1,34 @@
-# Huddle Brand Assets
+# Huddle production brand assets
 
-Status: **S0-003 blocked — approved binaries are not present.**
+Status: **canonical and repository verified**.
 
-Tracking issue: `#6`.
-
-## Directory contract
+## Production contract
 
 ```text
 public/brand/
-├── README.md
 ├── expected-assets.json
-├── logotype/
-└── icon/
+├── huddle-family-logo.png
+├── huddle-family-logo.webp
+├── icons/
+│   ├── favicon.ico
+│   ├── apple-touch-icon.png
+│   ├── icon-192.png
+│   └── icon-512.png
+└── logotype/
+    └── Huddle_logotype_copper_transparent_APPROVED.png
 ```
 
-The `logotype/` and `icon/` folders must contain only owner-supplied approved assets. They are intentionally not populated with substitutes.
+Only paths exported by `src/components/huddle/brand-assets.ts` are canonical for
+new production UI. Other files under the historical `logotype/` and `icon/`
+directories remain reference-only and must not be introduced into new UI.
 
 ## Import rules
 
-1. Preserve original bytes and filenames on initial import.
-2. Compute SHA-256 before component use.
-3. Update `expected-assets.json` with verified checksum and `present: true`.
-4. Review the imported assets against the approved source.
-5. Components may reference only manifest-approved assets.
+1. Import from `Huddle_Family_Logo_Master_Package_FULL.zip` or the outer approved
+   Huddle Brand Guidelines archive.
+2. Preserve original bytes and filenames.
+3. Verify SHA-256 against `expected-assets.json` before component use.
+4. Never redraw, trace, recolor, regenerate, crop, or distort an approved mark.
 
-## Forbidden
-
-- cropping from set50/510 reference board;
-- redrawing or tracing;
-- AI-generated replacement;
-- typed text used as logo;
-- CSS filters for recoloring;
-- invented variants.
-
-Set50/510 is a usage and geometry reference under `ADR-009`; it is not a replacement for source binaries.
+Run `scripts/import-brand-assets.py` to perform a fail-closed import and checksum
+verification of the six canonical web exports.

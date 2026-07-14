@@ -1,135 +1,65 @@
 {
-  "status": "repo_verified",
-  "trackingIssue": 6,
-  "sourcePackage": "Brand_Guidelines.zip",
-  "sourceAudit": {
-    "requiredAssetsFound": 12,
-    "requiredAssetsExpected": 12,
-    "splitArchiveManifestIntegrity": true,
-    "identityPolicy": {
-      "neverRedraw": true,
-      "neverAiRecreate": true,
-      "neverDistort": true
-    }
-  },
-  "policy": {
-    "preserveOriginalBytesOnImport": true,
-    "sha256RequiredBeforeComponentUse": true,
-    "allowCropFromReferenceBoard": false,
-    "allowGeneratedReplacement": false,
-    "allowRedrawOrTrace": false,
+  "status": "canonical_verified",
+  "sourcePackage": "Huddle_Family_Logo_Master_Package_FULL.zip",
+  "sourceDirectory": "06_Web_Assets",
+  "identityPolicy": {
+    "preserveOriginalBytes": true,
+    "neverRedraw": true,
+    "neverAiRecreate": true,
+    "neverDistort": true,
     "allowCssRecolor": false
   },
-  "logotype": [
+  "assets": [
     {
-      "variant": "copperTransparent",
+      "role": "familyLockupPng",
+      "path": "/brand/huddle-family-logo.png",
+      "sha256": "8b7705a30e08b335b8d5c836b463e2441e46d5829e589dca1194f79398dda82c",
+      "width": 2048,
+      "height": 782
+    },
+    {
+      "role": "familyLockupWebp",
+      "path": "/brand/huddle-family-logo.webp",
+      "sha256": "1f3720e669e61e345e39cbd06f8fe23314bdf32a24a1db4625ea324889a22e0a",
+      "width": 2048,
+      "height": 782
+    },
+    {
+      "role": "wordmarkPng",
       "path": "/brand/logotype/Huddle_logotype_copper_transparent_APPROVED.png",
       "sha256": "cb7e029940f79b0e68dce375d9948fb48b02633d2358254c5ff4bb96413e23cf",
       "width": 1025,
-      "height": 316,
-      "sourceVerified": true,
-      "repoPresent": true
+      "height": 316
     },
     {
-      "variant": "darkGreenTransparent",
-      "path": "/brand/logotype/Huddle_logotype_dark_green_transparent.png",
-      "sha256": "f58198d04c4995bc31752a858c2931fbdb31526b8685aab7f1b35509d5801f56",
-      "width": 1025,
-      "height": 316,
-      "sourceVerified": true,
-      "repoPresent": true
+      "role": "favicon",
+      "path": "/brand/icons/favicon.ico",
+      "sha256": "6ee54123392b898c1c1463f8f7a8b51454f08b71ea0c54330af01c6adb58145f"
     },
     {
-      "variant": "whiteTransparent",
-      "path": "/brand/logotype/Huddle_logotype_white_transparent.png",
-      "sha256": "bfdc7ca4390d4ac709576c8f12d723b708d5de86038e306d377b44ed3c51b6e4",
-      "width": 1025,
-      "height": 316,
-      "sourceVerified": true,
-      "repoPresent": true
+      "role": "appleTouch",
+      "path": "/brand/icons/apple-touch-icon.png",
+      "sha256": "09533a33a2b89efa440313f2587344f61571805c3597d5450142810666660c8d",
+      "width": 180,
+      "height": 180
     },
     {
-      "variant": "copperOnDeepGreen",
-      "path": "/brand/logotype/Huddle_logotype_copper_on_deep_green.png",
-      "sha256": "b15f0888d5c41b80bc171ceb86e96ef96570f8d4e6ec05967b5d77f0281bd6d6",
-      "width": 1225,
-      "height": 516,
-      "sourceVerified": true,
-      "repoPresent": true
+      "role": "app192",
+      "path": "/brand/icons/icon-192.png",
+      "sha256": "f503bd57bdb0acef97c65980f596a20dcd1448c63502971514053f374833554a",
+      "width": 192,
+      "height": 192
     },
     {
-      "variant": "darkGreenOnIvory",
-      "path": "/brand/logotype/Huddle_logotype_dark_green_on_ivory.png",
-      "sha256": "3321be74dbeebf9457eb16817c459cedcbaeac0a72e192e9f9815b96ee55f621",
-      "width": 1225,
-      "height": 516,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "whiteOnDeepGreen",
-      "path": "/brand/logotype/Huddle_logotype_white_on_deep_green.png",
-      "sha256": "3c3cd6c9995049bc851a2ce97179c83b8b7967303e13e6aa0fc5629519c399ac",
-      "width": 1225,
-      "height": 516,
-      "sourceVerified": true,
-      "repoPresent": true
+      "role": "app512",
+      "path": "/brand/icons/icon-512.png",
+      "sha256": "25dd857477b7f2482de5787366c35c3eb1ac218c4c159487847f73a06de60444",
+      "width": 512,
+      "height": 512
     }
   ],
-  "icon": [
-    {
-      "variant": "copperTransparent",
-      "path": "/brand/icon/Huddle_icon_copper_transparent_SELECTED.png",
-      "sha256": "d8c6570e6ffe62e3fa7525dbf7e0d26bc874c7f0b74274c8d00265bd5f77c64d",
-      "width": 660,
-      "height": 571,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "blackTransparent",
-      "path": "/brand/icon/Huddle_icon_black_transparent.png",
-      "sha256": "76b5553e9eb6e886384057b11099a63ef4e72c5252f94f6cadbdb89c8a295d26",
-      "width": 660,
-      "height": 571,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "whiteTransparent",
-      "path": "/brand/icon/Huddle_icon_white_transparent.png",
-      "sha256": "b77c46ed441a72f6ea3be5b3b7037e95ebb99ec31741283ed1740de3b1e8ab04",
-      "width": 660,
-      "height": 571,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "copperOnDeepGreen",
-      "path": "/brand/icon/Huddle_icon_copper_on_deep_green.png",
-      "sha256": "bb5f159e124f10cc65d22b4dd89146b59b214a3adba6e811732530595fe1aeb5",
-      "width": 880,
-      "height": 791,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "darkGreenOnIvory",
-      "path": "/brand/icon/Huddle_icon_dark_green_on_ivory.png",
-      "sha256": "6087be385c3630eef306161fb83a7cc914b897db89a4be3f23cefc921ee167f2",
-      "width": 880,
-      "height": 791,
-      "sourceVerified": true,
-      "repoPresent": true
-    },
-    {
-      "variant": "whiteOnDeepGreen",
-      "path": "/brand/icon/Huddle_icon_white_on_deep_green.png",
-      "sha256": "ae820bba3b679fefa6ae6281863469e9929a13479a9404ffb40a5e756d14a1be",
-      "width": 880,
-      "height": 791,
-      "sourceVerified": true,
-      "repoPresent": true
-    }
-  ]
+  "legacyDirectories": {
+    "status": "deprecated_reference_only",
+    "paths": ["/brand/logotype/", "/brand/icon/"]
+  }
 }
