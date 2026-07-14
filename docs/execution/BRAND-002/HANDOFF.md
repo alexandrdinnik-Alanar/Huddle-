@@ -90,5 +90,5 @@ Prettier pass a targeted check.
 
 ## Exact commit SHA
 
-Not available; changes are prepared locally on
-`fix/brand-002-canonical-brand-consistency` and have not been committed.
+Implementation commit:
+`bb34eea1fe58bce21c102b419d240db69bc3df79`.
