@@ -71,4 +71,6 @@ None. No audit read capability or viewer is implemented. Future consumers must a
 
 ## Commit SHA
 
-Record the implementation commit after local verification.
+Implementation commit: `8f81d7ead067727a93b75ba489d8c42abe3e554d`.
+
+The final merge SHA is recorded in the PR/merge history.
