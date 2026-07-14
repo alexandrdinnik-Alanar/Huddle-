@@ -63,4 +63,6 @@ None. Parsed input is not treated as authorization.
 
 ## Commit SHA
 
-Record the final branch and merge SHAs in the PR/merge history.
+Implementation commit: `e8cf294c89f6b39f2596681feffaba028e53680e`.
+
+The final merge SHA is recorded in the PR/merge history.
