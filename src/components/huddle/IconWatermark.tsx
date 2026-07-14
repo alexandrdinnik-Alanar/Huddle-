@@ -1,12 +1,9 @@
 import Image from "next/image";
 
-import {
-  brandIconAssets,
-  type BrandIconVariant,
-} from "./brand-assets";
+import { brandIconAssets, type BrandIconAsset } from "./brand-assets";
 
 type IconWatermarkProps = Readonly<{
-  variant?: BrandIconVariant;
+  variant?: BrandIconAsset;
   alt?: string;
   width?: number;
   height?: number;
@@ -15,10 +12,10 @@ type IconWatermarkProps = Readonly<{
 }>;
 
 export function IconWatermark({
-  variant = "copperTransparent",
+  variant = "app512",
   alt = "Huddle community mark",
-  width = 660,
-  height = 571,
+  width = 512,
+  height = 512,
   className,
   decorative = true,
 }: IconWatermarkProps) {

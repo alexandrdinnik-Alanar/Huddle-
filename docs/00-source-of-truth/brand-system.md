@@ -14,14 +14,14 @@ The phrase **Closer by Design** is retired. It must not be introduced into new p
 
 ## Canonical palette
 
-| Token | Name | Value | Primary use |
-|---|---|---:|---|
-| `--color-warm-cream` | Warm Cream | `#F6F0E8` | Primary background |
-| `--color-sand-beige` | Sand Beige | `#E8D9C9` | Secondary surfaces |
-| `--color-copper-clay` | Copper Clay | `#C98A5C` | Brand accent and primary CTA |
-| `--color-soft-olive` | Soft Olive | `#8A9076` | Secondary CTA and supportive accent |
-| `--color-graphite-taupe` | Graphite Taupe | `#7C6D63` | Primary typography and structural contrast |
-| `--color-white` | White | `#FFFFFF` | Elevated surfaces and inverse content |
+| Token                    | Name           |     Value | Primary use                              |
+| ------------------------ | -------------- | --------: | ---------------------------------------- |
+| `--color-warm-cream`     | Warm Cream     | `#F6F0E8` | Primary background                       |
+| `--color-sand-beige`     | Sand Beige     | `#E8D9C9` | Secondary surfaces                       |
+| `--color-copper-clay`    | Copper Clay    | `#C98A5C` | Brand accent and decorative action color |
+| `--color-soft-olive`     | Soft Olive     | `#8A9076` | Supportive accent                        |
+| `--color-graphite-taupe` | Graphite Taupe | `#7C6D63` | Structural contrast and large text       |
+| `--color-white`          | White          | `#FFFFFF` | Elevated surfaces and inverse content    |
 
 ### Recommended distribution
 
@@ -33,15 +33,28 @@ The phrase **Closer by Design** is retired. It must not be introduced into new p
 
 Do not add black, deep green, saturated gold, or unrelated gray values as visual brand colors.
 
-Functional status colors may exist for accessibility and system feedback, but they are not part of the visual brand palette and must not replace the canonical brand tokens.
+### Accessible semantic extensions
+
+The locked palette remains unchanged. Normal-size UI text and button labels use
+darker functional derivatives so the rendered combinations meet WCAG AA:
+
+| Token                   |     Value | Required pairing                                                |
+| ----------------------- | --------: | --------------------------------------------------------------- |
+| `--color-text-strong`   | `#62554D` | Normal text on Warm Cream, Sand Beige, or White                 |
+| `--color-text-default`  | `#695A52` | Secondary/muted normal text on Warm Cream, Sand Beige, or White |
+| `--color-action-copper` | `#9B5C38` | White text on primary actions                                   |
+| `--color-action-olive`  | `#59604A` | White text on secondary actions                                 |
+
+These values are functional accessibility tokens, not additions to the visual
+brand palette. Functional status colors follow the same separation.
 
 ## Styling principles
 
 - Warm, calm, Scandinavian, premium, human, and family-centered.
 - Warm Cream is the default page background.
-- Graphite Taupe is the default text color.
-- Copper Clay communicates identity and primary action.
-- Soft Olive supports secondary actions and calm emphasis.
+- Graphite Taupe communicates the text direction; accessible semantic graphite derivatives are used for normal-size text.
+- Copper Clay communicates identity; its darker semantic derivative is used behind normal-size button labels.
+- Soft Olive supports calm emphasis; its darker semantic derivative is used behind normal-size button labels.
 - Sand Beige creates visual layering without introducing dark blocks.
 - Avoid large black or deep-green surfaces.
 - Do not redraw, stretch, recolor, crop, or regenerate the approved logo.
@@ -62,8 +75,8 @@ Expected runtime paths:
 public/brand/
 ├── huddle-family-logo.png
 ├── huddle-family-logo.webp
-├── huddle-wordmark.png
-├── huddle-icon.png
+├── logotype/
+│   └── Huddle_logotype_copper_transparent_APPROVED.png
 └── icons/
     ├── favicon.ico
     ├── apple-touch-icon.png
@@ -89,3 +102,4 @@ assets/brand/
 - Print assets must be prepared independently from web exports.
 - A raster image wrapped in SVG is not considered a true vector master.
 - SVG/EPS/AI files may be labeled as master vector only after manual vector reconstruction and visual approval.
+- Historical dark-green and black variants remain reference-only and are not canonical production exports.

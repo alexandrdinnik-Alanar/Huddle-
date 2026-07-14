@@ -13,7 +13,8 @@ const cardStyles: Record<CardVariant, React.CSSProperties> = {
   },
   elevated: {
     background: "var(--color-surface-elevated)",
-    border: "1px solid color-mix(in srgb, var(--color-brand-green) 12%, var(--color-surface-elevated))",
+    border:
+      "1px solid color-mix(in srgb, var(--color-graphite-taupe) 18%, var(--color-surface-elevated))",
     boxShadow: "var(--shadow-md)",
   },
   soft: {
@@ -27,7 +28,12 @@ export type CardProps = HTMLAttributes<HTMLDivElement> & {
   variant?: CardVariant;
 };
 
-export function Card({ className, style, variant = "default", ...props }: CardProps) {
+export function Card({
+  className,
+  style,
+  variant = "default",
+  ...props
+}: CardProps) {
   return (
     <div
       {...props}

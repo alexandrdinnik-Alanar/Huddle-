@@ -9,40 +9,57 @@
   --color-graphite-taupe: #7c6d63;
   --color-white: #ffffff;
 
+  /* Accessible semantic extensions derived from the locked palette. */
+  --color-text-strong: #62554d;
+  --color-text-default: #695a52;
+  --color-action-copper: #9b5c38;
+  --color-action-copper-hover: #84492a;
+  --color-action-olive: #59604a;
+  --color-action-olive-hover: #4b513d;
+
   /* Semantic foundations */
   --color-background-base: var(--color-warm-cream);
   --color-background-soft: var(--color-sand-beige);
   --color-background-accent: var(--color-soft-olive);
 
-  --color-surface-card: color-mix(in srgb, var(--color-white) 72%, var(--color-warm-cream));
+  --color-surface-card: color-mix(
+    in srgb,
+    var(--color-white) 72%,
+    var(--color-warm-cream)
+  );
   --color-surface-elevated: var(--color-white);
   --color-surface-muted: var(--color-sand-beige);
 
-  --color-text-primary: var(--color-graphite-taupe);
-  --color-text-secondary: color-mix(in srgb, var(--color-graphite-taupe) 82%, var(--color-warm-cream));
-  --color-text-muted: color-mix(in srgb, var(--color-graphite-taupe) 64%, var(--color-warm-cream));
+  --color-text-primary: var(--color-text-strong);
+  --color-text-secondary: var(--color-text-default);
+  --color-text-muted: var(--color-text-default);
   --color-text-inverse: var(--color-white);
 
   --color-brand-copper: var(--color-copper-clay);
   --color-brand-olive: var(--color-soft-olive);
   --color-brand-graphite: var(--color-graphite-taupe);
 
-  --color-cta-primary: var(--color-copper-clay);
-  --color-cta-primary-hover: color-mix(in srgb, var(--color-copper-clay) 86%, var(--color-graphite-taupe));
-  --color-cta-secondary: var(--color-soft-olive);
-  --color-cta-secondary-hover: color-mix(in srgb, var(--color-soft-olive) 86%, var(--color-graphite-taupe));
+  --color-cta-primary: var(--color-action-copper);
+  --color-cta-primary-hover: var(--color-action-copper-hover);
+  --color-cta-secondary: var(--color-action-olive);
+  --color-cta-secondary-hover: var(--color-action-olive-hover);
 
-  --color-border-subtle: color-mix(in srgb, var(--color-graphite-taupe) 22%, var(--color-warm-cream));
-  --color-border-strong: color-mix(in srgb, var(--color-graphite-taupe) 56%, var(--color-warm-cream));
+  --color-border-subtle: color-mix(
+    in srgb,
+    var(--color-graphite-taupe) 22%,
+    var(--color-warm-cream)
+  );
+  --color-border-strong: color-mix(
+    in srgb,
+    var(--color-graphite-taupe) 56%,
+    var(--color-warm-cream)
+  );
 
   /* Functional status colors are intentionally separate from the visual brand palette. */
   --color-status-success: #5f755f;
   --color-status-warning: #a56a2a;
   --color-status-danger: #a1463c;
   --color-status-info: #5d747a;
-
-  /* Temporary compatibility alias. Do not use in new code. */
-  --color-brand-green: var(--color-soft-olive);
 
   --font-family-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --font-family-body: Inter, "Segoe UI", Arial, sans-serif;
@@ -92,9 +109,12 @@
   --radius-pill: 9999px;
 
   --shadow-none: none;
-  --shadow-sm: 0 8px 24px color-mix(in srgb, var(--color-graphite-taupe) 10%, transparent);
-  --shadow-md: 0 16px 40px color-mix(in srgb, var(--color-graphite-taupe) 14%, transparent);
-  --shadow-lg: 0 24px 60px color-mix(in srgb, var(--color-graphite-taupe) 18%, transparent);
+  --shadow-sm: 0 8px 24px
+    color-mix(in srgb, var(--color-graphite-taupe) 10%, transparent);
+  --shadow-md: 0 16px 40px
+    color-mix(in srgb, var(--color-graphite-taupe) 14%, transparent);
+  --shadow-lg: 0 24px 60px
+    color-mix(in srgb, var(--color-graphite-taupe) 18%, transparent);
 
   --breakpoint-sm: 40rem;
   --breakpoint-md: 48rem;

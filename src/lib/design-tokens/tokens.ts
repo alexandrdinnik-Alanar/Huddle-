@@ -1,14 +1,10 @@
 export const rawBrandTokens = {
   color: {
-    ivory: "#F6F1EA",
-    warmCream: "#EFE7D9",
-    softWhite: "#FBF8F3",
-    sand: "#DCCBAE",
-    sage: "#A2AC95",
-    deepForest: "#2F3E34",
-    copper: "#C47A4A",
-    charcoal: "#4F4A43",
-    taupe: "#C8B7A3",
+    warmCream: "#F6F0E8",
+    sandBeige: "#E8D9C9",
+    copperClay: "#C98A5C",
+    softOlive: "#8A9076",
+    graphiteTaupe: "#7C6D63",
     white: "#FFFFFF",
   },
   typography: {
@@ -69,9 +65,9 @@ export const rawBrandTokens = {
   },
   shadow: {
     none: "none",
-    sm: "0 8px 24px rgba(79, 74, 67, 0.08)",
-    md: "0 16px 40px rgba(79, 74, 67, 0.12)",
-    lg: "0 24px 60px rgba(47, 62, 52, 0.16)",
+    sm: "0 8px 24px rgba(124, 109, 99, 0.1)",
+    md: "0 16px 40px rgba(124, 109, 99, 0.14)",
+    lg: "0 24px 60px rgba(124, 109, 99, 0.18)",
   },
   breakpoint: {
     sm: "40rem",
@@ -91,42 +87,57 @@ export const rawBrandTokens = {
   },
 } as const;
 
+export const functionalColorTokens = {
+  textStrong: "#62554D",
+  textDefault: "#695A52",
+  actionCopper: "#9B5C38",
+  actionCopperHover: "#84492A",
+  actionOlive: "#59604A",
+  actionOliveHover: "#4B513D",
+  success: "#5F755F",
+  warning: "#A56A2A",
+  danger: "#A1463C",
+  info: "#5D747A",
+} as const;
+
 export const designTokens = {
   color: {
     background: {
-      base: rawBrandTokens.color.ivory,
-      soft: rawBrandTokens.color.warmCream,
-      sage: rawBrandTokens.color.sage,
-      deepGreen: rawBrandTokens.color.deepForest,
+      base: rawBrandTokens.color.warmCream,
+      soft: rawBrandTokens.color.sandBeige,
+      accent: rawBrandTokens.color.softOlive,
     },
     surface: {
-      card: rawBrandTokens.color.softWhite,
+      card: rawBrandTokens.color.warmCream,
       elevated: rawBrandTokens.color.white,
+      muted: rawBrandTokens.color.sandBeige,
     },
     text: {
-      primary: rawBrandTokens.color.charcoal,
-      secondary: "#6A645D",
-      muted: "#8A837A",
+      primary: functionalColorTokens.textStrong,
+      secondary: functionalColorTokens.textDefault,
+      muted: functionalColorTokens.textDefault,
       inverse: rawBrandTokens.color.white,
     },
     brand: {
-      copper: rawBrandTokens.color.copper,
-      green: rawBrandTokens.color.deepForest,
+      copper: rawBrandTokens.color.copperClay,
+      olive: rawBrandTokens.color.softOlive,
+      graphite: rawBrandTokens.color.graphiteTaupe,
     },
     cta: {
-      primary: rawBrandTokens.color.deepForest,
-      primaryHover: "#243129",
-      secondary: rawBrandTokens.color.warmCream,
+      primary: functionalColorTokens.actionCopper,
+      primaryHover: functionalColorTokens.actionCopperHover,
+      secondary: functionalColorTokens.actionOlive,
+      secondaryHover: functionalColorTokens.actionOliveHover,
     },
     border: {
-      subtle: rawBrandTokens.color.taupe,
-      strong: "#8B8174",
+      subtle: rawBrandTokens.color.sandBeige,
+      strong: rawBrandTokens.color.graphiteTaupe,
     },
     status: {
-      success: "#4B6B4F",
-      warning: "#A56A2A",
-      danger: "#A1463C",
-      info: "#5D7A7A",
+      success: functionalColorTokens.success,
+      warning: functionalColorTokens.warning,
+      danger: functionalColorTokens.danger,
+      info: functionalColorTokens.info,
     },
   },
   typography: {
