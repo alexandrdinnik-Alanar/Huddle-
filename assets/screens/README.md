@@ -2,6 +2,8 @@
 
 This directory contains the visual source corpus organized by source set. Files are reference/design artifacts, not automatically production routes.
 
+Canonical production decisions live in the approved Figma master and are mapped in `docs/01-product/screen-route-registry.csv`. See `docs/00-source-of-truth/design-source-of-truth.md` before using any screen asset.
+
 | Set | Folder | Files |
 |---:|---|---:|
 | 1 | `set-01-core/` | 10 |
@@ -76,3 +78,4 @@ This directory contains the visual source corpus organized by source set. Files 
 - Set 54 is an exact duplicate component-library generation of set 51 and is retained only for traceability until archive cleanup is approved.
 - Flow maps live in set 55 and are architecture references, not UI routes.
 - Sets 56–63 include overview boards in addition to numbered artifacts.
+- New pages and material visual changes must be approved in the canonical Figma master before React implementation.
