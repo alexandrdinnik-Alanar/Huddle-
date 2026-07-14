@@ -13,7 +13,8 @@ Phase 0,Foundation,S0-011,Create route guards,P0,S0-010,Per original Sprint 0 Co
 Phase 0,Foundation,S0-012,Create API response and error helpers,P0,S0-011,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
 Phase 0,Foundation,S0-013,Create validation pattern,P0,S0-012,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
 Phase 0,Foundation,S0-014,Create audit helper and AuditLog base,P0,S0-013,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
-Phase 0,Foundation,S0-015,Create base layouts,P0,S0-014,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
+Phase 0,Design Gate,VIS-001,Reconcile canonical design source of truth,P0,S0-014,"Figma-first source inventory and route registry",documentation validation; no Figma or UI changes
+Phase 0,Foundation,S0-015,Create base layouts,P0,VIS-001,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
 Phase 0,Foundation,S0-016,Create canonical placeholder pages,P0,S0-015,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
 Phase 0,Foundation,S0-017,Create Sprint 0 QA checklist,P0,S0-016,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code
 Phase 0,Foundation,S0-018,Create developer README,P0,S0-017,Per original Sprint 0 Codex pack,build + typecheck + lint; no feature code

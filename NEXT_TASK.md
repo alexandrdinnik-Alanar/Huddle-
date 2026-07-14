@@ -1,41 +1,41 @@
 # NEXT TASK
 
-S0-001 through S0-013 are completed and merged.
+S0-001 through S0-014 are completed and merged.
 
 Current task:
 
 ```text
-S0-014 - Create AuditLog model and audit helper
+VIS-001 - Canonical design source reconciliation
 ```
 
 Status:
 
 ```text
-IN PROGRESS - S0-013 is merged. S0-014 creates the append-only audit foundation only. Do not build an audit UI, admin workflow, or product API.
+IN PROGRESS - S0-014 is merged. VIS-001 reconciles Figma, PNG references, routes, and implementation state without changing Figma or building UI.
 ```
 
 Task contract:
 
 ```text
-tasks/phase-0/S0-014.md
+tasks/design/VIS-001.md
 ```
 
-Dependency: `S0-013`
+Dependency: `S0-014`
 
-S0-014 must create only:
+VIS-001 must create only:
 
-- the Prisma `AuditLog` base model and migration;
-- a testable `createAuditLog()` helper;
-- support for user and system actors;
-- metadata and request-context minimization;
-- focused documentation and tests.
+- a canonical design source-of-truth document;
+- a classified visual-source inventory;
+- a P0 route-to-Figma-to-React registry;
+- the mandatory Figma-first approval gate;
+- focused handoff documentation.
 
-S0-014 must not:
+VIS-001 must not:
 
-- create a public or admin audit-log API;
-- build `/admin/audit-log` UI;
-- add moderation, privacy, role-management, or product workflows;
-- log secrets, message bodies, child data, exact addresses, or raw request bodies;
-- begin S0-015 or VIS-001 implementation.
+- edit Figma nodes, variables, styles, or components;
+- implement layouts, pages, or product components;
+- delete or move visual assets;
+- treat PNG references as production designs;
+- begin S0-015 implementation.
 
-After S0-014 is merged, the agreed next gate is a separate VIS-001 canonical design reconciliation before layout/page implementation.
+After VIS-001 is merged, the next task is S0-015. Any new visual decision required by S0-015 must be drawn and approved in the canonical Figma master before React implementation.
