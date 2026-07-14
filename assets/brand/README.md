@@ -4,9 +4,8 @@ This directory is reserved for the approved Huddle Brand Guidelines and Logo Mas
 
 ## Canonical packages
 
-- `guidelines/Huddle_Brand_Guidelines.zip`
-- `guidelines/Huddle_Family_Brand_Guidelines.pdf`
-- `logo-master/Huddle_Family_Logo_Master_Package.zip`
+- `guidelines/Huddle Brand Guidelines.zip`
+- `logo-master/Huddle_Family_Logo_Master_Package_FULL.zip`
 
 ## Runtime exports
 
@@ -14,8 +13,6 @@ Production web exports must be copied from the approved Logo Master Package into
 
 - `huddle-family-logo.png`
 - `huddle-family-logo.webp`
-- `huddle-wordmark.png`
-- `huddle-icon.png`
 - `icons/favicon.ico`
 - `icons/apple-touch-icon.png`
 - `icons/icon-192.png`
@@ -34,6 +31,12 @@ Do not substitute generated, redrawn, cropped, recolored, or automatically trace
 
 `Closer by Design` is retired and must not be used in new production assets.
 
+The approved standalone wordmark remains at
+`public/brand/logotype/Huddle_logotype_copper_transparent_APPROVED.png`; its bytes
+match the approved wordmark in the current Logo Master Package.
+
 ## Large-file note
 
-GitHub rejects individual files larger than 100 MB without Git LFS. The complete uploaded source bundle contains nested archives above that limit. Store distributable subpackages individually or configure Git LFS before committing oversized archive files.
+Canonical packages and production brand binaries are tracked through Git LFS.
+Extension patterns are listed individually in `.gitattributes` because Git does
+not expand shell-style brace patterns.
