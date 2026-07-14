@@ -28,18 +28,19 @@ enum RoleKey {
 }
 
 model User {
-  id                String      @id @default(cuid())
-  email             String      @unique
+  id                String     @id @default(cuid())
+  email             String     @unique
   emailVerifiedAt   DateTime?
   name              String?
   avatarUrl         String?
-  status            UserStatus  @default(PENDING_VERIFICATION)
+  status            UserStatus @default(PENDING_VERIFICATION)
   preferredLanguage String?
-  createdAt         DateTime    @default(now())
-  updatedAt         DateTime    @updatedAt
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
   deletedAt         DateTime?
-  roles             UserRole[]  @relation("UserRoleAssignments")
-  assignedRoles     UserRole[]  @relation("UserRoleAssignedBy")
+  roles             UserRole[] @relation("UserRoleAssignments")
+  assignedRoles     UserRole[] @relation("UserRoleAssignedBy")
+  auditLogs         AuditLog[] @relation("AuditLogActor")
 
   @@index([status])
 }
@@ -68,4 +69,23 @@ model UserRole {
   @@index([userId])
   @@index([roleId])
   @@index([assignedById])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actorId    String?
+  actorRole  String?
+  action     String
+  targetType String
+  targetId   String?
+  metadata   Json?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+  actor      User?    @relation("AuditLogActor", fields: [actorId], references: [id], onDelete: SetNull)
+
+  @@index([actorId])
+  @@index([action])
+  @@index([targetType, targetId])
+  @@index([createdAt])
 }
