@@ -1,0 +1,5 @@
+# Huddle canonical brand binaries are stored with Git LFS
+assets/brand/**/*.{zip,pdf,pptx,png,jpg,jpeg,webp,ico,svg,eps,ai} filter=lfs diff=lfs merge=lfs -text
+public/brand/**/*.{png,jpg,jpeg,webp,ico,svg,pdf} filter=lfs diff=lfs merge=lfs -text
+assets/brand/guidelines/*.zip filter=lfs diff=lfs merge=lfs -text
+assets/brand/logo-master/*.zip filter=lfs diff=lfs merge=lfs -text

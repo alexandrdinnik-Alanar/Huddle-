@@ -11,9 +11,16 @@ body {
 }
 
 body {
-  background: var(--color-background-base);
+  background:
+    radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--color-sand-beige) 58%, transparent), transparent 34rem),
+    var(--color-background-base);
   color: var(--color-text-primary);
   font-family: var(--font-family-body);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-copper-clay) 28%, var(--color-warm-cream));
+  color: var(--color-graphite-taupe);
 }
 
 .foundation-shell {
@@ -26,15 +33,15 @@ body {
 .foundation-card {
   width: min(100%, 720px);
   padding: var(--space-8);
-  border: 1px solid color-mix(in srgb, var(--color-brand-green) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-graphite-taupe) 18%, transparent);
   border-radius: var(--radius-xl);
-  background: var(--color-surface-elevated);
+  background: color-mix(in srgb, var(--color-white) 76%, var(--color-warm-cream));
   box-shadow: var(--shadow-sm);
 }
 
 .foundation-card h1 {
   margin: var(--space-2) 0 var(--space-4);
-  color: var(--color-brand-green);
+  color: var(--color-graphite-taupe);
   font-family: var(--font-family-display);
   font-size: clamp(var(--font-size-3xl), 6vw, var(--font-size-4xl));
   line-height: var(--line-height-tight);
@@ -48,7 +55,7 @@ body {
 }
 
 .eyebrow {
-  color: var(--color-brand-copper);
+  color: var(--color-copper-clay);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-wide);
@@ -56,7 +63,7 @@ body {
 }
 
 .ui-focus-ring:focus-visible {
-  outline: 3px solid color-mix(in srgb, var(--color-brand-copper) 35%, transparent);
+  outline: 3px solid color-mix(in srgb, var(--color-copper-clay) 38%, transparent);
   outline-offset: 2px;
 }
 
