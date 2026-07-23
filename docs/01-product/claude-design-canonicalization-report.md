@@ -141,21 +141,24 @@ For every route selected for implementation:
 7. implement one task per branch and PR;
 8. run accessibility, responsive and visual-regression gates.
 
-## Planned inventory files
+## Inventory files
 
-- `docs/01-product/claude-prototype-inventory.csv`  
-  One row for each of the 315 HTML files, including duplicate groups, candidate routes, mapping basis, quality status and semantic checks.
+The analysis produced:
 
-- `docs/01-product/claude-route-canonicalization.csv`  
-  One row for each of the 105 current canonical routes, joining route priority, PNG source sets, Claude candidates, Figma status, React status, discrepancies and next action.
+- `claude-prototype-inventory.csv` — one row for each of the 315 HTML files, including duplicate groups, candidate routes, mapping basis, quality status and semantic checks;
+- `claude-route-canonicalization.csv` — one row for each of the 105 current canonical routes, joining route priority, PNG source sets, Claude candidates, Figma status, React status, discrepancies and next action.
 
-- `docs/05-execution/claude-design-codex-task-pack.md`  
-  Proposed controlled work packages for Figma and Codex.
+These CSV files are generated analysis outputs and must be placed under `docs/01-product/` before the PR is merged.
+
+The execution plan is stored at:
+
+- `docs/05-execution/claude-design-codex-task-pack.md`
 
 ## Merge recommendation
 
 PR #29 may be merged only as a reference/archive ingestion after:
 
+- both CSV inventory outputs are present under `docs/01-product/`;
 - the generated inventories are reviewed;
 - the original ZIP remains isolated under `assets/reference/`;
 - no source file is moved into `src/` or canonical `assets/screens/`;
