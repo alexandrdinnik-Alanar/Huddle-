@@ -1,82 +1,86 @@
 # Huddle Design Source of Truth
 
-Status: approved process and reconciled baseline (`VIS-001`)
+Status: corrected baseline — no approved production design currently exists in Figma
 
-## Canonical Figma master
+## Current reality
 
-- File: `Huddle Family — Design System, Website & Pitch Deck Master`
-- File key: `dyT1r12QkL7yF0ynjqCs4E`
-- URL: <https://www.figma.com/design/dyT1r12QkL7yF0ynjqCs4E/Huddle-Family-%E2%80%94-Design-System--Website---Pitch-Deck-Master>
+Huddle has not yet created or approved a production UI in Figma.
 
-This file is the only production visual authority. Repository PNG files are retained for traceability and design reference; they are not production specifications unless a corresponding frame is approved in the canonical Figma master and recorded in `screen-route-registry.csv`.
+The file key `dyT1r12QkL7yF0ynjqCs4E` and the previously recorded page names and node IDs must not be treated as evidence of completed design work. Any existing Figma file or page is an empty or unverified draft until the product owner explicitly approves it and the approved frames are recorded in `screen-route-registry.csv`.
 
-## Verified Figma baseline
+Therefore:
 
-The read-only VIS-001 audit confirmed:
+- no route currently has `PRODUCTION` design status;
+- no Figma node ID currently authorizes React implementation;
+- all repository PNG sets and the Claude Design corpus are reference inputs only;
+- the locked repository brand system remains authoritative for logo assets, palette, accessible semantic tokens, and brand rules;
+- product layouts and screens must be created and approved in Figma before visual implementation.
 
-- brand pages `00_Cover` through `09_Patterns`;
-- website pages `10_Website Desktop` and `11_Website Mobile`;
-- product page `12_Product Screens`;
-- 6 local variable collections covering color primitives, semantic colors, spacing, radius, typography, and responsive website values;
-- 18 local text styles and 3 effect styles;
-- reusable navigation, footer, activity filter, date tile, view toggle, and result card components;
-- approved or brand-matched home frames for desktop and mobile;
-- activity listing, map, filter-sheet, and detail frames for desktop and mobile.
+## Production visual authority
 
-The master also contains empty future sections for presentation, pitch deck, prototype, and archive work. Empty pages are not approval evidence.
+There is currently no route-level production visual authority.
 
-## Production frames confirmed by VIS-001
+A Figma file becomes the production visual authority only after all of the following are true:
 
-| Route or state | Figma page | Node ID | Coverage |
-|---|---|---|---|
-| `/` desktop | `10_Website Desktop` | `68:273` | approved brand-matched frame |
-| `/` mobile | `11_Website Mobile` | `84:432` | approved brand-matched frame |
-| `/` mobile menu open | `11_Website Mobile` | `85:1298` | approved responsive state |
-| `/activities` desktop list | `12_Product Screens` | `132:2` | approved frame |
-| `/activities` desktop map | `12_Product Screens` | `132:173` | approved state |
-| `/activities` mobile list | `12_Product Screens` | `133:236` | approved frame |
-| `/activities` mobile filters | `12_Product Screens` | `133:429` | approved state |
-| `/activities/[activityId]` desktop | `12_Product Screens` | `134:618` | approved frame |
-| `/activities/[activityId]` mobile | `12_Product Screens` | `134:780` | approved frame |
+1. the product owner designates the file as canonical;
+2. the file contains an organized design-system foundation;
+3. the relevant desktop and mobile frames are complete;
+4. the product owner explicitly approves the frames;
+5. the exact page names and node IDs are recorded in `docs/01-product/screen-route-registry.csv`;
+6. the registry row is changed from `UNDECIDED` to `PRODUCTION`.
 
-The activity detail route is P1 in the canonical route map but is included because approved frames already exist.
+Until then, code may use the approved brand assets and existing semantic tokens for technical foundations, but it must not claim visual parity with an approved product design.
 
 ## Status vocabulary
 
-- `PRODUCTION`: approved in the canonical Figma master and safe to implement after the task gate permits it.
+- `PRODUCTION`: explicitly approved in the canonical Figma file and safe to implement after the applicable task gate permits it.
+- `UNDECIDED`: no approved Figma frame exists.
+- `EMPTY_DRAFT`: a Figma file or page may exist, but it contains no approved production design.
 - `REFERENCE`: useful input that does not authorize direct production implementation.
 - `ARCHIVE`: superseded source retained for history; never use for new work.
 - `DUPLICATE`: byte-equivalent or generation-equivalent copy retained only for traceability.
-- `UNDECIDED`: route or visual concept without an approved Figma frame.
 
 Implementation status is separate:
 
-- `IMPLEMENTED`: production UI matches the approved Figma frame and has passed review.
-- `PLACEHOLDER`: route exists but displays the shared foundation placeholder.
+- `IMPLEMENTED`: production UI matches an approved Figma frame and has passed review.
+- `PLACEHOLDER`: route exists but displays a technical foundation placeholder.
 - `NOT_STARTED`: no route entry exists yet.
 - `N/A`: source material rather than an application route.
 
 ## Mandatory Figma-first workflow
 
-Any page drawing or material visual decision must happen in the canonical Figma master first.
+Any page drawing or material visual decision must happen in Figma first.
 
-1. Locate the route in `screen-route-registry.csv`.
-2. Use PNG sets only as `REFERENCE` inputs.
-3. Create the required desktop, tablet, mobile, and interaction states in Figma using the existing brand system.
-4. Get explicit visual approval from the product owner.
-5. Change the registry row to `PRODUCTION` and record the exact page and node IDs.
-6. Implement the approved frame in React.
-7. Verify responsive behavior, accessibility, and visual parity before marking it `IMPLEMENTED`.
+1. Create or designate the canonical Huddle Figma production file.
+2. Build the design-system foundation from the locked repository brand system.
+3. Use PNG sets and the Claude Design corpus only as `REFERENCE` inputs.
+4. Create the required desktop, tablet where necessary, mobile, and interaction states.
+5. Obtain explicit product-owner approval.
+6. Record exact Figma page names and node IDs in `screen-route-registry.csv`.
+7. Change only the approved registry rows to `PRODUCTION`.
+8. Implement the approved frames in React.
+9. Verify responsive behavior, accessibility, and visual parity before marking them `IMPLEMENTED`.
 
-No agent or contributor may generate a production page directly in code from a PNG, prose prompt, or an unapproved visual assumption.
+No agent or contributor may generate a production page directly in code from a PNG, Claude HTML file, prose prompt, or unapproved visual assumption.
 
-## Current gap
+## Current design task
 
-Only `/`, `/activities`, and the P1 activity-detail route have route-level product frames in the master. All other P0 routes remain `UNDECIDED` even where repository PNG references exist. Their current React pages are technical placeholders and must not be interpreted as designs.
+`VIS-002 — Create the canonical Figma production foundation`
+
+VIS-002 must establish:
+
+- the canonical Figma file and page structure;
+- brand and semantic design variables;
+- typography, spacing, radius, elevation, and responsive foundations;
+- reusable navigation and shell components;
+- approved desktop and mobile layout frames for Public, Auth, App, and Admin surfaces;
+- stable page names and node IDs recorded in the repository.
+
+`S0-015 — Create base layouts` remains blocked until VIS-002 is approved and merged.
 
 ## Supporting registers
 
-- `docs/01-product/design-source-inventory.csv` classifies the audited visual sources.
-- `docs/01-product/screen-route-registry.csv` maps routes to Figma, repository references, and React state.
+- `docs/01-product/design-source-inventory.csv` classifies visual sources.
+- `docs/01-product/screen-route-registry.csv` maps routes to references, future Figma approval, and React state.
 - `docs/02-architecture/canonical-route-map.csv` remains authoritative for route ownership and priority.
 - `docs/00-source-of-truth/brand-system.md` remains authoritative for locked brand identity and accessible token extensions.
