@@ -46,17 +46,18 @@ None. No Figma nodes, variables, styles, components, or frames were edited.
 
 ## Tests
 
-Required CI gates:
+GitHub Actions CI run `30022103308` completed successfully on validation commit `25df930ca439ffe59c530b6dc72eeef8e962986d`.
 
-- `python scripts/verify-brand-assets.py`
-- `pnpm install --frozen-lockfile`
-- `pnpm lint`
-- `pnpm typecheck`
-- `pnpm test`
-- `pnpm build`
-- `git diff --check`
+Passed:
 
-Results must be taken from the pull-request CI run. They were not claimed from the GitHub contents API environment.
+- `pnpm install --frozen-lockfile`;
+- `python scripts/verify-brand-assets.py`;
+- `pnpm lint`;
+- `pnpm typecheck`;
+- `pnpm test`, including the new repository-integrity suite;
+- `pnpm build`.
+
+The final handoff-only commit must also pass the automatically triggered pull-request CI run before merge.
 
 ## Known limitations
 
