@@ -73,6 +73,7 @@ describe("repository execution integrity", () => {
       "docs/00-source-of-truth/design-source-of-truth.md",
       "docs/01-product/design-source-inventory.csv",
       "docs/01-product/screen-route-registry.csv",
+      "docs/01-product/huddle-art-direction-research-2026.md",
       "docs/02-architecture/canonical-route-map.csv",
       "docs/05-execution/implementation-roadmap.csv",
       "docs/06-operations/launch-readiness.md",
@@ -81,6 +82,9 @@ describe("repository execution integrity", () => {
       "tasks/phase-0/S0-016.md",
       "tasks/phase-0/S0-017.md",
       "tasks/phase-0/S0-018.md",
+      "src/app/(design-lab)/design-lab/page.tsx",
+      "src/app/(design-lab)/design-lab/DesignLab.tsx",
+      "src/app/(design-lab)/design-lab/design-lab.module.css",
     ];
 
     for (const requiredPath of requiredPaths) {
@@ -88,21 +92,38 @@ describe("repository execution integrity", () => {
     }
   });
 
-  it("points agents unambiguously to VIS-002 and blocks S0-015", () => {
+  it("points agents to VIS-002 Design Lab D1 and blocks S0-015", () => {
     const nextTask = readText("NEXT_TASK.md");
     const readme = readText("README.md");
+    const vis002 = readText("tasks/design/VIS-002.md");
     const s0015 = readText("tasks/phase-0/S0-015.md");
 
-    expect(nextTask).toContain("VIS-002 — Create the canonical Figma production foundation");
-    expect(nextTask).toContain("tasks/design/VIS-002.md");
-    expect(nextTask).toContain("S0-015 — Create base layouts");
+    expect(nextTask).toContain("VIS-002 — Create the Huddle production design foundation");
+    expect(nextTask).toContain("D1 — Build and compare three coded art-direction concepts in VS Code");
+    expect(nextTask).toContain("/design-lab");
     expect(nextTask).toContain("S0-015 may start only after VIS-002");
     expect(readme).toContain(
-      "The current executable task is `VIS-002 — Create the canonical Figma production foundation`",
+      "The current executable task is `VIS-002 — Create the Huddle production design foundation`",
     );
-    expect(readme).toContain("No approved Huddle product design currently exists in Figma");
+    expect(readme).toContain("VS Code-first, Figma-governed");
+    expect(vis002).toContain("VS Code-first, Figma-governed and component-system driven");
+    expect(vis002).toContain("Stage D1 — Coded art-direction concepts");
     expect(s0015).toContain("Status: `BLOCKED` until VIS-002 is approved and merged");
     expect(readme).not.toContain("The next executable task is `S0-015 — Create base layouts`");
+  });
+
+  it("keeps the Design Lab isolated, noindex and explicitly non-production", () => {
+    const page = readText("src/app/(design-lab)/design-lab/page.tsx");
+    const lab = readText("src/app/(design-lab)/design-lab/DesignLab.tsx");
+    const readme = readText("README.md");
+
+    expect(page).toContain("index: false");
+    expect(page).toContain("follow: false");
+    expect(lab).toContain("Nordic Editorial");
+    expect(lab).toContain("Local Discovery Atlas");
+    expect(lab).toContain("Human Community Journal");
+    expect(lab).toContain("fictional content");
+    expect(readme).toContain("Coded Design Lab concepts are review evidence, not production authority");
   });
 
   it("does not describe the repository as pre-Sprint-0", () => {
