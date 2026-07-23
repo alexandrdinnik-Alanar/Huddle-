@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="community" hint-size="100%,64px"></dc-import>
+  <div style="max-width:700px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">My albums</div>
+      <span style="font-size:12px;color:#A99B89;">{{ myAlbums.length }} albums</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ myAlbums }}" as="a" hint-placeholder-count="3">
+        <a href="Feed.dc.html" style="text-decoration:none;color:#463F37;display:block;transition:transform .16s;" style-hover="transform:translateY(-3px);">
+          <div style="height:110px;border-radius:14px;background:linear-gradient(135deg,{{ a.c1 }},{{ a.c2 }});box-shadow:0 8px 20px rgba(150,110,70,.08);"></div>
+          <div style="font-size:13px;font-weight:600;margin-top:9px;color:#3A342C;">{{ a.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;">{{ a.count }} photos</div>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;">
+      <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">Shared albums</div>
+      <span style="font-size:12px;color:#A99B89;">{{ shared.length }} albums</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+      <sc-for list="{{ shared }}" as="s" hint-placeholder-count="2">
+        <a href="Feed.dc.html" style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:12px;text-decoration:none;color:#463F37;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+          <div style="width:56px;height:56px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,{{ s.c1 }},{{ s.c2 }});"></div>
+          <div><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ s.name }}</div><div style="font-size:11.5px;color:#8A7C6C;margin-top:1px;">By {{ s.owner }} · {{ s.count }} photos</div></div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      myAlbums: [
+        { name: 'Family Trips', count: 24, c1: '#D79A62', c2: '#B26A38' },
+        { name: 'Summer 2026', count: 18, c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Nature', count: 36, c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+      shared: [
+        { name: 'Oslo Adventures', owner: 'Julie Hansen', count: 15, c1: '#A6AD8E', c2: '#7C8460' },
+        { name: 'Family Picnic Day', owner: 'Martin Larsen', count: 22, c1: '#B8967A', c2: '#967052' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

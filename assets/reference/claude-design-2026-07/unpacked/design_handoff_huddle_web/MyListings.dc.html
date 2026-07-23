@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import></div>
+
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Your marketplace</div>
+          <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">My listings</div>
+        </div>
+        <a href="CreateListing.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:12px 22px;border-radius:24px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 10px 22px rgba(188,122,69,.26);" style-hover="background:#A9663A;">+ Create new listing</a>
+      </div>
+
+      <div style="display:flex;gap:8px;margin-top:22px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <div style="font-size:13px;padding:9px 18px;border-radius:22px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};">{{ t.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;">
+        <sc-for list="{{ listings }}" as="l" hint-placeholder-count="4">
+          <a href="EditListing.dc.html" style="text-decoration:none;color:#463F37;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:14px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+            <div style="width:64px;height:64px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,{{ l.c1 }},{{ l.c2 }});"></div>
+            <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:600;color:#3A342C;">{{ l.name }}</div><div style="font-size:11px;color:#8A7C6C;margin-top:2px;">{{ l.condition }}</div></div>
+            <div style="font-size:14px;font-weight:700;color:#9E5A2C;width:90px;flex-shrink:0;">{{ l.price }}</div>
+            <div style="font-size:12px;color:#7C7062;width:70px;flex-shrink:0;display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="search" color="#A99B89" size="12" hint-size="12,12"></dc-import>{{ l.views }}</div>
+            <div style="font-size:12px;color:#7C7062;width:90px;flex-shrink:0;display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="mail" color="#A99B89" size="12" hint-size="12,12"></dc-import>{{ l.messages }}</div>
+            <div style="font-size:11px;background:#EAEBE1;color:#6E7459;padding:5px 13px;border-radius:14px;width:fit-content;flex-shrink:0;font-weight:600;">{{ l.status }}</div>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#A99B89"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+          </a>
+        </sc-for>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:18px;padding:22px 26px;margin-top:26px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">Tips to sell faster</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;">
+          <sc-for list="{{ tips }}" as="tp" hint-placeholder-count="4">
+            <div style="display:flex;gap:10px;align-items:flex-start;">
+              <div style="width:36px;height:36px;border-radius:10px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ tp.icon }}" color="#BC7A45" size="16" hint-size="16,16"></dc-import></div>
+              <div><div style="font-size:12.5px;font-weight:600;color:#3A342C;">{{ tp.title }}</div><div style="font-size:11px;color:#8A7C6C;margin-top:3px;line-height:1.4;">{{ tp.sub }}</div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Active', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Sold', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Drafts', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Archived', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      listings: [
+        { name: 'Stokke Tripp Trapp Chair', condition: 'Good condition', price: '1 200 NOK', views: 128, messages: 5, status: 'Active', c1: '#D79A62', c2: '#B26A38' },
+        { name: 'Zara Baby Jacket (12–18m)', condition: 'Like new', price: '300 NOK', views: 64, messages: 2, status: 'Active', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Little Dutch Wooden Train', condition: 'Good condition', price: '150 NOK', views: 42, messages: 1, status: 'Active', c1: '#C9A87E', c2: '#A97F4E' },
+        { name: 'Baby Björn Bouncer', condition: 'Used', price: '800 NOK', views: 96, messages: 3, status: 'Active', c1: '#A6AD8E', c2: '#7C8460' },
+      ],
+      tips: [
+        { icon: 'camera', title: 'Add more photos', sub: 'Listings with 3+ photos sell faster' },
+        { icon: 'edit', title: 'Write clear descriptions', sub: 'Be specific and honest' },
+        { icon: 'coin', title: 'Set a fair price', sub: 'Check similar listings' },
+        { icon: 'mail', title: 'Respond quickly', sub: 'Fast replies build trust' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;display:flex;align-items:flex-start;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="events" hint-size="220px,100vh"></dc-import>
+  <div style="flex:1;min-width:0;padding:32px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+        <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Event administration</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:9px;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:9px 16px;font-size:13px;color:#463F37;"><dc-import name="Icon" icon-name="search" color="#A99B89" size="14" hint-size="14,14"></dc-import>Search events…</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:16px 18px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="font-family:'Newsreader',serif;font-size:24px;color:{{ s.color }};">{{ s.value }}</div>
+          <div style="font-size:11.5px;color:#8A7C6C;margin-top:3px;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+        <div style="font-size:13px;padding:9px 16px;border-radius:20px;background:{{ f.bg }};color:{{ f.color }};font-weight:{{ f.weight }};border:1px solid {{ f.border }};cursor:pointer;">{{ f.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:16px;box-shadow:0 8px 20px rgba(150,110,70,.06);overflow:hidden;">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 80px;padding:12px 20px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Event</div><div>Organizer</div><div>Date</div><div>Registrations</div><div>Status</div><div></div>
+      </div>
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr 80px;align-items:center;padding:14px 20px;border-bottom:1px solid #F2E9DA;font-size:13px;">
+          <div style="display:flex;align-items:center;gap:10px;"><div style="width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,{{ e.c1 }},{{ e.c2 }});flex-shrink:0;"></div><span style="font-weight:600;color:#3A342C;">{{ e.name }}</span></div>
+          <div style="color:#7C7062;">{{ e.organizer }}</div>
+          <div style="color:#7C7062;">{{ e.date }}</div>
+          <div style="color:#7C7062;">{{ e.registrations }}</div>
+          <div><span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:14px;background:{{ e.statusBg }};color:{{ e.statusColor }};">{{ e.status }}</span></div>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#A99B89"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const filters = ['All', 'Pending review', 'Published', 'Flagged', 'Past'].map((label, i) => ({
+      label, bg: i === 0 ? '#3A342C' : '#fff', color: i === 0 ? '#F6F0E8' : '#463F37', border: i === 0 ? '#3A342C' : '#DBC9B0', weight: i === 0 ? 600 : 500,
+    }));
+    const mk = (name, organizer, date, registrations, status, c1, c2) => {
+      const S = { Published: ['#EAEBE1', '#6E7459'], Pending: ['#F2E6D6', '#9E5A2C'], Flagged: ['#F7E0D6', '#B0462F'] };
+      return { name, organizer, date, registrations, status, c1, c2, statusBg: S[status][0], statusColor: S[status][1] };
+    };
+    return {
+      stats: [
+        { value: '312', label: 'Total events', color: '#3A342C' },
+        { value: '18', label: 'Pending review', color: '#BC7A45' },
+        { value: '4', label: 'Flagged', color: '#B0462F' },
+        { value: '12.8K', label: 'Total registrations', color: '#6E7459' },
+      ],
+      filters,
+      events: [
+        mk('Summer Family Festival', 'Oslo Kommune', 'Jun 14, 2026', '240', 'Published', '#D79A62', '#B26A38'),
+        mk('Mini Makers Art Time', 'Kreativitet Studio', 'May 25, 2026', '38', 'Published', '#9BA184', '#6E7459'),
+        mk('Bouncy Castle Adventure', 'Linderud Gård', 'May 25, 2026', '52', 'Pending', '#C9A87E', '#A97F4E'),
+        mk('Family Fun Run', 'Tøyenparken Assoc.', 'May 26, 2026', '96', 'Published', '#A6AD8E', '#7C8460'),
+        mk('Unlicensed Bake Sale', 'Private organizer', 'Jun 2, 2026', '12', 'Flagged', '#B8967A', '#8A6A3E'),
+        mk('Children\'s Concert', 'Oslo Konserthus', 'May 26, 2026', '180', 'Published', '#9FA383', '#727856'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

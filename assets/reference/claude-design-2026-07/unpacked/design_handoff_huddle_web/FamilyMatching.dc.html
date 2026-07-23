@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:1180px;margin:0 auto;padding:40px 40px 60px;display:grid;grid-template-columns:1.25fr 0.95fr;gap:34px;align-items:start;">
+
+    <div>
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Find your people</div>
+      <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;">Family matching</div>
+      <div style="font-size:13.5px;color:#7C7062;margin-top:6px;">Tell us a bit about your family so we can find the best local matches.</div>
+
+      <div style="display:flex;align-items:center;gap:6px;margin-top:26px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <div style="width:100%;height:3px;border-radius:2px;background:{{ s.barColor }};"></div>
+            <div style="font-size:11.5px;font-weight:{{ s.weight }};color:{{ s.color }};">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:28px 30px;margin-top:22px;box-shadow:0 16px 40px rgba(150,110,70,.1);">
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-bottom:12px;">Children in your family</div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <sc-for list="{{ children }}" as="c" hint-placeholder-count="2">
+            <div style="display:flex;align-items:center;gap:10px;border:1px solid #EFE4D4;border-radius:14px;padding:10px 16px;background:#FCF9F3;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,{{ c.c1 }},{{ c.c2 }});display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:14px;">{{ c.initial }}</div>
+              <div><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ c.name }}</div><div style="font-size:11px;color:#8A7C6C;">{{ c.age }}</div></div>
+            </div>
+          </sc-for>
+          <div style="display:flex;align-items:center;gap:7px;border:1px dashed #DBC9B0;border-radius:14px;padding:10px 18px;color:#9E5A2C;font-size:12.5px;font-weight:600;cursor:pointer;">+ Add child</div>
+        </div>
+
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:26px;margin-bottom:12px;">We're looking to connect with</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:13px 16px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;color:#463F37;">Families with children 0–6 years <span style="color:#A99B89;">▾</span></div>
+
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:26px;margin-bottom:12px;">We're interested in</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <sc-for list="{{ interests }}" as="i" hint-placeholder-count="6">
+            <div style="text-align:center;border:1px solid {{ i.border }};background:{{ i.bg }};border-radius:14px;padding:14px 4px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+              <dc-import name="Icon" icon-name="{{ i.icon }}" color="{{ i.color }}" size="19" hint-size="19,19"></dc-import>
+              <div style="font-size:10.5px;margin-top:6px;color:#463F37;font-weight:500;">{{ i.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:26px;margin-bottom:12px;">Availability</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+          <div style="border:1px solid #DBC9B0;border-radius:12px;padding:13px 16px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Weekends <span style="color:#A99B89;">▾</span></div>
+          <div style="border:1px solid #DBC9B0;border-radius:12px;padding:13px 16px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">After school <span style="color:#A99B89;">▾</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;margin-top:22px;">
+        <a href="ParentDashboard.dc.html" style="text-decoration:none;color:#463F37;border:1px solid #DBC9B0;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:500;background:#fff;">Cancel</a>
+        <div style="background:#BC7A45;color:#fff;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 12px 26px rgba(188,122,69,.28);">Next: Interests →</div>
+      </div>
+    </div>
+
+    <div style="position:sticky;top:20px;display:flex;flex-direction:column;gap:16px;">
+      <div style="position:relative;height:260px;border-radius:22px;overflow:hidden;box-shadow:0 20px 46px rgba(120,86,52,.18);">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144803_255ea2a4-1012-495e-aacd-bc31c17fd7ba.png" alt="Children playing together" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,42,36,0) 45%,rgba(46,42,36,.78));"></div>
+        <div style="position:absolute;left:20px;right:20px;bottom:18px;color:#fff;">
+          <div style="font-family:'Newsreader',serif;font-size:20px;">Real families, real connections</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.86);margin-top:4px;">12,540+ families already matched near you</div>
+        </div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:22px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="font-family:'Newsreader',serif;font-size:18px;color:#3A342C;margin-bottom:14px;">Families near you</div>
+        <sc-for list="{{ previews }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F2E9DA;">
+            <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,{{ p.c1 }},{{ p.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:16px;">{{ p.initial }}</div>
+            <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ p.name }}</div><div style="font-size:11px;color:#8A7C6C;">{{ p.detail }}</div></div>
+            <span style="font-size:10.5px;font-weight:700;color:#6E7459;background:#EAEBE1;border-radius:14px;padding:4px 10px;flex-shrink:0;">{{ p.match }}</span>
+          </div>
+        </sc-for>
+        <div style="font-size:11.5px;color:#A99B89;margin-top:12px;text-align:center;">Finish your preferences to unlock full matches</div>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:12px;background:#EAEBE1;border-radius:16px;padding:16px 18px;">
+        <dc-import name="Icon" icon-name="lock" color="#6E7459" size="18" hint-size="18,18"></dc-import>
+        <div style="font-size:12px;color:#4C5442;line-height:1.55;"><b>Privacy first:</b> your children's names, photos and exact address are never shown to other families until you choose to connect.</div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const steps = ['Preferences', 'Interests', 'Location', 'Privacy'].map((label, i) => ({
+      label,
+      barColor: i === 0 ? '#BC7A45' : '#EFE4D4',
+      color: i === 0 ? '#3A342C' : '#A99B89',
+      weight: i === 0 ? 600 : 500,
+    }));
+    return {
+      steps,
+      children: [
+        { initial: 'O', name: 'Olivia', age: '2.8 years', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'N', name: 'Noah', age: '6 years', c1: '#9BA184', c2: '#6E7459' },
+      ],
+      interests: [
+        { icon: 'pulse', label: 'Playdates', bg: '#fff', border: '#DBC9B0', color: '#BC7A45' },
+        { icon: 'leaf', label: 'Outdoor', bg: '#fff', border: '#DBC9B0', color: '#6E7459' },
+        { icon: 'book', label: 'Learning', bg: '#fff', border: '#DBC9B0', color: '#BC7A45' },
+        { icon: 'sparkle', label: 'Creativity', bg: '#fff', border: '#DBC9B0', color: '#6E7459' },
+        { icon: 'signal', label: 'Sports', bg: '#fff', border: '#DBC9B0', color: '#BC7A45' },
+        { icon: 'gear', label: 'Other', bg: '#fff', border: '#DBC9B0', color: '#6E7459' },
+      ],
+      previews: [
+        { initial: 'B', name: 'The Bergström Family', detail: 'Frogner · 1.2 km', match: '94%', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'H', name: 'The Haugen Family', detail: 'Grünerløkka · 2.0 km', match: '91%', c1: '#9BA184', c2: '#6E7459' },
+        { initial: 'L', name: 'The Larsen Family', detail: 'Sagene · 2.6 km', match: '89%', c1: '#D79A62', c2: '#B26A38' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

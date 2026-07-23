@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+    <div style="max-width:480px;padding:32px 40px;">
+      <a href="MyListings.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to My Listings</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Renew Listing</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Your listing has expired.</div>
+
+      <div style="background:#F6DCD6;border-radius:10px;padding:12px 14px;font-size:12px;color:#8A3B30;margin-top:16px;">Expired on May 20, 2025<br/>Reactivate your listing to make it visible again.</div>
+
+      <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:14px;margin-top:16px;">
+        <div style="width:48px;height:48px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:600;">Stokke Trailz Stroller</div>
+          <div style="font-size:12px;color:#7C7062;">NOK 2,500</div>
+          <div style="font-size:11px;color:#B0453A;">Expired</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;margin-top:20px;">Update your listing (optional)</div>
+      <div style="font-size:12px;color:#7C7062;margin-top:12px;margin-bottom:6px;">Price</div>
+      <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;display:flex;justify-content:space-between;background:#fff;">2500 <span style="color:#8A7C6C;">NOK</span></div>
+
+      <div style="font-size:12px;color:#7C7062;margin-top:14px;margin-bottom:6px;">Description</div>
+      <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;height:70px;background:#fff;">Well-maintained stroller in great condition. Comes with rain cover and storage bag.</div>
+      <div style="text-align:right;font-size:10px;color:#8A7C6C;">78/500</div>
+
+      <div style="text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:22px;">Reactivate Listing</div>
+      <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:14px;margin-top:10px;">Cancel</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>

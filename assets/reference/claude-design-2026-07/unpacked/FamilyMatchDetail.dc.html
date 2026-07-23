@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:860px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="display:flex;align-items:center;gap:15px;">
+        <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#C99A6B,#A9663A);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:22px;">S</div>
+        <div>
+          <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Sophie &amp; Lucas</div>
+          <div style="font-size:12px;color:#8A7C6C;display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="12" hint-size="12,12"></dc-import>1.2 km away</div>
+        </div>
+      </div>
+      <div style="font-size:12px;background:#EAEBE1;color:#6E7459;padding:7px 16px;border-radius:16px;font-weight:700;">85% match</div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:24px;">
+      <a href="Messages.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Send connect request</a>
+      <div style="border:1px solid #DBC9B0;background:#fff;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:500;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Save family</div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:26px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="font-size:13px;padding:9px 16px;border-radius:20px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:22px;margin-top:22px;">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">About this family</div>
+        <div style="font-size:13.5px;color:#7C7062;margin-top:9px;line-height:1.65;">We are Sophie and Lucas. We live in Grünerløkka and love spending time outdoors. Our daughter Emma is 2.5 years old and enjoys playgrounds, books and music.</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;">
+          <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+            <div style="background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:12px 14px;">
+              <div style="font-size:11px;color:#8A7C6C;">{{ i.label }}</div>
+              <div style="font-size:13px;font-weight:600;margin-top:3px;color:#3A342C;">{{ i.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="height:180px;border-radius:16px;overflow:hidden;box-shadow:0 12px 30px rgba(150,110,70,.1);"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144038_201b4688-9828-4944-870a-b6f227246847.png" alt="Sophie & Lucas's family" style="width:100%;height:100%;object-fit:cover;"></div>
+    </div>
+
+    <div style="margin-top:26px;display:flex;gap:18px;align-items:center;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="width:84px;height:84px;border-radius:16px;overflow:hidden;flex-shrink:0;"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_073622_8a8aa0da-8eb3-4e55-a77c-ae9a199f2b7b.png" alt="Emma" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div>
+        <div style="font-size:14.5px;font-weight:600;color:#3A342C;">Emma, 2.5 years</div>
+        <div style="display:flex;gap:8px;margin-top:9px;flex-wrap:wrap;">
+          <sc-for list="{{ traits }}" as="t" hint-placeholder-count="3">
+            <div style="font-size:11px;background:#F2E6D6;color:#9E5A2C;padding:5px 13px;border-radius:14px;font-weight:600;">{{ t }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'About', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Children', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Interests', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Activity Ideas', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      info: [
+        { label: 'Location', value: 'Grünerløkka, Oslo' },
+        { label: 'Languages', value: 'Norwegian, English' },
+        { label: 'Looking for', value: 'Playdates, Outdoor activities' },
+        { label: 'Availability', value: 'Weekends, Afternoons' },
+      ],
+      traits: ['Playful', 'Curious', 'Loves music'],
+    };
+  }
+}
+</script>
+</body>
+</html>

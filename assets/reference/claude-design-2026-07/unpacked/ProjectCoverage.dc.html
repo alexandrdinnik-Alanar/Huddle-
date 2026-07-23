@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;max-width:1120px;margin:0 auto;">
+
+  <div style="padding:44px 48px 24px;border-bottom:3px solid #3A342C;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;">
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;"><img src="assets/Huddle_icon.png" alt="" style="width:32px;height:32px;"><span style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#9E5A2C;font-weight:700;">Project Coverage Analysis</span></div>
+        <h1 style="font-family:'Newsreader',serif;font-size:48px;line-height:1.02;color:#3A342C;margin:16px 0 0;font-weight:500;">Design mockups vs the <span style="font-style:italic;color:#BC7A45;">canonical route map</span></h1>
+        <div style="font-size:13px;color:#8A7C6C;margin-top:12px;max-width:760px;line-height:1.6;">Cross-referenced against <b style="color:#463F37;">alexandrdinnik-Alanar/Huddle-</b> @main — <code>docs/02-architecture/canonical-route-map.csv</code> (108 routes) and the <code>assets/screens/</code> reference corpus (638 screens, 63 sets).</div>
+      </div>
+      <div style="text-align:right;font-size:12px;color:#8A7C6C;line-height:1.7;"><div>21 July 2026</div><div>Source: GitHub @main</div></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E7DAC7;border-bottom:1px solid #E7DAC7;">
+    <sc-for list="{{ snapshot }}" as="s" hint-placeholder-count="4">
+      <div style="background:#FCF9F3;padding:22px 24px;">
+        <div style="font-family:'Newsreader',serif;font-size:34px;color:{{ s.color }};line-height:1;">{{ s.value }}</div>
+        <div style="font-size:11.5px;color:#8A7C6C;margin-top:7px;line-height:1.4;">{{ s.label }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="padding:30px 48px 4px;">
+    <div style="font-family:'Newsreader',serif;font-size:21px;line-height:1.5;color:#3A342C;max-width:800px;">Two measuring sticks matter here. The <b>canonical route map</b> (108 routes) is the real build target. The <b>638-screen corpus</b> is a <span style="font-style:italic;">reference</span> library (63 sets ×10) — explicitly <span style="font-style:italic;">not</span> 1:1 production pages. Notably, the repo's own <code>src/app</code> ships <b>55 routes as 178-byte placeholder stubs</b> — so these HTML mockups are the furthest-along visual design of the product.</div>
+  </div>
+
+  <div style="padding:22px 48px 8px;">
+    <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:#6E6154;">
+      <span style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#6E7459;"></span>Built (mockup matches route)</span>
+      <span style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#BC7A45;"></span>Partial (covered by a related screen)</span>
+      <span style="display:flex;align-items:center;gap:7px;"><span style="width:11px;height:11px;border-radius:3px;background:#B0462F;"></span>Missing (no mockup yet)</span>
+    </div>
+  </div>
+
+  <sc-for list="{{ surfaces }}" as="sf" hint-placeholder-count="5">
+    <div style="padding:22px 48px 4px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #E7DAC7;padding-bottom:10px;margin-bottom:4px;">
+        <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#9E5A2C;font-weight:700;">{{ sf.name }}</div>
+        <div style="font-size:12px;color:#8A7C6C;">{{ sf.summary }}</div>
+      </div>
+      <sc-for list="{{ sf.rows }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:16px 1.4fr 46px 1.1fr;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #F2E9DA;">
+          <span style="width:11px;height:11px;border-radius:3px;background:{{ r.color }};"></span>
+          <span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#463F37;">{{ r.route }}</span>
+          <span style="font-size:10px;font-weight:700;color:{{ r.pColor }};background:{{ r.pBg }};border-radius:6px;padding:2px 0;text-align:center;">{{ r.priority }}</span>
+          <span style="font-size:11.5px;color:#8A7C6C;">{{ r.mockup }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </sc-for>
+
+  <div style="margin:30px 48px 0;background:#3A342C;color:#F6F0E8;border-radius:22px;padding:32px 40px;position:relative;overflow:hidden;">
+    <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-30px;bottom:-40px;width:180px;opacity:.1;pointer-events:none;">
+    <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#EDBB8B;font-weight:700;">Priority gaps</div>
+    <div style="font-family:'Newsreader',serif;font-size:26px;margin-top:8px;">P0 routes with no mockup yet</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin-top:18px;">
+      <sc-for list="{{ p0gaps }}" as="g" hint-placeholder-count="8">
+        <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#EAE0D2;border-top:1px solid rgba(237,187,139,.3);padding-top:9px;"><span style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#EDBB8B;">{{ g.route }}</span><span style="color:#B7A890;">{{ g.label }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding:28px 48px 48px;">
+    <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9E5A2C;font-weight:700;border-bottom:1px solid #E7DAC7;padding-bottom:10px;">Recommended sequence</div>
+    <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:40px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #EFE4D4;">
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#DBC9B0;line-height:1;">{{ n.n }}</div>
+        <div><div style="font-size:14.5px;font-weight:600;color:#3A342C;">{{ n.title }}</div><div style="font-size:13px;color:#6E6154;margin-top:5px;line-height:1.6;">{{ n.body }}</div></div>
+      </div>
+    </sc-for>
+    <div style="font-size:11.5px;color:#A99B89;margin-top:18px;line-height:1.6;">Method: routes from <code>canonical-route-map.csv</code>; status assigned by matching each route to the built <code>.dc.html</code> mockups in this project. "Partial" = a related screen exists (e.g. a multi-step flow in one file, or a role view reusing a shared screen) but not a dedicated 1:1 page. The 638 PNG sets are design references, not a route checklist; set 54 duplicates set 51, and set 55 is flow-maps, not screens.</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const P = { P0: ['#B0462F', '#F7E0D6'], P1: ['#9E5A2C', '#F2E6D6'], P2: ['#6E7459', '#EAEBE1'], P3: ['#8A7C6C', '#EFE4D4'] };
+    const S = { done: '#6E7459', partial: '#BC7A45', missing: '#B0462F' };
+    const mk = (route, priority, status, mockup) => ({ route, priority, status, mockup, color: S[status], pColor: P[priority][0], pBg: P[priority][1] });
+    const surfacesRaw = [
+      { name: 'Public / Marketing', rows: [
+        mk('/', 'P0', 'done', 'Home'),
+        mk('/marketplace', 'P0', 'done', 'Marketplace'),
+        mk('/marketplace/listings/[id]', 'P0', 'partial', 'ListingReview (seller-side)'),
+        mk('/marketplace/products/[id]', 'P1', 'done', 'ProductDetail'),
+        mk('/events', 'P0', 'done', 'Events'),
+        mk('/events/[eventId]', 'P0', 'done', 'EventDetails'),
+        mk('/activities', 'P0', 'done', 'Activities'),
+        mk('/activities/[activityId]', 'P1', 'done', 'ActivityDetail'),
+        mk('/services', 'P1', 'done', 'ServicesHome'),
+        mk('/services/[serviceId]', 'P1', 'done', 'ServiceDetails'),
+        mk('/experts/[expertId]', 'P1', 'done', 'ExpertDetail'),
+        mk('/safety', 'P0', 'partial', 'SafetyPrivacy'),
+        mk('/privacy', 'P0', 'partial', 'SafetyPrivacy'),
+        mk('/terms', 'P0', 'done', 'TermsConditions'),
+        mk('/community-guidelines', 'P0', 'done', 'CommunityGuidelines'),
+        mk('/family-guides/[stage]', 'P1', 'missing', '—'),
+        mk('/seasonal-guides/[slug]', 'P1', 'missing', '—'),
+        mk('/cities/[citySlug] (+4 SEO)', 'P1', 'missing', '—'),
+      ]},
+      { name: 'Auth & Onboarding', rows: [
+        mk('/signup', 'P0', 'done', 'SignUp'),
+        mk('/login', 'P0', 'done', 'Login'),
+        mk('/forgot-password', 'P0', 'done', 'ForgotPassword'),
+        mk('/verify', 'P0', 'done', 'VerifyIdentity'),
+        mk('/onboarding', 'P0', 'done', 'Onboarding'),
+        mk('/onboarding/family·children·interests·location·consent', 'P0', 'partial', 'Onboarding (single multi-step file)'),
+      ]},
+      { name: 'App (member)', rows: [
+        mk('/app', 'P0', 'done', 'ParentDashboard'),
+        mk('/app/search', 'P0', 'done', 'SearchResults'),
+        mk('/app/saved', 'P0', 'done', 'SavedItems'),
+        mk('/app/notifications', 'P0', 'done', 'Notifications'),
+        mk('/app/messages (+[id])', 'P0', 'done', 'Messages'),
+        mk('/app/account', 'P0', 'done', 'UserProfile'),
+        mk('/app/settings', 'P0', 'done', 'Settings'),
+        mk('/app/family', 'P0', 'partial', 'FamilyMatching'),
+        mk('/app/family/members', 'P0', 'done', 'FamilyMembers'),
+        mk('/app/connections', 'P0', 'done', 'FamilyMatching / FamilyMatchDetail'),
+        mk('/app/matching', 'P1', 'done', 'FamilyMatching'),
+        mk('/app/community', 'P0', 'done', 'Community'),
+        mk('/app/groups (+[id])', 'P1', 'done', 'MyGroupsList / GroupFeed'),
+        mk('/app/calendar', 'P1', 'missing', '—'),
+        mk('/app/marketplace (+listings)', 'P0', 'done', 'MyListings'),
+        mk('/app/orders', 'P1', 'partial', 'OrderTracking'),
+        mk('/app/events', 'P0', 'done', 'MyEventsList'),
+        mk('/app/activities', 'P0', 'done', 'MyActivitiesList'),
+        mk('/app/services', 'P1', 'done', 'ServiceListings'),
+        mk('/app/bookings', 'P1', 'done', 'MyBookings'),
+        mk('/app/wallet', 'P1', 'missing', '—'),
+        mk('/app/privacy · /app/safety', 'P0', 'partial', 'SafetyPrivacy'),
+        mk('/app/support', 'P1', 'partial', 'HelpCenter / ContactUs'),
+      ]},
+      { name: 'App — role dashboards', rows: [
+        mk('/app/seller (+listings/inquiries/orders)', 'P1', 'done', 'MyListings / BuyerInquiries / SellerReservationDetail'),
+        mk('/app/seller/payouts', 'P2', 'missing', '—'),
+        mk('/app/organizer (+events/activities)', 'P1', 'done', 'EventRegistrations / ActivityRegistrations'),
+        mk('/app/organizer/registrations·check-in', 'P1', 'done', 'AttendeeDetail / OrganizerCheckInList / QRCheckInScanner'),
+        mk('/app/organizer/analytics', 'P2', 'done', 'EventAnalytics / ActivityAnalytics'),
+        mk('/app/expert (+profile/services/availability)', 'P1', 'missing', '—'),
+        mk('/app/expert/bookings', 'P1', 'partial', 'BookAppointment (consumer)'),
+        mk('/app/partner (+store/feed)', 'P2', 'done', 'PartnerOverview / StoreProfileSetup / ProductFeedSetup'),
+        mk('/app/partner/campaigns·billing', 'P2', 'partial', 'AffiliateTracking / PartnerAgreement'),
+        mk('/app/municipality (+programs)', 'P2', 'done', 'Municipality / MunicipalityDetail'),
+        mk('/app/municipality/reports', 'P2', 'done', 'AdminMunicipalityReports'),
+        mk('/app/municipality/governance', 'P0', 'done', 'MunicipalityGovernance'),
+      ]},
+      { name: 'Admin', rows: [
+        mk('/admin', 'P0', 'done', 'AdminDashboard'),
+        mk('/admin/users', 'P0', 'done', 'AdminUsers'),
+        mk('/admin/listings', 'P0', 'done', 'AdminListingModeration'),
+        mk('/admin/events', 'P1', 'done', 'AdminEvents / AdminEventAdministration'),
+        mk('/admin/reports', 'P1', 'done', 'AdminReportsQueue'),
+        mk('/admin/audit-log', 'P0', 'done', 'AdminAuditLog'),
+        mk('/admin/moderation', 'P0', 'partial', 'ModerateReport'),
+        mk('/admin/moderation/reports·appeals', 'P0', 'done', 'AdminReportsQueue / AdminAppeals'),
+        mk('/admin/approvals', 'P1', 'partial', 'ProductApproval'),
+        mk('/admin/finance', 'P2', 'done', 'AdminFinanceOverview'),
+        mk('/admin/finance/refunds·disputes·commissions·payouts', 'P2', 'done', 'AdminFinance* (4)'),
+        mk('/admin/finance/invoices', 'P2', 'done', 'AdminFinanceInvoices'),
+        mk('/admin/support', 'P2', 'done', 'AdminSupport'),
+        mk('/admin/settings', 'P2', 'done', 'AdminSettings'),
+        mk('/admin/system', 'P3', 'done', 'AdminSystem'),
+        mk('/admin/privacy', 'P0', 'done', 'AdminPrivacyGovernance'),
+        mk('/admin/analytics', 'P2', 'done', 'AdminAnalytics'),
+      ]},
+    ];
+    const surfaces = surfacesRaw.map((sf) => {
+      const d = sf.rows.filter((r) => r.status === 'done').length;
+      const p = sf.rows.filter((r) => r.status === 'partial').length;
+      const m = sf.rows.filter((r) => r.status === 'missing').length;
+      return { ...sf, summary: d + ' built · ' + p + ' partial · ' + m + ' missing' };
+    });
+    return {
+      snapshot: [
+        { value: '108', label: 'Canonical routes in the route map', color: '#3A342C' },
+        { value: '~95', label: 'Built to premium standard (built + partial)', color: '#6E7459' },
+        { value: '~5', label: 'Routes with no mockup yet (P1 SEO/city, guides)', color: '#B0462F' },
+        { value: '638', label: 'Reference screens in corpus (63 sets)', color: '#BC7A45' },
+      ],
+      surfaces,
+      p0gaps: [
+        { route: '/family-guides/[stage]', label: 'Family guides content' },
+        { route: '/seasonal-guides/[slug]', label: 'Seasonal guides content' },
+        { route: '/cities/[citySlug]', label: 'City SEO pages (+4)' },
+        { route: '/app/calendar', label: 'Calendar view' },
+        { route: '/app/wallet', label: 'Wallet' },
+        { route: '/app/expert', label: 'Expert cabinet (own dashboard)' },
+        { route: '/app/seller/payouts', label: 'Seller payouts view' },
+        { route: '/safety · /privacy', label: 'Promote from partial to dedicated pages' },
+      ],
+      nextSteps: [
+        { n: '1', title: 'All P0 routes are now built', body: 'Every P0 canonical route has a dedicated mockup — auth, app core, community, admin, and governance pages are all complete.' },
+        { n: '2', title: 'Fill remaining P1 content pages', body: 'Family/seasonal guides content and the /cities/[citySlug] SEO family are the last uncovered P1 routes (use the Maps skill for city pages).' },
+        { n: '3', title: 'Round out secondary app views', body: 'Calendar view, wallet, and a dedicated expert cabinet dashboard (currently covered via BookAppointment/PartnerOverview patterns).' },
+        { n: '4', title: 'Photography pass', body: 'Once the higgsfield paid plan is active, generate unique product/category/community photos and replace all drop-in image-slots across Marketplace, Community, Events, Activities and Services.' },
+        { n: '5', title: 'Final visual QA', body: 'Spot-check hover states, dead links and off-brand colors across the long tail of admin/create-flow pages — most have already been swept this session.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

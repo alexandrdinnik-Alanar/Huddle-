@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Returns" hint-size="100%,150px"></dc-import>
+
+  <div style="max-width:760px;margin:0 auto;padding:48px 24px 60px;">
+    <div style="font-family:'Newsreader',serif;font-size:30px;">Returns &amp; Refunds</div>
+    <div style="font-size:14px;color:#8A7C6C;margin-top:10px;line-height:1.7;">
+      Our 30-day return policy applies to new items sold by Huddle partner stores. Pre-owned items sold by individual families follow the terms shown on each listing.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:20px;">
+          <div style="font-family:'Newsreader',serif;font-size:20px;color:#BC7A45;">{{ s.step }}</div>
+          <div style="font-size:13px;font-weight:600;margin-top:8px;">{{ s.title }}</div>
+          <div style="font-size:12px;color:#8A7C6C;margin-top:6px;line-height:1.6;">{{ s.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+      <div style="margin-top:28px;">
+        <div style="font-family:'Newsreader',serif;font-size:18px;">{{ s.title }}</div>
+        <div style="font-size:13px;color:#5C554A;margin-top:8px;line-height:1.8;">{{ s.body }}</div>
+      </div>
+    </sc-for>
+
+    <div style="margin-top:32px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:24px;">
+      <div style="font-family:'Newsreader',serif;font-size:17px;">Need to start a return?</div>
+      <div style="font-size:13px;color:#8A7C6C;margin-top:8px;">Go to My Orders and select "Request a return" on the relevant order.</div>
+      <a href="OrderTracking.dc.html" style="display:inline-block;text-decoration:none;background:#3A342C;color:#fff;border-radius:20px;padding:10px 20px;font-size:13px;margin-top:14px;">Go to my orders</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      steps: [
+        { step: '1', title: 'Request a return', desc: 'Open the order in My Orders and select the item you\u2019d like to return.' },
+        { step: '2', title: 'Ship or drop off', desc: 'Print the prepaid label or arrange pickup with your local delivery partner.' },
+        { step: '3', title: 'Get refunded', desc: 'Once the item is received and checked, your refund is issued within 5 business days.' },
+      ],
+      sections: [
+        { title: 'Eligibility', body: 'New items from partner stores can be returned within 30 days of delivery, unused and in original packaging. Pre-owned items from individual sellers follow the return terms stated on the specific listing, if any.' },
+        { title: 'Refund method', body: 'Refunds are issued to your original payment method. Processing typically takes 3-5 business days after the returned item is received and inspected.' },
+        { title: 'Damaged or incorrect items', body: 'If an item arrives damaged or doesn\u2019t match its listing, contact the seller through Messages or file a dispute from your order — Huddle Buyer Protection covers these cases.' },
+        { title: 'Non-returnable items', body: 'For hygiene and safety reasons, some categories (e.g. worn diapers, used feeding items) cannot be returned once opened.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

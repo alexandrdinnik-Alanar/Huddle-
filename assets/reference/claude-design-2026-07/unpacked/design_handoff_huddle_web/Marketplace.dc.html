@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@keyframes omFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes omKen{from{transform:scale(1.08)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="shop" breadcrumb="Marketplace" hint-size="100%,150px"></dc-import>
+
+  <!-- HERO -->
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F2E8D6 54%,#EADDC7 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-40px;right:6%;opacity:.4;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:44px;padding:52px 40px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>The Huddle Marketplace</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(40px,4.6vw,62px);line-height:1.02;color:#3A342C;margin:16px 0 0;font-weight:500;">Smarter finds,<br><span style="font-style:italic;color:#BC7A45;">happier families.</span></h1>
+        <p style="font-size:16px;color:#7C7062;margin:18px 0 0;max-width:430px;line-height:1.6;">Quality kids' essentials, pre-loved and new — from families in your neighbourhood. Better for your budget, better for the planet.</p>
+        <div style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;">
+          <a href="SearchResults.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:14px 26px;border-radius:30px;font-size:14px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);transition:transform .15s,box-shadow .15s;" style-hover="transform:translateY(-2px);box-shadow:0 16px 32px rgba(188,122,69,.34);background:#A9663A;">Explore Marketplace</a>
+          <a href="HelpCenter.dc.html" style="text-decoration:none;background:#fff;border:1px solid #DBC9B0;color:#463F37;padding:14px 26px;border-radius:30px;font-size:14px;font-weight:500;display:flex;align-items:center;gap:8px;transition:border-color .15s,color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;"><dc-import name="Icon" icon-name="pulse" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>How it works</a>
+        </div>
+        <div style="display:flex;gap:26px;margin-top:28px;">
+          <div><div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">1,248</div><div style="font-size:11.5px;color:#8A7C6C;">items near you</div></div>
+          <div style="width:1px;background:#DBC9B0;"></div>
+          <div><div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">2,400+</div><div style="font-size:11.5px;color:#8A7C6C;">local families</div></div>
+          <div style="width:1px;background:#DBC9B0;"></div>
+          <div><div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">98%</div><div style="font-size:11.5px;color:#8A7C6C;">quality-checked</div></div>
+        </div>
+      </div>
+      <div style="position:relative;height:360px;border-radius:24px;overflow:hidden;box-shadow:0 24px 56px rgba(120,86,52,.2);border:1px solid rgba(255,255,255,.6);">
+        <image-slot id="mkt-hero" shape="rect" fit="cover" placeholder="Featured marketplace lifestyle photo" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONDITION PILLS -->
+  <div style="max-width:1280px;margin:0 auto;display:flex;gap:10px;padding:22px 40px 0;flex-wrap:wrap;">
+    <sc-for list="{{ pills }}" as="p" hint-placeholder-count="5">
+      <div style="font-size:13px;padding:9px 18px;border-radius:24px;background:{{ p.bg }};color:{{ p.color }};border:1px solid {{ p.border }};font-weight:500;">{{ p.label }}</div>
+    </sc-for>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;padding:16px 40px 6px;">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="9">
+      <div style="border:1px solid #DBC9B0;background:#fff;border-radius:12px;padding:9px 14px;font-size:12px;color:#463F37;display:flex;align-items:center;gap:8px;">{{ f.label }}: <span style="color:#8A7C6C;">{{ f.value }} ▾</span></div>
+    </sc-for>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:6px 40px;font-size:12px;color:#8A7C6C;">1,248 results · <span style="color:#463F37;font-weight:600;">Oslo &amp; nearby</span></div>
+
+  <!-- PRODUCT GRID -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:12px 40px 34px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="8">
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:10px;box-shadow:0 1px 2px rgba(70,55,40,.04),0 10px 26px rgba(150,110,70,.07);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-4px);box-shadow:0 18px 38px rgba(150,110,70,.14);">
+        <div style="position:relative;height:168px;border-radius:11px;overflow:hidden;">
+          <image-slot id="{{ p.slotId }}" shape="rect" fit="cover" placeholder="{{ p.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+          <span style="position:absolute;top:9px;left:9px;background:{{ p.tagBg }};color:#fff;font-size:10px;padding:3px 9px;border-radius:7px;font-weight:600;z-index:2;">{{ p.tag }}</span>
+          <span style="position:absolute;top:8px;right:8px;width:27px;height:27px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;z-index:2;"><dc-import name="Icon" icon-name="heart" color="#9E5A2C" size="13" hint-size="13,13"></dc-import></span>
+        </div>
+        <div style="font-size:11px;color:#8A7C6C;margin-top:11px;">{{ p.category }}</div>
+        <div style="font-size:13.5px;font-weight:600;color:#3A342C;margin-top:1px;">{{ p.name }}</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px;">
+          <div style="font-size:14px;font-weight:700;color:#9E5A2C;">{{ p.price }}</div>
+          <div style="font-size:10.5px;color:#A99B89;display:flex;align-items:center;gap:3px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="10" hint-size="10,10"></dc-import>{{ p.city }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- SHOP BY CATEGORY -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:8px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Shop by category</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Top picks across everything your family needs.</div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:18px;">
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+        <a href="SearchResults.dc.html" style="text-decoration:none;display:block;text-align:center;">
+          <div style="height:96px;border-radius:16px;background:linear-gradient(150deg,{{ c.c1 }},{{ c.c2 }});display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(150,110,70,.08);transition:transform .16s;" style-hover="transform:translateY(-4px);"><dc-import name="Icon" icon-name="{{ c.icon }}" color="#fff" size="30" hint-size="30,30"></dc-import></div>
+          <div style="font-size:12.5px;margin-top:9px;color:#463F37;font-weight:500;">{{ c.label }}</div>
+        </a>
+        </sc-for>
+    </div>
+  </div>
+
+  <!-- SHOP BY AGE STAGE -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:8px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Shop by age stage</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Find what fits your child at every stage.</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px;">
+        <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+        <a href="SearchResults.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(150deg,{{ s.c1 }},{{ s.c2 }});border-radius:18px;padding:20px;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 8px 22px rgba(150,110,70,.08);transition:transform .16s;text-decoration:none;" style-hover="transform:translateY(-4px);">
+          <img src="assets/Huddle_icon.png" alt="" style="position:absolute;right:-18px;top:-18px;width:80px;opacity:.12;pointer-events:none;">
+          <div style="font-size:11.5px;color:#9E5A2C;font-weight:600;">{{ s.age }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:2px;">{{ s.name }}</div>
+        </a>
+        </sc-for>
+    </div>
+  </div>
+
+  <!-- COLLECTION BANNERS -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:20px;padding:8px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <a href="Marketplace.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);color:#F6F0E8;border-radius:20px;padding:30px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-30px;width:150px;opacity:.12;pointer-events:none;">
+      <div style="font-size:11px;color:#EDBB8B;letter-spacing:.14em;text-transform:uppercase;font-weight:600;">Featured collection</div>
+      <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:8px;">Outdoor play essentials</div>
+      <div style="font-size:12.5px;color:#D8CDB9;margin-top:10px;max-width:280px;line-height:1.55;">Get little ones outside with handpicked bikes, rainwear and garden play.</div>
+      <div style="font-size:12.5px;font-weight:600;margin-top:16px;color:#EDBB8B;">Explore collection →</div>
+    </a>
+    <a href="PartnerStoresLanding.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#9BA184,#6E7459);color:#FBF7EF;border-radius:20px;padding:30px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <div style="font-size:11px;color:#EAE7D6;letter-spacing:.14em;text-transform:uppercase;font-weight:600;">Shop sustainably</div>
+      <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:8px;">Give more,<br>waste less.</div>
+      <div style="font-size:12.5px;color:#EAE7D6;margin-top:10px;line-height:1.55;">Choose pre-loved and keep good things in the family.</div>
+      <div style="font-size:12.5px;font-weight:600;margin-top:16px;">Learn more →</div>
+    </a>
+    <a href="PartnerStoresLanding.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#F0E5D3,#E4D2B7);color:#3A342C;border-radius:20px;padding:30px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <div style="font-size:11px;color:#9E5A2C;letter-spacing:.14em;text-transform:uppercase;font-weight:600;">Partner stores</div>
+      <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:8px;">Brands you<br>can trust.</div>
+      <div style="font-size:12.5px;color:#7C7062;margin-top:10px;line-height:1.55;">Handpicked labels, delivered locally.</div>
+      <div style="font-size:12.5px;font-weight:600;margin-top:16px;color:#9E5A2C;">Shop partners →</div>
+    </a>
+  </div>
+
+  <!-- SELL CTA -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 34px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:22px;padding:34px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;box-shadow:0 14px 34px rgba(150,110,70,.09);">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Give your items a <span style="font-style:italic;color:#BC7A45;">second life</span></div>
+        <div style="font-size:13.5px;color:#7C7062;margin-top:8px;max-width:520px;line-height:1.6;">List in minutes, sell to families nearby, and make room for what's next. It's free to list.</div>
+      </div>
+      <a href="CreateListing.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:15px 30px;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Start selling →</a>
+    </div>
+  </div>
+
+  <!-- TRUST ROW -->
+  <div style="background:#FCF9F3;border-top:1px solid #EFE4D4;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 40px;">
+      <sc-for list="{{ trust }}" as="t" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#6E6154;">
+          <dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import><span>{{ t.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const P = (bg) => bg;
+    return {
+      pills: [
+        { label: 'All', bg: '#3A342C', color: '#fff', border: '#3A342C' },
+        { label: 'New', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+        { label: 'Pre-owned', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+        { label: 'Free', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+        { label: 'Rental', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+      ],
+      filters: [
+        { label: 'Age', value: 'All ages' },
+        { label: 'Category', value: 'All' },
+        { label: 'Price', value: 'Any' },
+        { label: 'Condition', value: 'Any' },
+        { label: 'Brand', value: 'All' },
+        { label: 'City', value: 'Oslo' },
+        { label: 'Delivery', value: 'Any' },
+        { label: 'Sort', value: 'Recommended' },
+      ],
+      products: [
+        { slotId: 'mkt-p1', name: 'Banwood Balance Bike', category: 'Outdoor · Bikes', price: '1 999 NOK', city: 'Oslo', tag: 'New', tagBg: '#6E7459' },
+        { slotId: 'mkt-p2', name: 'Stokke Tripp Trapp', category: 'Nursery · High chairs', price: '1 890 NOK', city: 'Stavanger', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p3', name: 'Konges Sløjd Bunny', category: 'Toys · Soft toys', price: '229 NOK', city: 'Bergen', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p4', name: 'Liewood Water Bottle', category: 'Travel · Bottles', price: '249 NOK', city: 'Oslo', tag: 'New', tagBg: '#6E7459' },
+        { slotId: 'mkt-p5', name: 'Lily + Sid Dress', category: 'Clothing · Dresses', price: '399 NOK', city: 'Trondheim', tag: 'New', tagBg: '#6E7459' },
+        { slotId: 'mkt-p6', name: 'Oak Play Kitchen', category: 'Toys · Playroom', price: '1 299 NOK', city: 'Bergen', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p7', name: 'Bugaboo Fox 3 Stroller', category: 'Nursery · Strollers', price: '4 500 NOK', city: 'Oslo', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p8', name: 'Merino Wool Set', category: 'Clothing · Basics', price: '349 NOK', city: 'Tromsø', tag: 'New', tagBg: '#6E7459' },
+        { slotId: 'mkt-p9', name: 'Wooden Block Set', category: 'Toys · Learning', price: '199 NOK', city: 'Bergen', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p10', name: 'BabyBjörn Carrier', category: 'Nursery · Carriers', price: '690 NOK', city: 'Oslo', tag: 'Pre-owned', tagBg: '#BC7A45' },
+        { slotId: 'mkt-p11', name: 'Reima Rain Suit', category: 'Outdoor · Outerwear', price: '299 NOK', city: 'Trondheim', tag: 'New', tagBg: '#6E7459' },
+        { slotId: 'mkt-p12', name: 'Picture Book Bundle', category: 'Books · Learning', price: '149 NOK', city: 'Stavanger', tag: 'Pre-owned', tagBg: '#BC7A45' },
+      ],
+      categories: [
+        { label: 'Outdoor', icon: 'leaf', c1: '#9BA184', c2: '#6E7459' },
+        { label: 'Toys', icon: 'toy', c1: '#D79A62', c2: '#BC7A45' },
+        { label: 'Nursery', icon: 'bed', c1: '#C9A87E', c2: '#A97F4E' },
+        { label: 'Clothing', icon: 'shirt', c1: '#B8967A', c2: '#967052' },
+        { label: 'Travel', icon: 'bag', c1: '#A6AD8E', c2: '#7C8460' },
+        { label: 'Feeding', icon: 'heart', c1: '#D3A377', c2: '#B47C4A' },
+        { label: 'Books', icon: 'book', c1: '#C2A98A', c2: '#9A7E5C' },
+        { label: 'Childcare', icon: 'people', c1: '#9FA383', c2: '#727856' },
+      ],
+      stages: [
+        { age: '0–12 months', name: 'Newborn', c1: '#F2E6D6', c2: '#E0C9AC' },
+        { age: '1–3 years', name: 'Toddler', c1: '#E9E7DA', c2: '#CFD3BE' },
+        { age: '3–5 years', name: 'Preschool', c1: '#F2E6D6', c2: '#E4C9A4' },
+        { age: '6–10 years', name: 'School age', c1: '#E6E4D6', c2: '#C4C9B2' },
+        { age: 'Everything', name: 'For parents', c1: '#F0E5D3', c2: '#D8BE9C' },
+      ],
+      trust: [
+        { icon: 'check', label: 'Curated & safe' },
+        { icon: 'lock', label: 'Secure payments' },
+        { icon: 'home', label: 'Local community' },
+        { icon: 'refresh', label: 'Easy 14-day returns' },
+        { icon: 'leaf', label: 'Sustainable choices' },
+        { icon: 'user', label: 'Huddle support' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

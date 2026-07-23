@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;display:flex;align-items:flex-start;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="settings" hint-size="220px,100vh"></dc-import>
+  <div style="flex:1;min-width:0;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+      <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">System status</div>
+      <div style="font-size:12px;color:#6E7459;background:#EAEBE1;border-radius:16px;padding:6px 13px;font-weight:600;display:flex;align-items:center;gap:7px;"><span style="width:8px;height:8px;border-radius:50%;background:#6E7459;"></span>All systems operational</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:20px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="font-family:'Newsreader',serif;font-size:24px;color:{{ s.color }};">{{ s.value }}</div>
+          <div style="font-size:11.5px;color:#8A7C6C;margin-top:3px;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:22px 24px;margin-top:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-bottom:14px;">Services</div>
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #F2E9DA;">
+          <span style="width:9px;height:9px;border-radius:50%;background:{{ s.dot }};flex-shrink:0;"></span>
+          <div style="flex:1;font-size:13.5px;font-weight:600;color:#3A342C;">{{ s.name }}</div>
+          <div style="font-size:12px;color:#8A7C6C;width:110px;">{{ s.uptime }} uptime</div>
+          <span style="font-size:11px;font-weight:700;padding:4px 11px;border-radius:14px;background:{{ s.bg }};color:{{ s.color }};">{{ s.status }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:22px 24px;margin-top:16px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;"><div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">Recent incidents</div><span style="font-size:12px;color:#9E5A2C;font-weight:600;">View history →</span></div>
+      <sc-for list="{{ incidents }}" as="i" hint-placeholder-count="3">
+        <div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid #F2E9DA;">
+          <div style="width:34px;height:34px;border-radius:9px;background:#EAEBE1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="15" hint-size="15,15"></dc-import></div>
+          <div><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ i.title }}</div><div style="font-size:11.5px;color:#8A7C6C;margin-top:2px;">{{ i.detail }}</div><div style="font-size:10.5px;color:#A99B89;margin-top:2px;">{{ i.time }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const mk = (name, uptime, status, ok) => ({
+      name, uptime, status, dot: ok ? '#6E7459' : '#B0462F',
+      bg: ok ? '#EAEBE1' : '#F7E0D6', color: ok ? '#6E7459' : '#B0462F',
+    });
+    return {
+      stats: [
+        { value: '99.98%', label: 'Uptime (30d)', color: '#6E7459' },
+        { value: '142ms', label: 'Avg. response time', color: '#3A342C' },
+        { value: '0', label: 'Active incidents', color: '#6E7459' },
+        { value: '2', label: 'Scheduled maintenance', color: '#BC7A45' },
+      ],
+      services: [
+        mk('Web application', '99.99%', 'Operational', true),
+        mk('API', '99.97%', 'Operational', true),
+        mk('Payments', '99.95%', 'Operational', true),
+        mk('Notifications', '99.90%', 'Operational', true),
+        mk('Search & discovery', '99.99%', 'Operational', true),
+        mk('Image & media CDN', '99.98%', 'Operational', true),
+      ],
+      incidents: [
+        { title: 'Elevated API latency', detail: 'Resolved — root cause: database connection pool exhaustion.', time: '18 Jun, 14:22 — 15:04' },
+        { title: 'Scheduled maintenance', detail: 'Database upgrade completed with no downtime.', time: '10 Jun, 02:00 — 02:40' },
+        { title: 'Payment provider degradation', detail: 'Resolved — mitigated with automatic retry & failover.', time: '2 Jun, 09:15 — 09:52' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

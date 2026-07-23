@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+    <div style="max-width:520px;padding:32px 40px;">
+      <a href="MyListings.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to My Listings</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Inquiries</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Manage messages from interested buyers.</div>
+
+      <div style="display:flex;gap:26px;margin-top:18px;border-bottom:1px solid #DBC9B0;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <div style="font-size:13px;padding-bottom:10px;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;margin-top:14px;">
+        <sc-for list="{{ inquiries }}" as="i" hint-placeholder-count="3">
+          <a href="SellerReservationDetail.dc.html" style="display:flex;align-items:flex-start;gap:12px;padding:14px 6px;text-decoration:none;color:#463F37;border-bottom:1px solid #EFE4D4;">
+            <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);flex-shrink:0;position:relative;">
+              <sc-if value="{{ i.unread }}" hint-placeholder-val="{{ false }}">
+                <span style="position:absolute;bottom:0;right:0;width:9px;height:9px;border-radius:50%;background:#6E7459;border:2px solid #F6F0E8;"></span>
+              </sc-if>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;">{{ i.name }}</div>
+              <div style="font-size:12px;color:#7C7062;margin-top:2px;">{{ i.message }}</div>
+            </div>
+            <div style="font-size:11px;color:#8A7C6C;">{{ i.time }}</div>
+          </a>
+        </sc-for>
+      </div>
+
+      <div style="background:#EFE4D4;border-radius:10px;padding:12px 14px;font-size:12px;color:#7C7062;margin-top:18px;"> Tip: Respond quickly to increase your chances of selling.</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'All (3)', color: '#463F37', border: '#BC7A45' },
+        { label: 'Unread (1)', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Archived', color: '#8A7C6C', border: 'transparent' },
+      ],
+      inquiries: [
+        { name: 'Emma Anderson', message: 'Hi! Is this stroller still available?', time: '10:04', unread: true },
+        { name: 'Maria Hansen', message: 'Hi, can you tell me more about the condition?', time: 'Yesterday', unread: false },
+        { name: 'David Olsen', message: "I'm interested, is pickup this week possible?", time: 'May 16', unread: false },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

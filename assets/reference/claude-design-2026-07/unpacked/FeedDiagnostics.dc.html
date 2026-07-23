@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="PartnerSidebar" active="analytics" hint-size="230px,600px"></dc-import>
+    <div style="max-width:560px;padding:32px 40px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+          <div style="width:24px;height:24px;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ d.num }}</div>
+          <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:20px;">Feed Diagnostics</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">We found some issues with your feed.</div>
+
+      <div style="background:#F6DCD6;border-radius:10px;padding:12px 14px;font-size:12px;color:#8A3B30;margin-top:16px;"> Feed contains 12 errors and 24 warnings</div>
+
+      <div style="display:flex;gap:26px;margin-top:16px;border-bottom:1px solid #DBC9B0;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <div style="font-size:13px;padding-bottom:10px;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;">
+        <sc-for list="{{ errors }}" as="e" hint-placeholder-count="5">
+          <div style="display:flex;justify-content:space-between;font-size:13px;">
+            <span> {{ e.msg }}</span><span style="color:#8A7C6C;">{{ e.row }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <div style="flex:1;text-align:center;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:22px;padding:13px;font-size:14px;">⬇ Download Report</div>
+        <div style="flex:1;text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;">Fix Issues</div>
+      </div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      dots: [
+        { num: '✓', bg: '#3A342C', color: '#fff', hasLine: true },
+        { num: '✓', bg: '#3A342C', color: '#fff', hasLine: true },
+        { num: '✓', bg: '#3A342C', color: '#fff', hasLine: true },
+        { num: '4', bg: '#3A342C', color: '#fff', hasLine: true },
+        { num: '5', bg: '#EFE4D4', color: '#463F37', hasLine: false },
+      ],
+      tabs: [
+        { label: 'All (36)', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Errors (12)', color: '#463F37', border: '#B0453A' },
+        { label: 'Warnings (24)', color: '#8A7C6C', border: 'transparent' },
+      ],
+      errors: [
+        { msg: 'Missing required field: price', row: 'Row 15' },
+        { msg: 'Invalid value for: gender', row: 'Row 23' },
+        { msg: 'Image URL is not accessible', row: 'Row 45' },
+        { msg: 'Invalid category ID', row: 'Row 67' },
+        { msg: 'Missing required field: title', row: 'Row 89' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

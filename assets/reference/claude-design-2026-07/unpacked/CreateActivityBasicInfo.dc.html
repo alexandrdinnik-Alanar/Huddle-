@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="activities" hint-size="100%,64px"></dc-import>
+
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="events" hint-size="230px,600px"></dc-import></div>
+
+    <div style="flex:1;min-width:0;max-width:600px;padding:32px 40px 60px;">
+      <div style="display:flex;align-items:center;gap:4px;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+          <div style="width:24px;height:24px;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <sc-if value="{{ d.done }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon-name="check" color="#fff" size="11" hint-size="11,11"></dc-import></sc-if>
+            <sc-if value="{{ d.notDone }}" hint-placeholder-val="{{ true }}">{{ d.num }}</sc-if>
+          </div>
+          <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+        </sc-for>
+      </div>
+
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-top:20px;">Step 1 of 5</div>
+      <div style="font-family:'Newsreader',serif;font-size:25px;color:#3A342C;margin-top:4px;">Basic information</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Let's start with the basic details of your activity.</div>
+
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Activity title</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">Morning Community Run</div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Activity category</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Sports &amp; Fitness <span style="color:#A99B89;">▾</span></div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:9px;font-weight:600;">Activity type</div>
+        <div style="display:flex;gap:10px;">
+          <sc-for list="{{ types }}" as="e" hint-placeholder-count="3">
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;border:1px solid {{ e.borderC }};background:{{ e.bg }};border-radius:12px;padding:11px;color:{{ e.color }};font-weight:{{ e.weight }};cursor:pointer;">
+              <div style="width:16px;height:16px;border-radius:50%;border:1.5px solid {{ e.dotBorder }};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                <sc-if value="{{ e.selected }}" hint-placeholder-val="{{ false }}"><div style="width:8px;height:8px;border-radius:50%;background:#BC7A45;"></div></sc-if>
+              </div>{{ e.label }}
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;">
+          <div>
+            <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Start date &amp; time</div>
+            <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;background:#fff;">Jun 8, 2026 <dc-import name="Icon" icon-name="calendar" color="#9E5A2C" size="14" hint-size="14,14"></dc-import></div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">&nbsp;</div>
+            <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;background:#fff;">7:00 AM <dc-import name="Icon" icon-name="clock" color="#9E5A2C" size="14" hint-size="14,14"></dc-import></div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">End date &amp; time</div>
+            <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;background:#fff;">Jun 8, 2026 <dc-import name="Icon" icon-name="calendar" color="#9E5A2C" size="14" hint-size="14,14"></dc-import></div>
+          </div>
+          <div>
+            <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">&nbsp;</div>
+            <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;background:#fff;">9:00 AM <dc-import name="Icon" icon-name="clock" color="#9E5A2C" size="14" hint-size="14,14"></dc-import></div>
+          </div>
+        </div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Time zone</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">(GMT+02:00) Oslo, Norway <span style="color:#A99B89;">▾</span></div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <a href="Activities.dc.html" style="flex:1;text-decoration:none;text-align:center;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Cancel</a>
+        <a href="CreateActivityLocation.dc.html" style="flex:1;text-decoration:none;text-align:center;background:#BC7A45;color:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Continue →</a>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const dots = [1, 2, 3, 4, 5].map((n) => ({
+      num: n, done: n === 1, notDone: n !== 1,
+      bg: n === 1 ? '#3A342C' : '#EFE4D4', color: n === 1 ? '#fff' : '#463F37', hasLine: n < 5,
+    }));
+    return {
+      dots,
+      types: [
+        { label: 'Online', borderC: '#DBC9B0', dotBorder: '#DBC9B0', bg: '#fff', color: '#463F37', weight: 500, selected: false },
+        { label: 'Offline', borderC: '#BC7A45', dotBorder: '#BC7A45', bg: '#F2E6D6', color: '#9E5A2C', weight: 600, selected: true },
+        { label: 'Hybrid', borderC: '#DBC9B0', dotBorder: '#DBC9B0', bg: '#fff', color: '#463F37', weight: 500, selected: false },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

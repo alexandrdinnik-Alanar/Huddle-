@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="For Municipalities" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-46px;left:3%;opacity:.32;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:40px;padding:52px 40px 20px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>Huddle for municipalities</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(32px,3.8vw,50px);line-height:1.08;color:#3A342C;margin:16px 0 0;font-weight:500;">Support family participation <span style="font-style:italic;color:#BC7A45;">with privacy-safe local insight.</span></h1>
+        <p style="font-size:15.5px;color:#7C7062;margin:16px 0 0;max-width:420px;line-height:1.6;">Huddle helps municipalities understand what families need, discover local opportunities, and measure what matters — together.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="ContactUs.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:14px 26px;border-radius:28px;font-size:14px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Partner with Huddle →</a>
+          <a href="MunicipalityDetail.dc.html" style="text-decoration:none;background:#fff;border:1px solid #DBC9B0;color:#463F37;padding:14px 26px;border-radius:28px;font-size:14px;font-weight:500;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Example: Oslo Kommune →</a>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:22px;box-shadow:0 18px 44px rgba(120,86,52,.14);">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:13px;font-weight:700;color:#3A342C;">Municipal overview</span><span style="font-size:10px;color:#A99B89;">Spring 2026</span></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;">
+          <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+            <div><div style="font-size:10px;color:#8A7C6C;">{{ s.label }}</div><div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:2px;">{{ s.value }}</div><div style="font-size:9.5px;color:#6E7459;">+{{ s.change }}% vs last season</div></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:80px;margin-top:16px;padding:12px;background:#FBF5EC;border-radius:12px;">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="10">
+            <div style="flex:1;height:{{ b.h }}%;background:linear-gradient(180deg,#C68C57,#9E5A2C);border-radius:3px 3px 0 0;"></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;text-align:center;font-size:11.5px;color:#8A7C6C;padding:8px 0 18px;display:flex;align-items:center;justify-content:center;gap:7px;"><dc-import name="Icon" icon-name="lock" color="#8A7C6C" size="13" hint-size="13,13"></dc-import>Privacy-first by design. Aggregated insights. No personal data.</div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:44px 40px 8px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Families at every stage. Needs that evolve.</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px;">
+      <sc-for list="{{ familyStages }}" as="f" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="height:100px;border-radius:11px;overflow:hidden;position:relative;"><image-slot id="{{ f.slotId }}" shape="rect" fit="cover" placeholder="{{ f.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div style="font-size:13px;font-weight:600;margin-top:10px;color:#3A342C;">{{ f.name }}</div>
+          <div style="font-size:11px;color:#9E5A2C;">{{ f.age }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:3px;line-height:1.4;">{{ f.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:24px 40px 8px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Focus areas that build stronger communities</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px;">
+      <sc-for list="{{ focusAreas }}" as="f" hint-placeholder-count="5">
+        <div style="position:relative;height:150px;border-radius:16px;overflow:hidden;background:linear-gradient(140deg,{{ f.c1 }},{{ f.c2 }});padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:#FBF7EF;box-shadow:0 10px 26px rgba(110,116,89,.16);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="width:40px;height:40px;border-radius:11px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ f.icon }}" color="#fff" size="19" hint-size="19,19"></dc-import></div>
+          <div><div style="font-size:14px;font-weight:600;">{{ f.name }}</div><div style="font-size:10.5px;color:rgba(251,247,239,.85);margin-top:3px;line-height:1.4;">{{ f.desc }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(180deg,#FBF5EC,#F1E7D5);border-top:1px solid #EFE4D4;border-bottom:1px solid #EFE4D4;margin-top:32px;">
+    <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:44px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+      <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;text-align:center;">What Huddle can help municipalities achieve</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px;">
+        <sc-for list="{{ achieve }}" as="a" hint-placeholder-count="8">
+          <div style="display:flex;gap:12px;align-items:flex-start;background:#FCF9F3;border:1px solid #EFE4D4;border-radius:14px;padding:16px;box-shadow:0 6px 16px rgba(150,110,70,.05);">
+            <div style="width:40px;height:40px;border-radius:10px;flex-shrink:0;background:{{ a.bg }};display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ a.icon }}" color="{{ a.color }}" size="18" hint-size="18,18"></dc-import></div>
+            <div><div style="font-size:13px;font-weight:600;color:#3A342C;line-height:1.25;">{{ a.title }}</div><div style="font-size:11px;color:#8A7C6C;margin-top:4px;line-height:1.45;">{{ a.desc }}</div></div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.2fr 1fr 1.2fr;gap:16px;margin-top:22px;">
+        <div style="background:#FCF9F3;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="font-size:13px;font-weight:700;color:#3A342C;">Age group participation</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
+            <sc-for list="{{ ageParticipation }}" as="a" hint-placeholder-count="5">
+              <div style="display:flex;align-items:center;gap:10px;font-size:11px;"><span style="width:88px;color:#8A7C6C;">{{ a.label }}</span><div style="flex:1;height:7px;background:#EFE4D4;border-radius:4px;overflow:hidden;"><div style="width:{{ a.pct }}%;height:100%;background:linear-gradient(90deg,#C68C57,#9E5A2C);"></div></div><span style="width:32px;text-align:right;font-weight:600;color:#463F37;">{{ a.pct }}%</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:#FCF9F3;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="font-size:13px;font-weight:700;color:#3A342C;">Top activity categories</div>
+          <div style="display:flex;flex-direction:column;gap:11px;margin-top:14px;">
+            <sc-for list="{{ topCategories }}" as="c" hint-placeholder-count="5">
+              <div style="display:flex;justify-content:space-between;font-size:11.5px;"><span style="color:#8A7C6C;">{{ c.label }}</span><span style="font-weight:600;color:#9E5A2C;">{{ c.pct }}%</span></div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="background:linear-gradient(150deg,#E9E7DA,#CFD3BE);border:1px solid #EADCC8;border-radius:16px;padding:20px;display:flex;align-items:center;justify-content:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:8px;color:#6E7459;"><dc-import name="Icon" icon-name="pin" color="#6E7459" size="22" hint-size="22,22"></dc-import><span style="font-size:12px;font-weight:500;text-align:center;">Participation map<br>by neighbourhood</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FCF9F3;border-bottom:1px solid #EFE4D4;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 40px;">
+      <sc-for list="{{ trust }}" as="t" hint-placeholder-count="5">
+        <div style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#6E6154;"><dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import><span>{{ t.label }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:44px 40px 52px;">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);color:#F6F0E8;border-radius:22px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-34px;width:160px;opacity:.1;pointer-events:none;">
+      <div style="position:relative;"><div style="font-family:'Newsreader',serif;font-size:24px;">Stronger families. Stronger communities.</div><div style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#EDBB8B;margin-top:4px;">Let's build it together.</div><div style="font-size:12.5px;color:#D8CDB9;margin-top:8px;max-width:460px;line-height:1.55;">Partner with Huddle to understand, engage and support families — today and for generations to come.</div></div>
+      <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="ContactUs.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:600;" style-hover="background:#CE8A50;">Schedule a demo</a>
+        <a href="ContactUs.dc.html" style="text-decoration:none;border:1px solid rgba(246,240,232,.5);color:#F6F0E8;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:500;" style-hover="background:rgba(246,240,232,.12);">Contact our team</a>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const B = [['#F2E6D6', '#BC7A45'], ['#EAEBE1', '#6E7459']];
+    return {
+      stats: [
+        { label: 'Active Families', value: '4,736', change: 18 },
+        { label: 'Participations', value: '12,842', change: 24 },
+        { label: 'Programs', value: '312', change: 15 },
+        { label: 'Organizations', value: '128', change: 8 },
+      ],
+      bars: [40, 55, 48, 68, 60, 78, 72, 85, 80, 92].map((h) => ({ h })),
+      familyStages: [
+        { slotId: 'muni-stage-1', name: 'Early Years', age: '0–3 years', desc: 'Nurturing play, early development & connection.' },
+        { slotId: 'muni-stage-2', name: 'Preschool', age: '3–5 years', desc: 'Learning, play & building confidence together.' },
+        { slotId: 'muni-stage-3', name: 'School Age', age: '6–10 years', desc: 'Skills, interests & belonging in community.' },
+        { slotId: 'muni-stage-4', name: 'Teens', age: '10+ years', desc: 'Independence, identity & opportunities to grow.' },
+        { slotId: 'muni-stage-5', name: 'Parents & Caregivers', age: 'All stages', desc: 'Support, connection & resources for family life.' },
+      ],
+      focusAreas: [
+        { name: 'Activities & Classes', desc: 'Sports, arts, music & skill-building.', icon: 'pulse', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Events & Workshops', desc: 'Festivals & community experiences.', icon: 'calendar', c1: '#C99A6B', c2: '#A9663A' },
+        { name: 'Parenting Support', desc: 'Groups, guidance & resources.', icon: 'people', c1: '#A6AD8E', c2: '#7C8460' },
+        { name: 'Outdoor & Nature', desc: 'Parks, trails & nature play.', icon: 'leaf', c1: '#9FA383', c2: '#727856' },
+        { name: 'Culture & Learning', desc: 'Museums, libraries & learning.', icon: 'book', c1: '#B98B62', c2: '#8A6A3E' },
+      ],
+      achieve: [
+        { title: 'Local family discovery', desc: 'Help families find the right programs, services & events nearby.', icon: 'search', bg: B[0][0], color: B[0][1] },
+        { title: 'Privacy-safe insight', desc: 'Understand participation, interest & gaps — without personal data.', icon: 'lock', bg: B[1][0], color: B[1][1] },
+        { title: 'Aggregated data principles', desc: 'Actionable insights built on aggregated, anonymised data — always.', icon: 'chart', bg: B[0][0], color: B[0][1] },
+        { title: 'Public programs', desc: 'Showcase municipal programs & services in one trusted family hub.', icon: 'home', bg: B[1][0], color: B[1][1] },
+        { title: 'Organizer networks', desc: 'Empower local organisations to reach more families together.', icon: 'handshake', bg: B[0][0], color: B[0][1] },
+        { title: 'Inclusion & accessibility', desc: 'Make opportunities easier to find, join & afford for every family.', icon: 'heart', bg: B[1][0], color: B[1][1] },
+        { title: 'Circular family economy', desc: 'Support local businesses & services that keep value in the community.', icon: 'leaf', bg: B[0][0], color: B[0][1] },
+        { title: 'Pilot together', desc: 'Test, learn & improve programs with real insight from real families.', icon: 'sparkle', bg: B[1][0], color: B[1][1] },
+      ],
+      ageParticipation: [
+        { label: '0–3 years', pct: 18 },
+        { label: '3–5 years', pct: 22 },
+        { label: '6–10 years', pct: 27 },
+        { label: '10+ years', pct: 18 },
+        { label: 'Caregivers', pct: 15 },
+      ],
+      topCategories: [
+        { label: 'Activities & Classes', pct: 40 },
+        { label: 'Events & Workshops', pct: 24 },
+        { label: 'Outdoor & Nature', pct: 16 },
+        { label: 'Parenting Support', pct: 12 },
+        { label: 'Culture & Learning', pct: 8 },
+      ],
+      trust: [
+        { icon: 'lock', label: 'Privacy by design' },
+        { icon: 'people', label: 'Aggregated insights only' },
+        { icon: 'home', label: 'Local control' },
+        { icon: 'check', label: 'Secure & compliant' },
+        { icon: 'star', label: 'Transparent governance' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

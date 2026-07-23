@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:860px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="height:180px;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(150,110,70,.1);">
+      <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144805_dce86af6-1a6d-4419-aa61-d78515166cdc.png" alt="David's cover photo" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:-42px;padding:0 6px;position:relative;">
+      <div style="width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#C99A6B,#A9663A);border:4px solid #F6F0E8;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:34px;box-shadow:0 12px 26px rgba(58,52,44,.2);">D</div>
+      <div style="display:flex;gap:10px;margin-bottom:8px;">
+        <div style="border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:10px 20px;font-size:12.5px;font-weight:500;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Edit profile</div>
+        <div style="border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:10px 14px;display:flex;align-items:center;cursor:pointer;"><svg viewBox="0 0 24 24" width="16" height="16" fill="#463F37"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg></div>
+      </div>
+    </div>
+
+    <div style="font-family:'Newsreader',serif;font-size:25px;color:#3A342C;margin-top:16px;">David Andersen</div>
+    <div style="font-size:12.5px;color:#8A7C6C;margin-top:5px;display:flex;align-items:center;gap:8px;">Member since Jan 2024 <span style="color:#DBC9B0;">·</span> <dc-import name="Icon" icon-name="star" color="#BC7A45" size="12" hint-size="12,12"></dc-import>4.9 (28 reviews)</div>
+
+    <div style="display:flex;gap:8px;margin-top:22px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <div style="font-size:13px;padding:9px 16px;border-radius:20px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:24px;">About me</div>
+    <div style="font-size:13.5px;color:#7C7062;margin-top:8px;line-height:1.65;">Father of two amazing kids. Love outdoor activities, photography and connecting with local families.</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px;">
+      <sc-for list="{{ info }}" as="i" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:13px 16px;">
+          <span style="display:flex;align-items:center;gap:8px;color:#8A7C6C;"><dc-import name="Icon" icon-name="{{ i.icon }}" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>{{ i.label }}</span>
+          <span style="font-weight:600;color:#3A342C;">{{ i.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'About', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Activity', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Groups (6)', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Events (12)', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Reviews (8)', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      info: [
+        { icon: 'pin', label: 'Location', value: 'Oslo, Norway' },
+        { icon: 'bag', label: 'Occupation', value: 'Photographer' },
+        { icon: 'globe', label: 'Languages', value: 'English, Norsk' },
+        { icon: 'star', label: 'Interests', value: 'Photography, Hiking, Travel' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="max-width:1080px;margin:0 auto;padding:32px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Municipality · data scope</div>
+        <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;">Data &amp; governance</div>
+      </div>
+      <div style="font-size:12px;color:#6E7459;background:#EAEBE1;border-radius:16px;padding:6px 13px;font-weight:600;display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="home" color="#6E7459" size="14" hint-size="14,14"></dc-import>Oslo Kommune</div>
+    </div>
+
+    <div style="display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:18px;padding:18px 22px;margin-top:20px;">
+      <div style="width:38px;height:38px;border-radius:50%;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="lock" color="#BC7A45" size="18" hint-size="18,18"></dc-import></div>
+      <div><div style="font-size:14px;font-weight:700;color:#3A342C;">Aggregate &amp; de-identified only</div><div style="font-size:13px;color:#7C7062;margin-top:3px;line-height:1.6;max-width:760px;">Municipalities never receive personal data. Every figure is aggregated across a minimum cohort of 10, with small cells suppressed. No names, exact addresses, or child birthdates are ever exposed.</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+          <div style="font-family:'Newsreader',serif;font-size:28px;color:{{ s.color }};">{{ s.value }}</div>
+          <div style="font-size:12px;color:#8A7C6C;margin-top:4px;">{{ s.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;align-items:start;">
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:22px 24px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-bottom:6px;">Shared data categories</div>
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="4">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #F2E9DA;">
+            <div><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ c.name }}</div><div style="font-size:11.5px;color:#8A7C6C;">{{ c.level }}</div></div>
+            <div style="width:44px;height:25px;border-radius:14px;background:{{ c.trackBg }};position:relative;flex-shrink:0;"><span style="position:absolute;top:3px;{{ c.knobSide }}:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);"></span></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:22px 24px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-bottom:14px;">Governance controls</div>
+        <div style="border:1px solid #EADCC8;border-radius:14px;padding:14px 16px;">
+          <div style="font-size:12px;color:#8A7C6C;">Minimum cohort threshold (k)</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-top:8px;">
+            <div style="flex:1;height:6px;border-radius:3px;background:#EFE4D4;position:relative;"><span style="position:absolute;left:0;top:0;bottom:0;width:55%;border-radius:3px;background:#BC7A45;"></span><span style="position:absolute;left:calc(55% - 9px);top:-6px;width:18px;height:18px;border-radius:50%;background:#BC7A45;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);"></span></div>
+            <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">10</div>
+          </div>
+          <div style="font-size:11px;color:#A99B89;margin-top:6px;">Reports below this cohort size are automatically suppressed.</div>
+        </div>
+        <div style="border:1px solid #EADCC8;border-radius:14px;padding:14px 16px;margin-top:12px;">
+          <div style="font-size:12px;color:#8A7C6C;margin-bottom:6px;">Reporting scope</div>
+          <div style="font-size:13.5px;font-weight:600;color:#3A342C;display:flex;justify-content:space-between;">District-level, monthly <span style="color:#A99B89;">▾</span></div>
+        </div>
+        <a href="Municipality.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:12px;font-size:13.5px;font-weight:600;margin-top:16px;box-shadow:0 10px 22px rgba(188,122,69,.26);" style-hover="background:#A9663A;">View reports dashboard →</a>
+      </div>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:22px 24px;box-shadow:0 8px 22px rgba(150,110,70,.06);margin-top:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;"><div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Access &amp; audit log</div><span style="font-size:12px;color:#9E5A2C;font-weight:600;">Export →</span></div>
+      <sc-for list="{{ audit }}" as="a" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #F2E9DA;">
+          <div style="width:34px;height:34px;border-radius:9px;background:#EAEBE1;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="clock" color="#6E7459" size="15" hint-size="15,15"></dc-import></div>
+          <div style="flex:1;"><div style="font-size:13px;color:#3A342C;"><b>{{ a.who }}</b> {{ a.action }}</div><div style="font-size:11.5px;color:#A99B89;">{{ a.time }}</div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const mkC = (name, level, on) => ({ name, level, trackBg: on ? '#BC7A45' : '#DBC9B0', knobSide: on ? 'right' : 'left' });
+    return {
+      stats: [
+        { value: 'k ≥ 10', label: 'Minimum cohort size', color: '#6E7459' },
+        { value: '18', label: 'Aggregate datasets', color: '#3A342C' },
+        { value: '4', label: 'Small cells suppressed', color: '#BC7A45' },
+        { value: '0', label: 'Personal records shared', color: '#6E7459' },
+      ],
+      categories: [
+        mkC('Activity participation', 'Counts by district & age band', true),
+        mkC('Event attendance', 'Counts by district & month', true),
+        mkC('Service demand signals', 'Aggregate trend only', true),
+        mkC('Family well-being survey', 'Opt-in, aggregate only', false),
+      ],
+      audit: [
+        { who: 'Oslo Kommune · Culture', action: 'viewed the district participation report.', time: 'Today, 09:14' },
+        { who: 'System', action: 'suppressed 2 small cells in the Sagene report.', time: 'Yesterday, 23:00' },
+        { who: 'Oslo Kommune · Health', action: 'exported the monthly aggregate CSV.', time: '18 Jun, 14:22' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

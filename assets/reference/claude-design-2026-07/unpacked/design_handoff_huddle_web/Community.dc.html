@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@keyframes omFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="community" breadcrumb="Community" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 52%,#E8E3D0 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-46px;left:4%;opacity:.36;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:44px;padding:52px 40px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>The Huddle community</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(38px,4.4vw,58px);line-height:1.02;color:#3A342C;margin:16px 0 0;font-weight:500;">A trusted local<br><span style="font-style:italic;color:#BC7A45;">family community.</span></h1>
+        <p style="font-size:16px;color:#7C7062;margin:18px 0 0;max-width:430px;line-height:1.6;">Find support, discover activities, and connect with local parents and experts who truly get it — connect, grow &amp; belong, together.</p>
+        <div style="display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;">
+          <a href="MyGroupsList.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:14px 26px;border-radius:30px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;"><dc-import name="Icon" icon-name="people" color="#fff" size="15" hint-size="15,15"></dc-import>Join the community</a>
+          <a href="MyGroupsList.dc.html" style="text-decoration:none;background:#fff;border:1px solid #DBC9B0;color:#463F37;padding:14px 26px;border-radius:30px;font-size:14px;font-weight:500;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Explore groups →</a>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <div style="height:340px;border-radius:24px;overflow:hidden;box-shadow:0 24px 56px rgba(120,86,52,.2);border:1px solid rgba(255,255,255,.6);"><image-slot id="comm-hero" shape="rect" fit="cover" placeholder="Families connecting at a community gathering" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+        <div style="position:absolute;bottom:-20px;left:-20px;background:#fff;border-radius:16px;box-shadow:0 16px 36px rgba(120,86,52,.18);padding:16px 18px;width:230px;">
+          <div style="font-size:13px;font-weight:700;color:#3A342C;">Stronger together</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <div><div style="font-family:'Newsreader',serif;font-size:19px;color:#9E5A2C;">12,540+</div><div style="font-size:10px;color:#8A7C6C;">Local families</div></div>
+            <div><div style="font-family:'Newsreader',serif;font-size:19px;color:#9E5A2C;">286+</div><div style="font-size:10px;color:#8A7C6C;">Active groups</div></div>
+            <div><div style="font-family:'Newsreader',serif;font-size:19px;color:#9E5A2C;">420+</div><div style="font-size:10px;color:#8A7C6C;">Upcoming events</div></div>
+            <div><div style="font-family:'Newsreader',serif;font-size:19px;color:#9E5A2C;">150+</div><div style="font-size:10px;color:#8A7C6C;">Local experts</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;display:flex;gap:10px;padding:24px 40px 4px;flex-wrap:wrap;">
+    <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:9px 16px 9px 12px;border-radius:24px;background:{{ t.bg }};color:{{ t.color }};border:1px solid {{ t.border }};font-weight:500;"><dc-import name="Icon" icon-name="{{ t.icon }}" color="{{ t.iconColor }}" size="14" hint-size="14,14"></dc-import>{{ t.label }}</div>
+    </sc-for>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:22px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-bottom:16px;">Browse by age &amp; focus</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:16px;">
+      <sc-for list="{{ focusAreas }}" as="f" hint-placeholder-count="7">
+        <a href="SearchResults.dc.html" style="text-align:center;text-decoration:none;display:block;">
+          <div style="width:84px;height:84px;border-radius:50%;background:linear-gradient(150deg,{{ f.c1 }},{{ f.c2 }});margin:0 auto;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(150,110,70,.1);transition:transform .16s;" style-hover="transform:translateY(-4px);"><dc-import name="Icon" icon-name="{{ f.icon }}" color="#fff" size="30" hint-size="30,30"></dc-import></div>
+          <div style="font-size:12.5px;font-weight:600;margin-top:10px;color:#3A342C;">{{ f.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;">{{ f.sub }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2.2fr 1fr;gap:22px;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Upcoming events</div>
+        <a href="Events.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all events →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+        <sc-for list="{{ upcomingEvents }}" as="e" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:8px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+            <div style="position:relative;height:100px;border-radius:10px;overflow:hidden;">
+              <image-slot id="{{ e.slotId }}" shape="rect" fit="cover" placeholder="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+              <span style="position:absolute;top:6px;left:6px;background:rgba(251,246,238,.94);color:#6E7459;font-size:9px;font-weight:700;padding:2px 7px;border-radius:6px;z-index:2;">{{ e.age }}</span>
+            </div>
+            <div style="font-size:12px;font-weight:600;margin-top:8px;color:#3A342C;">{{ e.name }}</div>
+            <div style="font-size:10.5px;color:#8A7C6C;margin-top:2px;">{{ e.time }}</div>
+            <div style="font-size:10px;color:#A99B89;display:flex;align-items:center;gap:3px;margin-top:2px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="10" hint-size="10,10"></dc-import>{{ e.place }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Near you</div>
+        <a href="Events.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">On map →</a>
+      </div>
+      <div style="position:relative;height:224px;border-radius:16px;overflow:hidden;background:linear-gradient(150deg,#E9E7DA,#CFD3BE);display:flex;align-items:center;justify-content:center;border:1px solid #EADCC8;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px;color:#6E7459;"><dc-import name="Icon" icon-name="pin" color="#6E7459" size="22" hint-size="22,22"></dc-import><span style="font-size:12px;font-weight:500;">Oslo map</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Parent community groups</div>
+      <a href="MyGroupsList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all groups →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="5">
+        <a href="GroupFeed.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:9px;box-shadow:0 10px 26px rgba(150,110,70,.07);display:block;transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-4px);box-shadow:0 18px 38px rgba(150,110,70,.14);">
+          <div style="position:relative;height:104px;border-radius:11px;overflow:hidden;"><image-slot id="{{ g.slotId }}" shape="rect" fit="cover" placeholder="{{ g.name }} group" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div style="font-size:13px;font-weight:600;margin-top:10px;color:#3A342C;">{{ g.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:1px;">{{ g.age }}</div>
+          <div style="font-size:11px;color:#9E5A2C;display:flex;align-items:center;gap:4px;margin-top:4px;"><dc-import name="Icon" icon-name="people" color="#9E5A2C" size="11" hint-size="11,11"></dc-import>{{ g.members }} members</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr;gap:22px;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Find local experts</div>
+        <a href="ServicesHome.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all experts →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+        <sc-for list="{{ experts }}" as="e" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:14px;text-align:center;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+            <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;margin:0 auto;position:relative;"><image-slot id="{{ e.slotId }}" shape="circle" fit="cover" placeholder="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div style="font-size:12.5px;font-weight:600;margin-top:10px;color:#3A342C;">{{ e.name }}</div>
+            <div style="font-size:11px;color:#8A7C6C;">{{ e.role }}</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:4px;font-size:11px;color:#9E5A2C;margin-top:4px;"><dc-import name="Icon" icon-name="star" color="#BC7A45" size="12" hint-size="12,12"></dc-import>{{ e.rating }} ({{ e.reviews }})</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Organizations</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <sc-for list="{{ orgs }}" as="o" hint-placeholder-count="4">
+          <div style="border:1px solid #EFE4D4;background:#fff;border-radius:12px;padding:14px;font-size:12px;font-weight:600;color:#3A342C;display:flex;align-items:center;gap:9px;box-shadow:0 6px 16px rgba(150,110,70,.05);"><span style="width:30px;height:30px;border-radius:8px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ o.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import></span>{{ o.name }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Latest articles &amp; insights</div>
+      <a href="HelpCenter.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all articles →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:9px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="position:relative;height:96px;border-radius:11px;overflow:hidden;"><image-slot id="{{ a.slotId }}" shape="rect" fit="cover" placeholder="{{ a.title }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div style="font-size:10px;color:#9E5A2C;margin-top:9px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;">{{ a.tag }}</div>
+          <div style="font-size:13px;font-weight:600;margin-top:3px;color:#3A342C;line-height:1.25;">{{ a.title }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:4px;">{{ a.read }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 34px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);color:#F6F0E8;border-radius:22px;padding:34px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-34px;width:170px;opacity:.1;pointer-events:none;">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:26px;">Your community, in your pocket.</div>
+        <div style="font-size:13.5px;color:#D8CDB9;margin-top:8px;">Connect, plan and stay in the loop — wherever you are.</div>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <div style="background:#fff;color:#3A342C;border-radius:24px;padding:11px 20px;font-size:12.5px;font-weight:600;">App Store</div>
+        <div style="background:#fff;color:#3A342C;border-radius:24px;padding:11px 20px;font-size:12.5px;font-weight:600;">Google Play</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FCF9F3;border-top:1px solid #EFE4D4;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 40px;">
+      <sc-for list="{{ trust }}" as="t" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#6E6154;">
+          <dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import><span>{{ t.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { icon: 'people', label: 'Groups', bg: '#F2E6D6', color: '#9E5A2C', border: '#EADCC8', iconColor: '#9E5A2C' },
+        { icon: 'pulse', label: 'Activities', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'calendar', label: 'Events', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'user', label: 'Experts', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#6E7459' },
+        { icon: 'home', label: 'Organizations', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#6E7459' },
+        { icon: 'book', label: 'Articles', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+      ],
+      focusAreas: [
+        { name: 'Baby & Toddler', sub: '0–3 years', icon: 'heart', c1: '#D79A62', c2: '#BC7A45' },
+        { name: 'Kids', sub: '3–6 years', icon: 'toy', c1: '#C9A87E', c2: '#A97F4E' },
+        { name: 'School Age', sub: '6–10 years', icon: 'book', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Teens', sub: '10+ years', icon: 'pulse', c1: '#A6AD8E', c2: '#7C8460' },
+        { name: 'For Parents', sub: 'All stages', icon: 'people', c1: '#D3A377', c2: '#B47C4A' },
+        { name: 'Outdoor', sub: 'Families', icon: 'leaf', c1: '#9FA383', c2: '#727856' },
+        { name: 'Wellness', sub: 'Mind & body', icon: 'sparkle', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+      upcomingEvents: [
+        { slotId: 'comm-ev-1', age: '0–3', name: 'Baby Yoga & Bonding', time: 'Sat 24 May · 10:00', place: 'Huddle Studio, Oslo' },
+        { slotId: 'comm-ev-2', age: '3–6', name: 'Creative Play Workshop', time: 'Sat 31 May · 12:00', place: 'Kreativitetshuset' },
+        { slotId: 'comm-ev-3', age: '6–10', name: 'Nature Walk & Picnic', time: 'Sat 7 Jun · 10:00', place: 'Ekebergsletta' },
+        { slotId: 'comm-ev-4', age: '10+', name: 'Teen Mindfulness Circle', time: 'Sat 14 Jun · 16:00', place: 'Huddle Hub, Oslo' },
+      ],
+      groups: [
+        { slotId: 'comm-grp-1', name: 'New Parents', age: '0–12 months', members: '1.2k' },
+        { slotId: 'comm-grp-2', name: 'Toddlers', age: '0–3 years', members: '1.8k' },
+        { slotId: 'comm-grp-3', name: 'School Age', age: '6–10 years', members: '1.6k' },
+        { slotId: 'comm-grp-4', name: 'Teens', age: '10+ years', members: '980' },
+        { slotId: 'comm-grp-5', name: 'Special Interests', age: 'All ages', members: '1.1k' },
+      ],
+      experts: [
+        { slotId: 'comm-exp-1', name: 'Elin S.', role: 'Family Coach', rating: '5.0', reviews: 45 },
+        { slotId: 'comm-exp-2', name: 'Markus L.', role: 'Pediatrician', rating: '5.0', reviews: 28 },
+        { slotId: 'comm-exp-3', name: 'Sara K.', role: 'Nutritionist', rating: '5.0', reviews: 39 },
+        { slotId: 'comm-exp-4', name: 'Maja T.', role: 'Child Psychologist', rating: '5.0', reviews: 31 },
+      ],
+      orgs: [
+        { icon: 'heart', name: 'Redd Barna' },
+        { icon: 'leaf', name: 'Friluftsrådenes Landsforbund' },
+        { icon: 'heart', name: 'Mental Helse Ungdom' },
+        { icon: 'home', name: 'Kirkens Bymisjon Oslo' },
+      ],
+      articles: [
+        { slotId: 'comm-art-1', tag: 'Parenting', title: 'Building Confidence in Kids', read: '5 min read' },
+        { slotId: 'comm-art-2', tag: 'Wellness', title: 'Mindful Mornings for Families', read: '4 min read' },
+        { slotId: 'comm-art-3', tag: 'Activities', title: '10 Screen-Free Weekend Ideas', read: '6 min read' },
+        { slotId: 'comm-art-4', tag: 'Teens', title: 'Supporting Your Teen Through Change', read: '5 min read' },
+      ],
+      trust: [
+        { icon: 'check', label: 'Parent-approved' },
+        { icon: 'lock', label: 'Safe & inclusive spaces' },
+        { icon: 'home', label: 'Local & community-focused' },
+        { icon: 'user', label: 'Verified experts' },
+        { icon: 'lock', label: 'Privacy & data protection' },
+        { icon: 'heart', label: 'Free to join, always' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

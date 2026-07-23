@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="finance" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Finance — Refunds</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Refund requests across orders and bookings</div>
+
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <sc-for list="{{ subnav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="text-decoration:none;border-radius:20px;padding:8px 16px;font-size:12px;background:{{ n.bg }};color:{{ n.color }};font-weight:600;">{{ n.label }}</a>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:18px;">
+          <div style="font-size:11px;color:#8A7C6C;">{{ s.label }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:6px;">{{ s.value }}</div>
+          <div style="font-size:11px;margin-top:4px;color:{{ s.color }};">{{ s.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;margin-top:22px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr 1fr 1fr 100px;padding:12px 18px;font-size:11px;color:#8A7C6C;border-bottom:1px solid #F1E9DC;">
+        <div>Order/Booking</div><div>Requested by</div><div>Amount</div><div>Reason</div><div>Status</div><div></div>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:1fr 1.2fr 1fr 1fr 1fr 100px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F6F0E8;">
+          <div>{{ r.tx }}</div>
+          <div style="color:#8A7C6C;">{{ r.by }}</div>
+          <div style="font-weight:600;">{{ r.amount }}</div>
+          <div style="color:#8A7C6C;">{{ r.reason }}</div>
+          <div><span style="background:{{ r.bg }};color:{{ r.color }};border-radius:10px;padding:3px 10px;font-size:11px;">{{ r.status }}</span></div>
+          <div style="color:#BC7A45;font-size:12px;font-weight:600;">Review →</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      subnav: [
+        { label: 'Overview', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Refunds', bg: '#3A342C', color: '#fff', href: 'AdminFinanceRefunds.dc.html' },
+        { label: 'Disputes', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceDisputes.dc.html' },
+        { label: 'Commissions', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Payouts', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinancePayouts.dc.html' },
+        { label: 'Invoices', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceInvoices.dc.html' },
+      ],
+      stats: [
+        { label: 'Pending refunds', value: '11', delta: '3,420 NOK total', color: '#B4553C' },
+        { label: 'Approved this week', value: '24', delta: '8,910 NOK refunded', color: '#6E7459' },
+        { label: 'Avg. processing time', value: '1.4 days', delta: '-0.3d vs last month', color: '#6E7459' },
+        { label: 'Denied this week', value: '4', delta: 'policy violations', color: '#8A7C6C' },
+      ],
+      rows: [
+        { tx: '#ORD-8802', by: 'Emma Andersen', amount: '450 NOK', reason: 'Item not as described', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C' },
+        { tx: '#BKG-3388', by: 'Martin Larsen', amount: '900 NOK', reason: 'Appointment cancelled', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C' },
+        { tx: '#ORD-8790', by: 'Julie Hansen', amount: '280 NOK', reason: 'Never received', status: 'Approved', bg: '#EAEBE1', color: '#6E7459' },
+        { tx: '#ORD-8765', by: 'Anders Berg', amount: '620 NOK', reason: 'Duplicate charge', status: 'Approved', bg: '#EAEBE1', color: '#6E7459' },
+        { tx: '#TKT-5502', by: 'Sara Vik', amount: '350 NOK', reason: 'Event cancelled by organizer', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C' },
+        { tx: '#ORD-8710', by: 'Kids Activities Oslo', amount: '190 NOK', reason: 'Buyer changed mind', status: 'Denied', bg: '#F5DCD4', color: '#B4553C' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

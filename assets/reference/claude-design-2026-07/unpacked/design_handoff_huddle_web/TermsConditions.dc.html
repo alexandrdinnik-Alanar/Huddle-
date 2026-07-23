@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Terms &amp; Conditions" hint-size="100%,150px"></dc-import>
+
+  <div style="max-width:760px;margin:0 auto;padding:48px 24px 60px;">
+    <div style="font-family:'Newsreader',serif;font-size:32px;">Terms &amp; Conditions</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:8px;">Last updated: 1 June 2026</div>
+    <div style="font-size:14px;color:#5C554A;margin-top:20px;line-height:1.7;">
+      Welcome to Huddle. These Terms &amp; Conditions govern your access to and use of the Huddle marketplace, community, activities, events and services (together, the "Platform"). By creating an account or using Huddle, you agree to these terms.
+    </div>
+
+    <sc-for list="{{ sections }}" as="s" hint-placeholder-count="8">
+      <div style="margin-top:32px;">
+        <div style="font-family:'Newsreader',serif;font-size:19px;">{{ s.title }}</div>
+        <div style="font-size:13px;color:#5C554A;margin-top:10px;line-height:1.8;">{{ s.body }}</div>
+      </div>
+    </sc-for>
+
+    <div style="margin-top:40px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:24px;">
+      <div style="font-family:'Newsreader',serif;font-size:17px;">Questions about these terms?</div>
+      <div style="font-size:13px;color:#8A7C6C;margin-top:8px;">Contact our support team and we'll be happy to help.</div>
+      <a href="HelpCenter.dc.html" style="display:inline-block;text-decoration:none;background:#3A342C;color:#fff;border-radius:20px;padding:10px 20px;font-size:13px;margin-top:14px;">Visit Help Center</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      sections: [
+        { title: '1. Account & Eligibility', body: 'You must be at least 18 years old to create a Huddle account. You are responsible for the accuracy of the information you provide and for keeping your login credentials secure. Child profiles managed by parents are private by design and never publicly visible.' },
+        { title: '2. Marketplace Transactions', body: 'Huddle connects buyers and sellers of new and pre-owned family goods. Huddle is not a party to transactions between users; sellers are responsible for the accuracy of listings, and buyers are responsible for reviewing item condition before purchase.' },
+        { title: '3. Activities, Events & Bookings', body: 'Organizers are responsible for the accuracy, safety and legality of the activities and events they publish. Ticket and booking fees, cancellation and refund policies are set by organizers and shown at checkout.' },
+        { title: '4. Community Conduct', body: 'Huddle groups and community spaces are moderated to keep interactions respectful and safe for families. We may remove content or restrict accounts that violate our community guidelines or these terms.' },
+        { title: '5. Partner Stores & Experts', body: 'Businesses and experts listed on Huddle undergo a verification process. Huddle may charge commission or listing fees as agreed in a separate partner agreement.' },
+        { title: '6. Payments', body: 'Payments are processed securely through our payment partners. Huddle does not store your full card details. Refunds are handled per the applicable buyer or booking protection policy.' },
+        { title: '7. Limitation of Liability', body: 'Huddle provides the Platform "as is" and does not guarantee the accuracy of user-generated content. To the extent permitted by law, Huddle is not liable for indirect or consequential damages arising from use of the Platform.' },
+        { title: '8. Changes to These Terms', body: 'We may update these terms from time to time. Continued use of Huddle after changes take effect constitutes acceptance of the revised terms.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

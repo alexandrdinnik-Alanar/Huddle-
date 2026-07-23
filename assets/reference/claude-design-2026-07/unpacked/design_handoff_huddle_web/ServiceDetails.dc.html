@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="services" breadcrumb="Services / Bright Minds Center" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;height:260px;overflow:hidden;">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_073622_8a8aa0da-8eb3-4e55-a77c-ae9a199f2b7b.png" alt="Bright Minds Center" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,42,36,.1) 0%,rgba(46,42,36,.72) 100%);"></div>
+  </div>
+
+  <div style="max-width:1080px;margin:0 auto;padding:0 40px 52px;display:grid;grid-template-columns:1.5fr 1fr;gap:30px;">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-top:-46px;position:relative;">
+        <div style="display:flex;gap:16px;">
+          <div style="width:76px;height:76px;border-radius:18px;background:#3A342C;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;border:4px solid #F6F0E8;box-shadow:0 12px 26px rgba(58,52,44,.24);"><dc-import name="Icon" icon-name="leaf" color="#EDBB8B" size="30" hint-size="30,30"></dc-import></div>
+          <div style="padding-top:36px;">
+            <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Bright Minds Center</div>
+            <div style="font-size:13.5px;color:#7C7062;margin-top:2px;">Family Counseling</div>
+            <div style="font-size:12.5px;color:#7C7062;margin-top:4px;display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="star" color="#BC7A45" size="13" hint-size="13,13"></dc-import>4.8 (128 reviews) · <span style="color:#6E7459;font-weight:600;">Open</span> · Closes 18:00</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;padding-top:36px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #EFE4D4;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(150,110,70,.08);cursor:pointer;transition:transform .15s;" style-hover="transform:translateY(-2px);"><dc-import name="Icon" icon-name="signal" color="#9E5A2C" size="15" hint-size="15,15"></dc-import></div>
+          <div style="width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid #EFE4D4;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(150,110,70,.08);cursor:pointer;transition:transform .15s;" style-hover="transform:translateY(-2px);"><dc-import name="Icon" icon-name="heart" color="#9E5A2C" size="15" hint-size="15,15"></dc-import></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px;">
+        <sc-for list="{{ actions }}" as="a" hint-placeholder-count="4">
+          <div style="text-align:center;border:1px solid #EFE4D4;background:#fff;border-radius:14px;padding:14px 6px;box-shadow:0 6px 16px rgba(150,110,70,.05);cursor:pointer;transition:transform .15s;" style-hover="transform:translateY(-3px);">
+            <dc-import name="Icon" icon-name="{{ a.icon }}" color="#BC7A45" size="18" hint-size="18,18"></dc-import>
+            <div style="font-size:11px;margin-top:6px;color:#463F37;font-weight:500;">{{ a.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:26px;">About</div>
+      <div style="font-size:13.5px;color:#7C7062;margin-top:8px;line-height:1.65;">Professional counseling for individuals, couples and families. We're here to support your mental well-being with a warm, judgement-free approach — in person or online.</div>
+
+      <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:24px;">Services</div>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:12px 14px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="14" hint-size="14,14"></dc-import>{{ s }}</div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:26px;margin-bottom:12px;">Reviews</div>
+      <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="2">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:16px 18px;margin-bottom:10px;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,{{ r.c1 }},{{ r.c2 }});display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:14px;">{{ r.initial }}</div>
+            <div><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ r.name }}</div><div style="font-size:10.5px;color:#A99B89;">{{ r.time }}</div></div>
+          </div>
+          <div style="font-size:13px;color:#6E6154;margin-top:10px;line-height:1.55;">{{ r.text }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="position:sticky;top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:22px;box-shadow:0 16px 40px rgba(150,110,70,.1);height:fit-content;">
+      <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">From 900 NOK</div>
+      <div style="font-size:12px;color:#8A7C6C;margin-top:2px;">per session</div>
+      <a href="BookAppointment.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:14px;font-size:14px;font-weight:600;margin-top:18px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Book appointment</a>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:18px;padding-top:16px;border-top:1px solid #F2E9DA;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="pin" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Frogner, Oslo</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="clock" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Mon–Fri, 09:00–18:00</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="check" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Verified expert</div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      actions: [
+        { icon: 'phone', label: 'Call' },
+        { icon: 'mail', label: 'Message' },
+        { icon: 'globe', label: 'Website' },
+        { icon: 'pin', label: 'Directions' },
+      ],
+      services: ['Family Counseling', 'Child & Adolescent Therapy', 'Couples Therapy', 'Parenting Support'],
+      reviews: [
+        { initial: 'S', name: 'Sara K.', time: '2 weeks ago', text: 'Warm, professional and really helped our family navigate a tough transition. Highly recommend.', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'M', name: 'Markus H.', time: '1 month ago', text: 'Great with kids — our son actually looks forward to his sessions now.', c1: '#9BA184', c2: '#6E7459' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

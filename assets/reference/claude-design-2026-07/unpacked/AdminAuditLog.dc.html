@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="audit" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Audit log</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Full history of admin actions — immutable record</div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:22px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:grid;grid-template-columns:120px 1.2fr 1.4fr 1fr;padding:12px 18px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Time</div><div>Admin</div><div>Action</div><div>Target</div>
+      </div>
+      <sc-for list="{{ logs }}" as="l" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:120px 1.2fr 1.4fr 1fr;padding:13px 18px;font-size:12.5px;align-items:center;border-bottom:1px solid #F2E9DA;transition:background .15s;" style-hover="background:#FBF5EC;">
+          <div style="color:#A99B89;">{{ l.time }}</div>
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,{{ l.c1 }},{{ l.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:11px;">{{ l.initial }}</div><span style="color:#3A342C;font-weight:500;">{{ l.admin }}</span></div>
+          <div style="display:flex;align-items:center;gap:7px;color:#463F37;"><dc-import name="Icon" icon-name="{{ l.icon }}" color="#9E5A2C" size="13" hint-size="13,13"></dc-import>{{ l.action }}</div>
+          <div style="color:#8A7C6C;">{{ l.target }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const mk = (time, admin, initial, action, target, icon, c1, c2) => ({ time, admin, initial, action, target, icon, c1, c2 });
+    return {
+      logs: [
+        mk('09:41', 'Ingrid Nilsen', 'I', 'Removed listing', '"Vintage stroller"', 'trash', '#C99A6B', '#A9663A'),
+        mk('08:53', 'Markus Lien', 'M', 'Suspended account', 'user #8821', 'ban', '#9BA184', '#6E7459'),
+        mk('07:20', 'Sara Kahn', 'S', 'Approved appeal', 'appeal #4821', 'check', '#D79A62', '#B26A38'),
+        mk('Yesterday 18:04', 'Jonas Berg', 'J', 'Updated safety settings', 'Platform config', 'gear', '#C9A87E', '#A97F4E'),
+        mk('Yesterday 15:12', 'Ingrid Nilsen', 'I', 'Dismissed report', 'report #3382', 'flag', '#C99A6B', '#A9663A'),
+        mk('Yesterday 11:30', 'Markus Lien', 'M', 'Banned account', 'user #7710', 'ban', '#9BA184', '#6E7459'),
+        mk('2 days ago', 'Sara Kahn', 'S', 'Removed post', 'post #9021', 'trash', '#D79A62', '#B26A38'),
+        mk('2 days ago', 'Jonas Berg', 'J', 'Approved listing', '"Lego Duplo mega set"', 'check', '#C9A87E', '#A97F4E'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

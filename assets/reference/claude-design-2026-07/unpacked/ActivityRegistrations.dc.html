@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="activities" hint-size="100%,64px"></dc-import>
+  <div style="max-width:640px;margin:0 auto;padding:32px 40px;">
+    <div style="display:flex;gap:14px;">
+      <div style="width:56px;height:56px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:20px;">Morning Community Run</div>
+        <div style="font-size:12px;color:#7C7062;">Sun, Jun 8, 2025 · 7:00 AM – 9:00 AM</div>
+        <div style="font-size:12px;color:#7C7062;">Akerselva Park, Oslo</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:26px;margin-top:20px;border-bottom:1px solid #DBC9B0;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <div style="font-size:13px;padding-bottom:10px;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:16px;">
+      <div style="flex:1;border:1px solid #DBC9B0;border-radius:10px;padding:10px 14px;font-size:13px;color:#8A7C6C;background:#fff;">⌕ Search registrants...</div>
+      <div style="border:1px solid #DBC9B0;border-radius:10px;padding:10px 16px;font-size:13px;background:#fff;"> Filter</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr;gap:8px;font-size:11px;color:#8A7C6C;margin-top:16px;padding:0 6px;">
+      <div>Attendee</div><div>Registered On</div><div>Status</div>
+    </div>
+    <div style="display:flex;flex-direction:column;">
+      <sc-for list="{{ registrants }}" as="r" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr;gap:8px;align-items:center;padding:10px 6px;border-top:1px solid #EFE4D4;font-size:13px;">
+          <div style="display:flex;align-items:center;gap:8px;"><div style="width:26px;height:26px;border-radius:50%;background:#DBC9B0;flex-shrink:0;"></div>{{ r.name }}</div>
+          <div style="color:#8A7C6C;font-size:12px;">{{ r.date }}</div>
+          <div><span style="font-size:11px;background:{{ r.badgeBg }};color:{{ r.badgeColor }};padding:3px 10px;border-radius:10px;">{{ r.status }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:14px;margin-top:20px;">⬇ Export List</div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Overview', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Registrations (16)', color: '#463F37', border: '#BC7A45' },
+        { label: 'Check-ins (12)', color: '#8A7C6C', border: 'transparent' },
+      ],
+      registrants: [
+        { name: 'Emma Andersen', date: 'May 28, 10:15 AM', status: 'Checked In', badgeBg: '#EAEBE1', badgeColor: '#6E7459' },
+        { name: 'Olivia Hansen', date: 'May 28, 10:20 AM', status: 'Checked In', badgeBg: '#EAEBE1', badgeColor: '#6E7459' },
+        { name: 'Noah Johansen', date: 'May 28, 11:05 AM', status: 'Checked In', badgeBg: '#EAEBE1', badgeColor: '#6E7459' },
+        { name: 'Sofia Nilsen', date: 'May 28, 11:20 AM', status: 'Checked In', badgeBg: '#EAEBE1', badgeColor: '#6E7459' },
+        { name: 'Lucas Dahl', date: 'May 29, 9:30 AM', status: 'Registered', badgeBg: '#EFE4D4', badgeColor: '#BC7A45' },
+        { name: 'Mia Kristensen', date: 'May 29, 10:10 AM', status: 'Registered', badgeBg: '#EFE4D4', badgeColor: '#BC7A45' },
+        { name: 'Isak Berg', date: 'May 29, 10:45 AM', status: 'Registered', badgeBg: '#EFE4D4', badgeColor: '#BC7A45' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

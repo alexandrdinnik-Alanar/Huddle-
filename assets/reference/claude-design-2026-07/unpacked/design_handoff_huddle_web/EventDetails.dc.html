@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="events" breadcrumb="Events / Summer Family Festival" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;height:380px;overflow:hidden;">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144038_201b4688-9828-4944-870a-b6f227246847.png" alt="Summer Family Festival" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 32%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,42,36,.25) 0%,rgba(46,42,36,0) 30%,rgba(46,42,36,.8));"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;">
+      <div style="max-width:1180px;margin:0 auto;padding:0 40px 30px;color:#fff;">
+        <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:#BC7A45;border-radius:14px;padding:5px 12px;">Featured festival</span>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(34px,4.4vw,54px);font-weight:500;line-height:1.05;margin:14px 0 0;">Summer Family Festival</h1>
+        <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:14px;font-size:13.5px;color:#F1E7D8;">
+          <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="calendar" color="#EDBB8B" size="15" hint-size="15,15"></dc-import>Sat 14 June 2026 · 16:00–19:00</span>
+          <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="pin" color="#EDBB8B" size="15" hint-size="15,15"></dc-import>Ekebergparken, Oslo</span>
+          <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="people" color="#EDBB8B" size="15" hint-size="15,15"></dc-import>All ages · 240 going</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:34px 40px 40px;display:grid;grid-template-columns:1fr 360px;gap:34px;align-items:start;">
+    <div>
+      <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">About this event</div>
+      <p style="font-size:15px;color:#6E6154;line-height:1.7;margin-top:12px;">A full afternoon of music, play and good food for the whole family. Wander between craft tents, join the parachute games, meet local makers, and settle in for an early-evening sing-along as the sun goes down over the park. Buggy- and wheelchair-friendly throughout.</p>
+
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:30px;">What's on</div>
+      <div style="margin-top:14px;border-left:2px solid #EADCC8;padding-left:22px;">
+        <sc-for list="{{ schedule }}" as="s" hint-placeholder-count="4">
+          <div style="position:relative;padding-bottom:20px;">
+            <span style="position:absolute;left:-29px;top:2px;width:12px;height:12px;border-radius:50%;background:#BC7A45;border:2px solid #F6F0E8;"></span>
+            <div style="font-size:12px;color:#9E5A2C;font-weight:700;">{{ s.time }}</div>
+            <div style="font-size:14.5px;font-weight:600;color:#3A342C;margin-top:2px;">{{ s.title }}</div>
+            <div style="font-size:13px;color:#8A7C6C;margin-top:2px;">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:26px;">Good to know</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;">
+        <sc-for list="{{ facts }}" as="f" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:13px 16px;font-size:13px;color:#463F37;"><dc-import name="Icon" icon-name="{{ f.icon }}" color="#6E7459" size="16" hint-size="16,16"></dc-import>{{ f.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:18px;margin-top:26px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+        <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#9BA184,#6E7459);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:20px;flex-shrink:0;">O</div>
+        <div style="flex:1;"><div style="font-size:11px;color:#8A7C6C;">Organised by</div><div style="font-size:15px;font-weight:600;color:#3A342C;">Oslo Kommune · Culture</div><div style="font-size:12px;color:#9E5A2C;">★ 4.9 · 32 events hosted</div></div>
+        <div style="border:1px solid #DBC9B0;border-radius:22px;padding:9px 18px;font-size:12.5px;font-weight:600;">Follow</div>
+      </div>
+    </div>
+
+    <div style="position:sticky;top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:24px;box-shadow:0 16px 40px rgba(150,110,70,.1);">
+      <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;">Free</span><span style="font-size:13px;color:#8A7C6C;">· registration required</span></div>
+      <div style="display:flex;gap:10px;margin-top:16px;">
+        <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;"><div style="font-size:10.5px;color:#8A7C6C;">Date</div><div style="font-size:13px;font-weight:600;color:#3A342C;">Sat 14 Jun</div></div>
+        <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;"><div style="font-size:10.5px;color:#8A7C6C;">Tickets</div><div style="font-size:13px;font-weight:600;color:#3A342C;display:flex;justify-content:space-between;">2 <span style="color:#A99B89;">▾</span></div></div>
+      </div>
+      <a href="TicketConfirmation.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:26px;padding:14px;font-size:14.5px;font-weight:600;margin-top:16px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Reserve your spot</a>
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <div style="flex:1;text-align:center;border:1px solid #DBC9B0;border-radius:22px;padding:10px;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;"><dc-import name="Icon" icon-name="heart" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>Save</div>
+        <div style="flex:1;text-align:center;border:1px solid #DBC9B0;border-radius:22px;padding:10px;font-size:12.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;"><dc-import name="Icon" icon-name="signal" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>Share</div>
+      </div>
+      <div style="height:150px;border-radius:14px;overflow:hidden;margin-top:16px;background:linear-gradient(150deg,#E9E7DA,#CFD3BE);display:flex;align-items:center;justify-content:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#6E7459;"><dc-import name="Icon" icon-name="pin" color="#6E7459" size="20" hint-size="20,20"></dc-import><span style="font-size:12px;font-weight:500;">Ekebergparken</span></div></div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 40px 44px;">
+    <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;margin-bottom:16px;">More events near you</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+      <sc-for list="{{ related }}" as="r" hint-placeholder-count="4">
+        <a href="EventDetails.dc.html" style="text-decoration:none;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:9px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="height:110px;border-radius:11px;background:linear-gradient(150deg,{{ r.c1 }},{{ r.c2 }});"></div>
+          <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:9px;">{{ r.name }}</div>
+          <div style="font-size:11.5px;color:#8A7C6C;margin-top:2px;">{{ r.when }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      schedule: [
+        { time: '16:00', title: 'Gates open · craft tents', desc: 'Make-and-take stations for all ages.' },
+        { time: '16:45', title: 'Parachute games', desc: 'Group play on the main lawn.' },
+        { time: '17:30', title: 'Family concert', desc: 'Live music from local performers.' },
+        { time: '18:30', title: 'Golden-hour sing-along', desc: 'Wind down together as the sun sets.' },
+      ],
+      facts: [
+        { icon: 'leaf', label: 'Outdoor · rain or shine' },
+        { icon: 'truck', label: 'Buggy & wheelchair friendly' },
+        { icon: 'heart', label: 'Food trucks on site' },
+        { icon: 'check', label: 'Free · registration required' },
+      ],
+      related: [
+        { name: 'Creative Workshop', when: 'Sat 31 May · Oslo', c1: '#D79A62', c2: '#B26A38' },
+        { name: 'Nature Walk', when: 'Sun 7 Jun · Nordmarka', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Baby Yoga', when: 'Sat 24 May · Oslo', c1: '#C9A87E', c2: '#A97F4E' },
+        { name: 'Mini Football', when: 'Sat 24 May · Kringsjå', c1: '#A6AD8E', c2: '#7C8460' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

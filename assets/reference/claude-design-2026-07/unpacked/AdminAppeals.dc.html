@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="appeals" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Appeals</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">6 users have appealed a moderation decision</div>
+
+    <div style="display:grid;gap:14px;margin-top:22px;">
+      <sc-for list="{{ appeals }}" as="a" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px 20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="display:flex;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,{{ a.c1 }},{{ a.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:14px;">{{ a.initial }}</div>
+              <div><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ a.user }} — appeal #{{ a.id }}</div><div style="font-size:11px;color:#8A7C6C;margin-top:2px;">Original action: {{ a.action }} · Filed {{ a.time }}</div></div>
+            </div>
+            <span style="background:{{ a.bg }};color:{{ a.color }};border-radius:12px;padding:4px 11px;font-size:11px;font-weight:600;height:fit-content;">{{ a.status }}</span>
+          </div>
+          <div style="font-size:12px;color:#463F37;margin-top:12px;background:#F6F0E8;border-radius:10px;padding:10px 12px;">"{{ a.message }}"</div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <div style="border:1px solid #6E7459;color:#6E7459;border-radius:10px;padding:8px 15px;font-size:12px;font-weight:600;cursor:pointer;transition:background .15s;" style-hover="background:#EAEBE1;">Uphold appeal</div>
+            <div style="border:1px solid #DBC9B0;color:#463F37;border-radius:10px;padding:8px 15px;font-size:12px;font-weight:600;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Deny appeal</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      appeals: [
+        { id: '4821', user: 'Anders Berg', initial: 'A', action: 'Listing removed', time: '1 day ago', status: 'Pending', bg: '#EFE4D4', color: '#8A7C6C', message: 'The listing was flagged by mistake — I have the original receipt and photos.', c1: '#C9A87E', c2: '#A97F4E' },
+        { id: '4809', user: 'Nordic Baby Store', initial: 'N', action: 'Account suspended', time: '2 days ago', status: 'Pending', bg: '#EFE4D4', color: '#8A7C6C', message: 'We believe this was an automated error, our store has been verified since 2024.', c1: '#D79A62', c2: '#B26A38' },
+        { id: '4790', user: 'Julie Hansen', initial: 'J', action: 'Post removed', time: '3 days ago', status: 'Overdue', bg: '#F7E0D6', color: '#B0462F', message: 'The post was about a lost pet, not a policy violation.', c1: '#C99A6B', c2: '#A9663A' },
+        { id: '4776', user: 'Martin Larsen', initial: 'M', action: 'Comment removed', time: '4 days ago', status: 'Overdue', bg: '#F7E0D6', color: '#B0462F', message: 'I was quoting someone else, not making the original statement.', c1: '#9BA184', c2: '#6E7459' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

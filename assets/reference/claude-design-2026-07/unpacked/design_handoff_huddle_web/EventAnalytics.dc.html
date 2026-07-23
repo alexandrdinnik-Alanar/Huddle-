@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="events" hint-size="100%,64px"></dc-import>
+  <div style="max-width:600px;margin:0 auto;padding:32px 40px;">
+    <div style="display:flex;gap:14px;">
+      <div style="width:56px;height:56px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:20px;">Kids Yoga Workshop</div>
+        <div style="font-size:12px;color:#7C7062;">Sat, Jun 7, 2025 · 10:00 AM – 11:30 AM</div>
+        <div style="font-size:12px;color:#7C7062;">Grünerløkka Community Center, Oslo</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:26px;margin-top:20px;border-bottom:1px solid #DBC9B0;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="font-size:13px;padding-bottom:10px;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;margin-top:20px;">Key Metrics</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px;">
+      <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #DBC9B0;border-radius:12px;padding:12px;">
+          <div style="font-family:'Newsreader',serif;font-size:18px;">{{ m.value }}</div>
+          <div style="font-size:10px;color:#8A7C6C;">{{ m.label }}</div>
+          <div style="font-size:10px;color:#6E7459;margin-top:2px;">{{ m.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;margin-top:22px;">Registrations Over Time</div>
+    <svg viewBox="0 0 300 80" style="width:100%;height:100px;margin-top:10px;">
+      <polyline points="0,60 40,55 80,40 120,45 160,30 200,25 240,18 300,8" fill="none" stroke="#6E7459" stroke-width="2"></polyline>
+    </svg>
+
+    <div style="font-size:13px;font-weight:600;margin-top:10px;">Ticket Breakdown</div>
+    <div style="display:flex;align-items:center;gap:24px;margin-top:12px;">
+      <div style="width:110px;height:110px;border-radius:50%;background:conic-gradient(#6E7459 0% 42.9%, #7BA6C4 42.9% 81%, #C9A46A 81% 100%);display:flex;align-items:center;justify-content:center;">
+        <div style="width:64px;height:64px;border-radius:50%;background:#F6F0E8;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="font-family:'Newsreader',serif;font-size:16px;">42</div><div style="font-size:9px;color:#8A7C6C;">Total</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:12px;">
+        <sc-for list="{{ breakdown }}" as="b" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="width:10px;height:10px;border-radius:50%;background:{{ b.color }};"></span>{{ b.label }}</div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Overview', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Registrations', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Check-ins', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Analytics', color: '#463F37', border: '#BC7A45' },
+      ],
+      metrics: [
+        { value: '42', label: 'Total Registrations', delta: '▲ 12%' },
+        { value: '28', label: 'Checked In', delta: '▲ 8%' },
+        { value: '66.7%', label: 'Check-in Rate', delta: '▲ 5%' },
+        { value: '3', label: 'Days to Event', delta: '' },
+      ],
+      breakdown: [
+        { label: 'Child (2–12 years) 18 (42.9%)', color: '#6E7459' },
+        { label: 'Adult (13+ years) 16 (38.1%)', color: '#7BA6C4' },
+        { label: 'Family (2A+2K) 8 (19.0%)', color: '#C9A46A' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

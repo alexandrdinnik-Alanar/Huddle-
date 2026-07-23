@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="activities" breadcrumb="Activities / Kids Yoga Workshop" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;height:340px;overflow:hidden;">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144803_255ea2a4-1012-495e-aacd-bc31c17fd7ba.png" alt="Kids Yoga Workshop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,42,36,.2) 0%,rgba(46,42,36,0) 30%,rgba(46,42,36,.78) 100%);"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;max-width:1180px;margin:0 auto;padding:0 40px 28px;width:100%;box-sizing:border-box;color:#fff;">
+      <span style="display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#BC7A45;border-radius:14px;padding:5px 12px;">Workshop</span>
+      <h1 style="font-family:'Newsreader',serif;font-size:clamp(28px,3.6vw,42px);font-weight:500;margin:12px 0 0;">Kids Yoga Workshop</h1>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:30px 40px 40px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start;">
+    <div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:#6E6154;">
+        <span style="display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="clock" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>Sat, Jun 7 · 10:00–11:30</span>
+        <span style="display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="pin" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>Grünerløkka Community Center, Oslo</span>
+        <span style="display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="people" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>3–6 years</span>
+      </div>
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:26px;">About this activity</div>
+      <p style="font-size:14.5px;color:#6E6154;line-height:1.7;margin-top:10px;">A gentle introduction to yoga through playful movement, breathing games and storytelling. Kids build focus, flexibility and confidence in a relaxed, non-competitive setting.</p>
+      <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:24px;">What to bring</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+        <sc-for list="{{ bring }}" as="b" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:11px 14px;font-size:12.5px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>{{ b }}</div>
+        </sc-for>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:16px;margin-top:24px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+        <div style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#9BA184,#6E7459);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:18px;flex-shrink:0;">M</div>
+        <div style="flex:1;"><div style="font-size:11px;color:#8A7C6C;">Led by</div><div style="font-size:14px;font-weight:600;color:#3A342C;">Maja Torp, Certified Kids' Yoga Instructor</div></div>
+        <div style="font-size:12px;color:#9E5A2C;font-weight:600;display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="star" color="#BC7A45" size="12" hint-size="12,12"></dc-import>4.9</div>
+      </div>
+    </div>
+    <div style="position:sticky;top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:24px;box-shadow:0 16px 40px rgba(150,110,70,.1);">
+      <div style="display:flex;align-items:baseline;gap:8px;"><span style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;">180 NOK</span><span style="font-size:12.5px;color:#8A7C6C;">/ child</span></div>
+      <div style="font-size:12px;color:#6E7459;margin-top:6px;">18 / 30 spots filled</div>
+      <a href="BookAppointment.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:26px;padding:14px;font-size:14px;font-weight:600;margin-top:16px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Reserve a spot</a>
+      <div style="display:flex;gap:10px;margin-top:10px;">
+        <div style="flex:1;text-align:center;border:1px solid #DBC9B0;border-radius:22px;padding:10px;font-size:12.5px;font-weight:600;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Save</div>
+        <div style="flex:1;text-align:center;border:1px solid #DBC9B0;border-radius:22px;padding:10px;font-size:12.5px;font-weight:600;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Share</div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { bring: ['Comfortable clothing', 'Water bottle', 'Small towel', 'A smile!'] };
+  }
+}
+</script>
+</body>
+</html>

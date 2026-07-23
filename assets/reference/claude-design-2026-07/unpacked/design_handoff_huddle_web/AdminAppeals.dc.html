@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="appeals" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Appeals</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">6 users have appealed a moderation decision</div>
+
+    <div style="display:grid;gap:14px;margin-top:22px;">
+      <sc-for list="{{ appeals }}" as="a" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div style="font-size:13px;font-weight:600;">{{ a.user }} — appeal #{{ a.id }}</div>
+              <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">Original action: {{ a.action }} · Filed {{ a.time }}</div>
+            </div>
+            <span style="background:{{ a.bg }};color:{{ a.color }};border-radius:10px;padding:3px 10px;font-size:11px;height:fit-content;">{{ a.status }}</span>
+          </div>
+          <div style="font-size:12px;color:#463F37;margin-top:10px;background:#F6F0E8;border-radius:8px;padding:10px 12px;">"{{ a.message }}"</div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <div style="border:1px solid #6E7459;color:#6E7459;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Uphold appeal</div>
+            <div style="border:1px solid #DBC9B0;color:#463F37;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Deny appeal</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      appeals: [
+        { id: '4821', user: 'Anders Berg', action: 'Listing removed', time: '1 day ago', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C', message: 'The listing was flagged by mistake — I have the original receipt and photos.' },
+        { id: '4809', user: 'Nordic Baby Store', action: 'Account suspended', time: '2 days ago', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C', message: 'We believe this was an automated error, our store has been verified since 2024.' },
+        { id: '4790', user: 'Julie Hansen', action: 'Post removed', time: '3 days ago', status: 'Overdue', bg: '#F5DCD4', color: '#B4553C', message: 'The post was about a lost pet, not a policy violation.' },
+        { id: '4776', user: 'Martin Larsen', action: 'Comment removed', time: '4 days ago', status: 'Overdue', bg: '#F5DCD4', color: '#B4553C', message: 'I was quoting someone else, not making the original statement.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

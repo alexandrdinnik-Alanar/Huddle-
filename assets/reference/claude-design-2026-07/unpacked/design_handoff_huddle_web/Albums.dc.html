@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="community" hint-size="100%,64px"></dc-import>
+  <div style="max-width:700px;margin:0 auto;padding:32px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-family:'Newsreader',serif;font-size:24px;">My Albums</div>
+      <span style="font-size:12px;color:#A99B89;">{{ myAlbums.length }} albums</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ myAlbums }}" as="a" hint-placeholder-count="3">
+        <div>
+          <div style="height:110px;border-radius:12px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div style="font-size:13px;font-weight:600;margin-top:8px;">{{ a.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;">{{ a.count }} photos</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:28px;">
+      <div style="font-size:16px;font-weight:600;">Shared Albums</div>
+      <span style="font-size:12px;color:#A99B89;">{{ shared.length }} albums</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+      <sc-for list="{{ shared }}" as="s" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #DBC9B0;border-radius:12px;padding:12px;">
+          <div style="width:56px;height:56px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">{{ s.name }}</div>
+            <div style="font-size:11px;color:#8A7C6C;">By {{ s.owner }} · {{ s.count }} photos</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      myAlbums: [
+        { name: 'Family Trips', count: 24 },
+        { name: 'Summer 2024', count: 18 },
+        { name: 'Nature', count: 36 },
+      ],
+      shared: [
+        { name: 'Oslo Adventures', owner: 'Julie Hansen', count: 15 },
+        { name: 'Family Picnic Day', owner: 'Martin Larsen', count: 22 },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

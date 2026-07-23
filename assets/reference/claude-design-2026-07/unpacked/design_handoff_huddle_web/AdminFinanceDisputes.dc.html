@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="finance" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Finance — Disputes</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Buyer/seller payment disputes requiring resolution</div>
+
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <sc-for list="{{ subnav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="text-decoration:none;border-radius:20px;padding:8px 16px;font-size:12px;background:{{ n.bg }};color:{{ n.color }};font-weight:600;">{{ n.label }}</a>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:18px;">
+          <div style="font-size:11px;color:#8A7C6C;">{{ s.label }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:6px;">{{ s.value }}</div>
+          <div style="font-size:11px;margin-top:4px;color:{{ s.color }};">{{ s.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;gap:14px;margin-top:22px;">
+      <sc-for list="{{ disputes }}" as="d" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:18px 20px;">
+          <div style="display:flex;justify-content:space-between;">
+            <div>
+              <div style="font-size:13px;font-weight:600;">{{ d.tx }} · {{ d.amount }}</div>
+              <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">{{ d.buyer }} vs {{ d.seller }} · opened {{ d.time }}</div>
+            </div>
+            <span style="background:{{ d.bg }};color:{{ d.color }};border-radius:10px;padding:3px 10px;font-size:11px;height:fit-content;">{{ d.status }}</span>
+          </div>
+          <div style="font-size:12px;color:#463F37;margin-top:10px;background:#F6F0E8;border-radius:8px;padding:10px 12px;">{{ d.summary }}</div>
+          <div style="display:flex;gap:8px;margin-top:12px;">
+            <div style="border:1px solid #6E7459;color:#6E7459;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Rule for buyer</div>
+            <div style="border:1px solid #B4553C;color:#B4553C;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Rule for seller</div>
+            <div style="border:1px solid #DBC9B0;color:#463F37;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Request more info</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      subnav: [
+        { label: 'Overview', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Refunds', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceRefunds.dc.html' },
+        { label: 'Disputes', bg: '#3A342C', color: '#fff', href: 'AdminFinanceDisputes.dc.html' },
+        { label: 'Commissions', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Payouts', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinancePayouts.dc.html' },
+        { label: 'Invoices', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceInvoices.dc.html' },
+      ],
+      stats: [
+        { label: 'Open disputes', value: '7', delta: '2,140 NOK at stake', color: '#B4553C' },
+        { label: 'Resolved this month', value: '19', delta: 'avg 2.1 days', color: '#6E7459' },
+        { label: 'Ruled for buyer', value: '61%', delta: 'of resolved cases', color: '#8A7C6C' },
+        { label: 'Ruled for seller', value: '39%', delta: 'of resolved cases', color: '#8A7C6C' },
+      ],
+      disputes: [
+        { tx: '#ORD-8790', amount: '620 NOK', buyer: 'Julie Hansen', seller: 'Anders Berg', time: '2 days ago', status: 'Open', bg: '#F5DCD4', color: '#B4553C', summary: 'Buyer claims item arrived damaged; seller disputes and provided packing photos.' },
+        { tx: '#BKG-3402', amount: '900 NOK', buyer: 'Martin Larsen', seller: 'Sara Vik (Expert)', time: '1 day ago', status: 'Open', bg: '#F5DCD4', color: '#B4553C', summary: 'Buyer requests refund for missed appointment; expert states client cancelled late.' },
+        { tx: '#ORD-8710', amount: '190 NOK', buyer: 'Kids Activities Oslo', seller: 'Nordic Baby Store', time: '4 days ago', status: 'Awaiting info', bg: '#F1E9DC', color: '#8A7C6C', summary: 'Requested additional shipping proof from seller before ruling.' },
+        { tx: '#ORD-8650', amount: '430 NOK', buyer: 'Anders Berg', seller: 'Emma Andersen', time: '6 days ago', status: 'Open', bg: '#F5DCD4', color: '#B4553C', summary: 'Item not as described — buyer submitted comparison photos.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

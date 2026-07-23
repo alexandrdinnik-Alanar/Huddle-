@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="max-width:600px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+        <div style="width:24px;height:24px;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <sc-if value="{{ d.done }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon-name="check" color="#fff" size="11" hint-size="11,11"></dc-import></sc-if>
+          <sc-if value="{{ d.notDone }}" hint-placeholder-val="{{ true }}">{{ d.num }}</sc-if>
+        </div>
+        <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+      </sc-for>
+    </div>
+
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-top:20px;">Step 4 of 5</div>
+    <div style="font-family:'Newsreader',serif;font-size:25px;color:#3A342C;margin-top:4px;">Upload your feed file</div>
+    <div style="font-size:13px;color:#7C7062;margin-top:4px;">Upload your CSV or XML file containing your products.</div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+      <div style="font-size:12px;color:#7C7062;margin-bottom:8px;font-weight:600;">Upload file</div>
+      <div style="border:2px dashed #DBC9B0;border-radius:14px;padding:36px;text-align:center;">
+        <dc-import name="Icon" icon-name="signal" color="#BC7A45" size="26" hint-size="26,26"></dc-import>
+        <div style="font-size:13.5px;font-weight:600;margin-top:10px;color:#3A342C;">Drag &amp; drop your file here<br>or click to browse</div>
+        <div style="font-size:11px;color:#8A7C6C;margin-top:5px;">CSV or XML (max 50MB)</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:22px;">File requirements</div>
+      <div style="display:flex;flex-direction:column;gap:9px;margin-top:11px;">
+        <sc-for list="{{ reqs }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#6E6154;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>{{ r }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:24px;">
+      <a href="ProductFeedSetup.dc.html" style="flex:1;text-decoration:none;text-align:center;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;">← Back</a>
+      <a href="FeedDiagnostics.dc.html" style="flex:1;text-decoration:none;text-align:center;background:#BC7A45;color:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Continue →</a>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      dots: [1, 2, 3, 4, 5].map((n) => ({ num: n, done: n <= 4, notDone: n > 4, bg: n <= 4 ? '#3A342C' : '#EFE4D4', color: n <= 4 ? '#fff' : '#463F37', hasLine: n < 5 })),
+      reqs: ['CSV or XML format', 'Maximum file size: 50MB', 'UTF-8 encoding', 'First row must contain headers'],
+    };
+  }
+}
+</script>
+</body>
+</html>

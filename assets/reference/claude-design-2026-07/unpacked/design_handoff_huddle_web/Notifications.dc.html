@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="overview" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Stay in the loop</div>
+          <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;">Notifications</div>
+        </div>
+        <div style="font-size:12.5px;color:#9E5A2C;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer;transition:color .15s;" style-hover="color:#BC7A45;"><dc-import name="Icon" icon-name="check" color="#9E5A2C" size="14" hint-size="14,14"></dc-import>Mark all as read</div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:20px;">
+        <div style="background:#3A342C;color:#fff;border-radius:22px;padding:8px 18px;font-size:12.5px;font-weight:600;cursor:pointer;">All</div>
+        <div style="background:#fff;border:1px solid #DBC9B0;color:#463F37;border-radius:22px;padding:8px 18px;font-size:12.5px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">Unread <span style="color:#BC7A45;font-weight:700;">5</span></div>
+        <div style="background:#fff;border:1px solid #DBC9B0;color:#463F37;border-radius:22px;padding:8px 18px;font-size:12.5px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">Mentions</div>
+        <div style="background:#fff;border:1px solid #DBC9B0;color:#463F37;border-radius:22px;padding:8px 18px;font-size:12.5px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">Marketplace</div>
+      </div>
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="2">
+        <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A99B89;font-weight:700;margin:14px 0 10px;">{{ g.label }}</div>
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;overflow:hidden;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+          <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="4">
+            <div style="display:flex;gap:14px;align-items:flex-start;padding:15px 18px;border-bottom:1px solid #F2E9DA;background:{{ n.bg }};cursor:pointer;transition:background .15s;" style-hover="background:#F2E6D6;">
+              <div style="width:40px;height:40px;border-radius:50%;background:{{ n.iconBg }};display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ n.icon }}" color="{{ n.iconColor }}" size="18" hint-size="18,18"></dc-import></div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13.5px;color:#3A342C;line-height:1.5;"><b>{{ n.who }}</b> {{ n.text }}</div>
+                <div style="font-size:11.5px;color:#A99B89;margin-top:3px;">{{ n.time }}</div>
+              </div>
+              <sc-if value="{{ n.unread }}" hint-placeholder-val="{{ false }}"><span style="width:9px;height:9px;border-radius:50%;background:#BC7A45;flex-shrink:0;margin-top:6px;"></span></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const un = { bg: '#FBF5EC', unread: true };
+    const rd = { bg: '#fff', unread: false };
+    return {
+      groups: [
+        { label: 'Today', items: [
+          { ...un, who: 'The Bergström Family', text: 'accepted your connection request. Say hi!', time: '20 min ago', icon: 'people', iconBg: '#EAEBE1', iconColor: '#6E7459' },
+          { ...un, who: 'Baby Yoga', text: 'starts in 2 hours at Huddle Studio, Oslo.', time: '1 hour ago', icon: 'calendar', iconBg: '#F2E6D6', iconColor: '#BC7A45' },
+          { ...un, who: 'Markus L.', text: 'replied to your message about the Stokke chair.', time: '3 hours ago', icon: 'mail', iconBg: '#F2E6D6', iconColor: '#BC7A45' },
+        ]},
+        { label: 'Earlier this week', items: [
+          { ...rd, who: 'Oslo Runners Club', text: 'posted a new event: Saturday morning run.', time: 'Tue', icon: 'chat', iconBg: '#EAEBE1', iconColor: '#6E7459' },
+          { ...rd, who: 'Your listing', text: '“Banwood Balance Bike” was saved by 3 families.', time: 'Mon', icon: 'heart', iconBg: '#F2E6D6', iconColor: '#BC7A45' },
+          { ...rd, who: 'Huddle', text: 'Your family profile is 90% complete — add interests to get better matches.', time: 'Mon', icon: 'sparkle', iconBg: '#EAEBE1', iconColor: '#6E7459' },
+        ]},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

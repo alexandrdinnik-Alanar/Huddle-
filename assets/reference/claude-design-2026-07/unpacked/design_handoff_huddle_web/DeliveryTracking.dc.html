@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+    <div style="max-width:560px;padding:32px 40px;">
+      <a href="MyListings.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to Orders</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Delivery Tracking</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;">
+        <div style="font-size:13px;font-weight:600;">Order #HDD-2025-00048</div>
+        <div style="font-size:11px;background:#EFE4D4;color:#BC7A45;padding:5px 12px;border-radius:12px;">Out for Delivery</div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#7C7062;margin-top:14px;">
+        <div><div>Estimated delivery</div><div style="font-weight:600;color:#463F37;">Today, May 28, 2025 <span style="color:#8A7C6C;font-weight:400;">by 18:00</span></div></div>
+      </div>
+      <div style="font-size:12px;color:#7C7062;margin-top:8px;">Shipping to <span style="color:#463F37;font-weight:600;">Grünerløkka 15, 0550 Oslo</span></div>
+
+      <div style="height:170px;border-radius:14px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);margin-top:16px;display:flex;align-items:center;justify-content:center;color:#8A7C6C;font-family:monospace;font-size:11px;">live map — route to delivery</div>
+
+      <div style="display:flex;justify-content:space-between;margin-top:16px;font-size:12px;">
+        <div><div style="color:#8A7C6C;">Driver</div><div style="font-weight:600;">Ola Hansen</div></div>
+        <div><div style="color:#8A7C6C;">Vehicle</div><div style="font-weight:600;">PA 12345</div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;border-top:1px solid #DBC9B0;padding-top:14px;">
+        <div><div style="font-size:12px;color:#8A7C6C;">Contact</div><div style="font-size:13px;font-weight:600;">+47 987 65 432</div></div>
+        <span style="color:#BC7A45;"></span>
+      </div>
+
+      <div style="background:#EFE4D4;border-radius:10px;padding:12px 14px;font-size:12px;color:#7C7062;margin-top:16px;">ⓘ Your order is on the way! You can track the driver in real time on the map.</div>
+
+      <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:13px;margin-top:20px;">View Order Details</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>

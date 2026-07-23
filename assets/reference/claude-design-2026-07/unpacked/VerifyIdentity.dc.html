@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;min-height:100vh;background:linear-gradient(158deg,#FBF5EC 0%,#F2E8D6 54%,#EADDC7 100%);display:flex;align-items:center;justify-content:center;padding:40px;color:#463F37;position:relative;overflow:hidden;">
+  <svg width="360" height="360" viewBox="0 0 360 360" style="position:absolute;bottom:-80px;right:-60px;opacity:.35;pointer-events:none;"><circle cx="180" cy="180" r="178" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="180" cy="180" r="134" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="180" cy="180" r="90" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+  <div style="position:relative;width:100%;max-width:460px;background:#FCF9F3;border:1px solid #EADCC8;border-radius:24px;padding:40px 38px;box-shadow:0 24px 60px rgba(120,86,52,.16);">
+    <a href="Home.dc.html" style="display:block;"><img src="assets/Huddle_wordmark.png" alt="Huddle" style="height:28px;display:block;margin:0 auto 26px;"></a>
+    <div style="width:56px;height:56px;border-radius:50%;background:#EAEBE1;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="24" hint-size="24,24"></dc-import></div>
+    <h1 style="font-family:'Newsreader',serif;font-size:28px;font-weight:500;color:#3A342C;text-align:center;margin:0;">Verify your identity</h1>
+    <p style="font-size:14px;color:#7C7062;text-align:center;margin:10px 0 24px;line-height:1.6;">We sent a 6-digit code to <b style="color:#463F37;">emma@example.com</b>. Enter it below to keep your family safe.</p>
+    <div style="display:flex;justify-content:center;gap:10px;">
+      <sc-for list="{{ digits }}" as="d" hint-placeholder-count="6">
+        <div style="width:48px;height:56px;border:1px solid {{ d.border }};border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">{{ d.v }}</div>
+      </sc-for>
+    </div>
+    <a href="Onboarding.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:26px;padding:14px;font-size:14.5px;font-weight:600;margin-top:24px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Verify &amp; continue</a>
+    <div style="text-align:center;margin-top:16px;font-size:13px;color:#7C7062;">Didn't get it? <span style="text-decoration:underline;font-weight:600;color:#9E5A2C;cursor:default;">Resend code</span> · <span style="color:#A99B89;">0:42</span></div>
+    <div style="border-top:1px solid #EADCC8;margin-top:22px;padding-top:18px;">
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A99B89;font-weight:700;text-align:center;margin-bottom:12px;">Or verify another way</div>
+      <div style="display:flex;gap:10px;">
+        <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:500;background:#fff;"><dc-import name="Icon" icon-name="chat" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>SMS</div>
+        <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:500;background:#fff;"><dc-import name="Icon" icon-name="lock" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>BankID</div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { digits: [
+      { v: '4', border: '#BC7A45' }, { v: '9', border: '#BC7A45' }, { v: '2', border: '#BC7A45' },
+      { v: '', border: '#DBC9B0' }, { v: '', border: '#DBC9B0' }, { v: '', border: '#DBC9B0' },
+    ] };
+  }
+}
+</script>
+</body>
+</html>

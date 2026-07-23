@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;min-height:100vh;background:#F6F0E8;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+  <div style="width:400px;border-radius:20px;background:#fff;box-shadow:0 20px 50px rgba(31,42,36,0.08);padding:36px 30px;">
+    <div style="text-align:center;">
+      <img src="assets/Huddle_wordmark.png" alt="Huddle" style="height:30px;">
+    </div>
+    <div style="font-family:'Newsreader',serif;font-size:24px;color:#463F37;text-align:center;margin-top:20px;">Welcome back</div>
+    <div style="font-size:13px;color:#7C7062;text-align:center;margin-top:6px;">Log in to continue to your account.</div>
+
+    <div style="font-size:12px;color:#7C7062;margin:22px 0 6px;">Email address</div>
+    <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;color:#8A7C6C;font-size:13px;">Enter your email</div>
+
+    <div style="font-size:12px;color:#7C7062;margin:16px 0 6px;">Password</div>
+    <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;color:#8A7C6C;font-size:13px;display:flex;justify-content:space-between;align-items:center;">
+      <span>Enter your password</span><dc-import name="Icon" icon-name="heart" color="transparent" size="1" hint-size="1,1"></dc-import><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#A99B89" stroke-width="1.6"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:14px;">
+      <div style="display:flex;align-items:center;gap:8px;"><div style="width:16px;height:16px;border:1px solid #DBC9B0;border-radius:4px;cursor:pointer;"></div><span style="font-size:12px;color:#7C7062;">Remember me</span></div>
+      <a href="ForgotPassword.dc.html" style="font-size:12px;color:#9E5A2C;font-weight:600;text-decoration:none;">Forgot password?</a>
+    </div>
+
+    <a href="ParentDashboard.dc.html" style="display:block;text-decoration:none;background:#3A342C;color:#fff;text-align:center;border-radius:24px;padding:13px;font-size:14px;font-weight:600;margin-top:20px;">Log In</a>
+
+    <div style="display:flex;align-items:center;gap:10px;margin:20px 0;">
+      <div style="flex:1;height:1px;background:#DBC9B0;"></div>
+      <span style="font-size:12px;color:#8A7C6C;">or</span>
+      <div style="flex:1;height:1px;background:#DBC9B0;"></div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #DBC9B0;border-radius:24px;padding:12px;font-size:14px;color:#463F37;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+        <svg viewBox="0 0 24 24" width="16" height="16"><path fill="#EA4335" d="M12 10.2v3.9h5.5c-.24 1.3-1.7 3.8-5.5 3.8-3.3 0-6-2.7-6-6.1s2.7-6.1 6-6.1c1.9 0 3.1.8 3.9 1.5l2.6-2.6C16.9 3 14.7 2 12 2 6.9 2 2.7 6.2 2.7 11.8s4.2 9.8 9.3 9.8c5.4 0 8.9-3.8 8.9-9.1 0-.6-.1-1.1-.1-1.5H12z"></path></svg><span>Continue with Google</span>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #DBC9B0;border-radius:24px;padding:12px;font-size:14px;color:#463F37;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#463F37"><path d="M16.4 12.7c0-2 1.6-2.9 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.2 2-.1.3-1.4 2.4-.4 5 .5 1.3 1.4 2.7 2.4 2.7.9 0 1.3-.6 2.4-.6 1.1 0 1.4.6 2.4.6 1 0 1.7-1.2 2.3-2.5-.4-.2-1.5-.7-1.5-2.3zM14.6 6.9c.5-.7.9-1.6.8-2.5-.8 0-1.7.5-2.3 1.2-.5.6-.9 1.5-.8 2.4.9.1 1.8-.4 2.3-1.1z"></path></svg><span>Continue with Apple</span>
+      </div>
+    </div>
+
+    <div style="text-align:center;font-size:13px;color:#7C7062;margin-top:20px;">Don't have an account? <a href="SignUp.dc.html" style="color:#BC7A45;font-weight:600;text-decoration:none;">Sign up</a></div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="events" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="events" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;max-width:440px;padding:32px 40px 60px;">
+      <a href="OrganizerCheckInList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">← Back to event</a>
+      <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;margin-top:14px;">Scan attendee ticket</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Align the QR code in the frame to check in.</div>
+
+      <div style="position:relative;height:220px;border-radius:18px;background:#2E2A24;margin-top:20px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 12px 30px rgba(46,42,36,.2);">
+        <div style="width:140px;height:140px;background:repeating-conic-gradient(#463F37 0deg 8deg,#fff 8deg 16deg);border-radius:6px;"></div>
+        <div style="position:absolute;inset:20px;">
+          <div style="position:absolute;top:0;left:0;width:24px;height:24px;border-top:3px solid #BC7A45;border-left:3px solid #BC7A45;"></div>
+          <div style="position:absolute;top:0;right:0;width:24px;height:24px;border-top:3px solid #BC7A45;border-right:3px solid #BC7A45;"></div>
+          <div style="position:absolute;bottom:0;left:0;width:24px;height:24px;border-bottom:3px solid #BC7A45;border-left:3px solid #BC7A45;"></div>
+          <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;border-bottom:3px solid #BC7A45;border-right:3px solid #BC7A45;"></div>
+        </div>
+        <div style="position:absolute;left:20px;right:20px;top:50%;height:2px;background:#BC7A45;box-shadow:0 0 8px rgba(188,122,69,.7);"></div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:12px;margin-top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:12px 14px;box-shadow:0 6px 16px rgba(150,110,70,.05);">
+        <div style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#C99A6B,#A9663A);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:16px;">E</div>
+        <div style="flex:1;"><div style="font-size:13px;font-weight:600;color:#3A342C;">Emma Anderson</div><div style="font-size:11px;color:#8A7C6C;">Child ticket</div></div>
+        <div style="font-size:11px;background:#EAEBE1;color:#6E7459;padding:5px 12px;border-radius:14px;font-weight:600;">Valid ticket</div>
+      </div>
+
+      <div style="text-align:center;background:#BC7A45;color:#fff;border-radius:24px;padding:14px;font-size:14px;font-weight:600;margin-top:20px;cursor:pointer;box-shadow:0 12px 26px rgba(188,122,69,.28);transition:background .15s;" style-hover="background:#A9663A;">Check in</div>
+      <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;margin-top:10px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Manual check-in</div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {}
+</script>
+</body>
+</html>

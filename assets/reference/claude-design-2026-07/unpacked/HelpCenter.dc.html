@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Help Center" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="300" height="300" viewBox="0 0 300 300" style="position:absolute;top:-40px;right:6%;opacity:.35;pointer-events:none;"><circle cx="150" cy="150" r="148" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="150" cy="150" r="110" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="150" cy="150" r="72" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:640px;margin:0 auto;text-align:center;padding:58px 40px 46px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>Help Center<span style="width:26px;height:1px;background:#C68C57;"></span></div>
+      <h1 style="font-family:'Newsreader',serif;font-size:clamp(34px,4.2vw,50px);line-height:1.05;color:#3A342C;margin:14px 0 0;font-weight:500;">How can we <span style="font-style:italic;color:#BC7A45;">help</span> today?</h1>
+      <div style="display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #EADCC8;border-radius:28px;padding:14px 22px;margin-top:22px;box-shadow:0 12px 30px rgba(120,86,52,.12);"><dc-import name="Icon" icon-name="search" color="#A99B89" size="17" hint-size="17,17"></dc-import><span style="font-size:14px;color:#A99B89;">Search for help articles, topics…</span></div>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1180px;margin:0 auto;padding:44px 40px 20px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">Browse by topic</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:18px;">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="6">
+        <a href="HelpCenter.dc.html" style="text-decoration:none;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:22px 14px;text-align:center;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s,box-shadow .16s;display:block;" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(150,110,70,.13);">
+          <div style="width:48px;height:48px;border-radius:50%;background:{{ c.bg }};display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="{{ c.icon }}" color="{{ c.color }}" size="21" hint-size="21,21"></dc-import></div>
+          <div style="font-size:12.5px;font-weight:600;margin-top:12px;color:#3A342C;line-height:1.3;">{{ c.title }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:4px;">{{ c.count }} articles</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1180px;margin:0 auto;padding:24px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">Popular articles</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px;">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
+        <a href="HelpCenter.dc.html" style="text-decoration:none;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s,box-shadow .16s;display:block;" style-hover="transform:translateY(-4px);box-shadow:0 16px 34px rgba(150,110,70,.13);">
+          <div style="font-size:10.5px;color:#9E5A2C;letter-spacing:.06em;text-transform:uppercase;font-weight:700;">{{ a.category }}</div>
+          <div style="font-size:14.5px;font-weight:600;margin-top:6px;line-height:1.4;color:#3A342C;">{{ a.title }}</div>
+          <div style="font-size:12.5px;color:#9E5A2C;margin-top:14px;font-weight:500;">Read article →</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(180deg,#FBF5EC,#F1E7D5);border-top:1px solid #EFE4D4;border-bottom:1px solid #EFE4D4;margin-top:28px;">
+    <div data-om-reveal style="max-width:760px;margin:0 auto;padding:48px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+      <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;text-align:center;">Frequently asked questions</div>
+      <div style="margin-top:24px;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <div style="background:#FCF9F3;border:1px solid #EFE4D4;border-radius:14px;padding:17px 20px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:14px;box-shadow:0 6px 16px rgba(150,110,70,.05);">
+            <span style="font-size:13.5px;font-weight:500;color:#3A342C;">{{ f }}</span>
+            <span style="width:28px;height:28px;border-radius:50%;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#9E5A2C;font-size:18px;font-weight:600;line-height:1;">+</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:44px 40px 52px;">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);border-radius:22px;padding:38px;text-align:center;color:#F6F0E8;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-28px;bottom:-36px;width:170px;opacity:.1;pointer-events:none;">
+      <div style="position:relative;font-family:'Newsreader',serif;font-size:24px;">Still need help?</div>
+      <div style="position:relative;font-size:13.5px;color:#D8CDB9;margin-top:8px;">Our support team typically responds within a few hours.</div>
+      <div style="position:relative;display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+        <a href="ContactUs.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:26px;padding:12px 26px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.3);" style-hover="background:#CE8A50;">Contact Support</a>
+        <a href="ContactUs.dc.html" style="text-decoration:none;border:1px solid rgba(246,240,232,.5);color:#F6F0E8;border-radius:26px;padding:12px 26px;font-size:13.5px;font-weight:500;" style-hover="background:rgba(246,240,232,.12);">hello@huddle.community</a>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const B = [['#F2E6D6', '#BC7A45'], ['#EAEBE1', '#6E7459']];
+    return {
+      categories: [
+        { icon: 'bag', title: 'Marketplace & Orders', count: 18, bg: B[0][0], color: B[0][1] },
+        { icon: 'calendar', title: 'Activities & Events', count: 12, bg: B[1][0], color: B[1][1] },
+        { icon: 'people', title: 'Community & Groups', count: 9, bg: B[0][0], color: B[0][1] },
+        { icon: 'pulse', title: 'Experts & Services', count: 7, bg: B[1][0], color: B[1][1] },
+        { icon: 'lock', title: 'Safety & Privacy', count: 11, bg: B[0][0], color: B[0][1] },
+        { icon: 'coin', title: 'Payments & Billing', count: 8, bg: B[1][0], color: B[1][1] },
+      ],
+      articles: [
+        { category: 'Marketplace', title: 'How do I list an item for sale?' },
+        { category: 'Orders', title: 'Tracking and picking up your order' },
+        { category: 'Activities', title: 'How to register for an activity' },
+        { category: 'Safety', title: "How Huddle protects your child's privacy" },
+        { category: 'Community', title: 'Creating and managing a group' },
+        { category: 'Payments', title: 'Understanding fees and refunds' },
+      ],
+      faqs: [
+        'How do I create a Huddle account?',
+        'How does the marketplace payment process work?',
+        'Can I cancel or reschedule a booking?',
+        'How do I report a concern or a user?',
+        'How do I become a Huddle partner store?',
+        'How do I delete my account and data?',
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

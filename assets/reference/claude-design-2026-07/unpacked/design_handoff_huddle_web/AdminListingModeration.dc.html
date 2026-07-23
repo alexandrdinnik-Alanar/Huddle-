@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="listings" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Listing Moderation</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">42 listings awaiting review</div>
+
+    <div style="display:grid;gap:14px;margin-top:22px;">
+      <sc-for list="{{ listings }}" as="l" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:64px 1.6fr 1fr 1fr auto;gap:16px;align-items:center;">
+          <div style="width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div>
+            <div style="font-size:13px;font-weight:600;">{{ l.title }}</div>
+            <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">Seller: {{ l.seller }} · {{ l.category }}</div>
+          </div>
+          <div style="font-size:12px;color:#8A7C6C;">Flag: {{ l.flag }}</div>
+          <div style="font-size:12px;font-weight:600;">{{ l.price }}</div>
+          <div style="display:flex;gap:8px;">
+            <div style="border:1px solid #6E7459;color:#6E7459;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Approve</div>
+            <div style="border:1px solid #B4553C;color:#B4553C;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;">Remove</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      listings: [
+        { title: 'Vintage wooden stroller', seller: 'Julie Hansen', category: 'Nursery & Gear', flag: 'Suspicious price', price: '450 NOK' },
+        { title: 'Kids winter jacket bundle (5x)', seller: 'Martin Larsen', category: 'Clothing', flag: 'Reported by user', price: '390 NOK' },
+        { title: 'IKEA bunk bed with mattress', seller: 'Anders Berg', category: 'Nursery & Gear', flag: 'Missing photos', price: '1,200 NOK' },
+        { title: 'Lego Duplo mega set', seller: 'Sara Vik', category: 'Toys & Games', flag: 'Duplicate listing', price: '280 NOK' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

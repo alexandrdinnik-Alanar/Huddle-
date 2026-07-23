@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="events" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="events" hint-size="230px,600px"></dc-import>
+    <div style="max-width:420px;padding:32px 40px;">
+      <a href="OrganizerCheckInList.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to Event</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Scan Attendee Ticket</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Align the QR code in the frame to check in.</div>
+
+      <div style="position:relative;height:220px;border-radius:16px;background:#2E2A24;margin-top:20px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+        <div style="width:140px;height:140px;background:repeating-conic-gradient(#463F37 0deg 8deg,#fff 8deg 16deg);border-radius:6px;"></div>
+        <div style="position:absolute;inset:20px;border:2px solid transparent;">
+          <div style="position:absolute;top:0;left:0;width:24px;height:24px;border-top:3px solid #BC7A45;border-left:3px solid #BC7A45;"></div>
+          <div style="position:absolute;top:0;right:0;width:24px;height:24px;border-top:3px solid #BC7A45;border-right:3px solid #BC7A45;"></div>
+          <div style="position:absolute;bottom:0;left:0;width:24px;height:24px;border-bottom:3px solid #BC7A45;border-left:3px solid #BC7A45;"></div>
+          <div style="position:absolute;bottom:0;right:0;width:24px;height:24px;border-bottom:3px solid #BC7A45;border-right:3px solid #BC7A45;"></div>
+        </div>
+        <div style="position:absolute;left:20px;right:20px;top:50%;height:2px;background:#E0523A;"></div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:10px;margin-top:18px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:600;">Emma Anderson</div>
+          <div style="font-size:11px;color:#8A7C6C;">Child Ticket</div>
+        </div>
+        <div style="font-size:11px;background:#EAEBE1;color:#6E7459;padding:4px 10px;border-radius:12px;">Valid Ticket</div>
+      </div>
+
+      <div style="text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:20px;">Check In</div>
+      <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:14px;margin-top:10px;">Manual Check-in</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic { renderVals() { return {}; } }
+
+</script>
+</body>
+</html>

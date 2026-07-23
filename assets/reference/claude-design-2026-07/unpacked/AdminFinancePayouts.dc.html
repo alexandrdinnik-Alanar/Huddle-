@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="finance" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Finance — Payouts</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Seller, expert and partner payouts</div>
+
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <sc-for list="{{ subnav }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" style="text-decoration:none;border-radius:20px;padding:8px 16px;font-size:12px;background:{{ n.bg }};color:{{ n.color }};font-weight:600;">{{ n.label }}</a>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:18px;">
+          <div style="font-size:11px;color:#8A7C6C;">{{ s.label }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:6px;">{{ s.value }}</div>
+          <div style="font-size:11px;margin-top:4px;color:{{ s.color }};">{{ s.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;margin-top:22px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr 100px;padding:12px 18px;font-size:11px;color:#8A7C6C;border-bottom:1px solid #F1E9DC;">
+        <div>Recipient</div><div>Type</div><div>Period</div><div>Amount</div><div>Status</div><div></div>
+      </div>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr 100px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F6F0E8;">
+          <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:50%;background:#DBC9B0;"></div>{{ r.name }}</div>
+          <div style="color:#8A7C6C;">{{ r.type }}</div>
+          <div style="color:#8A7C6C;">{{ r.period }}</div>
+          <div style="font-weight:600;">{{ r.amount }}</div>
+          <div><span style="background:{{ r.bg }};color:{{ r.color }};border-radius:10px;padding:3px 10px;font-size:11px;">{{ r.status }}</span></div>
+          <div style="color:#BC7A45;font-size:12px;font-weight:600;">{{ r.action }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      subnav: [
+        { label: 'Overview', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Refunds', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceRefunds.dc.html' },
+        { label: 'Disputes', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceDisputes.dc.html' },
+        { label: 'Commissions', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceCommissions.dc.html' },
+        { label: 'Payouts', bg: '#3A342C', color: '#fff', href: 'AdminFinancePayouts.dc.html' },
+        { label: 'Invoices', bg: '#F1E9DC', color: '#463F37', href: 'AdminFinanceInvoices.dc.html' },
+      ],
+      stats: [
+        { label: 'Scheduled this week', value: '38,900 NOK', delta: '54 recipients', color: '#6E7459' },
+        { label: 'Pending approval', value: '4', delta: '6,120 NOK held', color: '#B4553C' },
+        { label: 'Paid this month', value: '162,400 NOK', delta: '+9% vs last month', color: '#6E7459' },
+        { label: 'Failed payouts', value: '1', delta: 'bank details invalid', color: '#B4553C' },
+      ],
+      rows: [
+        { name: 'Emma Andersen', type: 'Seller', period: 'Jun 24–30', amount: '890 NOK', status: 'Paid', bg: '#EAEBE1', color: '#6E7459', action: 'View' },
+        { name: 'Sara Vik', type: 'Expert', period: 'Jun 24–30', amount: '2,340 NOK', status: 'Paid', bg: '#EAEBE1', color: '#6E7459', action: 'View' },
+        { name: 'Nordic Baby Store', type: 'Partner', period: 'Jun 24–30', amount: '6,780 NOK', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C', action: 'Approve' },
+        { name: 'Martin Larsen', type: 'Seller', period: 'Jun 24–30', amount: '410 NOK', status: 'Paid', bg: '#EAEBE1', color: '#6E7459', action: 'View' },
+        { name: 'Kids Activities Oslo', type: 'Organizer', period: 'Jun 24–30', amount: '3,120 NOK', status: 'Pending', bg: '#F1E9DC', color: '#8A7C6C', action: 'Approve' },
+        { name: 'Anders Berg', type: 'Seller', period: 'Jun 24–30', amount: '260 NOK', status: 'Failed', bg: '#F5DCD4', color: '#B4553C', action: 'Fix' },
+        { name: 'Jonas Berg (Expert)', type: 'Expert', period: 'Jun 24–30', amount: '1,890 NOK', status: 'Paid', bg: '#EAEBE1', color: '#6E7459', action: 'View' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="events" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="events" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;max-width:600px;padding:32px 40px 60px;">
+      <div style="display:flex;align-items:center;gap:4px;">
+        <sc-for list="{{ dots }}" as="d" hint-placeholder-count="6">
+          <div style="width:24px;height:24px;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <sc-if value="{{ d.done }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon-name="check" color="#fff" size="11" hint-size="11,11"></dc-import></sc-if>
+            <sc-if value="{{ d.notDone }}" hint-placeholder-val="{{ true }}">{{ d.num }}</sc-if>
+          </div>
+          <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+        </sc-for>
+      </div>
+
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-top:20px;">Step 2 of 6</div>
+      <div style="font-family:'Newsreader',serif;font-size:25px;color:#3A342C;margin-top:4px;">Location</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Where is your event taking place?</div>
+
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Venue type</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Physical Venue <span style="color:#A99B89;">▾</span></div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Venue name</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">Grünerløkka Community Center</div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Address</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">Toftes gate 69</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+          <div><div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">City</div><div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">Oslo</div></div>
+          <div><div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Postal code</div><div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">0552</div></div>
+        </div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Country</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Norway <span style="color:#A99B89;">▾</span></div>
+
+        <div style="height:150px;border-radius:14px;background:linear-gradient(150deg,#E9E7DA,#CFD3BE);margin-top:16px;display:flex;align-items:center;justify-content:center;"><div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:#6E7459;"><dc-import name="Icon" icon-name="pin" color="#6E7459" size="20" hint-size="20,20"></dc-import><span style="font-size:12px;font-weight:500;">Map preview</span></div></div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <a href="CreateEventBasicInfo.dc.html" style="flex:1;text-decoration:none;text-align:center;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">← Back</a>
+        <a href="CreateEventTickets.dc.html" style="flex:1;text-decoration:none;text-align:center;background:#BC7A45;color:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Continue →</a>
+      </div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return { dots: [1, 2, 3, 4, 5, 6].map((n) => ({ num: n, done: n <= 2, notDone: n > 2, bg: n <= 2 ? '#3A342C' : '#EFE4D4', color: n <= 2 ? '#fff' : '#463F37', hasLine: n < 6 })) };
+  }
+}
+</script>
+</body>
+</html>
