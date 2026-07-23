@@ -1,0 +1,714 @@
+.lab {
+  --ink: #272a25;
+  --paper: #f3efe6;
+  --cream: #fbf8f1;
+  --copper: #b96f45;
+  --forest: #33483b;
+  min-height: 100vh;
+  background: #181a18;
+  color: var(--ink);
+}
+
+.lab button,
+.lab a {
+  font: inherit;
+}
+
+.labHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3rem;
+  padding: 2rem clamp(1.25rem, 4vw, 4rem);
+  background: #181a18;
+  color: #f4f0e7;
+  border-bottom: 1px solid #ffffff24;
+}
+
+.labHeader p,
+.conceptLabel p,
+.kicker,
+.cardEyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.labHeader h1 {
+  margin: 0.6rem 0 0;
+  max-width: 18ch;
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4.8rem);
+  line-height: 0.98;
+  font-weight: 500;
+}
+
+.labHeader nav,
+.siteNav div,
+.atlasToolbar div {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.labHeader nav {
+  align-self: end;
+}
+
+.labHeader a,
+.labFooter a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15rem;
+}
+
+.concept {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(1rem, 2.5vw, 2.5rem) clamp(1rem, 4vw, 4rem) clamp(4rem, 9vw, 9rem);
+}
+
+.conceptLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.conceptLabel span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-weight: 800;
+}
+
+.siteNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.siteNav a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.siteNav > a {
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+.siteNav button,
+.searchBar button,
+.atlasToolbar button {
+  border: 1px solid currentColor;
+  color: inherit;
+  background: transparent;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.editorialHero,
+.atlasHero,
+.journalHero {
+  min-height: 70vh;
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 6rem);
+}
+
+.concept h2 {
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(3.5rem, 9vw, 9.6rem);
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  font-weight: 500;
+}
+
+.lead {
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  line-height: 1.55;
+}
+
+.searchBar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2.5rem;
+  padding: 0.7rem 0.7rem 0.7rem 1.15rem;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 4%, transparent);
+}
+
+.searchIcon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.sectionHeading {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: end;
+  padding-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+.sectionHeading p {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.sectionHeading h3 {
+  margin: 0;
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.activityCard {
+  min-width: 0;
+  border: 1px solid currentColor;
+  background: color-mix(in srgb, currentColor 2%, transparent);
+  transition: transform 260ms ease, background 260ms ease;
+}
+
+.activityCard:hover {
+  transform: translateY(-6px);
+}
+
+.cardVisual {
+  min-height: 14rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.cardVisual::before,
+.cardVisual::after {
+  content: "";
+  position: absolute;
+}
+
+.cardVisual span {
+  position: relative;
+  z-index: 1;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.cardBody {
+  padding: 1.25rem;
+  border-top: 1px solid currentColor;
+}
+
+.cardBody h3 {
+  margin: 0.65rem 0 1rem;
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  line-height: 1.05;
+}
+
+.cardBody p {
+  line-height: 1.45;
+}
+
+.cardBody strong {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.safetyStrip {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 2rem 0;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.safetyStrip span {
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(1.8rem, 4vw, 3.6rem);
+  line-height: 1;
+}
+
+/* Concept A — Nordic Editorial */
+.conceptA {
+  background: var(--paper);
+  color: #2e302a;
+}
+
+.editorialHero {
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  padding: clamp(3rem, 8vw, 8rem) 0;
+}
+
+.editorialCopy h2 {
+  font-family: var(--font-family-display), Georgia, serif;
+}
+
+.editorialPoster {
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+  background: #d46740;
+  color: #f9f2df;
+  border-radius: 50% 50% 1rem 1rem;
+}
+
+.editorialPoster p {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 2.5rem;
+  margin: 0;
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.78;
+  letter-spacing: -0.06em;
+}
+
+.editorialPoster small {
+  position: absolute;
+  right: 1.5rem;
+  top: 1.5rem;
+  writing-mode: vertical-rl;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+}
+
+.posterShapeOne,
+.posterShapeTwo {
+  position: absolute;
+  border-radius: 50%;
+  filter: contrast(1.05);
+}
+
+.posterShapeOne {
+  width: 70%;
+  aspect-ratio: 1;
+  right: -18%;
+  top: 12%;
+  background: #f3c85d;
+}
+
+.posterShapeTwo {
+  width: 52%;
+  aspect-ratio: 1;
+  left: 8%;
+  top: 23%;
+  background: #3d6b55;
+  mix-blend-mode: multiply;
+}
+
+.editorial .cardVisual {
+  background: #e8ddc8;
+}
+
+.editorial .cardVisual::before {
+  width: 70%;
+  height: 80%;
+  left: 10%;
+  bottom: -20%;
+  border-radius: 50% 50% 0 0;
+  background: #be754d;
+}
+
+.editorial .cardVisual::after {
+  width: 45%;
+  aspect-ratio: 1;
+  right: 8%;
+  top: 12%;
+  border-radius: 50%;
+  background: #355445;
+}
+
+/* Concept B — Local Discovery Atlas */
+.conceptB {
+  background: #dce6d5;
+  color: #1f2a22;
+}
+
+.conceptB .siteNav > a,
+.atlasIntro h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+}
+
+.atlasHero {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  padding: clamp(3rem, 7vw, 7rem) 0;
+}
+
+.atlasIntro h2 {
+  text-transform: uppercase;
+}
+
+.atlasStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.atlasStats span {
+  padding-top: 0.75rem;
+  border-top: 1px solid currentColor;
+  font-size: 0.8rem;
+}
+
+.atlasStats strong {
+  display: block;
+  font-size: 2rem;
+}
+
+.mapPanel {
+  min-height: 34rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid currentColor;
+  background:
+    linear-gradient(37deg, transparent 48%, #1f2a222b 49%, transparent 50%) 0 0 / 3rem 3rem,
+    linear-gradient(-37deg, transparent 48%, #1f2a2222 49%, transparent 50%) 0 0 / 3rem 3rem,
+    #f0f1d4;
+}
+
+.mapPanel::before,
+.mapPanel::after {
+  content: "";
+  position: absolute;
+  border: 2px solid #5b7f6a;
+  border-radius: 48% 52% 40% 60%;
+}
+
+.mapPanel::before {
+  inset: 8% 22% 10% 8%;
+  transform: rotate(13deg);
+}
+
+.mapPanel::after {
+  inset: 30% 4% 5% 38%;
+  transform: rotate(-9deg);
+}
+
+.mapRoute {
+  position: absolute;
+  width: 120%;
+  height: 1.1rem;
+  left: -10%;
+  top: 48%;
+  background: #dc6f3d;
+  transform: rotate(-12deg);
+  border: 2px solid #1f2a22;
+}
+
+.markerOne,
+.markerTwo,
+.markerThree {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #1f2a22;
+  color: #f5f0d9;
+  font-weight: 800;
+}
+
+.markerOne { left: 18%; top: 28%; }
+.markerTwo { right: 22%; top: 22%; }
+.markerThree { right: 30%; bottom: 20%; }
+.markerOne::first-letter,
+.markerTwo::first-letter,
+.markerThree::first-letter { transform: rotate(45deg); }
+
+.districtOne,
+.districtTwo,
+.districtThree {
+  position: absolute;
+  padding: 0.25rem 0.4rem;
+  background: #f0f1d4;
+  border: 1px solid currentColor;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.districtOne { left: 9%; bottom: 18%; }
+.districtTwo { right: 10%; top: 12%; }
+.districtThree { left: 34%; top: 12%; }
+
+.atlasToolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-top: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+}
+
+.atlas .cardVisual {
+  background: #1f2a22;
+  color: #eff3db;
+}
+
+.atlas .cardVisual::before {
+  inset: 18% 10%;
+  border: 1px solid #eff3db;
+  transform: rotate(-8deg);
+}
+
+.atlas .cardVisual::after {
+  width: 6rem;
+  height: 6rem;
+  left: 34%;
+  top: 28%;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: #ee7442;
+}
+
+/* Concept C — Human Community Journal */
+.conceptC {
+  background: #f7d7b8;
+  color: #4f3127;
+}
+
+.journalHero {
+  grid-template-columns: minmax(12rem, 0.45fr) minmax(0, 1.15fr) minmax(14rem, 0.55fr);
+  padding: clamp(3rem, 7vw, 7rem) 0;
+}
+
+.journalCopy h2 {
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(3.5rem, 7vw, 7.5rem);
+}
+
+.journalNote {
+  align-self: start;
+  margin-top: 5rem;
+  padding: 1.5rem;
+  background: #fff1cf;
+  transform: rotate(-3deg);
+  box-shadow: 0.5rem 0.6rem 0 #4f3127;
+}
+
+.journalNote span {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 0.9rem;
+}
+
+.journalNote p {
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+
+.journalPortrait {
+  aspect-ratio: 4 / 5;
+  align-self: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 47% 53% 44% 56% / 55% 42% 58% 45%;
+  background:
+    radial-gradient(circle at 55% 32%, #f3ba79 0 13%, transparent 14%),
+    radial-gradient(circle at 50% 78%, #5e7558 0 40%, transparent 41%),
+    #c64f3f;
+}
+
+.journalPortrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.journalPortrait span {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%) rotate(-6deg);
+  padding: 0.4rem 0.7rem;
+  background: #fff1cf;
+  font-family: "Comic Sans MS", cursive;
+}
+
+.familyQuote {
+  max-width: 24ch;
+  margin: 0 auto 4rem;
+  font-family: var(--font-family-display), Georgia, serif;
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.familyQuote cite {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: var(--font-family-body), Arial, sans-serif;
+  font-size: 0.85rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.journal .cardVisual {
+  background: #fff0ce;
+}
+
+.journal .cardVisual::before {
+  width: 12rem;
+  height: 12rem;
+  left: -2rem;
+  bottom: -4rem;
+  border-radius: 50%;
+  background: #c9503e;
+}
+
+.journal .cardVisual::after {
+  width: 9rem;
+  height: 13rem;
+  right: 1rem;
+  top: 2rem;
+  border-radius: 46% 54% 49% 51%;
+  background: #5c765c;
+  transform: rotate(13deg);
+}
+
+.labFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem clamp(1rem, 4vw, 4rem);
+  background: #181a18;
+  color: #f4f0e7;
+}
+
+.labFooter p {
+  margin: 0 0 0.35rem;
+  font-weight: 800;
+}
+
+.labFooter span {
+  color: #f4f0e7aa;
+}
+
+@media (max-width: 960px) {
+  .labHeader,
+  .editorialHero,
+  .atlasHero,
+  .journalHero,
+  .sectionHeading,
+  .safetyStrip {
+    grid-template-columns: 1fr;
+  }
+
+  .labHeader nav {
+    align-self: auto;
+  }
+
+  .editorialPoster,
+  .journalPortrait {
+    width: min(100%, 28rem);
+    justify-self: center;
+  }
+
+  .journalNote {
+    margin-top: 0;
+    max-width: 20rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .siteNav {
+    align-items: flex-start;
+  }
+
+  .siteNav div {
+    justify-content: flex-end;
+  }
+
+  .siteNav div a {
+    display: none;
+  }
+
+  .searchBar {
+    grid-template-columns: auto 1fr;
+  }
+
+  .searchBar button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .cardGrid,
+  .atlasStats {
+    grid-template-columns: 1fr;
+  }
+
+  .atlasToolbar,
+  .labFooter {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .concept h2 {
+    font-size: clamp(3rem, 18vw, 5rem);
+  }
+
+  .mapPanel {
+    min-height: 25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activityCard {
+    transition: none;
+  }
+
+  .activityCard:hover {
+    transform: none;
+  }
+}
