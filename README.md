@@ -6,9 +6,11 @@ Huddle is a privacy-first local family platform built as one React codebase for 
 
 The repository is in Sprint 0 foundation execution.
 
-`S0-001` through `S0-014` are completed and merged. The current executable task is `VIS-002 — Create the canonical Figma production foundation`.
+`S0-001` through `S0-014` are completed and merged. The current executable task is `VIS-002 — Create the Huddle production design foundation`.
 
-No approved Huddle product design currently exists in Figma. `S0-015 — Create base layouts` is blocked until the Public, Auth, App, and Admin layout frames are created, approved, and recorded with stable Figma node IDs.
+No approved Huddle product design currently exists. VIS-002 uses a **VS Code-first, Figma-governed** process: coded art-direction concepts are compared in a private Design Lab, the selected direction is refined into a reusable system, and only then is the approved foundation recorded in Figma.
+
+`S0-015 — Create base layouts` remains blocked until the Public, Auth, App, and Admin layout frames are approved and recorded with stable Figma node IDs.
 
 This repository is not launch-ready and should not be represented as a working product. It contains a structured technical foundation, canonical brand assets and tokens, reference visual corpora, route placeholders, and task contracts for continued implementation.
 
@@ -69,6 +71,7 @@ Runtime application folders are governed by merged Sprint 0 tasks and the curren
 ```text
 src/
 ├── app/
+│   └── (design-lab)/design-lab/ # private VIS-002 concepts; not production UI
 ├── components/
 ├── modules/
 └── lib/
@@ -77,23 +80,41 @@ prisma/
 tests/
 ```
 
+## Design workflow
+
+The current VIS-002 workflow is:
+
+```text
+Claude/PNG structural references
+  → art-direction research
+  → three responsive coded concepts in /design-lab
+  → product-owner selection
+  → canonical tokens and component language
+  → Public/Auth/App/Admin layout designs
+  → Figma governance and stable node IDs
+  → S0-015 production implementation
+```
+
+The `/design-lab` route is an internal, `noindex` comparison environment. It may contain fictional content and experimental styling but must not modify or authorize production routes.
+
 ## Design authority
 
 There is currently no approved route-level Figma design.
 
 The locked repository brand system is authoritative for approved logo assets, palette, accessible semantic tokens, and brand rules. PNG screen sets and the Claude Design corpus are reference materials only.
 
-A Figma frame becomes production authority only after product-owner approval and registration of its exact page name and node ID in `docs/01-product/screen-route-registry.csv`.
+Coded Design Lab concepts are review evidence, not production authority. A design becomes production authority only after product-owner approval, transfer into the canonical Figma file, and registration of its exact page name and node ID in the appropriate repository registry.
 
 ## Source of truth
 
 1. Accepted ADRs and canonical engineering documentation.
 2. Actual merged repository implementation.
 3. Locked brand system and approved brand assets.
-4. Future product-owner-approved Figma frames recorded in the Screen Implementation Registry.
-5. Canonical visual corpus and Set55 flow maps as reference inputs.
-6. Sprint 0 source material where not superseded.
-7. Older, imported, or duplicate designs.
+4. Product-owner decisions recorded during VIS-002.
+5. Future approved Figma frames recorded in the Screen Implementation Registry.
+6. Canonical visual corpus and Set55 flow maps as reference inputs.
+7. Sprint 0 source material where not superseded.
+8. Older, imported, or duplicate designs.
 
 ## Development workflow
 
