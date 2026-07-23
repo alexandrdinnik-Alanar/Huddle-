@@ -7,13 +7,19 @@
 Current task:
 
 ```text
-VIS-002 — Create the canonical Figma production foundation
+VIS-002 — Create the Huddle production design foundation
+```
+
+Current stage:
+
+```text
+D1 — Build and compare three coded art-direction concepts in VS Code
 ```
 
 Status:
 
 ```text
-READY — no approved Huddle product design currently exists in Figma. Create the production design foundation before React layout implementation.
+IN PROGRESS — no approved Huddle product design currently exists. The approved workflow is VS Code-first, Figma-governed and component-system driven.
 ```
 
 Task contract:
@@ -22,27 +28,42 @@ Task contract:
 tasks/design/VIS-002.md
 ```
 
-Dependency: `S0-014`
+Research brief:
 
-VIS-002 must create and obtain approval for:
+```text
+docs/01-product/huddle-art-direction-research-2026.md
+```
 
-- the canonical Figma file and page structure;
-- brand and semantic variables based on the locked repository brand system;
-- typography, spacing, radius, elevation, and responsive foundations;
-- reusable shell and navigation components;
-- desktop and mobile Public layout frames;
-- desktop and mobile Auth layout frames;
-- desktop and mobile App layout frames;
-- desktop and mobile Admin layout frames;
-- stable Figma page names and node IDs recorded in the repository.
+Design Lab route:
 
-VIS-002 must not:
+```text
+/design-lab
+```
 
-- claim that existing empty or unverified Figma pages are approved designs;
-- copy Claude Design HTML into Figma or React as production output;
-- treat repository PNG files as approved production screens;
-- implement React layouts or product features;
-- begin S0-015 before product-owner approval is recorded.
+D1 must provide three materially different directions:
+
+- `A — Nordic Editorial`;
+- `B — Local Discovery Atlas`;
+- `C — Human Community Journal`.
+
+Each direction must demonstrate:
+
+- navigation;
+- homepage hero;
+- discovery/search composition;
+- activity-card or list language;
+- trust/safety signal;
+- desktop and mobile responsive behavior.
+
+D1 must not:
+
+- modify production routes;
+- implement product features, authentication, APIs or data fetching;
+- copy Claude Design HTML into production code;
+- present fictional data as real;
+- add generic themes or template UI;
+- mark any coded concept as `PRODUCTION` before product-owner review;
+- begin S0-015.
 
 Blocked task:
 
@@ -50,4 +71,4 @@ Blocked task:
 S0-015 — Create base layouts
 ```
 
-S0-015 may start only after VIS-002 is approved, the layout frame node IDs are recorded, the repository correction is merged, and all required checks pass.
+S0-015 may start only after VIS-002 is fully approved, the selected direction is transferred into the canonical Figma file, layout-frame node IDs are recorded, and all required checks pass.
