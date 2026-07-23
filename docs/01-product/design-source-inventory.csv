@@ -1,29 +1,67 @@
 source_id,source_type,location,status,scope,notes
-figma-master,Figma,dyT1r12QkL7yF0ynjqCs4E,PRODUCTION,brand/design-system/website/product,"Only production visual authority; use exact node IDs"
-figma-legacy,Figma,EsKinLoWFFwul2TzJiXtBO,ARCHIVE,legacy,"Superseded single-page file; retained without deletion"
-set-01,PNG set,assets/screens/set-01-core,REFERENCE,public-home,"Original filenames are not semantic; do not map directly to production"
-set-03,PNG set,assets/screens/set-03-core,REFERENCE,activity-detail,"Historical activity reference; approved Figma detail frames take precedence"
-set-07,PNG set,assets/screens/set-07-core,REFERENCE,family-members,"Route input only; requires Figma reconciliation"
-set-18,PNG set,assets/screens/set-18-core,REFERENCE,activities-supply,"Creation and organizer flow; not the public listing spec"
-set-22,PNG set,assets/screens/set-22-core,REFERENCE,admin-audit-moderation,"Requires Figma reconciliation"
-set-23,PNG set,assets/screens/set-23-municipality,REFERENCE,municipality-governance,"Requires Figma reconciliation"
-set-25,PNG set,assets/screens/set-25-admin-backoffice,REFERENCE,admin-core,"Requires Figma reconciliation"
-set-30,PNG set,assets/screens/set-30-legal-trust-commercial,REFERENCE,legal-privacy,"Requires Figma reconciliation"
-set-35,PNG set,assets/screens/set-35-onboarding-auth-flow,REFERENCE,auth-onboarding,"Flow reference; no approved route frames in master"
-set-36,PNG set,assets/screens/set-36-marketplace-listings-flow,REFERENCE,marketplace,"Requires Figma reconciliation"
-set-37,PNG set,assets/screens/set-37-events-activities-flow,REFERENCE,events,"Requires Figma reconciliation; activity frames are separately canonical in Figma"
-set-38,PNG set,assets/screens/set-38-community-social-features,REFERENCE,community,"Requires Figma reconciliation"
-set-39,PNG set,assets/screens/set-39-mvp-app-shell-navigation-foundation,REFERENCE,app-shell,"Architecture and shell reference; no approved app-shell frame in master"
-set-44,PNG set,assets/screens/set-44-messaging-chat-notifications,REFERENCE,messaging-notifications,"Requires Figma reconciliation"
-set-45,PNG set,assets/screens/set-45-community-groups-events,REFERENCE,community,"Requires Figma reconciliation"
-set-46,PNG set,assets/screens/set-46-profiles-family-connections,REFERENCE,profile-family-connections,"Requires Figma reconciliation"
-set-49,PNG set,assets/screens/set-49-marketplace-products-orders,REFERENCE,marketplace-catalog,"Requires Figma reconciliation"
-set-50,PNG set,assets/screens/set-50-design-system-foundation,REFERENCE,design-system,"Figma variables/styles/components supersede these generated boards"
-set-51,PNG set,assets/screens/set-51-component-library,REFERENCE,component-library,"Useful comparison source; Figma components are canonical"
-set-52,PNG set,assets/screens/set-52-mobile-trust-safety,REFERENCE,trust-safety,"Requires Figma reconciliation"
-set-54,PNG set,assets/screens/set-54-component-library,DUPLICATE,component-library,"Exact duplicate generation of set 51 retained for traceability"
-set-55,PNG set,assets/screens/set-55-flow-maps-product-architecture,REFERENCE,architecture,"Flow maps are not UI routes"
-set-56,PNG set,assets/screens/set-56-admin-trust-safety-operations,REFERENCE,admin-moderation,"Requires Figma reconciliation"
-set-60,PNG set,assets/screens/set-60-accessibility-localization-consent,REFERENCE,accessibility-privacy-consent,"Requires Figma reconciliation"
-set-61,PNG set,assets/screens/set-61-responsive-web-variants,REFERENCE,responsive-web,"Use as responsive input only; approved master frames take precedence"
-set-63,PNG set,assets/screens/set-63-data-privacy-governance,REFERENCE,privacy-governance,"Requires Figma reconciliation"
+figma-master,Figma,dyT1r12QkL7yF0ynjqCs4E,PRODUCTION,brand/design-system/website/product,Only production visual authority; use exact approved node IDs recorded in the route registry
+figma-legacy,Figma,EsKinLoWFFwul2TzJiXtBO,ARCHIVE,legacy,Superseded single-page file; retained without deletion
+set-01,PNG set,assets/screens/set-01-core,REFERENCE,public-home,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-02,PNG set,assets/screens/set-02-core,REFERENCE,parent-dashboard-listings-matching,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-03,PNG set,assets/screens/set-03-core,REFERENCE,activity-event-detail-organizer,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-04,PNG set,assets/screens/set-04-core,REFERENCE,partner-municipality,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-05,PNG set,assets/screens/set-05-core,REFERENCE,profile-community-settings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-06,PNG set,assets/screens/set-06-core,REFERENCE,messaging-calendar-marketplace,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-07,PNG set,assets/screens/set-07-core,REFERENCE,services-family-connections,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-08,PNG set,assets/screens/set-08-core,REFERENCE,wallet-privacy-support,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-09,PNG set,assets/screens/set-09-core,REFERENCE,search-groups-events-media,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-10,PNG set,assets/screens/set-10-core,REFERENCE,feed-profile-calendar,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-11,PNG set,assets/screens/set-11-core,REFERENCE,auth-onboarding,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-12,PNG set,assets/screens/set-12-core,REFERENCE,orders-fulfillment-returns,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-13,PNG set,assets/screens/set-13-core,REFERENCE,seller-listings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-14,PNG set,assets/screens/set-14-core,REFERENCE,partner-store-feed,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-15,PNG set,assets/screens/set-15-core,REFERENCE,campaigns,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-16,PNG set,assets/screens/set-16-core,REFERENCE,tickets-check-in,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-17,PNG set,assets/screens/set-17-core,REFERENCE,organizer-events,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-18,PNG set,assets/screens/set-18-core,REFERENCE,organizer-activities,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-19,PNG set,assets/screens/set-19-core,REFERENCE,groups,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-20,PNG set,assets/screens/set-20-core,REFERENCE,group-posts,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-21,PNG set,assets/screens/set-21-core,REFERENCE,experts,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-22,PNG set,assets/screens/set-22-core,REFERENCE,moderation-safety,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-23,PNG set,assets/screens/set-23-municipality,REFERENCE,municipality,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-24,PNG set,assets/screens/set-24-community-events,REFERENCE,community-events,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-25,PNG set,assets/screens/set-25-admin-backoffice,REFERENCE,admin-core,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-26,PNG set,assets/screens/set-26-platform-settings,REFERENCE,platform-settings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-27,PNG set,assets/screens/set-27-analytics-reports,REFERENCE,analytics-reports,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-28,PNG set,assets/screens/set-28-support-helpdesk,REFERENCE,support-helpdesk,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-29,PNG set,assets/screens/set-29-system-operations,REFERENCE,system-operations,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-30,PNG set,assets/screens/set-30-legal-trust-commercial,REFERENCE,legal-trust-commercial,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-31,PNG set,assets/screens/set-31-admin-commercial-finance-cms,REFERENCE,admin-finance-commercial,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-32,PNG set,assets/screens/set-32-system-states-edge-cases,REFERENCE,system-states,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-33,PNG set,assets/screens/set-33-negative-rejected-failed-states,REFERENCE,negative-states,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-34,PNG set,assets/screens/set-34-mobile-core-v3,REFERENCE,mobile-core,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-35,PNG set,assets/screens/set-35-onboarding-auth-flow,REFERENCE,auth-onboarding,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-36,PNG set,assets/screens/set-36-marketplace-listings-flow,REFERENCE,marketplace-listings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-37,PNG set,assets/screens/set-37-events-activities-flow,REFERENCE,events-activities,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-38,PNG set,assets/screens/set-38-community-social-features,REFERENCE,community-social,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-39,PNG set,assets/screens/set-39-mvp-app-shell-navigation-foundation,REFERENCE,app-shell,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-40,PNG set,assets/screens/set-40-services-recommendations,REFERENCE,services,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-41,PNG set,assets/screens/set-41-seo-public-city-pages,REFERENCE,seo-city-oslo,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-42,PNG set,assets/screens/set-42-public-category-age-season-pages,REFERENCE,seo-category-age-season,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-43,PNG set,assets/screens/set-43-mobile-orders-checkout-delivery,REFERENCE,mobile-orders,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-44,PNG set,assets/screens/set-44-messaging-chat-notifications,REFERENCE,messaging-notifications,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-45,PNG set,assets/screens/set-45-community-groups-events,REFERENCE,community-groups-events,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-46,PNG set,assets/screens/set-46-profiles-family-connections,REFERENCE,profiles-family-connections,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-47,PNG set,assets/screens/set-47-services-professionals-bookings,REFERENCE,services-bookings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-48,PNG set,assets/screens/set-48-content-posts-media,REFERENCE,content-media,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-49,PNG set,assets/screens/set-49-marketplace-products-orders,REFERENCE,marketplace-catalog-orders,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-50,PNG set,assets/screens/set-50-design-system-foundation,REFERENCE,design-system,"Generated design-system reference; canonical Figma variables, styles, and components take precedence"
+set-51,PNG set,assets/screens/set-51-component-library,REFERENCE,component-library,Component reference; canonical Figma components take precedence
+set-52,PNG set,assets/screens/set-52-mobile-trust-safety,REFERENCE,trust-safety,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-53,PNG set,assets/screens/set-53-community-groups,REFERENCE,community-groups,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
+set-54,PNG set,assets/screens/set-54-component-library,DUPLICATE,component-library,Exact duplicate generation of set 51; traceability only
+set-55,PNG set,assets/screens/set-55-flow-maps-product-architecture,REFERENCE,architecture-flows,"Flow maps are architecture references, not UI routes"
+set-56,PNG set,assets/screens/set-56-admin-trust-safety-operations,REFERENCE,admin-trust-safety,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-57,PNG set,assets/screens/set-57-mobile-supply-side-tools,REFERENCE,mobile-supply-tools,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-58,PNG set,assets/screens/set-58-notification-email-push-templates,REFERENCE,notification-templates,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-59,PNG set,assets/screens/set-59-seo-template-system,REFERENCE,seo-templates,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-60,PNG set,assets/screens/set-60-accessibility-localization-consent,REFERENCE,accessibility-localization-consent,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-61,PNG set,assets/screens/set-61-responsive-web-variants,REFERENCE,responsive-web,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-62,PNG set,assets/screens/set-62-admin-finance-commercial-operations,REFERENCE,admin-finance,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+set-63,PNG set,assets/screens/set-63-data-privacy-governance,REFERENCE,privacy-governance,Includes 10 numbered artifacts plus one overview board; requires Figma reconciliation
+claude-design-2026-07,HTML/PNG/PDF prototype corpus,assets/reference/claude-design-2026-07,REFERENCE,multi-surface prototype concepts,Imported in PR #29; contains duplicates and non-production design-component templates; never copy directly into runtime code

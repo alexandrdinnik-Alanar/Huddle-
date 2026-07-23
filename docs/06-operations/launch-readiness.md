@@ -1,46 +1,68 @@
 # Huddle Launch Readiness
 
-Status: not launch-ready. Repository is still pre-Sprint-0.
+Status: **not launch-ready**. Sprint 0 repository foundation is in progress: `S0-001` through `S0-014` and `VIS-001` are merged; `S0-015` through `S0-018` remain.
+
+This document separates evidence visible in Git from external infrastructure, legal, operational, and founder approvals. Repository code alone cannot prove that an external service or production process is ready.
 
 ## Gate A — Development can start
 
-Required before normal feature development:
+### Repository-verified
 
-- [ ] Complete S0-001 repository initialization.
-- [ ] Commit package.json and pnpm-lock.yaml.
-- [ ] Enable TypeScript strict mode.
-- [ ] Add lint, typecheck, unit test, E2E test and build scripts.
-- [ ] Add CI checks for pull requests.
-- [ ] Add `.env.example` with placeholders only.
-- [ ] Create development Supabase project.
-- [ ] Create development PostgreSQL database connection.
-- [ ] Configure Supabase Auth development application.
-- [ ] Create initial Vercel project or approved equivalent.
+- [x] Complete S0-001 repository initialization.
+- [x] Commit `package.json` and `pnpm-lock.yaml`.
+- [x] Enable TypeScript strict mode.
+- [x] Add lint, typecheck, unit test, E2E test and build scripts.
+- [x] Add CI checks for pull requests.
+- [x] Add `.env.example` with placeholders only.
+
+### External or operational evidence still required
+
+- [ ] Create and document the development Supabase project.
+- [ ] Create and document a safe development PostgreSQL database connection.
+- [ ] Configure and document the Supabase Auth development application.
+- [ ] Confirm the owned Vercel project and deployment access model.
 - [ ] Define development, staging and production environment separation.
-- [ ] Add secret-management ownership rules.
-- [ ] Add branch-protection and required-review rules.
+- [ ] Add secret-management ownership and rotation rules.
+- [ ] Confirm branch-protection and required-review rules in GitHub settings.
+
+A preview deployment mentioned in a PR is not sufficient evidence for environment ownership, separation, or production readiness.
 
 ## Gate B — Internal alpha
 
-Required before team/internal testing:
+### Repository foundation completed
 
-- [ ] Complete Sprint 0 tasks S0-001 through S0-018.
-- [ ] Implement canonical route groups and protected shells.
-- [ ] Implement Prisma baseline and migration workflow.
-- [ ] Implement User, Role and UserRole identity base.
-- [ ] Implement server authorization helpers and route guards.
-- [ ] Implement API error/response and validation patterns.
-- [ ] Implement privileged audit logging base.
-- [ ] Add seed strategy for non-production test data.
+- [x] Implement canonical route groups and placeholder route architecture.
+- [x] Implement Prisma baseline and migration workflow.
+- [x] Implement User, Role and UserRole identity base.
+- [x] Implement server authentication, permission, and route-guard helper foundations.
+- [x] Implement API error/response and validation patterns.
+- [x] Implement privileged audit logging base.
+- [x] Reconcile the canonical Figma authority and P0 route registry through VIS-001.
+
+### Sprint 0 work still required
+
+- [ ] Complete S0-015 base layouts.
+- [ ] Complete S0-016 canonical placeholder/layout integration.
+- [ ] Complete S0-017 Sprint 0 QA checklist.
+- [ ] Complete S0-018 developer README.
+- [ ] Verify all Sprint 0 quality gates from a clean environment.
+- [ ] Record the final Sprint 0 acceptance decision.
+
+### Internal-alpha operations still required
+
+- [ ] Add a safe non-production test-data strategy beyond the deterministic role seed.
 - [ ] Add error monitoring and release tracking.
 - [ ] Add basic uptime/health checks.
 - [ ] Add backup and restore procedure for staging data.
+- [ ] Confirm trusted app-user reconciliation and role loading before real protected admin flows.
+
+Route placeholders, guard helpers, and approved Figma frames are foundations; they are not completed user journeys.
 
 ## Gate C — Closed beta
 
 Required before inviting external families or providers:
 
-- [ ] Finalize launch geography and supported countries/cities.
+- [ ] Finalize launch geography and supported countries/cities in a canonical decision record.
 - [ ] Finalize supported languages and locale ownership.
 - [ ] Approve production Privacy Policy and Terms.
 - [ ] Approve Community Guidelines and Safety Policy.
@@ -100,7 +122,7 @@ Required before broad public launch:
 
 ## Decisions still required from the founder/product owner
 
-The following decisions cannot be safely invented by Claude, Codex or developers:
+The following decisions cannot be safely invented by Claude, Codex or developers. A decision is considered resolved only when it is recorded in an accepted canonical document or ADR.
 
 1. Initial launch country, city or cities.
 2. Legal entity that operates Huddle.
@@ -113,17 +135,24 @@ The following decisions cannot be safely invented by Claude, Codex or developers
 9. Final production legal copy owner.
 10. Moderation team owner and escalation contacts.
 11. Customer support owner and service targets.
-12. Final approved visual asset storage location.
-13. Production domain and transactional email domain.
-14. Phone verification provider requirement by launch market.
-15. Analytics and error-monitoring provider choices.
+12. Transactional email domain and sender ownership.
+13. Phone verification provider requirement by launch market.
+14. Analytics and error-monitoring provider choices.
+
+Already canonical in the repository:
+
+- public brand/domain identity: `Huddle-Family.com`;
+- production brand asset paths: `public/brand/`;
+- source brand packages: `assets/brand/`;
+- production visual authority: the approved Figma master recorded in `design-source-of-truth.md`.
 
 ## Recommended immediate order
 
-1. Finish repository structure and merge it.
-2. Execute S0-001.
-3. Add CI and environment baseline during Sprint 0.
-4. Provision development Supabase and Vercel projects.
-5. Complete S0-002 through S0-018.
-6. Resolve founder decisions that block beta and payments.
-7. Begin Phase 1 only after Sprint 0 quality gates pass.
+1. Merge the repository-integrity reconciliation after CI and review.
+2. Execute S0-015 only.
+3. Execute S0-016 only after S0-015 merges.
+4. Execute S0-017 only after S0-016 merges.
+5. Execute S0-018 only after S0-017 merges.
+6. Provision and document development Supabase, PostgreSQL, and Vercel environments.
+7. Resolve founder decisions that block closed beta and payments.
+8. Begin Phase 1 only after the Sprint 0 QA gate passes.
