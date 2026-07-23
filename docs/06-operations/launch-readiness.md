@@ -1,8 +1,8 @@
 # Huddle Launch Readiness
 
-Status: **not launch-ready**. Sprint 0 repository foundation is in progress: `S0-001` through `S0-014` and `VIS-001` are merged; `S0-015` through `S0-018` remain.
+Status: **not launch-ready**. Sprint 0 repository foundation is in progress: `S0-001` through `S0-014` are merged; `VIS-002` and `S0-015` through `S0-018` remain.
 
-This document separates evidence visible in Git from external infrastructure, legal, operational, and founder approvals. Repository code alone cannot prove that an external service or production process is ready.
+This document separates evidence visible in Git from external infrastructure, legal, operational, design, and founder approvals. Repository code alone cannot prove that an external service, production process, or product design is ready.
 
 ## Gate A — Development can start
 
@@ -37,11 +37,13 @@ A preview deployment mentioned in a PR is not sufficient evidence for environmen
 - [x] Implement server authentication, permission, and route-guard helper foundations.
 - [x] Implement API error/response and validation patterns.
 - [x] Implement privileged audit logging base.
-- [x] Reconcile the canonical Figma authority and P0 route registry through VIS-001.
+- [x] Classify the PNG and Claude Design corpora as reference-only sources.
 
-### Sprint 0 work still required
+### Design and Sprint 0 work still required
 
-- [ ] Complete S0-015 base layouts.
+- [ ] Complete VIS-002 and obtain product-owner approval for the canonical Figma production foundation.
+- [ ] Record exact Figma page names and node IDs for approved Public, Auth, App, and Admin layouts.
+- [ ] Complete S0-015 base layouts from approved VIS-002 frames.
 - [ ] Complete S0-016 canonical placeholder/layout integration.
 - [ ] Complete S0-017 Sprint 0 QA checklist.
 - [ ] Complete S0-018 developer README.
@@ -56,7 +58,7 @@ A preview deployment mentioned in a PR is not sufficient evidence for environmen
 - [ ] Add backup and restore procedure for staging data.
 - [ ] Confirm trusted app-user reconciliation and role loading before real protected admin flows.
 
-Route placeholders, guard helpers, and approved Figma frames are foundations; they are not completed user journeys.
+Route placeholders, guard helpers, and reference visuals are foundations; they are not completed user journeys. No approved route-level Figma design currently exists.
 
 ## Gate C — Closed beta
 
@@ -138,21 +140,3 @@ The following decisions cannot be safely invented by Claude, Codex or developers
 12. Transactional email domain and sender ownership.
 13. Phone verification provider requirement by launch market.
 14. Analytics and error-monitoring provider choices.
-
-Already canonical in the repository:
-
-- public brand/domain identity: `Huddle-Family.com`;
-- production brand asset paths: `public/brand/`;
-- source brand packages: `assets/brand/`;
-- production visual authority: the approved Figma master recorded in `design-source-of-truth.md`.
-
-## Recommended immediate order
-
-1. Merge the repository-integrity reconciliation after CI and review.
-2. Execute S0-015 only.
-3. Execute S0-016 only after S0-015 merges.
-4. Execute S0-017 only after S0-016 merges.
-5. Execute S0-018 only after S0-017 merges.
-6. Provision and document development Supabase, PostgreSQL, and Vercel environments.
-7. Resolve founder decisions that block closed beta and payments.
-8. Begin Phase 1 only after the Sprint 0 QA gate passes.
