@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+    <div style="max-width:560px;padding:32px 40px;">
+      <a href="OrderTracking.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to Order</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Schedule Pickup</div>
+
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
+        <div style="font-size:13px;font-weight:600;">Order #HDD-2025-00048</div>
+        <div style="font-size:11px;background:#EAEBE1;color:#6E7459;padding:5px 12px;border-radius:12px;">Ready for Pickup</div>
+      </div>
+
+      <div style="background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:16px;margin-top:14px;">
+        <div style="font-size:12px;color:#8A7C6C;">Pickup Location</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:4px;">
+          <div style="font-size:13px;font-weight:600;">Huddle Pickup Point<br/><span style="font-weight:400;color:#7C7062;font-size:12px;">Grünerløkka 15, 0550 Oslo</span></div>
+          <span style="font-size:12px;color:#BC7A45;">View on map</span>
+        </div>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;margin-top:20px;margin-bottom:10px;">Available Dates</div>
+      <div style="display:flex;gap:8px;">
+        <sc-for list="{{ dates }}" as="d" hint-placeholder-count="5">
+          <div style="flex:1;text-align:center;border:1px solid {{ d.border }};background:{{ d.bg }};border-radius:10px;padding:10px 4px;">
+            <div style="font-size:10px;color:#8A7C6C;">{{ d.day }}</div>
+            <div style="font-size:13px;font-weight:600;">{{ d.date }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;margin-top:20px;margin-bottom:10px;">Available Time Slots</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+        <sc-for list="{{ slots }}" as="s" hint-placeholder-count="6">
+          <div style="text-align:center;border:1px solid {{ s.border }};background:{{ s.bg }};border-radius:10px;padding:10px 4px;font-size:12px;">{{ s.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;margin-top:20px;margin-bottom:6px;">Pickup Person</div>
+      <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;display:flex;justify-content:space-between;background:#fff;">Emma Anderson <span>▾</span></div>
+
+      <div style="text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:22px;">Confirm Pickup</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      dates: [
+        { day: 'Tue', date: 'Jun 3', border: '#DBC9B0', bg: '#fff' },
+        { day: 'Wed', date: 'Jun 4', border: '#6E7459', bg: '#EAEBE1' },
+        { day: 'Thu', date: 'Jun 5', border: '#DBC9B0', bg: '#fff' },
+        { day: 'Fri', date: 'Jun 6', border: '#DBC9B0', bg: '#fff' },
+        { day: 'Sat', date: 'Jun 7', border: '#DBC9B0', bg: '#fff' },
+      ],
+      slots: [
+        { label: '09:00 – 10:00', border: '#DBC9B0', bg: '#fff' },
+        { label: '10:00 – 11:00', border: '#6E7459', bg: '#EAEBE1' },
+        { label: '11:00 – 12:00', border: '#DBC9B0', bg: '#fff' },
+        { label: '12:00 – 13:00', border: '#DBC9B0', bg: '#fff' },
+        { label: '13:00 – 16:00', border: '#DBC9B0', bg: '#fff' },
+        { label: '14:00 – 16:00', border: '#DBC9B0', bg: '#fff' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

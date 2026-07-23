@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;">
+  <div style="max-width:1280px;margin:0 auto;padding:44px 40px 6px;">
+    <div style="background:#FCF9F3;border:1px solid #EADCC8;border-radius:22px;padding:30px 36px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:34px;box-shadow:0 14px 34px rgba(150,110,70,.09);align-items:center;">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:23px;line-height:1.2;color:#3A342C;">Get tips, updates &amp; <span style="font-style:italic;color:#BC7A45;">exclusive offers</span></div>
+        <div style="display:flex;gap:8px;margin-top:14px;max-width:370px;">
+          <div style="flex:1;border:1px solid #DBC9B0;border-radius:24px;padding:11px 18px;font-size:13px;color:#A99B89;background:#fff;">Your email address</div>
+          <div style="background:#BC7A45;color:#fff;border-radius:24px;padding:11px 22px;font-size:13px;white-space:nowrap;font-weight:500;">Subscribe</div>
+        </div>
+        <div style="font-size:11px;color:#A99B89;margin-top:9px;">No spam. Unsubscribe anytime.</div>
+      </div>
+      <div style="border-left:1px solid #EADCC8;padding-left:30px;">
+        <div style="font-size:14px;font-weight:600;color:#3A342C;">The Huddle App</div>
+        <div style="font-size:12px;color:#8A7C6C;margin-top:6px;line-height:1.5;">Shop, connect &amp; stay on the go.</div>
+        <div style="display:flex;gap:9px;margin-top:14px;">
+          <div style="border:1px solid #DBC9B0;border-radius:11px;padding:8px 14px;font-size:11px;background:#fff;">App Store</div>
+          <div style="border:1px solid #DBC9B0;border-radius:11px;padding:8px 14px;font-size:11px;background:#fff;">Google Play</div>
+        </div>
+      </div>
+      <div style="border-left:1px solid #EADCC8;padding-left:30px;">
+        <div style="font-size:14px;font-weight:600;color:#3A342C;">@huddle.community</div>
+        <div style="font-size:12px;color:#8A7C6C;margin-top:6px;line-height:1.5;">Real families. Real moments.</div>
+        <div style="display:flex;gap:9px;margin-top:14px;">
+          <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+            <div style="width:34px;height:34px;border-radius:50%;border:1px solid #DBC9B0;background:#fff;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#9E5A2C;letter-spacing:.02em;">{{ s }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;overflow:hidden;margin-top:26px;background:linear-gradient(180deg,#F6F0E8,#EFE4D4);">
+    <img src="assets/Huddle_icon.png" alt="" style="position:absolute;right:-46px;bottom:-58px;width:290px;opacity:.06;pointer-events:none;">
+    <div style="position:absolute;left:0;right:0;top:34px;height:1px;background:linear-gradient(90deg,transparent,#DBC9B0 20%,#DBC9B0 80%,transparent);"></div>
+    <div style="max-width:1280px;margin:0 auto;padding:44px 40px 32px;position:relative;">
+      <div style="display:grid;grid-template-columns:1.5fr repeat(7,1fr);gap:20px;">
+        <div style="padding-right:14px;">
+          <img src="assets/Huddle_wordmark.png" alt="Huddle" style="height:26px;width:auto;display:block;">
+          <div style="font-size:12.5px;color:#8A7C6C;margin-top:14px;max-width:210px;line-height:1.6;">Everything your family needs, all in one trusted community.</div>
+          <div style="display:flex;align-items:center;gap:7px;margin-top:16px;font-size:11px;color:#A99B89;letter-spacing:.03em;"><dc-import name="Icon" icon-name="leaf" color="#8A9076" size="13" hint-size="13,13"></dc-import><span>Made with care in Oslo, Norway</span></div>
+        </div>
+        <sc-for list="{{ columns }}" as="col" hint-placeholder-count="7">
+          <div>
+            <div style="font-size:11px;font-weight:700;margin-bottom:12px;color:#3A342C;letter-spacing:.06em;text-transform:uppercase;">{{ col.title }}</div>
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <sc-if value="{{ l.href }}" hint-placeholder-val="{{ false }}">
+                <a href="{{ l.href }}" style="display:block;font-size:12.5px;color:#8A7C6C;margin-bottom:9px;text-decoration:none;" style-hover="color:#9E5A2C;">{{ l.label }}</a>
+              </sc-if>
+              <sc-if value="{{ l.noHref }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:12.5px;color:#8A7C6C;margin-bottom:9px;">{{ l.label }}</div>
+              </sc-if>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#3A342C;color:#BFB09A;">
+    <div style="max-width:1280px;margin:0 auto;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;flex-wrap:wrap;gap:10px;letter-spacing:.02em;">
+      <span>© Huddle AS. All rights reserved.</span>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;">
+        <a href="TermsConditions.dc.html" style="color:#BFB09A;text-decoration:none;" style-hover="color:#DA9E67;">Terms &amp; Conditions</a><a href="SafetyPrivacy.dc.html" style="color:#BFB09A;text-decoration:none;" style-hover="color:#DA9E67;">Privacy Policy</a><a href="ShippingDelivery.dc.html" style="color:#BFB09A;text-decoration:none;" style-hover="color:#DA9E67;">Shipping &amp; Delivery</a><a href="Returns.dc.html" style="color:#BFB09A;text-decoration:none;" style-hover="color:#DA9E67;">Returns</a><a href="CookieSettings.dc.html" style="color:#BFB09A;text-decoration:none;" style-hover="color:#DA9E67;">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      socials: ['Ig', 'Fb', 'Tt', 'Yt'],
+      columns: [
+        { title: 'Shop', links: ['All Products', 'New Arrivals', 'Pre-owned', 'Gift Cards'] },
+        { title: 'Community', links: ['Community Feed', 'Groups', 'Parenting Tips', 'Expert Advice'] },
+        { title: 'Activities', links: ['All Activities', 'Workshops', 'Event Calendar', 'For Schools'] },
+        { title: 'Services', links: ['Expert Services', 'Consultations', 'Rentals', 'Photographers'] },
+        { title: 'Partners', links: ['Become a Partner', 'Store Login', 'Seller Resources'] },
+        { title: 'About', links: [
+          { label: 'Our Story', href: 'AboutUs.dc.html' },
+          { label: 'Sustainability', noHref: true },
+          { label: 'Safety & Privacy', href: 'SafetyPrivacy.dc.html' },
+          { label: 'Careers', href: 'Careers.dc.html' },
+        ] },
+        { title: 'Help', links: [
+          { label: 'Help Center', href: 'HelpCenter.dc.html' },
+          { label: 'Contact Us', href: 'ContactUs.dc.html' },
+          { label: '+47 123 45 678', noHref: true },
+          { label: 'Oslo, Norway', noHref: true },
+        ] },
+      ].map((col) => ({
+        ...col,
+        links: col.links.map((l) => (typeof l === 'string' ? { label: l, noHref: true } : l)),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

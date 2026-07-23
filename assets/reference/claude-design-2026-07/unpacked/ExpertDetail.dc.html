@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="services" breadcrumb="Services / Dr. Anna Larsen" hint-size="100%,150px"></dc-import>
+
+  <div style="max-width:1000px;margin:0 auto;padding:34px 40px 40px;display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:start;">
+    <div style="width:180px;height:180px;border-radius:22px;background:linear-gradient(135deg,#D79A62,#B26A38);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:64px;box-shadow:0 16px 36px rgba(150,110,70,.16);">A</div>
+    <div>
+      <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;">Dr. Anna Larsen</div>
+      <div style="font-size:13.5px;color:#8A7C6C;margin-top:4px;">Family Counseling · Bright Minds Center</div>
+      <div style="display:flex;align-items:center;gap:16px;margin-top:10px;font-size:12.5px;color:#6E6154;">
+        <span style="display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="star" color="#BC7A45" size="13" hint-size="13,13"></dc-import>4.9 (62 reviews)</span>
+        <span style="display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="pin" color="#9E5A2C" size="13" hint-size="13,13"></dc-import>Oslo, Norway</span>
+        <span style="display:flex;align-items:center;gap:5px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>Verified expert</span>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:20px;">
+        <a href="BookAppointment.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:13px 26px;border-radius:26px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Book appointment</a>
+        <a href="Messages.dc.html" style="text-decoration:none;border:1px solid #DBC9B0;background:#fff;color:#463F37;padding:13px 26px;border-radius:26px;font-size:13.5px;font-weight:500;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Message</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:0 auto;padding:0 40px 20px;">
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">About</div>
+    <p style="font-size:13.5px;color:#6E6154;line-height:1.7;margin-top:10px;">Dr. Anna Larsen is a licensed family counselor with 12 years of experience supporting families through transitions, parenting challenges and communication. Sessions are warm, practical, and tailored to your family's needs.</p>
+  </div>
+
+  <div style="max-width:1000px;margin:0 auto;padding:0 40px 20px;">
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-bottom:14px;">Services offered</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="3">
+        <a href="ServiceDetails.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:16px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;display:block;" style-hover="transform:translateY(-3px);">
+          <div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ s.name }}</div>
+          <div style="font-size:11.5px;color:#8A7C6C;margin-top:4px;">{{ s.duration }}</div>
+          <div style="font-size:14px;font-weight:700;color:#9E5A2C;margin-top:8px;">{{ s.price }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1000px;margin:0 auto;padding:0 40px 44px;">
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-bottom:14px;">Reviews</div>
+    <sc-for list="{{ reviews }}" as="r" hint-placeholder-count="3">
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:16px 18px;margin-bottom:10px;box-shadow:0 6px 16px rgba(150,110,70,.05);">
+        <div style="display:flex;align-items:center;gap:10px;"><div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,{{ r.c1 }},{{ r.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:13px;">{{ r.initial }}</div><span style="font-size:13px;font-weight:600;color:#3A342C;">{{ r.name }}</span><span style="font-size:11px;color:#A99B89;">{{ r.time }}</span></div>
+        <div style="font-size:13px;color:#6E6154;margin-top:9px;line-height:1.55;">{{ r.text }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      services: [
+        { name: 'Family Counseling Session', duration: '50 min', price: '900 NOK' },
+        { name: 'Parenting Consultation', duration: '30 min', price: '550 NOK' },
+        { name: 'Couples & Family Workshop', duration: '2 hours', price: '1 800 NOK' },
+      ],
+      reviews: [
+        { initial: 'J', name: 'Julie Hansen', time: '2 weeks ago', text: 'Anna helped our family through a really tough transition. Highly recommend.', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'M', name: 'Martin Larsen', time: '1 month ago', text: 'Warm, professional and genuinely helpful. Our kids look forward to sessions.', c1: '#9BA184', c2: '#6E7459' },
+        { initial: 'S', name: 'Sara Vik', time: '2 months ago', text: 'Practical advice we could actually use at home. Thank you!', c1: '#D79A62', c2: '#B26A38' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

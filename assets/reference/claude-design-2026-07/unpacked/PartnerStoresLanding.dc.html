@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="stores" breadcrumb="For Stores &amp; Brands" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-46px;right:3%;opacity:.32;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;padding:52px 40px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>For stores &amp; brands</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(34px,4vw,52px);line-height:1.06;color:#3A342C;margin:16px 0 0;font-weight:500;max-width:560px;">Reach families through real needs, real moments, <span style="font-style:italic;color:#BC7A45;">and trusted context.</span></h1>
+        <p style="font-size:15.5px;color:#7C7062;margin:16px 0 0;max-width:460px;line-height:1.6;">Join Huddle, the family-first marketplace and community where discovery turns into trust — and trust drives growth.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="PartnerAgreement.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:14px 26px;border-radius:28px;font-size:14px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Partner with Huddle →</a>
+          <a href="ContactUs.dc.html" style="text-decoration:none;background:#fff;border:1px solid #DBC9B0;color:#463F37;padding:14px 26px;border-radius:28px;font-size:14px;font-weight:500;" style-hover="border-color:#BC7A45;color:#9E5A2C;">Explore opportunities →</a>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <div style="height:250px;border-radius:22px;overflow:hidden;box-shadow:0 22px 50px rgba(120,86,52,.18);border:1px solid rgba(255,255,255,.6);"><image-slot id="partner-hero" shape="rect" fit="cover" placeholder="Brand / retail lifestyle photo" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+        <div style="position:absolute;bottom:-24px;left:-18px;right:18px;background:#fff;border-radius:16px;padding:18px;box-shadow:0 18px 40px rgba(120,86,52,.16);">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;"><span style="font-size:13px;font-weight:700;color:#3A342C;">Partner performance</span><span style="font-size:10px;color:#A99B89;">Last 30 days</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <sc-for list="{{ perfStats }}" as="s" hint-placeholder-count="4">
+              <div><div style="font-family:'Newsreader',serif;font-size:19px;color:#9E5A2C;">{{ s.value }}</div><div style="font-size:10px;color:#8A7C6C;">{{ s.label }}</div></div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#FCF9F3;border-top:1px solid #EFE4D4;border-bottom:1px solid #EFE4D4;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 40px;">
+      <sc-for list="{{ trust }}" as="t" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#6E6154;"><dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import><span>{{ t.label }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:44px 40px 10px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+      <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;max-width:520px;">Reach the right families at every stage</div>
+      <div style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#9E5A2C;max-width:280px;text-align:right;line-height:1.5;">Curated for modern families. Built for growth-minded brands.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:20px;">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="height:104px;border-radius:11px;overflow:hidden;position:relative;"><image-slot id="{{ s.slotId }}" shape="rect" fit="cover" placeholder="{{ s.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div style="font-size:13px;font-weight:600;margin-top:10px;color:#3A342C;">{{ s.name }}</div>
+          <div style="font-size:11px;color:#9E5A2C;">{{ s.age }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:32px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:20px;padding:26px 28px;box-shadow:0 14px 34px rgba(150,110,70,.08);">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;"><div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Marketplace categories that convert</div><a href="Marketplace.dc.html" style="font-size:12.5px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all categories →</a></div>
+      <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:12px;margin-top:18px;">
+        <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:16px 8px;text-align:center;transition:transform .16s;" style-hover="transform:translateY(-3px);"><div style="width:40px;height:40px;border-radius:50%;background:#F6EEE1;display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="{{ c.icon }}" color="#6E7459" size="18" hint-size="18,18"></dc-import></div><div style="font-size:11px;margin-top:8px;color:#463F37;font-weight:500;">{{ c.label }}</div></div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:8px 40px 20px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Everything you need to grow on Huddle</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;">
+      <sc-for list="{{ grow }}" as="g" hint-placeholder-count="8">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="width:44px;height:44px;border-radius:12px;background:{{ g.bg }};display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ g.icon }}" color="{{ g.color }}" size="19" hint-size="19,19"></dc-import></div>
+          <div style="font-size:14px;font-weight:600;margin-top:12px;color:#3A342C;">{{ g.title }}</div>
+          <div style="font-size:12px;color:#8A7C6C;margin-top:5px;line-height:1.55;">{{ g.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:20px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;"><div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Campaign models that drive results</div><a href="ContactUs.dc.html" style="font-size:12.5px;color:#9E5A2C;text-decoration:none;font-weight:500;">See all campaign options →</a></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:18px;">
+      <sc-for list="{{ campaigns }}" as="c" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="height:110px;border-radius:11px;overflow:hidden;position:relative;"><image-slot id="{{ c.slotId }}" shape="rect" fit="cover" placeholder="{{ c.title }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+          <div style="font-size:10px;background:{{ c.tagBg }};color:{{ c.tagColor }};display:inline-block;padding:3px 9px;border-radius:8px;margin-top:10px;font-weight:600;">{{ c.tag }}</div>
+          <div style="font-size:13px;font-weight:600;margin-top:6px;color:#3A342C;line-height:1.25;">{{ c.title }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">{{ c.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 40px 52px;">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);color:#F6F0E8;border-radius:22px;padding:34px 38px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-34px;width:160px;opacity:.1;pointer-events:none;">
+      <div style="position:relative;"><div style="font-family:'Newsreader',serif;font-size:24px;">Let's build something families love — together.</div><div style="font-size:13px;color:#D8CDB9;margin-top:6px;max-width:520px;line-height:1.55;">Our partnerships team helps you reach the right families, at the right time, on the right platform.</div></div>
+      <div style="position:relative;display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="ContactUs.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:600;" style-hover="background:#CE8A50;">Book a consultation</a>
+        <a href="ContactUs.dc.html" style="text-decoration:none;border:1px solid rgba(246,240,232,.5);color:#F6F0E8;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:500;" style-hover="background:rgba(246,240,232,.12);">Contact sales</a>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const B = [['#F2E6D6', '#BC7A45'], ['#EAEBE1', '#6E7459']];
+    return {
+      perfStats: [
+        { label: 'Families reached', value: '1.2M+' },
+        { label: 'Product views', value: '245K+' },
+        { label: 'Conversion rate', value: '8.7%' },
+        { label: 'Average rating', value: '4.8★' },
+      ],
+      trust: [
+        { icon: 'people', label: 'High-intent family audience' },
+        { icon: 'tag', label: 'Trusted context & community' },
+        { icon: 'star', label: 'Category relevance' },
+        { icon: 'chart', label: 'Data-driven performance' },
+        { icon: 'leaf', label: 'Sustainable commerce' },
+        { icon: 'handshake', label: 'Clear & fair partnerships' },
+      ],
+      stages: [
+        { slotId: 'partner-stage-1', name: 'Newborn essentials', age: '0–12 months' },
+        { slotId: 'partner-stage-2', name: 'Toddler play', age: '1–3 years' },
+        { slotId: 'partner-stage-3', name: 'Preschool learning', age: '3–5 years' },
+        { slotId: 'partner-stage-4', name: 'School age active', age: '6–10 years' },
+        { slotId: 'partner-stage-5', name: 'Parent picks', age: 'All stages' },
+      ],
+      categories: [
+        { label: 'Strollers', icon: 'bag' }, { label: 'Car Seats', icon: 'truck' }, { label: 'Baby Care', icon: 'heart' }, { label: 'Nursery', icon: 'bed' },
+        { label: 'Toys & Play', icon: 'toy' }, { label: 'Feeding', icon: 'leaf' }, { label: 'Clothing', icon: 'shirt' }, { label: 'Books', icon: 'book' },
+      ],
+      grow: [
+        { icon: 'bag', title: 'Marketplace listings', desc: 'Showcase your products with rich content, variants and flexible merchandising.', bg: B[0][0], color: B[0][1] },
+        { icon: 'tag', title: 'Sponsored collections', desc: 'Get featured in curated collections by category, age stage and occasion.', bg: B[1][0], color: B[1][1] },
+        { icon: 'sparkle', title: 'Seasonal campaigns', desc: 'Tap into key moments that drive traffic and inspire action.', bg: B[0][0], color: B[0][1] },
+        { icon: 'check', title: 'Verified store profiles', desc: 'Build trust with a branded storefront and verified partner badge.', bg: B[1][0], color: B[1][1] },
+        { icon: 'signal', title: 'Product feed & API', desc: 'Sync your catalog, inventory and pricing with real-time accuracy.', bg: B[0][0], color: B[0][1] },
+        { icon: 'coin', title: 'Commercial transparency', desc: 'Clear fees, no hidden costs and full visibility on performance.', bg: B[1][0], color: B[1][1] },
+        { icon: 'chart', title: 'Performance & insights', desc: 'Track reach, engagement, conversions and revenue in one place.', bg: B[0][0], color: B[0][1] },
+        { icon: 'leaf', title: 'Sustainable commerce', desc: 'Highlight eco-friendly choices that align with values families care about.', bg: B[1][0], color: B[1][1] },
+      ],
+      campaigns: [
+        { slotId: 'partner-camp-1', tag: 'Awareness', tagBg: '#EFE4D4', tagColor: '#7C6A56', title: 'Newborn Essentials Collection Takeover', desc: 'Best for 0–12 months' },
+        { slotId: 'partner-camp-2', tag: 'Consideration', tagBg: '#F2E6D6', tagColor: '#9E5A2C', title: 'Toddler Play Spotlight', desc: 'Best for 1–3 years' },
+        { slotId: 'partner-camp-3', tag: 'Conversion', tagBg: '#EAEBE1', tagColor: '#6E7459', title: 'Back to Preschool Learning Hub', desc: 'Best for 3–5 years' },
+        { slotId: 'partner-camp-4', tag: 'Seasonal', tagBg: '#F2E6D6', tagColor: '#9E5A2C', title: 'Active Kids Seasonal Push', desc: 'Best for 6–10 years' },
+        { slotId: 'partner-camp-5', tag: 'Loyalty', tagBg: '#EFE4D4', tagColor: '#7C6A56', title: 'Parent Picks Always-On', desc: 'All age stages' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

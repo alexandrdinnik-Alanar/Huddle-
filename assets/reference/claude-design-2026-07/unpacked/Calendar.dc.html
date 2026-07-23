@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="events" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;padding:32px 40px 60px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Your schedule</div>
+          <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Calendar</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;">
+          <div style="width:36px;height:36px;border-radius:50%;border:1px solid #DBC9B0;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#9E5A2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></div>
+          <div style="font-size:14px;font-weight:600;color:#3A342C;min-width:110px;text-align:center;">June 2026</div>
+          <div style="width:36px;height:36px;border-radius:50%;border:1px solid #DBC9B0;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#9E5A2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:22px;align-items:start;">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:22px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;">
+            <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7"><div style="text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#A99B89;padding:4px 0;">{{ w }}</div></sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+            <sc-for list="{{ cells }}" as="c" hint-placeholder-count="35">
+              <sc-if value="{{ c.blank }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:1;"></div></sc-if>
+              <sc-if value="{{ c.day }}" hint-placeholder-val="{{ true }}">
+                <div style="position:relative;aspect-ratio:1;border-radius:12px;background:{{ c.bg }};color:{{ c.color }};display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:13px;font-weight:{{ c.weight }};cursor:pointer;transition:background .15s;" style-hover="background:#F2E6D6;">
+                  <span>{{ c.day }}</span>
+                  <sc-if value="{{ c.hasEvent }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:#BC7A45;"></span></sc-if>
+                </div>
+              </sc-if>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+            <div style="font-family:'Newsreader',serif;font-size:18px;color:#3A342C;margin-bottom:12px;">Upcoming this week</div>
+            <sc-for list="{{ upcoming }}" as="u" hint-placeholder-count="4">
+              <a href="EventDetails.dc.html" style="display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #F2E9DA;text-decoration:none;color:#463F37;">
+                <div style="width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,{{ u.c1 }},{{ u.c2 }});flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;"><span style="font-family:'Newsreader',serif;font-size:15px;line-height:1;">{{ u.day }}</span></div>
+                <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;color:#3A342C;">{{ u.name }}</div><div style="font-size:11px;color:#8A7C6C;">{{ u.time }}</div></div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const eventDays = new Set([2, 7, 8, 14, 15, 21]);
+    const cells = [];
+    for (let i = 0; i < 1; i++) cells.push({ blank: true });
+    for (let d = 1; d <= 30; d++) {
+      const has = eventDays.has(d);
+      const sel = d === 8;
+      cells.push({ day: d, hasEvent: has, bg: sel ? '#3A342C' : '#fff', color: sel ? '#F6F0E8' : '#463F37', weight: sel ? 700 : (has ? 600 : 500) });
+    }
+    return {
+      weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      cells,
+      upcoming: [
+        { day: '02', name: 'Baby Yoga', time: 'Tue · 10:00', c1: '#C99A6B', c2: '#A9663A' },
+        { day: '07', name: 'Morning Community Run', time: 'Sun · 07:00', c1: '#9BA184', c2: '#6E7459' },
+        { day: '08', name: 'Kids Yoga Workshop', time: 'Mon · 10:00', c1: '#D79A62', c2: '#B26A38' },
+        { day: '14', name: 'Community Clean-Up Day', time: 'Sat · 10:00', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

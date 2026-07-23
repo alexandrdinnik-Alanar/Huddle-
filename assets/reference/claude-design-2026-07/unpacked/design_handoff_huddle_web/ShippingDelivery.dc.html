@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Shipping &amp; Delivery" hint-size="100%,150px"></dc-import>
+
+  <div style="max-width:760px;margin:0 auto;padding:48px 24px 60px;">
+    <div style="font-family:'Newsreader',serif;font-size:30px;">Shipping &amp; Delivery</div>
+    <div style="font-size:14px;color:#8A7C6C;margin-top:10px;line-height:1.7;">
+      How your Marketplace orders get to you — delivery options, timelines and costs.
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;">
+      <sc-for list="{{ options }}" as="o" hint-placeholder-count="3">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:20px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:#F1E9DC;color:#BC7A45;display:flex;align-items:center;justify-content:center;">
+            <dc-import name="Icon" icon-name="{{ o.icon }}" color="#BC7A45" size="16" hint-size="16,16"></dc-import>
+          </div>
+          <div style="font-size:13px;font-weight:600;margin-top:12px;">{{ o.title }}</div>
+          <div style="font-size:12px;color:#8A7C6C;margin-top:6px;line-height:1.6;">{{ o.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <sc-for list="{{ sections }}" as="s" hint-placeholder-count="4">
+      <div style="margin-top:28px;">
+        <div style="font-family:'Newsreader',serif;font-size:18px;">{{ s.title }}</div>
+        <div style="font-size:13px;color:#5C554A;margin-top:8px;line-height:1.8;">{{ s.body }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      options: [
+        { icon: 'bag', title: 'Local pickup', desc: 'Free — arrange pickup directly with the seller in your area.' },
+        { icon: 'signal', title: 'Local delivery', desc: 'From 49 NOK — free on orders over 899 NOK within Oslo.' },
+        { icon: 'calendar', title: 'Nationwide shipping', desc: 'From 89 NOK, 2–5 business days across Norway.' },
+      ],
+      sections: [
+        { title: 'Delivery timelines', body: 'Local delivery within Oslo typically arrives within 1-2 days of order confirmation. Nationwide shipping takes 2-5 business days depending on the seller\u2019s location and the courier used.' },
+        { title: 'Tracking your order', body: 'Once your order ships, you can follow its status from Order Tracking in your account — from confirmed, to on the way, to delivered or picked up.' },
+        { title: 'Pre-owned items', body: 'Pre-owned marketplace items are shipped directly by the individual seller. Delivery times may vary slightly and are shown at checkout before you complete your purchase.' },
+        { title: 'Delivery issues', body: 'If your order hasn\u2019t arrived within the estimated window, contact the seller directly through Messages, or reach out to our support team for help.' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

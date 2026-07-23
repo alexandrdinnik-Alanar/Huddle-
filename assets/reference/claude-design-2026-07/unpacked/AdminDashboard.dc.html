@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="dashboard" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+        <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Admin overview</div>
+        <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Platform health at a glance — Oslo region</div>
+      </div>
+      <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#C99A6B,#A9663A);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:15px;">A</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px;">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+          <div style="font-size:11.5px;color:#8A7C6C;">{{ s.label }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:6px;color:#3A342C;">{{ s.value }}</div>
+          <div style="font-size:11px;margin-top:4px;color:{{ s.color }};font-weight:600;">{{ s.delta }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:20px;margin-top:24px;">
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:22px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">Pending review queues</div>
+        <sc-for list="{{ queues }}" as="q" hint-placeholder-count="4">
+          <a href="{{ q.href }}" style="display:flex;justify-content:space-between;align-items:center;padding:13px 4px;border-bottom:1px solid #F1E9DC;text-decoration:none;color:#463F37;border-radius:10px;transition:background .15s;" style-hover="background:#FBF5EC;">
+            <div style="display:flex;align-items:center;gap:11px;">
+              <div style="width:32px;height:32px;border-radius:9px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ q.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import></div>
+              <span style="font-size:13.5px;font-weight:500;">{{ q.label }}</span>
+            </div>
+            <span style="background:#F2E6D6;color:#9E5A2C;border-radius:12px;padding:4px 11px;font-size:12px;font-weight:700;">{{ q.count }}</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:22px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+        <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;">Recent audit activity</div>
+        <sc-for list="{{ activity }}" as="a" hint-placeholder-count="5">
+          <div style="display:flex;gap:10px;padding:11px 0;border-bottom:1px solid #F1E9DC;">
+            <div style="width:26px;height:26px;border-radius:50%;background:#EAEBE1;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;"><dc-import name="Icon" icon-name="clock" color="#6E7459" size="12" hint-size="12,12"></dc-import></div>
+            <div>
+              <div style="font-size:12.5px;color:#463F37;line-height:1.4;">{{ a.text }}</div>
+              <div style="font-size:10.5px;color:#A99B89;margin-top:2px;">{{ a.time }}</div>
+            </div>
+          </div>
+        </sc-for>
+        <a href="AdminAuditLog.dc.html" style="display:block;text-align:center;font-size:12.5px;color:#9E5A2C;font-weight:600;text-decoration:none;margin-top:14px;">View full audit log →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stats: [
+        { label: 'Active users', value: '12,540', delta: '+3.2% this week', color: '#6E7459' },
+        { label: 'Open reports', value: '18', delta: '5 high priority', color: '#B4553C' },
+        { label: 'Listings pending', value: '42', delta: 'avg wait 6h', color: '#8A7C6C' },
+        { label: 'Appeals pending', value: '6', delta: '2 overdue', color: '#B4553C' },
+      ],
+      queues: [
+        { icon: 'flag', label: 'Reported posts & listings', count: 18, href: 'AdminReportsQueue.dc.html' },
+        { icon: 'tag', label: 'Listing moderation', count: 42, href: 'AdminListingModeration.dc.html' },
+        { icon: 'calendar', label: 'Event administration', count: 7, href: 'AdminEventAdministration.dc.html' },
+        { icon: 'check', label: 'Appeals', count: 6, href: 'AdminAppeals.dc.html' },
+      ],
+      activity: [
+        { text: 'Admin Ingrid N. removed listing "Vintage stroller" for policy violation', time: '12 min ago' },
+        { text: 'Admin Markus L. suspended user account (repeat report)', time: '48 min ago' },
+        { text: 'Admin Sara K. approved appeal #4821', time: '2h ago' },
+        { text: 'System flagged 3 new listings for review', time: '3h ago' },
+        { text: 'Admin Jonas B. updated platform safety settings', time: '5h ago' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

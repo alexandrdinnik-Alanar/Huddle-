@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Family Guides / Toddler Years" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="300" height="300" viewBox="0 0 300 300" style="position:absolute;top:-40px;right:6%;opacity:.32;pointer-events:none;"><circle cx="150" cy="150" r="148" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="150" cy="150" r="110" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:760px;margin:0 auto;padding:56px 40px 46px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>Family guide · 1–3 years</div>
+      <h1 style="font-family:'Newsreader',serif;font-size:clamp(32px,4vw,48px);line-height:1.06;color:#3A342C;margin:14px 0 0;font-weight:500;">Navigating the <span style="font-style:italic;color:#BC7A45;">toddler years.</span></h1>
+      <p style="font-size:15.5px;color:#7C7062;margin:16px 0 0;max-width:520px;line-height:1.6;">Everything you need to know about play, sleep, milestones and connecting with other families at this stage.</p>
+    </div>
+  </div>
+
+  <div style="max-width:760px;margin:0 auto;padding:40px 40px 20px;">
+    <div style="height:280px;border-radius:22px;overflow:hidden;box-shadow:0 20px 46px rgba(150,110,70,.14);"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144803_255ea2a4-1012-495e-aacd-bc31c17fd7ba.png" alt="Toddler playing" style="width:100%;height:100%;object-fit:cover;"></div>
+
+    <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:28px;">What to expect</div>
+    <p style="font-size:14px;color:#6E6154;line-height:1.75;margin-top:10px;">Between one and three, your child is discovering independence, language, and big feelings — often all at once. This stage is about balancing freedom to explore with the routine and reassurance toddlers thrive on.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px;">
+      <sc-for list="{{ topics }}" as="t" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="width:38px;height:38px;border-radius:10px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="17" hint-size="17,17"></dc-import></div>
+          <div style="font-size:14px;font-weight:600;color:#3A342C;margin-top:11px;">{{ t.title }}</div>
+          <div style="font-size:12.5px;color:#8A7C6C;margin-top:5px;line-height:1.5;">{{ t.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:28px;margin-bottom:14px;">Recommended for this stage</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <a href="Activities.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:14px;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+        <dc-import name="Icon" icon-name="pulse" color="#BC7A45" size="18" hint-size="18,18"></dc-import>
+        <div style="font-size:13px;font-weight:600;margin-top:8px;">Toddler Activities</div>
+      </a>
+      <a href="Marketplace.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:14px;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+        <dc-import name="Icon" icon-name="bag" color="#6E7459" size="18" hint-size="18,18"></dc-import>
+        <div style="font-size:13px;font-weight:600;margin-top:8px;">Toddler Gear & Toys</div>
+      </a>
+      <a href="Community.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:14px;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+        <dc-import name="Icon" icon-name="people" color="#BC7A45" size="18" hint-size="18,18"></dc-import>
+        <div style="font-size:13px;font-weight:600;margin-top:8px;">Toddler Parent Groups</div>
+      </a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      topics: [
+        { icon: 'pulse', title: 'Play & development', desc: 'Encourage gross motor skills, language and imaginative play.' },
+        { icon: 'sparkle', title: 'Sleep routines', desc: 'Building consistent naps and bedtime as sleep needs shift.' },
+        { icon: 'heart', title: 'Big emotions', desc: 'Simple strategies for tantrums, separation and new feelings.' },
+        { icon: 'people', title: 'Finding your village', desc: 'Connect with other toddler parents nearby for support.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

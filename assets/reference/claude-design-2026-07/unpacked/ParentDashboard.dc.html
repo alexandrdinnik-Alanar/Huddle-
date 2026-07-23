@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="overview" hint-size="230px,600px"></dc-import></div>
+
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);border-radius:22px;padding:28px 32px;color:#F6F0E8;margin-bottom:26px;">
+        <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-30px;width:150px;opacity:.1;pointer-events:none;">
+        <div style="font-family:'Newsreader',serif;font-size:27px;position:relative;">Welcome back, Emma</div>
+        <div style="font-size:13px;color:#D8CDB9;margin-top:6px;position:relative;">Here's what's happening in your family hub today.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px;">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:16px 18px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+            <div style="font-family:'Newsreader',serif;font-size:24px;color:{{ s.color }};">{{ s.value }}</div>
+            <div style="font-size:11.5px;color:#8A7C6C;margin-top:3px;">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:baseline;">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Active listings</div>
+        <a href="MyListings.dc.html" style="font-size:12.5px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;">
+        <sc-for list="{{ listings }}" as="l" hint-placeholder-count="3">
+          <a href="EditListing.dc.html" style="text-decoration:none;color:#463F37;background:#fff;border:1px solid #EFE4D4;border-radius:14px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);display:block;transition:transform .16s;" style-hover="transform:translateY(-3px);">
+            <div style="height:100px;background:linear-gradient(135deg,{{ l.c1 }},{{ l.c2 }});"></div>
+            <div style="padding:12px;">
+              <div style="font-size:13px;font-weight:600;">{{ l.name }}</div>
+              <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">{{ l.sub }}</div>
+              <div style="font-size:13px;font-weight:700;color:#9E5A2C;margin-top:4px;">{{ l.price }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:26px;">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <div style="font-family:'Newsreader',serif;font-size:18px;color:#3A342C;">Messages</div>
+            <a href="Messages.dc.html" style="font-size:12px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all →</a>
+          </div>
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="3">
+            <a href="Messages.dc.html" style="display:flex;align-items:center;gap:12px;margin-top:14px;text-decoration:none;color:#463F37;">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,{{ m.c1 }},{{ m.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:14px;">{{ m.initial }}</div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:13px;font-weight:600;">{{ m.name }}</div>
+                <div style="font-size:11px;color:#8A7C6C;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ m.preview }}</div>
+              </div>
+              <div style="font-size:10px;color:#A99B89;flex-shrink:0;">{{ m.time }}</div>
+            </a>
+          </sc-for>
+        </div>
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:20px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+          <div style="font-family:'Newsreader',serif;font-size:18px;color:#3A342C;">Family matches</div>
+          <div style="display:flex;margin-top:14px;">
+            <sc-for list="{{ avatars }}" as="a" hint-placeholder-count="4">
+              <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,{{ a.c1 }},{{ a.c2 }});border:2px solid #fff;margin-left:-9px;"></div>
+            </sc-for>
+          </div>
+          <div style="font-size:12.5px;color:#7C7062;margin-top:12px;">3 new matches available near you</div>
+          <a href="FamilyMatchDetail.dc.html" style="display:block;text-align:center;background:#BC7A45;color:#fff;border-radius:22px;padding:11px;font-size:12.5px;font-weight:600;margin-top:14px;text-decoration:none;box-shadow:0 10px 22px rgba(188,122,69,.26);">View matches</a>
+        </div>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:26px;">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Recommended for your family</div>
+        <a href="Activities.dc.html" style="font-size:12.5px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px;">
+        <sc-for list="{{ recommended }}" as="r" hint-placeholder-count="3">
+          <a href="Activities.dc.html" style="text-decoration:none;color:#463F37;display:block;transition:transform .16s;" style-hover="transform:translateY(-3px);">
+            <div style="height:96px;border-radius:12px;background:linear-gradient(135deg,{{ r.c1 }},{{ r.c2 }});"></div>
+            <div style="font-size:13px;font-weight:600;margin-top:9px;">{{ r.name }}</div>
+            <div style="font-size:11.5px;color:#8A7C6C;">{{ r.sub }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      stats: [
+        { value: '3', label: 'Active listings', color: '#9E5A2C' },
+        { value: '8', label: 'Unread messages', color: '#6E7459' },
+        { value: '2', label: 'Upcoming events', color: '#9E5A2C' },
+        { value: '3', label: 'New family matches', color: '#6E7459' },
+      ],
+      listings: [
+        { name: 'Stokke Tripp Trapp Chair', sub: '2 messages · 128 views', price: '1 200 NOK', c1: '#D79A62', c2: '#B26A38' },
+        { name: 'Zara Baby Jacket (12–18m)', sub: '5 messages · 300 views', price: '300 NOK', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Little Dutch Wooden Train', sub: '1 message · 150 views', price: '150 NOK', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+      messages: [
+        { initial: 'S', name: 'Sofie L.', preview: 'Is the chair still available?', time: '10:32', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'M', name: 'Markus H.', preview: 'Pickup on Friday?', time: 'Yesterday', c1: '#9BA184', c2: '#6E7459' },
+        { initial: 'A', name: 'Anna K.', preview: 'Thank you!', time: '2 days ago', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+      avatars: [
+        { c1: '#C99A6B', c2: '#A9663A' }, { c1: '#9BA184', c2: '#6E7459' },
+        { c1: '#D79A62', c2: '#B26A38' }, { c1: '#A6AD8E', c2: '#7C8460' },
+      ],
+      recommended: [
+        { name: 'Outdoor Playdate', sub: 'For 2–5 years', c1: '#9FA383', c2: '#727856' },
+        { name: 'Music Class', sub: 'For 1–3 years', c1: '#D3A377', c2: '#B47C4A' },
+        { name: 'Pre-loved Toys', sub: 'From 0–3 years', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

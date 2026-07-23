@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="services" breadcrumb="Services" hint-size="100%,150px"></dc-import>
+
+  <!-- HERO -->
+  <div style="position:relative;background:#F1E9DC;overflow:hidden;">
+    <img src="assets/Huddle_icon.png" alt="" style="position:absolute;left:-50px;top:10px;width:200px;height:200px;opacity:0.15;">
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:40px;padding:40px 40px;align-items:center;position:relative;">
+      <div>
+        <div style="font-size:11px;letter-spacing:1px;color:#8A7C6C;">SERVICES &amp; EXPERTS</div>
+        <div style="font-family:'Newsreader',serif;font-size:32px;line-height:1.15;margin-top:6px;">Expert support for<br/>real family life.</div>
+        <div style="font-size:14px;color:#8A7C6C;margin-top:12px;max-width:380px;">Trusted professionals. Personalised guidance.</div>
+        <div style="font-size:14px;color:#BC7A45;font-style:italic;margin-top:4px;">Stronger families, every step of the way.</div>
+        <div style="display:flex;gap:14px;margin-top:20px;">
+          <a href="ServiceListings.dc.html" style="text-decoration:none;background:#3A342C;color:#fff;padding:13px 24px;border-radius:24px;font-size:13px;">Find the right expert</a>
+          <div style="border:1px solid #DBC9B0;color:#463F37;padding:13px 24px;border-radius:24px;font-size:13px;">How it works ›</div>
+        </div>
+      </div>
+      <div style="height:210px;border-radius:16px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+    </div>
+  </div>
+
+  <!-- CATEGORY TABS -->
+  <div style="display:flex;gap:14px;padding:16px 32px;border-bottom:1px solid #EFE4D4;justify-content:space-between;">
+    <sc-for list="{{ catTabs }}" as="c" hint-placeholder-count="6">
+      <div style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:{{ c.color }};border-bottom:2px solid {{ c.border }};padding-bottom:8px;white-space:nowrap;">{{ c.icon }} {{ c.label }}</div>
+    </sc-for>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div style="display:flex;gap:10px;padding:16px 40px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:160px;border:1px solid #DBC9B0;background:#fff;border-radius:10px;padding:9px 14px;font-size:12px;color:#8A7C6C;">⌕ Search experts, services...</div>
+    <sc-for list="{{ filterBar }}" as="f" hint-placeholder-count="4">
+      <div style="border:1px solid #DBC9B0;background:#fff;border-radius:10px;padding:9px 14px;font-size:12px;color:#463F37;">{{ f }} ▾</div>
+    </sc-for>
+    <div style="font-size:12px;color:#BC7A45;align-self:center;">Reset</div>
+  </div>
+
+  <!-- SUPPORT FOR EVERY STAGE -->
+  <div style="padding:6px 40px 30px;">
+    <div style="font-size:15px;font-weight:600;">Find support for every stage</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="6">
+        <div style="text-align:center;">
+          <div style="width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);margin:0 auto;"></div>
+          <div style="font-size:12px;font-weight:600;margin-top:8px;">{{ s.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;">{{ s.age }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- FEATURED EXPERTS -->
+  <div style="padding:0 40px 30px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-size:15px;font-weight:600;">Featured experts</div>
+      <a href="ServiceListings.dc.html" style="font-size:12px;color:#BC7A45;text-decoration:none;">View all experts →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ experts }}" as="e" hint-placeholder-count="6">
+        <a href="ServiceDetails.dc.html" style="text-decoration:none;color:#463F37;">
+          <div style="position:relative;height:110px;border-radius:10px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);">
+            <span style="position:absolute;top:6px;left:6px;background:{{ e.badgeBg }};color:{{ e.badgeColor }};font-size:9px;padding:2px 8px;border-radius:6px;">{{ e.role }}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;margin-top:8px;">{{ e.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;">{{ e.desc }}</div>
+          <div style="font-size:11px;color:#BC7A45;">★ {{ e.rating }} ({{ e.reviews }}) · {{ e.city }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="margin:0 40px 30px;background:#EFE4D4;border-radius:16px;padding:26px;display:grid;grid-template-columns:auto repeat(4,1fr);gap:20px;align-items:center;">
+    <div style="font-family:'Newsreader',serif;font-size:20px;">How<br/>it works</div>
+    <sc-for list="{{ howItWorks }}" as="h" hint-placeholder-count="4">
+      <div>
+        <div style="font-size:12px;font-weight:600;color:#BC7A45;">{{ h.num }}</div>
+        <div style="font-size:13px;font-weight:600;margin-top:4px;">{{ h.title }}</div>
+        <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">{{ h.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div style="margin:0 40px 30px;border:1px solid #EFE4D4;border-radius:16px;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-size:14px;font-weight:600;">Trusted. Vetted. Focused on your family.</div>
+      <div style="font-size:12px;color:#8A7C6C;margin-top:4px;max-width:400px;">All experts are carefully vetted for qualifications, experience and a warm, professional approach. Your privacy and trust are our priority.</div>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;">
+      <sc-for list="{{ trustSmall }}" as="t" hint-placeholder-count="4">
+        <div style="font-size:11px;color:#8A7C6C;text-align:center;">{{ t.icon }}<div>{{ t.label }}</div></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BUNDLES -->
+  <div style="padding:0 40px 30px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-size:15px;font-weight:600;">Popular service bundles</div>
+      <a href="ServiceListings.dc.html" style="font-size:12px;color:#BC7A45;text-decoration:none;">View all bundles →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ bundles }}" as="b" hint-placeholder-count="4">
+        <div style="display:flex;gap:12px;background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:12px;">
+          <div style="width:60px;height:60px;border-radius:8px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;">{{ b.name }}</div>
+            <div style="font-size:10px;color:#8A7C6C;">{{ b.desc }}</div>
+            <div style="font-size:11px;font-weight:600;margin-top:4px;">{{ b.price }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- GUIDES & ARTICLES -->
+  <div style="padding:0 40px 30px;">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;">
+      <div style="font-size:15px;font-weight:600;">Guides &amp; Articles</div>
+      <a href="HelpCenter.dc.html" style="font-size:12px;color:#BC7A45;text-decoration:none;">View all articles →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:14px;">
+      <sc-for list="{{ articles }}" as="a" hint-placeholder-count="6">
+        <div>
+          <div style="height:80px;border-radius:10px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div style="font-size:10px;color:#BC7A45;margin-top:8px;">{{ a.tag }}</div>
+          <div style="font-size:12px;font-weight:600;">{{ a.title }}</div>
+          <div style="font-size:10px;color:#8A7C6C;">{{ a.read }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- MATCH ME CTA -->
+  <div style="margin:0 40px 30px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:20px 26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div style="font-size:15px;font-weight:600;">Not sure where to start? We'll match you.</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div style="background:#3A342C;color:#fff;border-radius:20px;padding:11px 22px;font-size:13px;">Get matched</div>
+      <div style="font-size:11px;color:#8A7C6C;">It's free and takes 1 minute</div>
+    </div>
+  </div>
+
+  <!-- COMMUNITY BANNER -->
+  <div style="margin:0 40px 30px;background:#3A342C;color:#fff;border-radius:16px;padding:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div>
+      <div style="font-family:'Newsreader',serif;font-size:20px;">Join the Huddle community</div>
+      <div style="font-size:12px;color:#EAEBE1;margin-top:6px;">Real families. Real conversations. Real support.</div>
+    </div>
+    <a href="Community.dc.html" style="text-decoration:none;background:#fff;color:#3A342C;border-radius:20px;padding:10px 20px;font-size:12px;">Join the community</a>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      catTabs: [
+        { icon: '', label: 'Child Psychology', color: '#BC7A45', border: '#BC7A45' },
+        { icon: '', label: 'Sleep Consulting', color: '#463F37', border: 'transparent' },
+        { icon: '', label: 'Family Coaching', color: '#463F37', border: 'transparent' },
+        { icon: '', label: 'Academic Tutoring', color: '#463F37', border: 'transparent' },
+        { icon: '', label: 'Lactation Support', color: '#463F37', border: 'transparent' },
+        { icon: '', label: 'Nutrition', color: '#463F37', border: 'transparent' },
+      ],
+      filterBar: ['Specialty', 'City', 'Availability', 'Session Type'],
+      stages: [
+        { name: 'Newborn & Feeding', age: '0–3 months' },
+        { name: 'Baby Sleep', age: '0–2 years' },
+        { name: 'Toddler Behaviour', age: '1–4 years' },
+        { name: 'School Age Learning', age: '6–10 years' },
+        { name: 'Teens & Confidence', age: '10+ years' },
+        { name: 'Parent Wellbeing', age: 'All stages' },
+      ],
+      experts: [
+        { name: 'Dr. Ingrid Nilsen', role: 'Child Psychologist', badgeBg: '#EAEBE1', badgeColor: '#3A342C', desc: 'Anxiety, behaviour, emotional regulation', rating: '4.9', reviews: 112, city: 'Oslo' },
+        { name: 'Maria Solberg', role: 'Sleep Consultant', badgeBg: '#EAEBE1', badgeColor: '#3F6475', desc: 'Gentle sleep coaching, 0–5 years', rating: '4.9', reviews: 87, city: 'Bergen' },
+        { name: 'Jonas Hauge', role: 'Family Coach', badgeBg: '#EFE4D4', badgeColor: '#BC7A45', desc: 'Family systems & communication', rating: '4.8', reviews: 64, city: 'Stavanger' },
+        { name: 'Sara Ahmed', role: 'Academic Tutor', badgeBg: '#F2E6D6', badgeColor: '#85406A', desc: 'Math & learning support', rating: '4.9', reviews: 96, city: 'Trondheim' },
+        { name: 'Helene Johansen', role: 'Lactation Consultant', badgeBg: '#DBC9B0', badgeColor: '#463F37', desc: 'Breastfeeding & pumping support', rating: '4.9', reviews: 73, city: 'Oslo' },
+        { name: 'Kristine Moen', role: 'Nutritionist', badgeBg: '#EAEBE1', badgeColor: '#3A342C', desc: 'Family nutrition expert', rating: '4.8', reviews: 58, city: 'Bergen' },
+      ],
+      howItWorks: [
+        { num: '1', title: 'Tell us what you need', desc: 'Answer a few questions about your family.' },
+        { num: '2', title: 'Get matched', desc: 'We connect you with the right expert for your goals.' },
+        { num: '3', title: 'Book & connect', desc: 'Choose a time that works for you.' },
+        { num: '4', title: 'Get support & grow', desc: 'Receive guidance and build lasting change.' },
+      ],
+      trustSmall: [
+        { icon: '✓', label: 'Verified Experts' },
+        { icon: '✓', label: 'Background Checked' },
+        { icon: '', label: 'Evidence Based' },
+        { icon: '', label: 'Confidential & Secure' },
+      ],
+      bundles: [
+        { name: 'Sleep Reset Program', desc: 'Assess, plan & follow-up for better nights.', price: 'From 1 890 NOK' },
+        { name: 'Behaviour & Connection Bundle', desc: 'Understand behaviour and build stronger bonds.', price: 'From 2 190 NOK' },
+        { name: 'Learning Boost Package', desc: 'Tutoring sessions tailored to your child.', price: 'From 2 390 NOK' },
+        { name: 'Feeding Support Package', desc: 'Breastfeeding or pumping support that works.', price: 'From 1 690 NOK' },
+      ],
+      articles: [
+        { tag: 'Sleep', title: '10 gentle sleep tips that actually work', read: '5 min read' },
+        { tag: 'Behaviour', title: 'Why toddlers test limits (and what helps)', read: '6 min read' },
+        { tag: 'Parenting', title: 'How to build confidence in everyday moments', read: '6 min read' },
+        { tag: 'Learning', title: 'Simple study habits that make a difference', read: '5 min read' },
+        { tag: 'Feeding', title: 'Preparing for successful breastfeeding', read: '6 min read' },
+        { tag: 'Nutrition', title: 'Easy, nutritious meals kids will enjoy', read: '5 min read' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

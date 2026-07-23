@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="connections" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Your household</div>
+          <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;">Family members</div>
+        </div>
+        <div style="background:#BC7A45;color:#fff;border-radius:26px;padding:11px 22px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 10px 22px rgba(188,122,69,.26);"><dc-import name="Icon" icon-name="people" color="#fff" size="15" hint-size="15,15"></dc-import>Invite a member</div>
+      </div>
+
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A99B89;font-weight:700;margin-bottom:12px;">Adults</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:26px;">
+        <sc-for list="{{ adults }}" as="a" hint-placeholder-count="2">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:18px;display:flex;align-items:center;gap:14px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+            <div style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,{{ a.c1 }},{{ a.c2 }});display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:20px;flex-shrink:0;">{{ a.initial }}</div>
+            <div style="flex:1;"><div style="font-size:15px;font-weight:600;color:#3A342C;">{{ a.name }}</div><div style="font-size:12px;color:#8A7C6C;margin-top:2px;">{{ a.email }}</div></div>
+            <span style="font-size:11px;color:#9E5A2C;background:#F2E6D6;border-radius:14px;padding:4px 11px;font-weight:600;">{{ a.role }}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A99B89;font-weight:700;margin-bottom:12px;">Children</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px;">
+        <sc-for list="{{ children }}" as="c" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:18px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,{{ c.c1 }},{{ c.c2 }});display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:18px;flex-shrink:0;">{{ c.initial }}</div>
+              <div><div style="font-size:14px;font-weight:600;color:#3A342C;">{{ c.name }}</div><div style="font-size:12px;color:#9E5A2C;">{{ c.age }}</div></div>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;">
+              <sc-for list="{{ c.interests }}" as="i" hint-placeholder-count="2"><span style="font-size:11px;color:#6E7459;background:#EAEBE1;border-radius:14px;padding:4px 10px;">{{ i }}</span></sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#A99B89;font-weight:700;margin-bottom:12px;">Pending invites</div>
+      <div style="background:#fff;border:1px dashed #DBC9B0;border-radius:18px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:#F2E6D6;display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="mail" color="#BC7A45" size="17" hint-size="17,17"></dc-import></div><div><div style="font-size:13.5px;font-weight:600;color:#3A342C;">partner@example.com</div><div style="font-size:12px;color:#8A7C6C;">Invited 2 days ago · Co-parent</div></div></div>
+        <div style="display:flex;gap:8px;"><span style="font-size:12px;color:#9E5A2C;font-weight:600;">Resend</span><span style="font-size:12px;color:#A99B89;">Cancel</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      adults: [
+        { initial: 'E', name: 'Emma Johnson', email: 'emma@example.com', role: 'Owner', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'J', name: 'Jonas Johnson', email: 'jonas@example.com', role: 'Co-parent', c1: '#9BA184', c2: '#6E7459' },
+      ],
+      children: [
+        { initial: 'L', name: 'Liv', age: '5 years', c1: '#D79A62', c2: '#B26A38', interests: ['Arts', 'Outdoor'] },
+        { initial: 'N', name: 'Noah', age: '3 years', c1: '#9BA184', c2: '#67704F', interests: ['Music', 'Play'] },
+        { initial: 'S', name: 'Saga', age: '8 months', c1: '#C9A87E', c2: '#A97F4E', interests: ['Sensory'] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

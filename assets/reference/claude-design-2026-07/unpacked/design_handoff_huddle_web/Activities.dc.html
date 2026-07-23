@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@keyframes omFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="activities" breadcrumb="Activities" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#EEE7D6 52%,#E6E2CE 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-46px;right:5%;opacity:.4;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#B9C0A0" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#B9C0A0" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#B9C0A0" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:44px;padding:52px 40px 30px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#6E7459;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#8A9076;"></span>Activities near you</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(38px,4.4vw,58px);line-height:1.02;color:#3A342C;margin:16px 0 0;font-weight:500;">Made for real<br><span style="font-style:italic;color:#BC7A45;">family life.</span></h1>
+        <p style="font-size:16px;color:#7C7062;margin:18px 0 0;max-width:430px;line-height:1.6;">From creative play to weekend adventures — discover local activities your whole family will love doing together.</p>
+      </div>
+      <div style="position:relative;height:320px;border-radius:24px;overflow:hidden;box-shadow:0 24px 56px rgba(110,116,89,.2);border:1px solid rgba(255,255,255,.6);">
+        <image-slot id="act-hero" shape="rect" fit="cover" placeholder="Families enjoying an activity together" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+      </div>
+    </div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 40px 30px;">
+      <div style="background:#fff;border:1px solid #EADCC8;border-radius:18px;padding:14px 20px;display:flex;gap:22px;flex-wrap:wrap;align-items:center;box-shadow:0 14px 34px rgba(150,110,70,.1);">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+          <div style="font-size:11.5px;color:#8A7C6C;">{{ f.label }}<div style="font-size:13.5px;color:#463F37;margin-top:2px;font-weight:500;">{{ f.value }} ▾</div></div>
+        </sc-for>
+        <div style="flex:1;min-width:20px;"></div>
+        <a href="SearchResults.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 10px 22px rgba(188,122,69,.26);transition:transform .15s;" style-hover="transform:translateY(-2px);background:#A9663A;"><dc-import name="Icon" icon-name="search" color="#fff" size="15" hint-size="15,15"></dc-import>Search activities</a>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;display:flex;gap:10px;padding:22px 40px 4px;flex-wrap:wrap;">
+    <sc-for list="{{ pills }}" as="p" hint-placeholder-count="8">
+      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;padding:9px 16px 9px 12px;border-radius:24px;background:{{ p.bg }};color:{{ p.color }};border:1px solid {{ p.border }};font-weight:500;"><dc-import name="Icon" icon-name="{{ p.icon }}" color="{{ p.iconColor }}" size="14" hint-size="14,14"></dc-import>{{ p.label }}</div>
+    </sc-for>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:22px 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Handpicked</div>
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-top:4px;">Featured this week</div>
+      </div>
+      <a href="MyActivitiesList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;white-space:nowrap;">View all activities →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <sc-for list="{{ featured }}" as="a" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:9px;box-shadow:0 10px 26px rgba(150,110,70,.07);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-4px);box-shadow:0 18px 38px rgba(150,110,70,.14);">
+          <div style="position:relative;height:120px;border-radius:11px;overflow:hidden;">
+            <image-slot id="{{ a.slotId }}" shape="rect" fit="cover" placeholder="{{ a.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+            <span style="position:absolute;top:8px;left:8px;background:rgba(251,246,238,.94);color:#6E7459;font-size:10px;font-weight:700;padding:3px 9px;border-radius:7px;z-index:2;">{{ a.badge }}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:10px;">{{ a.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">{{ a.time }}</div>
+          <div style="font-size:10.5px;color:#A99B89;display:flex;align-items:center;gap:3px;margin-top:2px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="10" hint-size="10,10"></dc-import>{{ a.place }}</div>
+          <div style="font-size:13px;font-weight:700;color:#9E5A2C;margin-top:6px;">{{ a.price }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">For your family</div>
+        <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-top:4px;">Recommended for you</div>
+      </div>
+      <a href="MyActivitiesList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;white-space:nowrap;">View all →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+      <sc-for list="{{ recommended }}" as="a" hint-placeholder-count="5">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:9px;box-shadow:0 10px 26px rgba(150,110,70,.07);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-4px);box-shadow:0 18px 38px rgba(150,110,70,.14);">
+          <div style="position:relative;height:120px;border-radius:11px;overflow:hidden;">
+            <image-slot id="{{ a.slotId }}" shape="rect" fit="cover" placeholder="{{ a.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot>
+            <span style="position:absolute;top:8px;left:8px;background:rgba(251,246,238,.94);color:#6E7459;font-size:10px;font-weight:700;padding:3px 9px;border-radius:7px;z-index:2;">{{ a.badge }}</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:10px;">{{ a.name }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">{{ a.time }}</div>
+          <div style="font-size:10.5px;color:#A99B89;display:flex;align-items:center;gap:3px;margin-top:2px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="10" hint-size="10,10"></dc-import>{{ a.place }}</div>
+          <div style="font-size:13px;font-weight:700;color:#9E5A2C;margin-top:6px;">{{ a.price }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <a href="SearchResults.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);color:#F6F0E8;border-radius:20px;padding:28px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-22px;bottom:-28px;width:130px;opacity:.12;pointer-events:none;">
+      <div style="font-family:'Newsreader',serif;font-size:21px;">Near you this week</div>
+      <div style="font-size:12.5px;color:#D8CDB9;margin-top:8px;line-height:1.55;max-width:250px;">Explore activities happening close to home.</div>
+      <div style="display:inline-block;background:#BC7A45;color:#fff;border-radius:22px;padding:9px 18px;font-size:12.5px;font-weight:600;margin-top:14px;">Explore nearby →</div>
+    </a>
+    <a href="SearchResults.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#F0E5D3,#E4D2B7);color:#3A342C;border-radius:20px;padding:28px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <div style="font-size:11px;color:#9E5A2C;letter-spacing:.14em;text-transform:uppercase;font-weight:600;">No cost, all fun</div>
+      <div style="font-family:'Newsreader',serif;font-size:21px;margin-top:6px;">Free activities</div>
+      <div style="font-size:12.5px;color:#7C7062;margin-top:8px;line-height:1.55;">Things to do together that won't cost a thing.</div>
+      <div style="font-size:12.5px;color:#9E5A2C;font-weight:600;margin-top:14px;">See free activities →</div>
+    </a>
+    <a href="SearchResults.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(140deg,#9BA184,#6E7459);color:#FBF7EF;border-radius:20px;padding:28px;text-decoration:none;display:block;transition:transform .16s;" style-hover="transform:translateY(-4px);">
+      <div style="font-size:11px;color:#EAE7D6;letter-spacing:.14em;text-transform:uppercase;font-weight:600;">Fresh air</div>
+      <div style="font-family:'Newsreader',serif;font-size:21px;margin-top:6px;">Outdoor picks</div>
+      <div style="font-size:12.5px;color:#EAE7D6;margin-top:8px;line-height:1.55;">Big smiles and family time outside.</div>
+      <div style="font-size:12.5px;font-weight:600;margin-top:14px;">Discover outdoor →</div>
+    </a>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-bottom:16px;">Activities by age stage</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+        <sc-for list="{{ ageStages }}" as="s" hint-placeholder-count="5">
+        <a href="SearchResults.dc.html" style="position:relative;overflow:hidden;background:linear-gradient(150deg,{{ s.c1 }},{{ s.c2 }});border-radius:18px;padding:20px;min-height:128px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 8px 22px rgba(150,110,70,.08);transition:transform .16s;text-decoration:none;" style-hover="transform:translateY(-4px);">
+          <img src="assets/Huddle_icon.png" alt="" style="position:absolute;right:-18px;top:-18px;width:78px;opacity:.12;pointer-events:none;">
+          <div style="font-size:11.5px;color:#9E5A2C;font-weight:600;">{{ s.age }}</div>
+          <div style="font-family:'Newsreader',serif;font-size:19px;color:#3A342C;margin-top:2px;">{{ s.name }}</div>
+        </a>
+        </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr;gap:22px;padding:0 40px 30px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Local &amp; independent</div>
+          <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:4px;">Parent-led activities</div>
+        </div>
+        <a href="MyActivitiesList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;white-space:nowrap;">View all →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+        <sc-for list="{{ parentLed }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:10px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+            <div style="width:58px;height:58px;border-radius:12px;flex-shrink:0;overflow:hidden;position:relative;"><image-slot id="{{ p.slotId }}" shape="rect" fit="cover" placeholder="{{ p.name }}" style="position:absolute;inset:0;width:100%;height:100%;"></image-slot></div>
+            <div>
+              <div style="font-size:12.5px;font-weight:600;color:#3A342C;">{{ p.name }}</div>
+              <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">By {{ p.by }}</div>
+              <div style="font-size:11.5px;color:#9E5A2C;font-weight:600;margin-top:2px;">{{ p.price }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div>
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">On the map</div>
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:4px;">Explore near you</div>
+      <div style="position:relative;height:150px;border-radius:16px;overflow:hidden;margin-top:12px;background:linear-gradient(150deg,#E9E7DA,#CFD3BE);display:flex;align-items:center;justify-content:center;border:1px solid #EADCC8;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:7px;color:#6E7459;"><dc-import name="Icon" icon-name="pin" color="#6E7459" size="22" hint-size="22,22"></dc-import><span style="font-size:12px;font-weight:500;">Interactive map</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 34px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:22px;padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 14px 34px rgba(150,110,70,.09);">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">Are you an <span style="font-style:italic;color:#BC7A45;">activity organiser?</span></div>
+        <div style="font-size:13.5px;color:#7C7062;margin-top:8px;max-width:520px;line-height:1.6;">Reach more local families by publishing your activities and classes on Huddle.</div>
+      </div>
+      <a href="CreateActivityBasicInfo.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:15px 30px;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Publish your activity →</a>
+    </div>
+  </div>
+
+  <div style="background:#FCF9F3;border-top:1px solid #EFE4D4;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding:18px 40px;">
+      <sc-for list="{{ trust }}" as="t" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:9px;font-size:12.5px;color:#6E6154;">
+          <dc-import name="Icon" icon-name="{{ t.icon }}" color="#BC7A45" size="15" hint-size="15,15"></dc-import><span>{{ t.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      filters: [
+        { label: 'City', value: 'Oslo' },
+        { label: 'Age range', value: 'Any age' },
+        { label: 'Date', value: 'Any date' },
+        { label: 'Price', value: 'Any price' },
+      ],
+      pills: [
+        { icon: 'leaf', label: 'Outdoor', bg: '#EAEBE1', color: '#3A342C', border: '#D7DBC5', iconColor: '#6E7459' },
+        { icon: 'sparkle', label: 'Creative', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'pulse', label: 'Sport', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'tag', label: 'Free', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#6E7459' },
+        { icon: 'heart', label: 'Calm', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'book', label: 'Library', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+        { icon: 'chat', label: 'Parent Coffee', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#6E7459' },
+        { icon: 'star', label: 'Seasonal', bg: '#fff', color: '#463F37', border: '#DBC9B0', iconColor: '#BC7A45' },
+      ],
+      featured: [
+        { slotId: 'act-f1', badge: '2–8y', name: 'Forest Adventure Walk', time: 'Sat 24 May · 10:00', place: 'Nordmarka, Oslo', price: 'Free' },
+        { slotId: 'act-f2', badge: '2–5y', name: 'Kids Art Workshop', time: 'Sun 25 May · 11:00', place: 'Tøyen Studio', price: '199 NOK' },
+        { slotId: 'act-f3', badge: '6–10y', name: 'Mini Football', time: 'Sat 24 May · 09:30', place: 'Kringsjå Park', price: '150 NOK' },
+        { slotId: 'act-f4', badge: '1–4y', name: 'Library Storytime', time: 'Fri 23 May · 10:30', place: 'Deichman Tøyen', price: 'Free' },
+        { slotId: 'act-f5', badge: '0–12m', name: 'Parent Coffee & Connect', time: 'Tue 27 May · 11:00', place: 'Huddle House, Oslo', price: '50 NOK' },
+      ],
+      recommended: [
+        { slotId: 'act-r1', badge: '1–3y', name: 'Toddler Yoga', time: 'Mon 26 May · 10:00', place: 'Harmoni Studio', price: '120 NOK' },
+        { slotId: 'act-r2', badge: '2–5y', name: 'Farm Visit & Feed', time: 'Sun 25 May · 12:00', place: 'Ekeberg Gård', price: '60 NOK' },
+        { slotId: 'act-r3', badge: '1–4y', name: 'Playdough Play', time: 'Wed 28 May · 11:00', place: 'Lille Kreativ', price: '129 NOK' },
+        { slotId: 'act-r4', badge: '1–5y', name: 'Park Playdate', time: 'Thu 29 May · 10:30', place: 'St. Hanshaugen', price: 'Free' },
+        { slotId: 'act-r5', badge: '0–2y', name: 'Baby Book Time', time: 'Fri 30 May · 11:00', place: 'Deichman Majorstuen', price: 'Free' },
+      ],
+      ageStages: [
+        { age: '0–12 months', name: 'Newborn', c1: '#F2E6D6', c2: '#E0C9AC' },
+        { age: '1–3 years', name: 'Toddler', c1: '#E9E7DA', c2: '#CFD3BE' },
+        { age: '3–5 years', name: 'Preschool', c1: '#F2E6D6', c2: '#E4C9A4' },
+        { age: '6–10 years', name: 'School age', c1: '#E6E4D6', c2: '#C4C9B2' },
+        { age: '10–12 years', name: 'Pre-teen', c1: '#F0E5D3', c2: '#D8BE9C' },
+      ],
+      parentLed: [
+        { slotId: 'act-pl1', name: 'Messy Play Morning', by: 'Little Explorers', price: '100 NOK' },
+        { slotId: 'act-pl2', name: 'Music & Movement', by: 'Happy Hearts', price: '120 NOK' },
+        { slotId: 'act-pl3', name: 'Nature Scavenger Hunt', by: 'Wild Roots', price: 'Free' },
+      ],
+      trust: [
+        { icon: 'check', label: 'Curated for families' },
+        { icon: 'heart', label: 'Trusted by 10,000+ parents' },
+        { icon: 'leaf', label: 'Sustainable choices' },
+        { icon: 'home', label: 'Supporting local community' },
+        { icon: 'lock', label: 'Secure payments' },
+        { icon: 'refresh', label: 'Easy refunds' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

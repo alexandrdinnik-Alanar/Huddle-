@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="reports" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Reports Queue</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">18 open reports across posts, users, listings and messages</div>
+
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="border-radius:20px;padding:8px 16px;font-size:12px;background:{{ t.bg }};color:{{ t.color }};font-weight:600;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;margin-top:18px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:1fr 1.6fr 1fr 1fr 90px;padding:12px 18px;font-size:11px;color:#8A7C6C;border-bottom:1px solid #F1E9DC;">
+        <div>Type</div><div>Reason</div><div>Reported by</div><div>Severity</div><div></div>
+      </div>
+      <sc-for list="{{ reports }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:1fr 1.6fr 1fr 1fr 90px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F6F0E8;">
+          <div style="display:flex;align-items:center;gap:8px;"><dc-import name="Icon" icon-name="{{ r.icon }}" color="#8A7C6C" size="14" hint-size="14,14"></dc-import>{{ r.type }}</div>
+          <div style="color:#8A7C6C;">{{ r.reason }}</div>
+          <div>{{ r.by }}</div>
+          <div><span style="background:{{ r.sevBg }};color:{{ r.sevColor }};border-radius:10px;padding:3px 10px;font-size:11px;">{{ r.severity }}</span></div>
+          <a href="ModerateReport.dc.html" style="text-decoration:none;color:#BC7A45;font-size:12px;font-weight:600;">Review →</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'All (18)', bg: '#3A342C', color: '#fff' },
+        { label: 'Posts (6)', bg: '#F1E9DC', color: '#463F37' },
+        { label: 'Listings (7)', bg: '#F1E9DC', color: '#463F37' },
+        { label: 'Users (3)', bg: '#F1E9DC', color: '#463F37' },
+        { label: 'Messages (2)', bg: '#F1E9DC', color: '#463F37' },
+      ],
+      reports: [
+        { icon: 'chat', type: 'Post', reason: 'Harassment in comments', by: 'Julie Hansen', severity: 'High', sevBg: '#F5DCD4', sevColor: '#B4553C' },
+        { icon: 'tag', type: 'Listing', reason: 'Counterfeit item suspected', by: 'Martin Larsen', severity: 'High', sevBg: '#F5DCD4', sevColor: '#B4553C' },
+        { icon: 'user', type: 'User', reason: 'Fake profile', by: 'Community Team', severity: 'Medium', sevBg: '#F1E9DC', sevColor: '#8A7C6C' },
+        { icon: 'chat', type: 'Message', reason: 'Spam / scam attempt', by: 'Sara Vik', severity: 'High', sevBg: '#F5DCD4', sevColor: '#B4553C' },
+        { icon: 'tag', type: 'Listing', reason: 'Inappropriate photos', by: 'Anders Berg', severity: 'Medium', sevBg: '#F1E9DC', sevColor: '#8A7C6C' },
+        { icon: 'chat', type: 'Post', reason: 'Misinformation', by: 'Kids Activities Oslo', severity: 'Low', sevBg: '#EFE4D4', sevColor: '#8A7C6C' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

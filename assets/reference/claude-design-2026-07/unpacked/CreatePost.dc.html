@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;min-height:100vh;background:linear-gradient(158deg,#FBF5EC 0%,#F2E8D6 100%);display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+  <div style="width:480px;border-radius:22px;background:#fff;box-shadow:0 24px 60px rgba(120,86,52,.16);padding:26px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <a href="Feed.dc.html" style="text-decoration:none;color:#7C7062;"><dc-import name="Icon" icon-name="check" color="transparent" size="1" hint-size="1,1"></dc-import><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#7C7062" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg></a>
+      <div style="font-family:'Newsreader',serif;font-size:17px;color:#3A342C;">Create post</div>
+      <a href="Feed.dc.html" style="text-decoration:none;color:#BC7A45;font-size:13px;font-weight:700;">Post</a>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:11px;margin-top:20px;">
+      <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C99A6B,#A9663A);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:16px;">E</div>
+      <div>
+        <div style="font-size:13.5px;font-weight:600;color:#3A342C;">Emma Andersen</div>
+        <div style="font-size:11px;color:#8A7C6C;display:flex;align-items:center;gap:4px;"><dc-import name="Icon" icon-name="globe" color="#8A7C6C" size="10" hint-size="10,10"></dc-import>Public ▾</div>
+      </div>
+    </div>
+
+    <div style="font-size:15px;color:#A99B89;margin-top:16px;min-height:90px;">What's on your mind?</div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;border-top:1px solid #EFE4D4;padding-top:16px;">
+      <sc-for list="{{ options }}" as="o" hint-placeholder-count="4">
+        <div style="text-align:center;border:1px solid #DBC9B0;border-radius:14px;padding:14px 4px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+          <dc-import name="Icon" icon-name="{{ o.icon }}" color="#BC7A45" size="18" hint-size="18,18"></dc-import>
+          <div style="font-size:11px;margin-top:6px;color:#463F37;font-weight:500;">{{ o.label }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;margin-top:16px;font-size:12.5px;color:#7C7062;">
+      Add to your post
+      <span style="display:flex;gap:12px;">
+        <dc-import name="Icon" icon-name="pin" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#A99B89"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+      </span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      options: [
+        { icon: 'camera', label: 'Photo/Video' },
+        { icon: 'chart', label: 'Poll' },
+        { icon: 'calendar', label: 'Event' },
+        { icon: 'sparkle', label: 'Mood' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

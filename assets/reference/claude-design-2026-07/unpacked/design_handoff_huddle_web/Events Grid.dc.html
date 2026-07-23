@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@keyframes omFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="events" breadcrumb="Events" hint-size="100%,150px"></dc-import>
+
+  <!-- HERO -->
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F2E8D6 54%,#EADDC7 100%);">
+    <svg width="340" height="340" viewBox="0 0 340 340" style="position:absolute;top:-60px;right:5%;opacity:.4;pointer-events:none;"><circle cx="170" cy="170" r="168" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="170" cy="170" r="126" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="170" cy="170" r="84" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;padding:52px 40px 28px;align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>Events near you</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(38px,4.4vw,58px);line-height:1.02;color:#3A342C;margin:16px 0 0;font-weight:500;">Experiences worth<br><span style="font-style:italic;color:#BC7A45;">showing up for.</span></h1>
+        <p style="font-size:16px;color:#7C7062;margin:18px 0 0;max-width:440px;line-height:1.6;">The best local events for every age, every interest, and every kind of family weekend.</p>
+      </div>
+      <div style="position:relative;height:270px;">
+        <div style="position:absolute;right:0;top:10px;width:78%;height:230px;border-radius:22px;background:linear-gradient(150deg,#E9E0CD,#DECBAC);box-shadow:0 20px 46px rgba(150,110,70,.14);"></div>
+        <div style="position:absolute;left:0;top:36px;background:#fff;border-radius:16px;box-shadow:0 16px 36px rgba(120,86,52,.16);padding:16px 18px;width:230px;transform:rotate(-2deg);">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-family:'Newsreader',serif;font-size:34px;color:#BC7A45;line-height:1;">15</span><span style="font-size:10.5px;color:#9E5A2C;letter-spacing:.08em;font-weight:700;">JUN</span></div>
+          <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:8px;">Huddle Family Festival</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">Ekebergparken · 11:00–17:00</div>
+          <span style="display:inline-block;font-size:10px;color:#6E7459;background:#EAEBE1;border-radius:14px;padding:3px 9px;font-weight:700;margin-top:9px;">All ages</span>
+        </div>
+        <div style="position:absolute;right:26px;bottom:0;background:#fff;border-radius:16px;box-shadow:0 16px 36px rgba(120,86,52,.16);padding:16px 18px;width:220px;transform:rotate(2deg);">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-family:'Newsreader',serif;font-size:34px;color:#6E7459;line-height:1;">25</span><span style="font-size:10.5px;color:#6E7459;letter-spacing:.08em;font-weight:700;">MAY</span></div>
+          <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:8px;">Mini Makers Art Time</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">Kreativitet Studio · 10:00</div>
+          <span style="display:inline-block;font-size:10px;color:#9E5A2C;background:#F2E6D6;border-radius:14px;padding:3px 9px;font-weight:700;margin-top:9px;">1–4 years</span>
+        </div>
+        <div style="position:absolute;right:8px;top:-6px;background:#8A9076;color:#fff;padding:7px 14px;border-radius:20px;font-size:11.5px;font-weight:700;transform:rotate(4deg);box-shadow:0 10px 22px rgba(110,116,89,.3);">This weekend</div>
+      </div>
+    </div>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 40px 30px;">
+      <div style="background:#fff;border:1px solid #EADCC8;border-radius:18px;padding:14px 20px;display:flex;gap:22px;flex-wrap:wrap;align-items:center;box-shadow:0 14px 34px rgba(150,110,70,.1);">
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <div style="font-size:11.5px;color:#8A7C6C;">{{ f.label }}<div style="font-size:13.5px;color:#463F37;margin-top:2px;font-weight:500;">{{ f.value }} ▾</div></div>
+        </sc-for>
+        <div style="flex:1;min-width:20px;"></div>
+        <div style="background:#BC7A45;color:#fff;border-radius:24px;padding:12px 24px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 10px 22px rgba(188,122,69,.26);"><dc-import name="Icon" icon-name="search" color="#fff" size="15" hint-size="15,15"></dc-import>Search events</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DATE STRIP -->
+  <div style="max-width:1280px;margin:0 auto;display:flex;gap:8px;padding:22px 40px 6px;overflow-x:auto;">
+    <sc-for list="{{ dateStrip }}" as="d" hint-placeholder-count="10">
+      <div style="text-align:center;min-width:62px;padding:9px 6px;border-radius:12px;background:{{ d.bg }};color:{{ d.color }};border:1px solid {{ d.border }};transition:transform .15s;" style-hover="transform:translateY(-2px);">
+        <div style="font-size:9.5px;letter-spacing:.08em;font-weight:700;opacity:.75;">{{ d.weekday }}</div>
+        <div style="font-family:'Newsreader',serif;font-size:19px;font-weight:500;margin-top:1px;">{{ d.day }}</div>
+        <div style="font-size:8.5px;letter-spacing:.08em;font-weight:700;opacity:.75;">{{ d.month }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- SECTIONS -->
+  <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="7">
+    <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:20px 40px 8px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+      <div style="background:{{ sec.bg }};border-radius:{{ sec.radius }};padding:{{ sec.padding }};">
+        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;">
+          <div style="font-family:'Newsreader',serif;font-size:23px;color:#3A342C;">{{ sec.title }}</div>
+          <a href="SearchResults.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all →</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <sc-for list="{{ sec.items }}" as="e" hint-placeholder-count="4">
+            <a href="EventDetails.dc.html" style="text-decoration:none;display:flex;gap:13px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:14px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-3px);box-shadow:0 16px 34px rgba(150,110,70,.13);">
+              <div style="flex-shrink:0;width:52px;text-align:center;">
+                <div style="font-family:'Newsreader',serif;font-size:30px;color:{{ e.accent }};line-height:1;">{{ e.dayNum }}</div>
+                <div style="font-size:9px;color:{{ e.accent }};letter-spacing:.1em;font-weight:700;margin-top:2px;">{{ e.mon }}</div>
+              </div>
+              <div style="min-width:0;">
+                <div style="font-size:13px;font-weight:600;color:#3A342C;line-height:1.3;">{{ e.name }}</div>
+                <div style="font-size:11px;color:#8A7C6C;margin-top:3px;">{{ e.age }}</div>
+                <div style="font-size:10.5px;color:#A99B89;display:flex;align-items:center;gap:3px;margin-top:3px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="10" hint-size="10,10"></dc-import><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ e.place }}</span></div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+
+  <!-- BANNERS -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.3fr 1fr;gap:20px;padding:26px 40px 36px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);border-radius:22px;padding:32px;color:#F6F0E8;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-26px;bottom:-34px;width:160px;opacity:.1;pointer-events:none;">
+      <div style="display:inline-block;font-size:10px;background:#BC7A45;padding:4px 12px;border-radius:14px;font-weight:700;letter-spacing:.1em;">FEATURED THIS MONTH</div>
+      <div style="font-family:'Newsreader',serif;font-size:28px;margin-top:12px;">Huddle Family Festival</div>
+      <div style="font-size:13px;color:#D8CDB9;margin-top:8px;max-width:420px;line-height:1.6;">A full day of fun, learning, movement and magic for the whole family.</div>
+      <div style="font-size:12.5px;color:#D8CDB9;margin-top:12px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;"><span style="display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="calendar" color="#EDBB8B" size="14" hint-size="14,14"></dc-import>June 15, 2026</span><span style="display:flex;align-items:center;gap:6px;"><dc-import name="Icon" icon-name="pin" color="#EDBB8B" size="14" hint-size="14,14"></dc-import>Ekebergparken, Oslo</span></div>
+      <a href="TicketConfirmation.dc.html" style="text-decoration:none;display:inline-block;background:#fff;color:#3A342C;border-radius:24px;padding:11px 22px;font-size:13px;font-weight:600;margin-top:18px;" style-hover="background:#F2E6D6;">Get tickets →</a>
+    </div>
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#F3E9D7,#E4D2B7);border-radius:22px;padding:32px;">
+      <img src="assets/Huddle_icon.png" alt="" style="position:absolute;right:-26px;bottom:-34px;width:150px;opacity:.1;pointer-events:none;">
+      <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">Plan, book &amp; enjoy<br>with ease</div>
+      <div style="font-size:12.5px;color:#7C7062;margin-top:8px;line-height:1.55;">Your family's events, all in one place — in the Huddle app.</div>
+      <div style="font-size:12px;color:#463F37;margin-top:12px;display:flex;flex-direction:column;gap:6px;">
+        <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="12" hint-size="12,12"></dc-import>Save favourite events</span>
+        <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="12" hint-size="12,12"></dc-import>Get reminders</span>
+        <span style="display:flex;align-items:center;gap:7px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="12" hint-size="12,12"></dc-import>Plan together</span>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:16px;">
+        <div style="background:#3A342C;color:#fff;border-radius:20px;padding:9px 16px;font-size:11px;font-weight:600;">App Store</div>
+        <div style="background:#3A342C;color:#fff;border-radius:20px;padding:9px 16px;font-size:11px;font-weight:600;">Google Play</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORGANIZER CTA -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:0 40px 36px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:22px;padding:30px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 14px 34px rgba(150,110,70,.09);">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">Organising a <span style="font-style:italic;color:#BC7A45;">family event?</span></div>
+        <div style="font-size:13.5px;color:#7C7062;margin-top:8px;max-width:520px;line-height:1.6;">Publish it on Huddle and reach thousands of local families.</div>
+      </div>
+      <a href="CreateEventBasicInfo.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;padding:15px 30px;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Publish your event →</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const dateStrip = [
+      ['FRI', 24, 'MAY'], ['SAT', 25, 'MAY'], ['SUN', 26, 'MAY'], ['MON', 27, 'MAY'], ['TUE', 28, 'MAY'],
+      ['WED', 29, 'MAY'], ['THU', 30, 'MAY'], ['FRI', 31, 'MAY'], ['SAT', 1, 'JUN'], ['SUN', 2, 'JUN'],
+    ].map(([weekday, day, month], i) => ({
+      weekday, day, month,
+      bg: i === 1 ? '#3A342C' : '#fff',
+      color: i === 1 ? '#F6F0E8' : '#463F37',
+      border: i === 1 ? '#3A342C' : '#EADCC8',
+    }));
+    let n = 0;
+    const mk = (name, age, place, dayNum, mon) => ({ name, age, place, dayNum, mon, accent: (n++ % 2 === 0) ? '#BC7A45' : '#6E7459' });
+    return {
+      filters: [
+        { label: 'City', value: 'Oslo' },
+        { label: 'Date', value: 'May 24 – 30' },
+        { label: 'Category', value: 'All categories' },
+        { label: 'Age', value: 'All ages' },
+        { label: 'Price', value: 'Any price' },
+      ],
+      dateStrip,
+      sections: [
+        { title: 'This week', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('Mini Makers Art Time', '1–4 years', 'Kreativitet Studio', '25', 'MAY'),
+          mk('Storytime & Songs', '0–3 years', 'Deichman Bjørvika', '26', 'MAY'),
+          mk('Family Farm Day', 'All ages', 'Øvre Eiker Gård', '28', 'MAY'),
+          mk('Nature Explorers', '6–12 years', 'Nordmarka, Oslo', '30', 'MAY'),
+        ]},
+        { title: 'This weekend', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('Cooking Class for Kids', '3–7 years', 'SMAK Studio', '25', 'MAY'),
+          mk('Theatre for Little Ones', '2–6 years', 'Trikkestallen Scene', '26', 'MAY'),
+          mk('Family Fun Run', 'All ages', 'Tøyenparken', '26', 'MAY'),
+          mk('Bouncy Castle Adventure', '2–8 years', 'Linderud Gård', '25', 'MAY'),
+        ]},
+        { title: 'Free events', bg: 'linear-gradient(135deg,#F2E6D6,#EADCC4)', radius: '22px', padding: '24px', items: [
+          mk('Park Playdate & Picnic', 'All ages', 'Vigelandsparken', '25', 'MAY'),
+          mk('Outdoor Yoga for Families', 'All ages', 'Akerselva Park', '26', 'MAY'),
+          mk('Library Story Hour', '0–5 years', 'Deichman Tøyen', '28', 'MAY'),
+          mk('Open Farm Visit', 'All ages', 'Ekeberg Gård', '30', 'MAY'),
+        ]},
+        { title: 'Workshops & classes', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('Mini Chefs Kitchen', '3–7 years', 'Barnas Matverksted', '25', 'MAY'),
+          mk('Lego Builders Workshop', '6–12 years', 'Teknologihuset', '26', 'MAY'),
+          mk('Crafty Hands Workshop', '5–10 years', 'Kreativiteten Studio', '28', 'MAY'),
+          mk('Science Lab for Kids', '7–12 years', 'Vitenparken', '30', 'MAY'),
+        ]},
+        { title: 'Culture & entertainment', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('Puppet Show Spectacular', '2–6 years', 'Figurteatret', '25', 'MAY'),
+          mk("Children's Concert", 'All ages', 'Oslo Konserthus', '26', 'MAY'),
+          mk('Circus Fun Show', 'All ages', 'Cirkus Xanti', '28', 'MAY'),
+          mk('Kids Film Club', '6–12 years', 'Kino Victoria', '29', 'MAY'),
+        ]},
+        { title: 'Sports & movement', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('Mini Soccer Skills', '4–7 years', 'Nordstrand Idrettspark', '25', 'MAY'),
+          mk('Dance Party for Kids', '3–8 years', 'Dansens Hus', '26', 'MAY'),
+          mk('Climbing for Beginners', '6–12 years', 'Oslo Klatresenter', '28', 'MAY'),
+          mk('Family Bike Ride', 'All ages', 'Sognsvann Rundt', '30', 'MAY'),
+        ]},
+        { title: 'Municipal events', bg: 'transparent', radius: '0', padding: '0', items: [
+          mk('17th of May Celebration', 'All ages', 'Rådhusplassen', '25', 'MAY'),
+          mk('Beach Clean Up Day', 'All ages', 'Bygdøy Sjøbad', '26', 'MAY'),
+          mk('Museum Discovery Day', 'All ages', 'Oslo Museum', '28', 'MAY'),
+          mk('Community Garden Day', 'All ages', 'Tøyenparken', '30', 'MAY'),
+        ]},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

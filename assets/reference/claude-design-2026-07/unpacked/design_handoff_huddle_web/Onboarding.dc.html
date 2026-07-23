@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;min-height:100vh;background:#F6F0E8;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
+  <div style="width:380px;border-radius:20px;background:#fff;box-shadow:0 20px 50px rgba(31,42,36,0.08);padding:28px 26px;">
+
+    <sc-if value="{{ showComplete }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;">
+        <div style="height:150px;border-radius:14px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);margin-bottom:18px;"></div>
+        <div style="font-family:'Newsreader',serif;font-size:22px;">You're all set!</div>
+        <div style="font-size:14px;font-weight:600;color:#BC7A45;margin-top:4px;">Welcome to Huddle</div>
+        <div style="font-size:13px;color:#7C7062;margin-top:10px;line-height:1.6;">We're excited to help your family discover amazing activities, connect with others, and make the most of your community.</div>
+        <div style="background:#F6F0E8;border-radius:12px;padding:16px;margin-top:18px;text-align:left;">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;">What's next?</div>
+          <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="3">
+            <div style="font-size:12px;color:#7C7062;margin-top:6px;">✓ {{ n }}</div>
+          </sc-for>
+        </div>
+        <a href="ParentDashboard.dc.html" style="display:block;text-align:center;text-decoration:none;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:20px;">Go to Dashboard</a>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+      <div onClick="{{ goBack }}" style="font-size:13px;color:#7C7062;cursor:pointer;">← Back</div>
+
+      <div style="display:flex;align-items:center;gap:6px;margin:18px 0;">
+        <sc-for list="{{ stepDots }}" as="d" hint-placeholder-count="5">
+          <div style="width:26px;height:26px;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">{{ d.num }}</div>
+          <sc-if value="{{ d.hasLine }}" hint-placeholder-val="{{ true }}">
+            <div style="flex:1;height:1px;background:#DBC9B0;"></div>
+          </sc-if>
+        </sc-for>
+      </div>
+
+      <div style="font-family:'Newsreader',serif;font-size:21px;">{{ title }}</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:6px;">{{ subtitle }}</div>
+
+      <!-- Step 1: Family Basics -->
+      <sc-if value="{{ isStep1 }}" hint-placeholder-val="{{ true }}">
+        <div style="font-size:12px;color:#7C7062;margin-top:20px;margin-bottom:6px;">Family Name (optional)</div>
+        <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;color:#463F37;">The Anderson Family</div>
+        <div style="font-size:12px;color:#7C7062;margin-top:14px;margin-bottom:6px;">Your Role</div>
+        <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;display:flex;justify-content:space-between;">Parent / Guardian <span>▾</span></div>
+        <div style="font-size:12px;color:#7C7062;margin-top:14px;margin-bottom:6px;">Number of Children</div>
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:34px;height:34px;border:1px solid #DBC9B0;border-radius:8px;display:flex;align-items:center;justify-content:center;">–</div>
+          <div style="font-size:14px;font-weight:600;">2</div>
+          <div style="width:34px;height:34px;border:1px solid #DBC9B0;border-radius:8px;display:flex;align-items:center;justify-content:center;">+</div>
+        </div>
+        <div style="font-size:12px;color:#7C7062;margin-top:14px;margin-bottom:6px;">Location</div>
+        <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;display:flex;justify-content:space-between;"> Oslo, Norway <span>▾</span></div>
+      </sc-if>
+
+      <!-- Step 2: Children Ages -->
+      <sc-if value="{{ isStep2 }}" hint-placeholder-val="{{ false }}">
+        <sc-for list="{{ kids }}" as="k" hint-placeholder-count="2">
+          <div style="font-size:12px;font-weight:600;margin-top:16px;margin-bottom:6px;">{{ k.label }}</div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:36px;height:36px;border-radius:50%;background:#DBC9B0;flex-shrink:0;"></div>
+            <div style="flex:1;border:1px solid #DBC9B0;border-radius:10px;padding:11px 14px;font-size:13px;display:flex;justify-content:space-between;">{{ k.age }} <span>▾</span></div>
+            <span style="color:#BC7A45;"></span>
+          </div>
+        </sc-for>
+        <div style="text-align:center;border:1px dashed #DBC9B0;border-radius:10px;padding:12px;font-size:13px;color:#BC7A45;margin-top:14px;">+ Add Another Child</div>
+        <div style="background:#F6F0E8;border-radius:10px;padding:12px 14px;font-size:11px;color:#7C7062;margin-top:14px;">ⓘ We use age stages to show you the most relevant activities and resources.</div>
+      </sc-if>
+
+      <!-- Step 3: Interests -->
+      <sc-if value="{{ isStep3 }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;">
+          <sc-for list="{{ interests }}" as="i" hint-placeholder-count="6">
+            <div style="text-align:center;border:1px solid {{ i.border }};background:{{ i.bg }};border-radius:12px;padding:14px 6px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+              <dc-import name="Icon" icon-name="{{ i.icon }}" color="#BC7A45" size="18" hint-size="18,18"></dc-import>
+              <div style="font-size:11px;margin-top:6px;color:#463F37;">{{ i.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- Step 4: Location & Privacy -->
+      <sc-if value="{{ isStep4 }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:12px;color:#7C7062;margin-top:18px;margin-bottom:6px;">Neighborhood visibility</div>
+        <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;display:flex;justify-content:space-between;">Show approximate area only <span>▾</span></div>
+        <sc-for list="{{ privacyToggles }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;">
+            <div>
+              <div style="font-size:13px;font-weight:600;">{{ p.label }}</div>
+              <div style="font-size:11px;color:#8A7C6C;">{{ p.desc }}</div>
+            </div>
+            <div style="width:38px;height:22px;border-radius:12px;background:{{ p.bg }};position:relative;flex-shrink:0;">
+              <div style="width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:3px;left:{{ p.dot }};"></div>
+            </div>
+          </div>
+        </sc-for>
+      </sc-if>
+
+      <div onClick="{{ goNext }}" style="text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:22px;cursor:pointer;">Continue</div>
+    </sc-if>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 1 };
+
+  renderVals() {
+    const step = this.state.step;
+    const titles = [
+      "Let's start with your family",
+      'Tell us about your children',
+      "What's your family interested in?",
+      'Location & privacy',
+    ];
+    const subtitles = [
+      'Tell us about your family so we can personalize your experience.',
+      "Select each child's age or age stage.",
+      'Pick a few things you enjoy — we\'ll tailor recommendations.',
+      'You control what other families can see.',
+    ];
+    const stepDots = [1, 2, 3, 4, 5].map((n) => ({
+      num: n < step ? '✓' : String(n),
+      bg: n <= step ? '#3A342C' : '#EFE4D4',
+      color: n <= step ? '#fff' : '#463F37',
+      hasLine: n < 5,
+    }));
+
+    return {
+      showComplete: step > 4,
+      showForm: step <= 4,
+      isStep1: step === 1,
+      isStep2: step === 2,
+      isStep3: step === 3,
+      isStep4: step === 4,
+      title: titles[step - 1] || '',
+      subtitle: subtitles[step - 1] || '',
+      stepDots,
+      kids: [
+        { label: 'Child 1', age: '6 – 8 years' },
+        { label: 'Child 2', age: '0 – 2 years' },
+      ],
+      interests: [
+        { icon: 'pulse', label: 'Sports & Play', bg: '#fff', border: '#DBC9B0' },
+        { icon: 'book', label: 'Learning', bg: '#F2E6D6', border: '#BC7A45' },
+        { icon: 'leaf', label: 'Outdoor', bg: '#fff', border: '#DBC9B0' },
+        { icon: 'sparkle', label: 'Creative Arts', bg: '#fff', border: '#DBC9B0' },
+        { icon: 'people', label: 'Playdates', bg: '#F2E6D6', border: '#BC7A45' },
+        { icon: 'gear', label: 'Other', bg: '#fff', border: '#DBC9B0' },
+      ],
+      privacyToggles: [
+        { label: 'Show my profile to nearby families', desc: 'Others can find and match with you', bg: '#3A342C', dot: '19px' },
+        { label: 'Show children\'s ages', desc: 'Helps with better matches', bg: '#3A342C', dot: '19px' },
+        { label: 'Allow direct messages', desc: 'From matched families only', bg: '#DBC9B0', dot: '3px' },
+      ],
+      nextSteps: ['Explore recommended activities', 'Find and join local groups', 'Check out upcoming events'],
+      goNext: () => this.setState((s) => ({ step: s.step + 1 })),
+      goBack: () => this.setState((s) => ({ step: Math.max(1, s.step - 1) })),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

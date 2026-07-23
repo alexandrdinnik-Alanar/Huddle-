@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+    <div style="max-width:480px;padding:32px 40px;">
+      <a href="MyListings.dc.html" style="font-size:13px;color:#7C7062;text-decoration:none;">← Back to My Listings</a>
+      <div style="font-family:'Newsreader',serif;font-size:22px;margin-top:14px;">Mark as Sold</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Let others know your item has been sold.</div>
+
+      <div style="background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:20px;margin-top:18px;text-align:center;">
+        <div style="width:52px;height:52px;border-radius:50%;background:#6E7459;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="check" color="#fff" size="24" hint-size="24,24"></dc-import></div>
+        <div style="font-size:14px;font-weight:600;margin-top:12px;">Stokke Trailz Stroller</div>
+        <div style="font-size:13px;color:#7C7062;">NOK 2,500</div>
+      </div>
+
+      <div style="font-size:13px;font-weight:600;margin-top:20px;">How was your selling experience?</div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;">
+        <div style="display:flex;gap:6px;font-size:22px;color:#DBC9B0;">☆ ☆ ☆ ☆ ☆</div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:#8A7C6C;margin-top:2px;">
+        <span>Very bad</span><span>Excellent</span>
+      </div>
+
+      <div style="font-size:12px;color:#7C7062;margin-top:18px;margin-bottom:6px;">Add a note (optional)</div>
+      <div style="border:1px solid #DBC9B0;border-radius:10px;padding:12px 14px;font-size:13px;color:#8A7C6C;height:70px;background:#fff;">Share your experience...</div>
+      <div style="text-align:right;font-size:10px;color:#8A7C6C;">0/200</div>
+
+      <div style="text-align:center;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:22px;">Mark as Sold</div>
+      <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:14px;margin-top:10px;">Cancel</div>
+    </div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>

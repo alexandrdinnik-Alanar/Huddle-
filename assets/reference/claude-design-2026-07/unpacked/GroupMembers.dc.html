@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="community" hint-size="100%,64px"></dc-import>
+  <div style="max-width:600px;margin:0 auto;padding:32px 40px 60px;">
+    <a href="MyGroupsList.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">← Back to groups</a>
+
+    <div style="display:flex;align-items:center;gap:14px;margin-top:16px;">
+      <div style="width:56px;height:56px;border-radius:14px;flex-shrink:0;background:linear-gradient(135deg,#9BA184,#6E7459);display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="people" color="#fff" size="24" hint-size="24,24"></dc-import></div>
+      <div style="flex:1;">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Oslo Runners Club</div>
+        <div style="font-size:12px;color:#8A7C6C;">Public group · 12 members</div>
+      </div>
+      <div style="font-size:12px;border:1px solid #DBC9B0;color:#6E7459;background:#EAEBE1;padding:7px 16px;border-radius:18px;font-weight:600;cursor:pointer;">Joined</div>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="font-size:13px;padding:9px 16px;border-radius:20px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;gap:10px;margin-top:18px;">
+      <div style="flex:1;border:1px solid #DBC9B0;border-radius:22px;padding:11px 16px;font-size:13.5px;color:#A99B89;background:#fff;display:flex;align-items:center;gap:8px;"><dc-import name="Icon" icon-name="search" color="#A99B89" size="14" hint-size="14,14"></dc-import>Search members…</div>
+      <div style="border:1px solid #DBC9B0;border-radius:22px;padding:11px 18px;font-size:13.5px;background:#fff;display:flex;align-items:center;gap:7px;font-weight:500;cursor:pointer;"><dc-import name="Icon" icon-name="filter" color="#463F37" size="14" hint-size="14,14"></dc-import>Filter</div>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:22px;">Admins</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;">
+      <sc-for list="{{ admins }}" as="a" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:12px;transition:background .15s;" style-hover="background:#fff;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,{{ a.c1 }},{{ a.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:15px;">{{ a.initial }}</div>
+          <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ a.name }}</div><div style="font-size:11px;color:#8A7C6C;">@{{ a.handle }}</div></div>
+          <div style="font-size:11px;background:#EAEBE1;color:#6E7459;padding:4px 12px;border-radius:14px;font-weight:600;">Admin</div>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#A99B89"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:#3A342C;margin-top:20px;">Members (10)</div>
+    <div style="display:flex;flex-direction:column;gap:4px;margin-top:10px;">
+      <sc-for list="{{ members }}" as="m" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;padding:9px 8px;border-radius:12px;transition:background .15s;" style-hover="background:#fff;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,{{ m.c1 }},{{ m.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:15px;">{{ m.initial }}</div>
+          <div style="flex:1;min-width:0;"><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ m.name }}</div><div style="font-size:11px;color:#8A7C6C;">@{{ m.handle }}</div></div>
+          <div style="font-size:11px;background:#F2E6D6;color:#9E5A2C;padding:4px 12px;border-radius:14px;font-weight:600;">Member</div>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="#A99B89"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;margin-top:22px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">Show all members ▾</div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Feed', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Members', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Events', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'About', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      admins: [
+        { initial: 'E', name: 'Emma Andersen', handle: 'emma.andersen', c1: '#C99A6B', c2: '#A9663A' },
+        { initial: 'L', name: 'Liam Andersen', handle: 'liam.andersen', c1: '#9BA184', c2: '#6E7459' },
+      ],
+      members: [
+        { initial: 'O', name: 'Olivia Hansen', handle: 'olivia.hansen', c1: '#D79A62', c2: '#B26A38' },
+        { initial: 'N', name: 'Noah Johansen', handle: 'noah.johansen', c1: '#C9A87E', c2: '#A97F4E' },
+        { initial: 'S', name: 'Sofia Nilsen', handle: 'sofia.nilsen', c1: '#A6AD8E', c2: '#7C8460' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

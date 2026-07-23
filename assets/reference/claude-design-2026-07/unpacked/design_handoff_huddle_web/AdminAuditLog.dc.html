@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#2A2620;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="audit" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:26px;">Audit Log</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Full history of admin actions — immutable record</div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;margin-top:22px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:120px 1fr 1.4fr 1fr;padding:12px 18px;font-size:11px;color:#8A7C6C;border-bottom:1px solid #F1E9DC;">
+        <div>Time</div><div>Admin</div><div>Action</div><div>Target</div>
+      </div>
+      <sc-for list="{{ logs }}" as="l" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:120px 1fr 1.4fr 1fr;padding:13px 18px;font-size:12px;align-items:center;border-bottom:1px solid #F6F0E8;">
+          <div style="color:#8A7C6C;">{{ l.time }}</div>
+          <div>{{ l.admin }}</div>
+          <div>{{ l.action }}</div>
+          <div style="color:#8A7C6C;">{{ l.target }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      logs: [
+        { time: '09:41', admin: 'Ingrid Nilsen', action: 'Removed listing', target: '"Vintage stroller"' },
+        { time: '08:53', admin: 'Markus Lien', action: 'Suspended account', target: 'user #8821' },
+        { time: '07:20', admin: 'Sara Kahn', action: 'Approved appeal', target: 'appeal #4821' },
+        { time: 'Yesterday 18:04', admin: 'Jonas Berg', action: 'Updated safety settings', target: 'Platform config' },
+        { time: 'Yesterday 15:12', admin: 'Ingrid Nilsen', action: 'Dismissed report', target: 'report #3382' },
+        { time: 'Yesterday 11:30', admin: 'Markus Lien', action: 'Banned account', target: 'user #7710' },
+        { time: '2 days ago', admin: 'Sara Kahn', action: 'Removed post', target: 'post #9021' },
+        { time: '2 days ago', admin: 'Jonas Berg', action: 'Approved listing', target: '"Lego Duplo mega set"' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

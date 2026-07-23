@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:760px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:26px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;">
+          <div style="width:26px;height:26px;border-radius:50%;background:{{ s.bg }};color:{{ s.color }};font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <sc-if value="{{ s.done }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon-name="check" color="#fff" size="12" hint-size="12,12"></dc-import></sc-if>
+            <sc-if value="{{ s.notDone }}" hint-placeholder-val="{{ true }}">{{ s.num }}</sc-if>
+          </div>
+          <div style="font-size:12.5px;color:{{ s.textColor }};font-weight:{{ s.weight }};white-space:nowrap;">{{ s.label }}</div>
+          <sc-if value="{{ s.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Sell on Huddle</div>
+    <div style="font-family:'Newsreader',serif;font-size:27px;color:#3A342C;margin-top:4px;">Add photos &amp; price</div>
+    <div style="font-size:13px;color:#7C7062;margin-top:4px;">Great photos help your item sell faster.</div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="height:110px;border:2px dashed #DBC9B0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#BC7A45;gap:6px;cursor:pointer;"><dc-import name="Icon" icon-name="camera" color="#BC7A45" size="22" hint-size="22,22"></dc-import><span style="font-size:11px;font-weight:600;">Add photo</span></div>
+        <sc-for list="{{ photos }}" as="p" hint-placeholder-count="3">
+          <div style="height:110px;border-radius:14px;background:linear-gradient(135deg,{{ p.c1 }},{{ p.c2 }});"></div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:12px;color:#7C7062;margin-top:22px;margin-bottom:6px;font-weight:600;">Title</div>
+      <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#8A7C6C;background:#fff;">e.g. Wooden Toy Train Set</div>
+
+      <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Description</div>
+      <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#8A7C6C;height:74px;background:#fff;">Describe the item, its condition, and any details buyers should know…</div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+        <div>
+          <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Price (NOK)</div>
+          <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;color:#463F37;font-weight:600;background:#fff;">150</div>
+        </div>
+        <div>
+          <div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Delivery option</div>
+          <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Pickup or delivery <span style="color:#A99B89;">▾</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-top:24px;">
+      <a href="CreateListing.dc.html" style="text-decoration:none;color:#463F37;border:1px solid #DBC9B0;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:500;background:#fff;transition:border-color .15s;" style-hover="border-color:#BC7A45;color:#9E5A2C;">← Back</a>
+      <div style="background:#BC7A45;color:#fff;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 12px 26px rgba(188,122,69,.28);transition:background .15s;" style-hover="background:#A9663A;">Next: Review →</div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const stepDefs = [
+      { label: 'Category & Age', done: true }, { label: 'Details', done: true },
+      { label: 'Photos & Price', done: false }, { label: 'Review', done: false },
+    ];
+    const steps = stepDefs.map((s, i) => ({
+      ...s, num: i + 1, notDone: !s.done,
+      bg: s.done ? '#3A342C' : (i === 2 ? '#BC7A45' : '#EFE4D4'),
+      color: (s.done || i === 2) ? '#fff' : '#463F37',
+      textColor: (s.done || i === 2) ? '#3A342C' : '#A99B89',
+      weight: (s.done || i === 2) ? 600 : 500,
+      hasLine: i < stepDefs.length - 1,
+    }));
+    return {
+      steps,
+      photos: [
+        { c1: '#D79A62', c2: '#B26A38' },
+        { c1: '#9BA184', c2: '#6E7459' },
+        { c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

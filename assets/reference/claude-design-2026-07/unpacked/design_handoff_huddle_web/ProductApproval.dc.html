@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="PartnerSidebar" active="products" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;max-width:640px;padding:32px 40px 60px;">
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Partner console</div>
+      <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-top:4px;">Product approval</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Review the products before they go live.</div>
+
+      <div style="display:flex;gap:8px;margin-top:20px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <div style="font-size:13px;padding:9px 18px;border-radius:22px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};">{{ t.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:18px;">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:16px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+            <div style="width:52px;height:52px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,{{ p.c1 }},{{ p.c2 }});"></div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ p.name }}</div>
+              <div style="font-size:11px;color:#8A7C6C;margin-top:1px;">{{ p.sub }}</div>
+              <div style="font-size:13px;font-weight:700;color:#9E5A2C;margin-top:3px;">{{ p.price }}</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:7px;flex-shrink:0;">
+              <div style="background:#6E7459;color:#fff;border-radius:18px;padding:7px 16px;font-size:11px;text-align:center;font-weight:600;cursor:pointer;">Approve</div>
+              <div style="border:1px solid #E3B4A8;color:#B0453A;border-radius:18px;padding:7px 16px;font-size:11px;text-align:center;font-weight:600;cursor:pointer;">Reject</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <a href="ProductFeedSetup.dc.html" style="display:block;text-align:center;text-decoration:none;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;margin-top:20px;">View all products</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Pending (28)', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Approved (152)', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Rejected (8)', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      products: [
+        { name: 'Stokke Trailz Stroller', sub: 'Black Melange', price: 'NOK 2,099', c1: '#D79A62', c2: '#B26A38' },
+        { name: 'LEGO DUPLO Town Set', sub: 'Fire Station', price: 'NOK 499', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Jacket Kids Reima', sub: 'Winter Jacket, Navy', price: 'NOK 799', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

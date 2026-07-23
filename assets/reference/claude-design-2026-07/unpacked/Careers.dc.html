@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -6% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Careers" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="320" height="320" viewBox="0 0 320 320" style="position:absolute;top:-50px;left:4%;opacity:.34;pointer-events:none;"><circle cx="160" cy="160" r="158" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="118" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="160" cy="160" r="78" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:660px;margin:0 auto;text-align:center;padding:60px 40px 50px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>Careers at Huddle<span style="width:26px;height:1px;background:#C68C57;"></span></div>
+      <h1 style="font-family:'Newsreader',serif;font-size:clamp(36px,4.4vw,54px);line-height:1.04;color:#3A342C;margin:16px 0 0;font-weight:500;">Help us build the home<br><span style="font-style:italic;color:#BC7A45;">for family life.</span></h1>
+      <p style="font-size:15.5px;color:#7C7062;margin:16px auto 0;max-width:480px;line-height:1.6;">We're a small, remote-friendly team based in Oslo, working on trust, community and family-first commerce.</p>
+      <a href="#roles" style="display:inline-block;text-decoration:none;background:#BC7A45;color:#fff;padding:13px 28px;border-radius:28px;font-size:14px;font-weight:600;margin-top:22px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">View open roles →</a>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1180px;margin:0 auto;padding:52px 40px 20px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="text-align:center;"><div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Our culture</div><div style="font-family:'Newsreader',serif;font-size:32px;color:#3A342C;margin-top:6px;">How we work</div></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px;">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="4">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 20px;text-align:center;box-shadow:0 10px 26px rgba(150,110,70,.07);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="width:56px;height:56px;border-radius:50%;background:{{ v.bg }};display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="{{ v.icon }}" color="{{ v.color }}" size="24" hint-size="24,24"></dc-import></div>
+          <div style="font-size:14.5px;font-weight:600;margin-top:14px;color:#3A342C;">{{ v.title }}</div>
+          <div style="font-size:12.5px;color:#8A7C6C;margin-top:6px;line-height:1.55;">{{ v.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div data-om-reveal style="max-width:1180px;margin:0 auto;padding:32px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(140deg,#3A342C,#524734);border-radius:22px;padding:34px 38px;color:#F6F0E8;display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:24px;align-items:center;">
+      <img src="assets/Huddle_icon_white_transparent.png" alt="" style="position:absolute;right:-24px;bottom:-34px;width:150px;opacity:.1;pointer-events:none;">
+      <div style="position:relative;"><div style="font-family:'Newsreader',serif;font-size:22px;">Life at Huddle</div><div style="font-size:12.5px;color:#D8CDB9;margin-top:8px;line-height:1.55;">We take care of the people who take care of families.</div></div>
+      <sc-for list="{{ benefits }}" as="b" hint-placeholder-count="4">
+        <div style="position:relative;"><div style="font-size:13.5px;font-weight:600;color:#EDBB8B;">{{ b.title }}</div><div style="font-size:11.5px;color:#D8CDB9;margin-top:5px;line-height:1.5;">{{ b.desc }}</div></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div id="roles" data-om-reveal style="max-width:1180px;margin:0 auto;padding:20px 40px 40px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Open roles</div>
+    <div style="margin-top:18px;">
+      <sc-for list="{{ roles }}" as="r" hint-placeholder-count="5">
+        <div style="display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:18px 22px;margin-bottom:12px;box-shadow:0 8px 20px rgba(150,110,70,.05);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-3px);box-shadow:0 16px 34px rgba(150,110,70,.12);">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div style="width:44px;height:44px;border-radius:12px;background:{{ r.bg }};display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ r.icon }}" color="{{ r.color }}" size="19" hint-size="19,19"></dc-import></div>
+            <div><div style="font-size:15px;font-weight:600;color:#3A342C;">{{ r.title }}</div><div style="font-size:12.5px;color:#8A7C6C;margin-top:3px;">{{ r.team }} · {{ r.location }} · {{ r.type }}</div></div>
+          </div>
+          <div style="background:#F2E6D6;color:#9E5A2C;padding:10px 20px;border-radius:22px;font-size:12.5px;font-weight:600;white-space:nowrap;">Apply →</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;padding:0 40px 52px;">
+    <div style="background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:22px;padding:34px;text-align:center;box-shadow:0 14px 34px rgba(150,110,70,.09);">
+      <div style="font-family:'Newsreader',serif;font-size:24px;color:#3A342C;">Don't see the right role?</div>
+      <div style="font-size:13.5px;color:#7C7062;margin-top:8px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6;">We're always happy to hear from people who care about families and community.</div>
+      <a href="ContactUs.dc.html" style="display:inline-block;text-decoration:none;margin-top:18px;background:#BC7A45;color:#fff;padding:13px 28px;border-radius:26px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.26);" style-hover="background:#A9663A;">Send us your CV →</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const B = [['#F2E6D6', '#BC7A45'], ['#EAEBE1', '#6E7459']];
+    return {
+      values: [
+        { icon: 'people', title: 'Family-first', desc: 'We build for real family life, not abstract users.', bg: B[0][0], color: B[0][1] },
+        { icon: 'leaf', title: 'Sustainable by default', desc: 'We favour durable, circular choices in everything we build.', bg: B[1][0], color: B[1][1] },
+        { icon: 'lock', title: 'Trust over growth', desc: 'We never trade user trust for short-term metrics.', bg: B[0][0], color: B[0][1] },
+        { icon: 'handshake', title: 'Small, focused team', desc: 'We move fast with a tight, senior team and clear ownership.', bg: B[1][0], color: B[1][1] },
+      ],
+      benefits: [
+        { title: 'Remote-friendly', desc: 'Work from Oslo or remotely within Norway.' },
+        { title: 'Flexible hours', desc: 'Family schedules come first, always.' },
+        { title: 'Huddle credit', desc: 'Free marketplace credit for your own family.' },
+        { title: 'Learning budget', desc: 'Annual budget for courses and conferences.' },
+      ],
+      roles: [
+        { title: 'Senior Product Designer', team: 'Design', location: 'Oslo / Remote', type: 'Full-time', icon: 'sparkle', bg: B[0][0], color: B[0][1] },
+        { title: 'Backend Engineer (Node.js)', team: 'Engineering', location: 'Oslo / Remote', type: 'Full-time', icon: 'gear', bg: B[1][0], color: B[1][1] },
+        { title: 'Community & Trust Lead', team: 'Community', location: 'Oslo', type: 'Full-time', icon: 'people', bg: B[0][0], color: B[0][1] },
+        { title: 'Partnerships Manager', team: 'Growth', location: 'Oslo', type: 'Full-time', icon: 'handshake', bg: B[1][0], color: B[1][1] },
+        { title: 'Customer Support Specialist', team: 'Support', location: 'Remote', type: 'Part-time', icon: 'chat', bg: B[0][0], color: B[0][1] },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

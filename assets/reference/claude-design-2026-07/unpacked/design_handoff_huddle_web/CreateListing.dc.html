@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:960px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:26px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;align-items:center;gap:8px;flex:1;">
+          <div style="width:26px;height:26px;border-radius:50%;background:{{ s.bg }};color:{{ s.color }};font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <sc-if value="{{ s.done }}" hint-placeholder-val="{{ false }}"><dc-import name="Icon" icon-name="check" color="#fff" size="12" hint-size="12,12"></dc-import></sc-if>
+            <sc-if value="{{ s.notDone }}" hint-placeholder-val="{{ true }}">{{ s.num }}</sc-if>
+          </div>
+          <div style="font-size:12.5px;color:{{ s.textColor }};font-weight:{{ s.weight }};white-space:nowrap;">{{ s.label }}</div>
+          <sc-if value="{{ s.hasLine }}" hint-placeholder-val="{{ true }}"><div style="flex:1;height:1px;background:#DBC9B0;"></div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:26px;">
+      <div>
+        <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Sell on Huddle</div>
+        <div style="font-family:'Newsreader',serif;font-size:27px;color:#3A342C;margin-top:4px;">What are you listing?</div>
+        <div style="font-size:13px;color:#7C7062;margin-top:4px;">Choose the category and age range.</div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:24px;margin-bottom:10px;font-weight:600;">Category</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+          <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+            <div style="text-align:center;border:1px solid {{ c.border }};background:{{ c.bg }};border-radius:14px;padding:16px 8px;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">
+              <dc-import name="Icon" icon-name="{{ c.icon }}" color="{{ c.color }}" size="19" hint-size="19,19"></dc-import>
+              <div style="font-size:11px;margin-top:7px;color:#463F37;font-weight:500;">{{ c.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:22px;margin-bottom:6px;font-weight:600;">Item type</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:13px 16px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Wooden Toys <span style="color:#A99B89;">▾</span></div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Age range</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:13px 16px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">1 – 3 years <span style="color:#A99B89;">▾</span></div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:18px;margin-bottom:10px;font-weight:600;">Condition</div>
+        <div style="display:flex;gap:10px;">
+          <sc-for list="{{ conditions }}" as="cond" hint-placeholder-count="3">
+            <div style="border:1px solid {{ cond.border }};background:{{ cond.bg }};color:{{ cond.color }};border-radius:22px;padding:10px 20px;font-size:12.5px;font-weight:500;cursor:pointer;">{{ cond.label }}</div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-top:32px;">
+          <a href="ParentDashboard.dc.html" style="text-decoration:none;color:#463F37;border:1px solid #DBC9B0;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:500;background:#fff;">Cancel</a>
+          <a href="CreateListingStep2.dc.html" style="text-decoration:none;background:#BC7A45;color:#fff;border-radius:24px;padding:13px 28px;font-size:13.5px;font-weight:600;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Next: Details →</a>
+        </div>
+      </div>
+
+      <div style="background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:18px;padding:20px;height:fit-content;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:#9E5A2C;"><dc-import name="Icon" icon-name="sparkle" color="#BC7A45" size="15" hint-size="15,15"></dc-import>Tips for a great listing</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;">
+          <sc-for list="{{ tips }}" as="t" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#6E6154;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>{{ t }}</div>
+          </sc-for>
+        </div>
+        <div style="height:130px;border-radius:12px;overflow:hidden;margin-top:16px;"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144807_5c99be7a-9a8e-4128-8eff-c56d61154cfd.png" alt="Well-photographed items sell faster" style="width:100%;height:100%;object-fit:cover;"></div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const stepDefs = [
+      { label: 'Category & Age', done: true },
+      { label: 'Details', done: false },
+      { label: 'Photos', done: false },
+      { label: 'Review', done: false },
+    ];
+    const steps = stepDefs.map((s, i) => ({
+      ...s,
+      num: i + 1,
+      notDone: !s.done,
+      bg: s.done ? '#3A342C' : '#EFE4D4',
+      color: s.done ? '#fff' : '#463F37',
+      textColor: s.done ? '#3A342C' : '#A99B89',
+      weight: s.done ? 600 : 500,
+      hasLine: i < stepDefs.length - 1,
+    }));
+    const B = [['#F2E6D6', '#BC7A45'], ['#EAEBE1', '#6E7459']];
+    const c = (icon, label, i, active) => ({ icon, label, color: B[i % 2][1], bg: active ? B[i % 2][0] : '#fff', border: active ? '#BC7A45' : '#DBC9B0' });
+    return {
+      steps,
+      categories: [
+        c('bed', 'Baby Gear', 0, false),
+        c('toy', 'Toys & Books', 1, true),
+        c('shirt', 'Clothing & Shoes', 0, false),
+        c('home', 'Furniture', 1, false),
+        c('leaf', 'Outdoor', 0, false),
+        c('book', 'School & Books', 1, false),
+        c('heart', 'Feeding', 0, false),
+        c('gear', 'Other', 1, false),
+      ],
+      conditions: [
+        { label: 'Like New', bg: '#fff', border: '#DBC9B0', color: '#463F37' },
+        { label: 'Good', bg: '#F2E6D6', border: '#BC7A45', color: '#9E5A2C' },
+        { label: 'Used', bg: '#fff', border: '#DBC9B0', color: '#463F37' },
+      ],
+      tips: ['Be honest about condition', 'Choose the right age range', 'Add clear photos in the next step'],
+    };
+  }
+}
+</script>
+</body>
+</html>

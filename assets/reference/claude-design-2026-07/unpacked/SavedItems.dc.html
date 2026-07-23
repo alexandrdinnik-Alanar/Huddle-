@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="saved" hint-size="230px,600px"></dc-import></div>
+
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Your favourites</div>
+      <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;">Saved</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:6px;">All the things you love, in one place.</div>
+
+      <div style="display:flex;gap:8px;margin-top:22px;">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+          <div style="font-size:13px;padding:9px 18px;border-radius:22px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+        </sc-for>
+      </div>
+
+      <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="4">
+        <div style="margin-top:28px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">{{ sec.title }}</div>
+            <a href="Marketplace.dc.html" style="font-size:12.5px;color:#9E5A2C;text-decoration:none;font-weight:500;">View all →</a>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px;">
+            <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="3">
+              <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:10px;box-shadow:0 8px 20px rgba(150,110,70,.06);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+                <div style="position:relative;height:120px;border-radius:11px;background:linear-gradient(135deg,{{ it.c1 }},{{ it.c2 }});">
+                  <div style="position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="heart" color="#BC7A45" size="14" hint-size="14,14"></dc-import></div>
+                </div>
+                <div style="font-size:13.5px;font-weight:600;margin-top:10px;color:#3A342C;">{{ it.name }}</div>
+                <div style="font-size:11.5px;color:#8A7C6C;margin-top:2px;">{{ it.sub }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'Items', bg: '#3A342C', color: '#F6F0E8', border: '#3A342C', weight: 600 },
+        { label: 'Activities', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Events', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+        { label: 'Families', bg: '#fff', color: '#463F37', border: '#DBC9B0', weight: 500 },
+      ],
+      sections: [
+        { title: 'Saved items', items: [
+          { name: 'Konges Sløjd Bunny Plush', sub: '249 NOK', c1: '#C9A87E', c2: '#A97F4E' },
+          { name: 'Stokke Tripp Trapp Chair', sub: '1 200 NOK', c1: '#D79A62', c2: '#B26A38' },
+          { name: 'Play Kitchen, Wooden', sub: '1 299 NOK', c1: '#B8967A', c2: '#967052' },
+        ]},
+        { title: 'Saved activities', items: [
+          { name: 'Baby Yoga', sub: '0–12 months · 10:00', c1: '#9BA184', c2: '#6E7459' },
+          { name: 'Sensory Play', sub: '1–2 years', c1: '#A6AD8E', c2: '#7C8460' },
+          { name: 'Nature Walk', sub: 'For the whole family', c1: '#9FA383', c2: '#727856' },
+        ]},
+        { title: 'Saved events', items: [
+          { name: 'Summer Festival', sub: 'May 31 · 10:00', c1: '#D0A06A', c2: '#B07A42' },
+          { name: "Children's Theater", sub: 'Jun 7 · 11:00', c1: '#B8967A', c2: '#8A6A3E' },
+          { name: 'Creative Workshop', sub: 'Jun 14 · 12:00', c1: '#C99A6B', c2: '#A9663A' },
+        ]},
+        { title: 'Saved families', items: [
+          { name: 'Sophie & Lucas', sub: '1.2 km away', c1: '#C99A6B', c2: '#A9663A' },
+          { name: 'Marte Family', sub: '2.4 km away', c1: '#9BA184', c2: '#6E7459' },
+          { name: 'Jonas & Team', sub: '3.1 km away', c1: '#D79A62', c2: '#B26A38' },
+        ]},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

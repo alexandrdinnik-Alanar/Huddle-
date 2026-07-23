@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="settings" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;padding:32px 40px;">
+      <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Your account</div>
+      <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;margin-bottom:22px;">Settings</div>
+      <div style="display:grid;grid-template-columns:210px 1fr;gap:26px;align-items:start;">
+        <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:8px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+          <sc-for list="{{ nav }}" as="s" hint-placeholder-count="6">
+            <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;background:{{ s.bg }};color:{{ s.color }};font-size:13px;font-weight:{{ s.weight }};margin-bottom:2px;"><dc-import name="Icon" icon-name="{{ s.icon }}" color="{{ s.color }}" size="16" hint-size="16,16"></dc-import>{{ s.label }}</div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;box-shadow:0 8px 22px rgba(150,110,70,.06);margin-bottom:20px;">
+            <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Account</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;">
+              <div><label style="font-size:12px;font-weight:600;">Full name</label><div style="border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;font-size:13.5px;margin-top:6px;background:#fff;">Emma Johnson</div></div>
+              <div><label style="font-size:12px;font-weight:600;">Email</label><div style="border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;font-size:13.5px;margin-top:6px;background:#fff;color:#8A7C6C;">emma@example.com</div></div>
+              <div><label style="font-size:12px;font-weight:600;">Neighbourhood</label><div style="border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;font-size:13.5px;margin-top:6px;background:#fff;">Frogner, Oslo</div></div>
+              <div><label style="font-size:12px;font-weight:600;">Language</label><div style="border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;font-size:13.5px;margin-top:6px;background:#fff;display:flex;justify-content:space-between;">English <span style="color:#A99B89;">▾</span></div></div>
+            </div>
+          </div>
+          <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;box-shadow:0 8px 22px rgba(150,110,70,.06);">
+            <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;">Privacy &amp; notifications</div>
+            <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="5">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #F2E9DA;">
+                <div><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ t.title }}</div><div style="font-size:12px;color:#8A7C6C;margin-top:2px;">{{ t.desc }}</div></div>
+                <div style="width:44px;height:25px;border-radius:14px;background:{{ t.trackBg }};position:relative;flex-shrink:0;"><span style="position:absolute;top:3px;{{ t.knobSide }}:3px;width:19px;height:19px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.2);"></span></div>
+              </div>
+            </sc-for>
+            <div style="display:flex;gap:10px;margin-top:20px;">
+              <div style="background:#BC7A45;color:#fff;border-radius:24px;padding:11px 24px;font-size:13.5px;font-weight:600;box-shadow:0 10px 22px rgba(188,122,69,.26);">Save changes</div>
+              <div style="background:#fff;border:1px solid #DBC9B0;color:#463F37;border-radius:24px;padding:11px 24px;font-size:13.5px;">Cancel</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const nav = [
+      { icon: 'user', label: 'Account', on: true },
+      { icon: 'lock', label: 'Privacy', on: false },
+      { icon: 'mail', label: 'Notifications', on: false },
+      { icon: 'gear', label: 'Security', on: false },
+      { icon: 'coin', label: 'Payments', on: false },
+      { icon: 'home', label: 'Language & region', on: false },
+    ].map((s) => ({ ...s, bg: s.on ? '#F2E6D6' : 'transparent', color: s.on ? '#9E5A2C' : '#7C7062', weight: s.on ? 600 : 500 }));
+    const mkT = (title, desc, on) => ({ title, desc, trackBg: on ? '#BC7A45' : '#DBC9B0', knobSide: on ? 'right' : 'left' });
+    return {
+      nav,
+      toggles: [
+        mkT('Show my family in discovery', 'Let nearby families find and connect with you.', true),
+        mkT('Email notifications', 'Matches, messages, bookings and reminders.', true),
+        mkT('Push notifications', 'Real-time alerts on your devices.', true),
+        mkT('Share approximate location only', 'Never show exact address in discovery.', true),
+        mkT('Marketing & tips', 'Occasional product news and parenting tips.', false),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

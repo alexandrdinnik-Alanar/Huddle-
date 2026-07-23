@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#F6F0E8">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#F6F0E8"/>
+    <rect x="120" y="150" width="440" height="500" rx="28" fill="#FFFFFF" stroke="#EFE4D4" stroke-width="2"/>
+    <g fill="#F7EEE0">
+      <rect x="160" y="250" width="80" height="80" rx="14"/><rect x="260" y="250" width="80" height="80" rx="14"/><rect x="360" y="250" width="80" height="80" rx="14"/><rect x="460" y="250" width="80" height="80" rx="14"/>
+      <rect x="160" y="350" width="80" height="80" rx="14"/><rect x="360" y="350" width="80" height="80" rx="14"/><rect x="460" y="350" width="80" height="80" rx="14"/>
+    </g>
+    <rect x="260" y="350" width="80" height="80" rx="14" fill="#3A342C"/>
+    <g fill="#BC7A45"><circle cx="200" cy="460" r="6"/><circle cx="500" cy="290" r="6"/></g>
+    <rect x="160" y="190" width="180" height="26" rx="13" fill="#EFE4D4"/>
+    <rect x="620" y="180" width="460" height="200" rx="24" fill="#EFE4D4"/>
+    <rect x="620" y="410" width="460" height="200" rx="24" fill="#EFE4D4"/>
+    <text x="640" y="255" font-family="Georgia, serif" font-size="34" fill="#3A342C" font-style="italic">Events</text>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}
+@media (prefers-reduced-motion:reduce){[data-om-reveal]{opacity:1!important;transform:none!important}*{animation:none!important}}
+</style>
+<script>
+(function(){function show(el){el.style.opacity='1';el.style.transform='none';}function setup(){var els=document.querySelectorAll('[data-om-reveal]');if(!els.length){return setTimeout(setup,120);}if(!('IntersectionObserver' in window)){els.forEach(show);return;}var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{threshold:.06,rootMargin:'0px 0px -5% 0px'});els.forEach(function(el){io.observe(el);});setTimeout(function(){els.forEach(show);},4000);}setup();})();
+</script>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="events" breadcrumb="Events" hint-size="100%,150px"></dc-import>
+
+  <!-- HERO BAND -->
+  <div style="position:relative;overflow:hidden;background:linear-gradient(158deg,#FBF5EC 0%,#F1E9DA 54%,#E8E3D0 100%);">
+    <svg width="300" height="300" viewBox="0 0 300 300" style="position:absolute;top:-44px;right:5%;opacity:.32;pointer-events:none;"><circle cx="150" cy="150" r="148" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="150" cy="150" r="110" fill="none" stroke="#CFAE82" stroke-width="1"></circle><circle cx="150" cy="150" r="72" fill="none" stroke="#CFAE82" stroke-width="1"></circle></svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;padding:48px 40px 40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:10px;color:#9E5A2C;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;"><span style="width:26px;height:1px;background:#C68C57;"></span>What's on near you</div>
+        <h1 style="font-family:'Newsreader',serif;font-size:clamp(38px,4.6vw,60px);line-height:1;color:#3A342C;margin:14px 0 0;font-weight:500;">Pick a day. <span style="font-style:italic;color:#BC7A45;">Make plans.</span></h1>
+        <p style="font-size:15.5px;color:#7C7062;margin:14px 0 0;max-width:440px;line-height:1.6;">Browse family events by date — tap any day on the calendar to see what's happening around Oslo.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DBC9B0;border-radius:24px;padding:10px 18px;font-size:13px;color:#463F37;box-shadow:0 8px 22px rgba(150,110,70,.08);"><dc-import name="Icon" icon-name="pin" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>Oslo<span style="width:1px;height:16px;background:#E7DAC7;"></span><dc-import name="Icon" icon-name="calendar" color="#9E5A2C" size="15" hint-size="15,15"></dc-import>{{ monthLabel }}</div>
+    </div>
+  </div>
+
+  <!-- CALENDAR MODULE -->
+  <div style="max-width:1280px;margin:0 auto;padding:34px 40px 20px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:30px;align-items:start;">
+
+    <!-- CALENDAR CARD (sticky) -->
+    <div data-om-reveal style="position:sticky;top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:22px;padding:24px;box-shadow:0 18px 44px rgba(120,86,52,.1);opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;">{{ monthLabel }}</div>
+        <div style="display:flex;gap:8px;">
+          <div onClick="{{ prevMonth }}" style="width:36px;height:36px;border-radius:50%;border:1px solid #DBC9B0;background:#FCF9F3;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="border-color:#BC7A45;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#9E5A2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></div>
+          <div onClick="{{ nextMonth }}" style="width:36px;height:36px;border-radius:50%;border:1px solid #DBC9B0;background:#FCF9F3;display:flex;align-items:center;justify-content:center;cursor:pointer;" style-hover="border-color:#BC7A45;"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#9E5A2C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;">
+        <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7">
+          <div style="text-align:center;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:#A99B89;padding:4px 0;">{{ w }}</div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+        <sc-for list="{{ cells }}" as="c" hint-placeholder-count="35">
+          <sc-if value="{{ c.blank }}" hint-placeholder-val="{{ false }}"><div style="aspect-ratio:1;"></div></sc-if>
+          <sc-if value="{{ c.day }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ c.onSelect }}" style="position:relative;aspect-ratio:1;border-radius:12px;background:{{ c.cellBg }};color:{{ c.cellColor }};display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-size:13.5px;font-weight:{{ c.weight }};transition:background .15s;border:1px solid {{ c.ring }};" style-hover="background:{{ c.hoverBg }};">
+              <span>{{ c.day }}</span>
+              <span style="position:absolute;bottom:6px;width:5px;height:5px;border-radius:50%;background:{{ c.dotColor }};"></span>
+            </div>
+          </sc-if>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:16px;margin-top:18px;padding-top:16px;border-top:1px solid #F2E9DA;font-size:11px;color:#8A7C6C;">
+        <div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:#BC7A45;"></span>Has events</div>
+        <div style="display:flex;align-items:center;gap:6px;"><span style="width:11px;height:11px;border-radius:4px;background:#3A342C;"></span>Selected</div>
+      </div>
+    </div>
+
+    <!-- SELECTED DAY EVENTS -->
+    <div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
+        <div>
+          <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Selected day</div>
+          <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">{{ selectedLabel }}</div>
+        </div>
+        <div style="font-size:12.5px;color:#8A7C6C;">{{ countLabel }}</div>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;">
+        <sc-for list="{{ cats }}" as="p" hint-placeholder-count="6">
+          <div onClick="{{ p.onSet }}" style="white-space:nowrap;font-size:12.5px;padding:8px 15px;border-radius:20px;background:{{ p.bg }};color:{{ p.color }};border:1px solid {{ p.border }};font-weight:{{ p.weight }};cursor:pointer;">{{ p.label }}</div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ hasEvents }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <sc-for list="{{ selectedEvents }}" as="e" hint-placeholder-count="3">
+            <a href="EventDetails.dc.html" style="display:grid;grid-template-columns:150px 1fr;gap:0;text-decoration:none;background:#fff;border:1px solid #EFE4D4;border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(150,110,70,.07);transition:transform .16s,box-shadow .16s;" style-hover="transform:translateY(-3px);box-shadow:0 18px 40px rgba(150,110,70,.14);">
+              <div style="position:relative;min-height:132px;overflow:hidden;background:linear-gradient(150deg,#EFE4D4,#DEC9AC);">
+                <sc-if value="{{ e.isA }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_073622_8a8aa0da-8eb3-4e55-a77c-ae9a199f2b7b.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <sc-if value="{{ e.isB }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144803_255ea2a4-1012-495e-aacd-bc31c17fd7ba.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <sc-if value="{{ e.isC }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144038_201b4688-9828-4944-870a-b6f227246847.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <sc-if value="{{ e.isD }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144805_dce86af6-1a6d-4419-aa61-d78515166cdc.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <sc-if value="{{ e.isE }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144038_d8a1e095-5bd0-45c0-9f81-2b7c6fc54f21.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <sc-if value="{{ e.isF }}" hint-placeholder-val="{{ false }}"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144807_5c99be7a-9a8e-4128-8eff-c56d61154cfd.png" alt="{{ e.name }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></sc-if>
+                <span style="position:absolute;top:10px;left:10px;background:{{ e.tagBg }};color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:10px;padding:4px 9px;">{{ e.tagLabel }}</span>
+              </div>
+              <div style="padding:16px 18px;display:flex;flex-direction:column;">
+                <div style="display:flex;align-items:center;gap:8px;color:#9E5A2C;font-size:12px;font-weight:600;"><dc-import name="Icon" icon-name="clock" color="#9E5A2C" size="13" hint-size="13,13"></dc-import>{{ e.time }}</div>
+                <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:5px;line-height:1.15;">{{ e.name }}</div>
+                <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:#8A7C6C;margin-top:6px;"><dc-import name="Icon" icon-name="pin" color="#A99B89" size="12" hint-size="12,12"></dc-import>{{ e.venue }}</div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;">
+                  <div style="display:flex;gap:6px;align-items:center;"><span style="font-size:10.5px;color:#6E7459;background:#EAEBE1;border-radius:14px;padding:4px 10px;font-weight:600;">{{ e.age }}</span><span style="font-size:13px;font-weight:700;color:{{ e.priceColor }};">{{ e.price }}</span></div>
+                  <span style="font-size:12.5px;font-weight:600;color:#9E5A2C;">Reserve →</span>
+                </div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#fff;border:1px dashed #DBC9B0;border-radius:18px;padding:40px 30px;text-align:center;">
+          <div style="width:52px;height:52px;border-radius:50%;background:#F2E6D6;display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="calendar" color="#BC7A45" size="22" hint-size="22,22"></dc-import></div>
+          <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:14px;">Nothing on this day{{ emptyCatNote }}</div>
+          <div style="font-size:13px;color:#8A7C6C;margin-top:6px;">Try another date — days with a <span style="color:#BC7A45;font-weight:600;">copper dot</span> have events.</div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- BROWSE BY CATEGORY -->
+  <div data-om-reveal style="max-width:1280px;margin:0 auto;padding:26px 40px 10px;opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);">
+    <div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;margin-bottom:16px;">Browse by category</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;">
+      <sc-for list="{{ categories }}" as="c" hint-placeholder-count="6">
+        <a href="SearchResults.dc.html" style="position:relative;height:132px;border-radius:18px;overflow:hidden;text-decoration:none;background:linear-gradient(150deg,{{ c.c1 }},{{ c.c2 }});padding:15px;display:flex;flex-direction:column;justify-content:space-between;color:#FBF7EF;box-shadow:0 10px 24px rgba(110,116,89,.14);transition:transform .16s;" style-hover="transform:translateY(-4px);">
+          <div style="width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ c.icon }}" color="#fff" size="18" hint-size="18,18"></dc-import></div>
+          <div><div style="font-size:14px;font-weight:600;">{{ c.name }}</div><div style="font-size:10.5px;color:rgba(251,247,239,.82);margin-top:2px;">{{ c.count }} events</div></div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ORGANIZER CTA -->
+  <div style="max-width:1280px;margin:0 auto;padding:26px 40px 52px;">
+    <div style="position:relative;overflow:hidden;background:linear-gradient(135deg,#FCF9F3,#F2E8D6);border:1px solid #EADCC8;border-radius:22px;padding:32px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;box-shadow:0 14px 34px rgba(150,110,70,.09);">
+      <img src="assets/Huddle_icon.png" alt="" style="position:absolute;right:-26px;bottom:-34px;width:150px;opacity:.09;pointer-events:none;">
+      <div style="position:relative;"><div style="font-family:'Newsreader',serif;font-size:26px;color:#3A342C;">Organising a <span style="font-style:italic;color:#BC7A45;">family event?</span></div><div style="font-size:13.5px;color:#7C7062;margin-top:8px;max-width:520px;line-height:1.6;">Publish it on Huddle and reach thousands of local families this season.</div></div>
+      <a href="CreateEventBasicInfo.dc.html" style="position:relative;text-decoration:none;background:#BC7A45;color:#fff;padding:15px 30px;border-radius:30px;font-size:14px;font-weight:600;white-space:nowrap;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Publish your event →</a>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const T = {
+      workshops: { label: 'Workshop', bg: '#BC7A45' }, culture: { label: 'Culture', bg: '#8A6A3E' },
+      sports: { label: 'Sports', bg: '#6E7459' }, outdoor: { label: 'Outdoor', bg: '#6E7459' },
+      festivals: { label: 'Festival', bg: '#BC7A45' },
+    };
+    const ev = (time, name, venue, age, price, cat, imgKey) => {
+      const free = price === 'Free';
+      return { time, name, venue, age, price, cat, tagLabel: T[cat].label, tagBg: T[cat].bg, priceColor: free ? '#6E7459' : '#9E5A2C', isFree: free,
+        isA: imgKey === 'A', isB: imgKey === 'B', isC: imgKey === 'C', isD: imgKey === 'D', isE: imgKey === 'E', isF: imgKey === 'F' };
+    };
+    this.events = {
+      '2026-05-24': [ev('10:00', 'Baby Yoga & Bonding', 'Huddle Studio, Oslo', '0–3 yrs', 'Free', 'workshops', 'A'), ev('11:30', 'Mini Soccer Skills', 'Nordstrand Idrettspark', '4–7 yrs', '120 NOK', 'sports', 'F')],
+      '2026-05-25': [ev('13:00', 'Puppet Show Spectacular', 'Figurteatret', '2–6 yrs', '90 NOK', 'culture', 'B'), ev('11:00', 'Park Playdate & Picnic', 'Vigelandsparken', 'All ages', 'Free', 'outdoor', 'D')],
+      '2026-05-26': [ev('16:00', 'Library Story Hour', 'Deichman Tøyen', '0–5 yrs', 'Free', 'culture', 'C')],
+      '2026-05-28': [ev('12:00', 'Creative Play Workshop', 'Kreativitetshuset', '3–6 yrs', '150 NOK', 'workshops', 'B')],
+      '2026-05-30': [ev('10:00', 'Nature Walk & Picnic', 'Nordmarka, Oslo', 'All ages', 'Free', 'outdoor', 'D')],
+      '2026-05-31': [ev('10:00', 'Family Fun Run', 'Tøyenparken', 'All ages', 'Free', 'sports', 'E'), ev('12:30', 'Mini Chefs Kitchen', 'SMAK Studio', '3–7 yrs', '180 NOK', 'workshops', 'F')],
+      '2026-06-07': [ev('10:00', 'Nature Explorers', 'Nordmarka, Oslo', '6–12 yrs', 'Free', 'outdoor', 'D')],
+      '2026-06-14': [ev('11:00', 'Summer Family Festival', 'Ekebergparken, Oslo', 'All ages', 'Free', 'festivals', 'C')],
+    };
+    this.months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    this.state = { y: 2026, m: 4, sel: '2026-05-24', cat: 'all' };
+  }
+  iso(y, m, d) { return y + '-' + String(m + 1).padStart(2, '0') + '-' + String(d).padStart(2, '0'); }
+  firstSel(y, m) {
+    const pre = y + '-' + String(m + 1).padStart(2, '0');
+    const keys = Object.keys(this.events).filter((k) => k.indexOf(pre) === 0).sort();
+    return keys.length ? keys[0] : pre + '-01';
+  }
+  changeMonth(delta) {
+    let { y, m } = this.state;
+    m += delta; if (m < 0) { m = 11; y--; } if (m > 11) { m = 0; y++; }
+    this.setState({ y, m, sel: this.firstSel(y, m), cat: 'all' });
+  }
+  renderVals() {
+    const { y, m, sel, cat } = this.state;
+    const first = new Date(y, m, 1);
+    let startWd = (first.getDay() + 6) % 7;
+    const dim = new Date(y, m + 1, 0).getDate();
+    const cells = [];
+    for (let i = 0; i < startWd; i++) cells.push({ blank: true, day: 0 });
+    for (let d = 1; d <= dim; d++) {
+      const iso = this.iso(y, m, d);
+      const has = !!this.events[iso];
+      const selected = iso === sel;
+      cells.push({
+        blank: false, day: d, iso,
+        dotColor: has ? (selected ? '#F0B57F' : '#BC7A45') : 'transparent',
+        cellBg: selected ? '#3A342C' : (has ? '#F7EEE0' : 'transparent'),
+        hoverBg: selected ? '#3A342C' : '#F2E6D6',
+        cellColor: selected ? '#F6F0E8' : '#463F37',
+        weight: (has || selected) ? 700 : 500,
+        ring: selected ? '#3A342C' : 'transparent',
+        onSelect: () => this.setState({ sel: iso }),
+      });
+    }
+    const all = this.events[sel] || [];
+    const selectedEvents = all.filter((e) => cat === 'all' || e.cat === cat || (cat === 'free' && e.isFree));
+    const d = new Date(sel + 'T00:00:00');
+    const wd = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][d.getDay()];
+    const selectedLabel = wd + ', ' + d.getDate() + ' ' + this.months[d.getMonth()];
+    const catDefs = [['all', 'All'], ['free', 'Free'], ['workshops', 'Workshops'], ['culture', 'Culture'], ['sports', 'Sports'], ['outdoor', 'Outdoor']];
+    const cats = catDefs.map(([key, label]) => {
+      const on = cat === key;
+      return { label, bg: on ? '#3A342C' : '#fff', color: on ? '#F6F0E8' : '#463F37', border: on ? '#3A342C' : '#DBC9B0', weight: on ? 600 : 500, onSet: () => this.setState({ cat: key }) };
+    });
+    const n = selectedEvents.length;
+    return {
+      monthLabel: this.months[m] + ' ' + y,
+      weekdays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      cells,
+      prevMonth: () => this.changeMonth(-1),
+      nextMonth: () => this.changeMonth(1),
+      selectedLabel,
+      countLabel: n === 0 ? 'No events' : (n === 1 ? '1 event' : n + ' events'),
+      cats,
+      selectedEvents,
+      hasEvents: n > 0,
+      isEmpty: n === 0,
+      emptyCatNote: cat === 'all' ? '' : ' in this category',
+      categories: [
+        { name: 'Workshops', count: 24, icon: 'book', c1: '#C99A6B', c2: '#A9663A' },
+        { name: 'Culture', count: 18, icon: 'sparkle', c1: '#B8967A', c2: '#8A6A3E' },
+        { name: 'Sports', count: 16, icon: 'pulse', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Outdoor', count: 21, icon: 'leaf', c1: '#9FA383', c2: '#727856' },
+        { name: 'Festivals', count: 9, icon: 'calendar', c1: '#D0A06A', c2: '#B07A42' },
+        { name: 'Music', count: 12, icon: 'heart', c1: '#A6AD8E', c2: '#7C8460' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

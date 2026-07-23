@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+  <div style="display:flex;max-width:1280px;margin:0 auto;align-items:flex-start;">
+    <div style="width:230px;flex-shrink:0;"><dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import></div>
+    <div style="flex:1;min-width:0;max-width:600px;padding:32px 40px 60px;">
+      <a href="MyListings.dc.html" style="font-size:13px;color:#9E5A2C;text-decoration:none;font-weight:500;">← Back to my listings</a>
+      <div style="font-family:'Newsreader',serif;font-size:25px;color:#3A342C;margin-top:14px;">Edit listing</div>
+      <div style="font-size:13px;color:#7C7062;margin-top:4px;">Update your listing details.</div>
+
+      <div style="background:#fff;border:1px solid #EFE4D4;border-radius:18px;padding:24px 26px;margin-top:20px;box-shadow:0 12px 30px rgba(150,110,70,.08);">
+        <div style="font-size:12px;color:#7C7062;margin-bottom:10px;font-weight:600;">Photos</div>
+        <div style="display:flex;gap:10px;">
+          <sc-for list="{{ photos }}" as="p" hint-placeholder-count="3">
+            <div style="width:66px;height:66px;border-radius:12px;background:linear-gradient(135deg,{{ p.c1 }},{{ p.c2 }});border:{{ p.border }};"></div>
+          </sc-for>
+          <div style="width:66px;height:66px;border:2px dashed #DBC9B0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#BC7A45;gap:2px;cursor:pointer;"><dc-import name="Icon" icon-name="camera" color="#BC7A45" size="17" hint-size="17,17"></dc-import><span style="font-size:8.5px;color:#8A7C6C;">Add</span></div>
+        </div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:18px;margin-bottom:6px;font-weight:600;">Title</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;background:#fff;">Stokke Trailz Stroller</div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;">
+          <div><div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Category</div><div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Baby Gear <span style="color:#A99B89;">▾</span></div></div>
+          <div><div style="font-size:12px;color:#7C7062;margin-bottom:6px;font-weight:600;">Condition</div><div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;">Like New <span style="color:#A99B89;">▾</span></div></div>
+        </div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Price</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;justify-content:space-between;background:#fff;font-weight:600;color:#3A342C;">2500 <span style="color:#8A7C6C;font-weight:400;">NOK</span></div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:16px;margin-bottom:6px;font-weight:600;">Description</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;height:74px;background:#fff;line-height:1.5;">Well-maintained stroller in great condition. Comes with rain cover and storage bag.</div>
+        <div style="text-align:right;font-size:10.5px;color:#A99B89;margin-top:4px;">78/500</div>
+
+        <div style="font-size:12px;color:#7C7062;margin-top:14px;margin-bottom:6px;font-weight:600;">Pickup location</div>
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:12px 15px;font-size:13.5px;display:flex;align-items:center;gap:8px;background:#fff;"><dc-import name="Icon" icon-name="pin" color="#9E5A2C" size="13" hint-size="13,13"></dc-import>Grünerløkka 15, 0550 Oslo</div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:24px;">
+        <a href="MyListings.dc.html" style="flex:1;text-decoration:none;text-align:center;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:24px;padding:13px;font-size:13.5px;font-weight:500;">Cancel</a>
+        <div style="flex:1;text-align:center;background:#BC7A45;color:#fff;border-radius:24px;padding:13px;font-size:13.5px;font-weight:600;cursor:pointer;box-shadow:0 12px 26px rgba(188,122,69,.28);">Save changes</div>
+      </div>
+    </div>
+  </div>
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      photos: [
+        { border: '2px solid #BC7A45', c1: '#D79A62', c2: '#B26A38' },
+        { border: '1px solid #DBC9B0', c1: '#9BA184', c2: '#6E7459' },
+        { border: '1px solid #DBC9B0', c1: '#C9A87E', c2: '#A97F4E' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="services" hint-size="100%,64px"></dc-import>
+  <div style="max-width:520px;margin:0 auto;padding:32px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:22px;">Book Appointment</div>
+
+    <div style="font-size:12px;color:#7C7062;margin-top:18px;">Service</div>
+    <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #DBC9B0;border-radius:12px;padding:12px;margin-top:6px;">
+      <div style="width:40px;height:40px;border-radius:8px;background:#3A342C;color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">BM</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:600;">Bright Minds Center</div>
+        <div style="font-size:11px;color:#8A7C6C;">Family Counseling</div>
+      </div>
+      <span style="font-size:12px;color:#BC7A45;">Change</span>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;margin-top:20px;">Select Date</div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px;">
+      <span style="font-size:13px;">May 2025</span><span style="color:#8A7C6C;">›</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:10px;">
+      <sc-for list="{{ weekdays }}" as="w" hint-placeholder-count="7">
+        <div style="text-align:center;font-size:10px;color:#8A7C6C;">{{ w }}</div>
+      </sc-for>
+      <sc-for list="{{ days }}" as="d" hint-placeholder-count="35">
+        <div style="text-align:center;font-size:12px;padding:8px 0;border-radius:50%;background:{{ d.bg }};color:{{ d.color }};">{{ d.num }}</div>
+      </sc-for>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;margin-top:20px;">Select Time</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px;">
+      <sc-for list="{{ times }}" as="t" hint-placeholder-count="4">
+        <div style="text-align:center;font-size:12px;padding:10px 0;border-radius:8px;background:{{ t.bg }};color:{{ t.color }};border:1px solid {{ t.border }};">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <a href="BookingDetails.dc.html" style="display:block;text-align:center;text-decoration:none;background:#3A342C;color:#fff;border-radius:24px;padding:13px;font-size:14px;font-weight:600;margin-top:24px;">Continue</a>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const blanks = 3;
+    const days = [];
+    for (let i = 0; i < blanks; i++) days.push({ num: '', bg: 'transparent', color: '#463F37' });
+    for (let d = 1; d <= 31; d++) {
+      days.push({ num: String(d), bg: d === 24 ? '#3A342C' : 'transparent', color: d === 24 ? '#fff' : '#463F37' });
+    }
+    return {
+      weekdays: ['MON','TUE','WED','THU','FRI','SAT','SUN'],
+      days,
+      times: [
+        { label: '09:00', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+        { label: '10:00', bg: '#3A342C', color: '#fff', border: '#3A342C' },
+        { label: '11:00', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+        { label: '13:00', bg: '#fff', color: '#463F37', border: '#DBC9B0' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

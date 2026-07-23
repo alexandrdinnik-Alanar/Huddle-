@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;padding:22px 14px;border-right:1px solid #E7DAC7;background:#FCF9F3;min-height:100%;box-sizing:border-box;">
+  <div style="font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#A99B89;font-weight:700;padding:0 13px 12px;">Partner</div>
+  <sc-for list="{{ items }}" as="n" hint-placeholder-count="9">
+    <a href="{{ n.href }}" style="display:flex;align-items:center;gap:11px;padding:10px 13px;border-radius:12px;background:{{ n.bg }};color:{{ n.color }};font-size:13.5px;font-weight:{{ n.weight }};margin-bottom:3px;text-decoration:none;transition:background .15s;" style-hover="background:#F3EADC;">
+      <dc-import name="Icon" icon-name="{{ n.icon }}" color="{{ n.color }}" size="16" hint-size="16,16"></dc-import><span>{{ n.label }}</span>
+    </a>
+  </sc-for>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;products&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;options&quot;: [&quot;overview&quot;, &quot;messages&quot;, &quot;connections&quot;, &quot;products&quot;, &quot;orders&quot;, &quot;analytics&quot;, &quot;marketing&quot;, &quot;payouts&quot;, &quot;settings&quot;]}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active || '';
+    const all = [
+      { key: 'overview', icon: 'home', label: 'Overview', href: 'PartnerOverview.dc.html' },
+      { key: 'messages', icon: 'mail', label: 'Messages', href: 'Messages.dc.html' },
+      { key: 'connections', icon: 'people', label: 'Connections', href: 'FamilyMatching.dc.html' },
+      { key: 'products', icon: 'tag', label: 'Products', href: 'ProductApproval.dc.html' },
+      { key: 'orders', icon: 'bag', label: 'Orders', href: 'MyListings.dc.html' },
+      { key: 'analytics', icon: 'chart', label: 'Analytics', href: 'FeedDiagnostics.dc.html' },
+      { key: 'marketing', icon: 'signal', label: 'Marketing', href: 'AffiliateTracking.dc.html' },
+      { key: 'payouts', icon: 'coin', label: 'Payouts', href: '#' },
+      { key: 'settings', icon: 'gear', label: 'Settings', href: '#' },
+    ];
+    const items = all.map((n) => ({
+      ...n,
+      bg: n.key === active ? '#F2E6D6' : 'transparent',
+      color: n.key === active ? '#9E5A2C' : '#7C7062',
+      weight: n.key === active ? 600 : 500,
+    }));
+    return { items };
+  }
+}
+</script>
+</body>
+</html>

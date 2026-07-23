@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+
+  <div style="display:grid;grid-template-columns:230px 1fr;">
+    <dc-import name="DashboardSidebar" active="marketplace" hint-size="230px,600px"></dc-import>
+
+    <div style="max-width:640px;padding:32px 40px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="width:26px;height:26px;border-radius:50%;background:#6E7459;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;">✓</div>
+        <div style="font-family:'Newsreader',serif;font-size:22px;">Order Confirmed!</div>
+      </div>
+      <div style="font-size:13px;color:#7C7062;margin-top:6px;">Thank you, Emma. Your order has been placed successfully.</div>
+
+      <div style="background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:18px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div>
+          <div style="font-size:11px;color:#8A7C6C;">Order Number</div>
+          <div style="font-size:13px;font-weight:600;margin-top:2px;">#HDD-2025-00048</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#8A7C6C;">Date</div>
+          <div style="font-size:13px;font-weight:600;margin-top:2px;">May 26, 2025, 10:34</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#8A7C6C;">Total</div>
+          <div style="font-size:13px;font-weight:600;margin-top:2px;">NOK 2 998</div>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#8A7C6C;">Payment Method</div>
+          <div style="font-size:13px;font-weight:600;margin-top:2px;">Visa •••• 4242</div>
+        </div>
+      </div>
+
+      <div style="font-size:14px;font-weight:600;margin-top:22px;">Items</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:12px;">
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div style="width:48px;height:48px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+            <div style="flex:1;">
+              <div style="font-size:13px;font-weight:600;">{{ it.name }}</div>
+              <div style="font-size:11px;color:#8A7C6C;">{{ it.sub }}</div>
+            </div>
+            <div style="font-size:13px;font-weight:600;">{{ it.price }} <span style="color:#8A7C6C;font-weight:400;">x{{ it.qty }}</span></div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="font-size:12px;color:#8A7C6C;margin-top:20px;">You'll receive an email confirmation shortly.</div>
+
+      <a href="MyListings.dc.html" style="display:block;text-align:center;text-decoration:none;background:#3A342C;color:#fff;border-radius:24px;padding:13px;font-size:14px;font-weight:600;margin-top:20px;">View Order</a>
+      <a href="Marketplace.dc.html" style="display:block;text-align:center;text-decoration:none;color:#463F37;border:1px solid #DBC9B0;border-radius:24px;padding:13px;font-size:14px;margin-top:10px;">Continue Shopping</a>
+    </div>
+  </div>
+
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      items: [
+        { name: 'Stokke Tripp Trapp Chair', sub: 'BabyShop Norway', price: 'NOK 2 199', qty: 1 },
+        { name: 'LEGO DUPLO Town Set', sub: 'Lekekassen', price: 'NOK 499', qty: 1 },
+        { name: 'Jacket Kids Reima', sub: 'Used by Emma A.', price: 'NOK 300', qty: 1 },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

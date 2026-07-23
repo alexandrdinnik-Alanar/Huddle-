@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="services" hint-size="100%,64px"></dc-import>
+  <div style="max-width:460px;margin:0 auto;padding:50px 20px;text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;background:#6E7459;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="check" color="#fff" size="28" hint-size="28,28"></dc-import></div>
+    <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:18px;">Your appointment is booked!</div>
+    <div style="font-size:13px;color:#7C7062;margin-top:6px;">We've sent a confirmation to your email.</div>
+
+    <div style="text-align:left;background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:16px;margin-top:22px;">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:40px;height:40px;border-radius:8px;background:#3A342C;color:#fff;font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;">BM</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;">Bright Minds Center</div>
+          <div style="font-size:11px;color:#8A7C6C;">Family Counseling</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px;">
+        <sc-for list="{{ details }}" as="d" hint-placeholder-count="5">
+          <div style="display:flex;justify-content:space-between;font-size:13px;">
+            <span style="color:#8A7C6C;">{{ d.label }}</span><span style="font-weight:600;">{{ d.value }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:20px;">
+      <div style="flex:1;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:12px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;"><dc-import name="Icon" icon-name="calendar" color="#463F37" size="14" hint-size="14,14"></dc-import>Add to Calendar</div>
+      <a href="MyBookings.dc.html" style="flex:1;text-decoration:none;color:#463F37;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:12px;font-size:13px;display:flex;align-items:center;justify-content:center;gap:8px;"><dc-import name="Icon" icon-name="bookmark" color="#463F37" size="14" hint-size="14,14"></dc-import>View Booking</a>
+    </div>
+    <a href="ServicesHome.dc.html" style="display:block;text-decoration:none;background:#3A342C;color:#fff;border-radius:24px;padding:13px;font-size:14px;font-weight:600;margin-top:14px;">Done</a>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      details: [
+        { label: 'Date', value: 'Saturday, May 24, 2025' },
+        { label: 'Time', value: '10:00' },
+        { label: 'Provider', value: 'Dr. Anna Larsen' },
+        { label: 'Location', value: 'Storgata 10, 0184 Oslo' },
+        { label: 'Booking ID', value: '#BKG-78231' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

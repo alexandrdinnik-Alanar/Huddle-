@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Seasonal Guides / Summer in Oslo" hint-size="100%,150px"></dc-import>
+
+  <div style="position:relative;height:320px;overflow:hidden;">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3FvCn7uBV4p4gvzj7gN7FkzdUf7/hf_20260721_144038_201b4688-9828-4944-870a-b6f227246847.png" alt="Summer in Oslo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(46,42,36,.2) 0%,rgba(46,42,36,0) 30%,rgba(46,42,36,.78) 100%);"></div>
+    <div style="position:absolute;left:0;right:0;bottom:0;max-width:760px;margin:0 auto;padding:0 40px 30px;width:100%;box-sizing:border-box;color:#fff;">
+      <span style="display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#BC7A45;border-radius:14px;padding:5px 12px;">Seasonal guide</span>
+      <h1 style="font-family:'Newsreader',serif;font-size:clamp(30px,3.8vw,44px);font-weight:500;margin:12px 0 0;">Summer with kids in Oslo</h1>
+    </div>
+  </div>
+
+  <div style="max-width:760px;margin:0 auto;padding:36px 40px 20px;">
+    <p style="font-size:14.5px;color:#6E6154;line-height:1.75;">Long days, warm weather, and a city that comes alive with families. Here's how to make the most of summer — from free outdoor play to the best local festivals.</p>
+
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:24px;">This season's highlights</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;">
+      <sc-for list="{{ highlights }}" as="h" hint-placeholder-count="4">
+        <a href="{{ h.href }}" style="display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:14px 16px;text-decoration:none;color:#463F37;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+          <div style="width:38px;height:38px;border-radius:10px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ h.icon }}" color="#BC7A45" size="17" hint-size="17,17"></dc-import></div>
+          <div style="flex:1;"><div style="font-size:13.5px;font-weight:600;color:#3A342C;">{{ h.title }}</div><div style="font-size:12px;color:#8A7C6C;margin-top:2px;">{{ h.desc }}</div></div>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-top:26px;">Packing checklist</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px;">
+      <sc-for list="{{ checklist }}" as="c" hint-placeholder-count="6">
+        <div style="display:flex;align-items:center;gap:9px;background:#fff;border:1px solid #EFE4D4;border-radius:12px;padding:11px 14px;font-size:12.5px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>{{ c }}</div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      highlights: [
+        { icon: 'calendar', title: 'Huddle Family Festival', desc: 'Jun 15 · Ekebergparken', href: 'EventDetails.dc.html' },
+        { icon: 'leaf', title: 'Outdoor Adventures', desc: 'Free trails, parks & swimming spots', href: 'Activities.dc.html' },
+        { icon: 'pulse', title: 'Summer Sports Camp', desc: 'Jul 1 · Nordstrand Idrettspark', href: 'Activities.dc.html' },
+        { icon: 'people', title: 'Park Playdate & Picnic', desc: 'Weekly · Vigelandsparken', href: 'Community.dc.html' },
+      ],
+      checklist: ['Sunscreen', 'Water bottles', 'Sun hats', 'Bug spray', 'Picnic blanket', 'Swimwear'],
+    };
+  }
+}
+</script>
+</body>
+</html>

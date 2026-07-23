@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="finance" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin · Finance</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Invoices</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">All partner &amp; seller invoices, issued and paid</div>
+
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="border-radius:20px;padding:9px 16px;font-size:12.5px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:20px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr 1fr 1fr 1fr 90px;padding:12px 18px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Invoice #</div><div>Recipient</div><div>Amount</div><div>Issued</div><div>Status</div><div></div>
+      </div>
+      <sc-for list="{{ invoices }}" as="i" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:1fr 1.4fr 1fr 1fr 1fr 90px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F2E9DA;transition:background .15s;" style-hover="background:#FBF5EC;">
+          <div style="color:#463F37;font-family:ui-monospace,Menlo,monospace;font-size:12px;">{{ i.num }}</div>
+          <div style="display:flex;align-items:center;gap:10px;"><div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,{{ i.c1 }},{{ i.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:12px;">{{ i.initial }}</div><span style="color:#3A342C;font-weight:500;">{{ i.name }}</span></div>
+          <div style="color:#463F37;font-weight:600;">{{ i.amount }}</div>
+          <div style="color:#7C7062;">{{ i.issued }}</div>
+          <div><span style="background:{{ i.badgeBg }};color:{{ i.badgeColor }};border-radius:12px;padding:4px 11px;font-size:11px;font-weight:600;">{{ i.status }}</span></div>
+          <div style="font-size:12.5px;color:#9E5A2C;font-weight:600;cursor:pointer;">Download</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabDefs = ['All (128)', 'Paid (110)', 'Pending (14)', 'Overdue (4)'];
+    const tabs = tabDefs.map((label, i) => ({ label, bg: i === 0 ? '#3A342C' : '#fff', color: i === 0 ? '#F6F0E8' : '#463F37', border: i === 0 ? '#3A342C' : '#DBC9B0', weight: i === 0 ? 600 : 500 }));
+    const PAID = ['#EAEBE1', '#6E7459'], PEND = ['#F2E6D6', '#9E5A2C'], OVER = ['#F7E0D6', '#B0462F'];
+    const mk = (num, name, initial, amount, issued, status, sev, c1, c2) => ({ num, name, initial, amount, issued, status, badgeBg: sev[0], badgeColor: sev[1], c1, c2 });
+    return {
+      tabs,
+      invoices: [
+        mk('INV-2026-0142', 'Nordic Baby Store', 'N', '18 400 NOK', 'Jun 1, 2026', 'Paid', PAID, '#D79A62', '#B26A38'),
+        mk('INV-2026-0141', 'Kids Activities Oslo', 'K', '6 200 NOK', 'Jun 1, 2026', 'Paid', PAID, '#9BA184', '#6E7459'),
+        mk('INV-2026-0140', 'Bright Minds Center', 'B', '3 900 NOK', 'May 25, 2026', 'Pending', PEND, '#C9A87E', '#A97F4E'),
+        mk('INV-2026-0139', 'Oslo Yoga Studio', 'O', '2 150 NOK', 'May 20, 2026', 'Overdue', OVER, '#A6AD8E', '#7C8460'),
+        mk('INV-2026-0138', 'SMAK Studio', 'S', '4 800 NOK', 'May 18, 2026', 'Paid', PAID, '#B8967A', '#967052'),
+        mk('INV-2026-0137', 'Active Life Physio', 'A', '1 600 NOK', 'May 12, 2026', 'Paid', PAID, '#9FA383', '#727856'),
+        mk('INV-2026-0136', 'Nordic Baby Store', 'N', '15 900 NOK', 'May 1, 2026', 'Paid', PAID, '#D79A62', '#B26A38'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

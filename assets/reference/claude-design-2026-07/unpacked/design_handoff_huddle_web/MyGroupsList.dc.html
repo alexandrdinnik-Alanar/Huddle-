@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="AppHeader" active="community" hint-size="100%,64px"></dc-import>
+  <div style="max-width:640px;margin:0 auto;padding:32px 40px;">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:24px;">My Groups</div>
+        <div style="font-size:13px;color:#7C7062;margin-top:4px;">Manage all your groups in one place.</div>
+      </div>
+      <a href="CreateGroupBasicInfo.dc.html" style="text-decoration:none;border:1px solid #DBC9B0;background:#fff;color:#463F37;padding:10px 18px;border-radius:20px;font-size:13px;white-space:nowrap;">+ Create Group</a>
+    </div>
+
+    <div style="display:flex;gap:26px;margin-top:20px;border-bottom:1px solid #DBC9B0;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <div style="font-size:13px;padding-bottom:10px;color:{{ t.color }};border-bottom:2px solid {{ t.border }};">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="4">
+        <a href="GroupFeed.dc.html" style="display:flex;gap:14px;background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:14px;text-decoration:none;color:#463F37;align-items:center;">
+          <div style="width:56px;height:56px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:600;">{{ g.name }}</div>
+            <div style="font-size:12px;color:#7C7062;">{{ g.category }} · {{ g.privacy }}</div>
+            <div style="font-size:12px;color:#7C7062;">{{ g.members }} members</div>
+          </div>
+          <div style="font-size:11px;background:{{ g.roleBg }};color:{{ g.roleColor }};padding:4px 12px;border-radius:12px;">{{ g.role }}</div>
+        </a>
+      </sc-for>
+    </div>
+
+    <div style="text-align:center;border:1px solid #DBC9B0;background:#fff;border-radius:22px;padding:13px;font-size:14px;margin-top:20px;">View All Groups</div>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      tabs: [
+        { label: 'My Groups (4)', color: '#463F37', border: '#BC7A45' },
+        { label: 'Joined (6)', color: '#8A7C6C', border: 'transparent' },
+        { label: 'Pending (2)', color: '#8A7C6C', border: 'transparent' },
+      ],
+      groups: [
+        { name: 'Oslo Runners Club', category: 'Sports & Fitness', privacy: 'Public', members: 12, role: 'Admin', roleBg: '#EAEBE1', roleColor: '#6E7459' },
+        { name: 'Mindful Parents', category: 'Parenting', privacy: 'Private', members: 28, role: 'Admin', roleBg: '#EAEBE1', roleColor: '#6E7459' },
+        { name: 'Photography Lovers', category: 'Photography', privacy: 'Public', members: 45, role: 'Member', roleBg: '#EFE4D4', roleColor: '#BC7A45' },
+        { name: 'Weekend Hikers', category: 'Outdoors', privacy: 'Private', members: 18, role: 'Member', roleBg: '#EFE4D4', roleColor: '#BC7A45' },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

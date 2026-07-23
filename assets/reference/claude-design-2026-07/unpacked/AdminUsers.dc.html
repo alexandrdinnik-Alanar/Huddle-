@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="users" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">User management</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">12,540 registered accounts</div>
+
+    <div style="display:flex;gap:10px;margin-top:20px;">
+      <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px 15px;font-size:13px;background:#fff;display:flex;align-items:center;gap:8px;">
+        <dc-import name="Icon" icon-name="search" color="#A99B89" size="14" hint-size="14,14"></dc-import>
+        <span style="color:#A99B89;">Search by name, email or ID…</span>
+      </div>
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="3">
+        <div style="border:1px solid #DBC9B0;border-radius:12px;padding:11px 16px;font-size:13px;background:#fff;color:#463F37;cursor:pointer;transition:border-color .15s;" style-hover="border-color:#BC7A45;">{{ f }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:20px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 1fr 90px;padding:12px 18px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Name</div><div>Email</div><div>Role</div><div>Status</div><div>Joined</div><div></div>
+      </div>
+      <sc-for list="{{ users }}" as="u" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:2fr 1.4fr 1fr 1fr 1fr 90px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F2E9DA;transition:background .15s;" style-hover="background:#FBF5EC;">
+          <div style="display:flex;align-items:center;gap:11px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,{{ u.c1 }},{{ u.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Newsreader',serif;font-size:13px;">{{ u.initial }}</div><span style="color:#3A342C;font-weight:500;">{{ u.name }}</span>
+          </div>
+          <div style="color:#7C7062;">{{ u.email }}</div>
+          <div style="color:#463F37;">{{ u.role }}</div>
+          <div><span style="background:{{ u.statusBg }};color:{{ u.statusColor }};border-radius:12px;padding:4px 11px;font-size:11px;font-weight:600;">{{ u.status }}</span></div>
+          <div style="color:#8A7C6C;">{{ u.joined }}</div>
+          <div style="display:flex;gap:8px;"><div style="width:30px;height:30px;border-radius:9px;background:#F7E0D6;display:flex;align-items:center;justify-content:center;cursor:pointer;"><dc-import name="Icon" icon-name="ban" color="#B0462F" size="14" hint-size="14,14"></dc-import></div></div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const mk = (name, initial, email, role, status, joined, ok, c1, c2) => ({
+      name, initial, email, role, joined, status, c1, c2,
+      statusBg: ok ? '#EAEBE1' : (status === 'Under review' ? '#EFE4D4' : '#F7E0D6'),
+      statusColor: ok ? '#6E7459' : (status === 'Under review' ? '#8A7C6C' : '#B0462F'),
+    });
+    return {
+      filters: ['All roles', 'All statuses', 'Sort: Newest'],
+      users: [
+        mk('Emma Andersen', 'E', 'emma.a@mail.no', 'Parent', 'Active', 'Jan 2025', true, '#C99A6B', '#A9663A'),
+        mk('Martin Larsen', 'M', 'martin.l@mail.no', 'Parent', 'Active', 'Feb 2025', true, '#9BA184', '#6E7459'),
+        mk('Kids Activities Oslo', 'K', 'hello@kidsoslo.no', 'Organizer', 'Active', 'Nov 2024', true, '#D79A62', '#B26A38'),
+        mk('Nordic Baby Store', 'N', 'contact@nordicbaby.no', 'Partner', 'Under review', 'Mar 2025', false, '#C9A87E', '#A97F4E'),
+        mk('Julie Hansen', 'J', 'julie.h@mail.no', 'Parent', 'Reported', 'Dec 2024', false, '#A6AD8E', '#7C8460'),
+        mk('Sara Vik', 'S', 'sara.v@mail.no', 'Expert', 'Active', 'Apr 2025', true, '#B8967A', '#967052'),
+        mk('Oslo Kommune', 'O', 'family@oslo.kommune.no', 'Municipality', 'Active', 'Jan 2024', true, '#9FA383', '#727856'),
+        mk('Anders Berg', 'A', 'anders.b@mail.no', 'Parent', 'Suspended', 'Aug 2024', false, '#C2A98A', '#9A7E5C'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

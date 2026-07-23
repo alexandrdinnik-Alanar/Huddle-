@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;">
+  <dc-import name="SiteHeader" active="" breadcrumb="Safety &amp; Child Privacy" hint-size="100%,150px"></dc-import>
+
+  <!-- HERO -->
+  <div style="position:relative;background:#F1E9DC;overflow:hidden;">
+    <img src="assets/Huddle_icon.png" alt="" style="position:absolute;left:-70px;top:20px;width:260px;height:260px;opacity:0.16;">
+    <div style="display:grid;grid-template-columns:1.3fr 0.9fr;gap:32px;padding:52px 40px;align-items:center;position:relative;">
+      <div>
+        <div style="font-family:'Newsreader',serif;font-size:34px;line-height:1.2;color:#463F37;">Safety that protects.<br/>Privacy that empowers.<br/><span style="font-style:italic;color:#BC7A45;">Every family, every stage.</span></div>
+        <div style="font-size:14px;color:#8A7C6C;margin-top:14px;max-width:440px;line-height:1.6;">Huddle is built with your family's safety and child privacy at the heart of everything we do.</div>
+        <div style="display:flex;gap:12px;margin-top:22px;">
+          <div style="background:#3A342C;color:#fff;padding:12px 22px;border-radius:22px;font-size:13px;">Our Safety Principles</div>
+          <div style="background:transparent;color:#463F37;border:1px solid #DBC9B0;padding:12px 22px;border-radius:22px;font-size:13px;">How We Protect Your Data</div>
+        </div>
+      </div>
+      <div style="background:#fff;border-radius:16px;padding:22px;box-shadow:0 12px 30px rgba(47,62,52,0.08);">
+        <div style="width:44px;height:44px;border-radius:50%;border:1.5px solid #BC7A45;display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="{{ checkIconName }}" color="{{ checkIconColor }}" size="18" hint-size="18,18"></dc-import></div>
+        <div style="font-family:'Newsreader',serif;font-size:19px;margin-top:12px;">Your trust<br/>is our promise.</div>
+        <div style="font-size:12px;color:#8A7C6C;margin-top:8px;line-height:1.6;">We follow strict privacy standards and design every feature with children's safety in mind.</div>
+        <div style="margin-top:12px;">
+          <sc-for list="{{ promiseItems }}" as="p" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#463F37;margin-top:6px;">
+              <dc-import name="Icon" icon-name="{{ p.iconName }}" color="{{ p.iconColor }}" size="14" hint-size="14,14"></dc-import><span>{{ p.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINCIPLES -->
+  <div style="background:#F4EEE3;padding:40px;">
+    <div style="font-family:'Newsreader',serif;font-size:24px;">Our Safety Principles</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Clear commitments that guide every decision we make.</div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:22px;">
+      <sc-for list="{{ principles }}" as="p" hint-placeholder-count="6">
+        <div style="background:#fff;border-radius:12px;padding:18px 14px;text-align:center;">
+          <dc-import name="Icon" icon-name="{{ p.iconName }}" color="{{ p.iconColor }}" size="26" hint-size="26,26"></dc-import>
+          <div style="font-size:13px;font-weight:600;margin-top:10px;line-height:1.3;">{{ p.title }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:6px;line-height:1.5;">{{ p.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- SAFETY ACROSS HUDDLE -->
+  <div style="padding:40px;">
+    <div style="font-family:'Newsreader',serif;font-size:24px;">Safety across Huddle</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">How we create safer experiences in every part of our platform.</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:22px;">
+      <sc-for list="{{ areas }}" as="a" hint-placeholder-count="5">
+        <div>
+          <div style="height:130px;border-radius:12px;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:10px;"><dc-import name="Icon" icon-name="{{ a.iconName }}" color="{{ a.iconColor }}" size="18" hint-size="18,18"></dc-import><span style="font-size:13px;font-weight:600;">{{ a.title }}</span></div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:4px;line-height:1.5;">{{ a.desc }}</div>
+          <div style="font-size:12px;color:#BC7A45;margin-top:6px;">Learn more →</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- BY LIFE STAGE -->
+  <div style="padding:0 40px 40px;">
+    <div style="font-family:'Newsreader',serif;font-size:24px;">Child privacy explained by life stage</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">Different ages, different needs. Here's how we protect your family at every stage.</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px;">
+      <sc-for list="{{ stages }}" as="s" hint-placeholder-count="4">
+        <div style="background:#F4EEE3;border-radius:14px;padding:18px;">
+          <div style="font-size:14px;font-weight:600;">{{ s.title }}</div>
+          <div style="font-size:11px;color:#8A7C6C;margin-top:2px;">{{ s.age }}</div>
+          <div style="margin-top:12px;">
+            <sc-for list="{{ s.points }}" as="pt" hint-placeholder-count="3">
+              <div style="display:flex;align-items:flex-start;gap:8px;font-size:12px;margin-top:8px;">
+                <dc-import name="Icon" icon-name="{{ pt.iconName }}" color="{{ pt.iconColor }}" size="13" hint-size="13,13"></dc-import><span>{{ pt.label }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- PRIVACY BAND -->
+  <div style="margin:0 40px 40px;background:#3A342C;border-radius:16px;padding:32px 36px;color:#fff;display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:20px;align-items:center;">
+    <div>
+      <div style="font-family:'Newsreader',serif;font-size:22px;">Your privacy.<br/>Always respected.</div>
+      <div style="font-size:12px;color:#C8B7A3;margin-top:8px;">We are committed to protecting your data and your family's future.</div>
+    </div>
+    <sc-for list="{{ privacyPoints }}" as="pp" hint-placeholder-count="4">
+      <div>
+        <dc-import name="Icon" icon-name="{{ pp.iconName }}" color="{{ pp.iconColor }}" size="20" hint-size="20,20"></dc-import>
+        <div style="font-size:13px;font-weight:600;margin-top:8px;">{{ pp.title }}</div>
+        <div style="font-size:11px;color:#EAEBE1;margin-top:4px;line-height:1.5;">{{ pp.desc }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- SUPPORT + FAQ -->
+  <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:20px;padding:0 40px 40px;">
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:24px;">
+      <div style="font-family:'Newsreader',serif;font-size:18px;">Report &amp; get support</div>
+      <div style="font-size:12px;color:#8A7C6C;margin-top:6px;">We take safety seriously. If something doesn't feel right, we're here to help.</div>
+      <sc-for list="{{ supportLinks }}" as="s" hint-placeholder-count="3">
+        <div style="font-size:12px;font-weight:600;margin-top:14px;">{{ s.title }}</div>
+        <div style="font-size:11px;color:#8A7C6C;">{{ s.desc }}</div>
+      </sc-for>
+    </div>
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:24px;">
+      <div style="font-family:'Newsreader',serif;font-size:18px;">Frequently asked questions</div>
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="5">
+        <div style="display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid #EFE4D4;font-size:13px;">
+          <span>{{ f }}</span><span style="color:#8A7C6C;">⌄</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="margin:0 40px 40px;background:#F1E9DC;border-radius:16px;padding:36px;text-align:center;">
+    <div style="font-family:'Newsreader',serif;font-size:20px;">We're here to support your family.</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:6px;">Questions about safety or privacy? Our team is always happy to help.</div>
+    <div style="margin-top:16px;display:flex;gap:12px;justify-content:center;">
+      <div style="background:#3A342C;color:#fff;padding:11px 22px;border-radius:20px;font-size:13px;">Contact Safety Team</div>
+      <div style="border:1px solid #DBC9B0;color:#463F37;padding:11px 22px;border-radius:20px;font-size:13px;">Visit Help Center</div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const copper = '#BC7A45';
+    const green = '#3A342C';
+    const white = '#ffffff';
+    return {
+      checkIconName: 'check', checkIconColor: copper,
+      promiseItems: ['Built for families', 'Privacy by design', 'Children always first', 'You stay in control'].map(t => ({ label: t, iconName: 'check', iconColor: green })),
+      principles: [
+        { iconName: 'people', iconColor: copper, title: 'Parent-controlled communication', desc: 'Parents decide who can connect, message and interact.' },
+        { iconName: 'shield', iconColor: copper, title: 'No public child profiles', desc: 'Children never have public profiles or publicly visible activity.' },
+        { iconName: 'pin', iconColor: copper, title: 'Approximate location', desc: 'We share only general area to help keep things safe.' },
+        { iconName: 'people', iconColor: copper, title: 'Community moderation', desc: 'Smart tools and real people help keep Huddle respectful and safe.' },
+        { iconName: 'tag', iconColor: copper, title: 'Transparent commercial labels', desc: 'Paid partnerships and sponsored content are always clearly labeled.' },
+        { iconName: 'flag', iconColor: copper, title: 'Easy reporting', desc: 'Report concerns quickly. We review and act.' },
+      ],
+      areas: [
+        { iconName: 'people', iconColor: green, title: 'Community safety', desc: 'Private groups, approval controls and member standards help keep conversations supportive and safe.' },
+        { iconName: 'calendar', iconColor: green, title: 'Activities & events safety', desc: 'Verified hosts, clear guidelines and parent visibility help ensure events are suitable and child-friendly.' },
+        { iconName: 'bag', iconColor: green, title: 'Marketplace safety', desc: 'Trusted sellers, product safety standards and secure payments help you shop with confidence.' },
+        { iconName: 'pulse', iconColor: green, title: 'Experts & services safety', desc: 'Verified professionals, clear credentials and privacy-first appointments protect your family.' },
+        { iconName: 'lock', iconColor: green, title: 'Data & privacy', desc: 'We collect less, protect more and never sell your personal information. You\u2019re in control.' },
+      ],
+      stages: [
+        { title: 'Babies & Toddlers', age: '0-3 years', points: ['No public profiles', 'Photos shared only in private spaces', 'Parents control all connections'] },
+        { title: 'Preschool & School-age', age: '3-12 years', points: ['No public profiles or activity feeds', 'No direct messaging with others', 'Parents approve connections and content'] },
+        { title: 'Teens', age: '13-17 years', points: ['Private by default', 'Age-appropriate experiences', 'Parents stay involved and in control'] },
+        { title: 'Parents', age: 'All stages', points: ['You manage privacy settings', 'You choose what to share', 'You can update or delete anytime'] },
+      ].map(s => ({ ...s, points: s.points.map(pt => ({ label: pt, iconName: 'check', iconColor: green })) })),
+      privacyPoints: [
+        { iconName: 'lock', iconColor: white, title: 'Data encryption', desc: 'Your data is encrypted in transit and at rest.' },
+        { iconName: 'ban', iconColor: white, title: 'We never sell data', desc: 'Your information is never sold or shared for advertising.' },
+        { iconName: 'down', iconColor: white, title: "You're in control", desc: 'Access, update or delete your data whenever you choose.' },
+        { iconName: 'shield', iconColor: white, title: 'We comply', desc: 'We follow GDPR and other international privacy standards.' },
+      ],
+      supportLinks: [
+        { title: 'Report a concern', desc: 'Report inappropriate content, behavior or safety issues.' },
+        { title: 'Block a user', desc: 'Prevent someone from contacting or seeing you.' },
+        { title: 'Get support', desc: 'Talk to our safety team. We\u2019re here for you.' },
+      ],
+      faqs: [
+        'How does Huddle protect my child\u2019s privacy?',
+        'Can my child talk to other members?',
+        'What location information does Huddle share?',
+        'How do I report something?',
+        'How can I delete my data?',
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

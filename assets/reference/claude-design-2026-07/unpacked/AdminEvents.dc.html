@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="events" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Event administration</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">312 published events across the platform</div>
+
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+        <div style="border-radius:20px;padding:9px 16px;font-size:12.5px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:20px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 90px;padding:12px 18px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Event</div><div>Organizer</div><div>Date</div><div>Status</div><div></div>
+      </div>
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr 90px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F2E9DA;transition:background .15s;" style-hover="background:#FBF5EC;">
+          <div style="display:flex;align-items:center;gap:11px;"><div style="width:32px;height:32px;border-radius:9px;background:linear-gradient(135deg,{{ e.c1 }},{{ e.c2 }});flex-shrink:0;display:flex;align-items:center;justify-content:center;"><dc-import name="Icon" icon-name="calendar" color="#fff" size="14" hint-size="14,14"></dc-import></div><span style="color:#3A342C;font-weight:500;">{{ e.name }}</span></div>
+          <div style="color:#7C7062;">{{ e.organizer }}</div>
+          <div style="color:#7C7062;">{{ e.date }}</div>
+          <div><span style="background:{{ e.badgeBg }};color:{{ e.badgeColor }};border-radius:12px;padding:4px 11px;font-size:11px;font-weight:600;">{{ e.status }}</span></div>
+          <a href="EventDetails.dc.html" style="text-decoration:none;color:#9E5A2C;font-size:12.5px;font-weight:600;">Review →</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabDefs = ['All (312)', 'Pending review (6)', 'Published (298)', 'Flagged (8)'];
+    const tabs = tabDefs.map((label, i) => ({ label, bg: i === 0 ? '#3A342C' : '#fff', color: i === 0 ? '#F6F0E8' : '#463F37', border: i === 0 ? '#3A342C' : '#DBC9B0', weight: i === 0 ? 600 : 500 }));
+    const OK = ['#EAEBE1', '#6E7459'], PEND = ['#F2E6D6', '#9E5A2C'], FLAG = ['#F7E0D6', '#B0462F'];
+    const mk = (name, organizer, date, status, sev, c1, c2) => ({ name, organizer, date, status, badgeBg: sev[0], badgeColor: sev[1], c1, c2 });
+    return {
+      tabs,
+      events: [
+        mk('Huddle Family Festival', 'Oslo Kommune · Culture', 'Jun 15, 2026', 'Published', OK, '#D79A62', '#B26A38'),
+        mk('Kids Yoga Workshop', 'Emma Andersen', 'Jun 7, 2026', 'Published', OK, '#9BA184', '#6E7459'),
+        mk('Mindfulness for Teens', 'Wellness Oslo', 'Jun 15, 2026', 'Pending review', PEND, '#C9A87E', '#A97F4E'),
+        mk("Children's Concert", 'Oslo Konserthus', 'May 26, 2026', 'Published', OK, '#A6AD8E', '#7C8460'),
+        mk('Free Community Meetup', 'Anonymous host', 'Jun 2, 2026', 'Flagged', FLAG, '#B8967A', '#967052'),
+        mk('Summer Sports Camp', 'Nordstrand Idrettspark', 'Jul 1, 2026', 'Published', OK, '#C2A98A', '#9A7E5C'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

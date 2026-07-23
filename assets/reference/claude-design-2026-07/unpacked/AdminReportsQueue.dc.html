@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="display:flex;font-family:'Hanken Grotesk',sans-serif;color:#463F37;background:#F6F0E8;min-height:100vh;">
+  <dc-import name="AdminSidebar" active="reports" hint-size="220px,100%"></dc-import>
+  <div style="flex:1;padding:32px 40px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Admin</div>
+    <div style="font-family:'Newsreader',serif;font-size:28px;color:#3A342C;margin-top:4px;">Reports queue</div>
+    <div style="font-size:13px;color:#8A7C6C;margin-top:4px;">18 open reports across posts, users, listings and messages</div>
+
+    <div style="display:flex;gap:8px;margin-top:20px;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+        <div style="border-radius:20px;padding:9px 16px;font-size:12.5px;background:{{ t.bg }};color:{{ t.color }};font-weight:{{ t.weight }};border:1px solid {{ t.border }};cursor:pointer;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <div style="background:#fff;border:1px solid #EFE4D4;border-radius:16px;margin-top:20px;overflow:hidden;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+      <div style="display:grid;grid-template-columns:1fr 1.6fr 1fr 1fr 90px;padding:12px 18px;font-size:11px;color:#A99B89;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-bottom:1px solid #F2E9DA;">
+        <div>Type</div><div>Reason</div><div>Reported by</div><div>Severity</div><div></div>
+      </div>
+      <sc-for list="{{ reports }}" as="r" hint-placeholder-count="6">
+        <div style="display:grid;grid-template-columns:1fr 1.6fr 1fr 1fr 90px;padding:13px 18px;font-size:13px;align-items:center;border-bottom:1px solid #F2E9DA;transition:background .15s;" style-hover="background:#FBF5EC;">
+          <div style="display:flex;align-items:center;gap:9px;"><div style="width:28px;height:28px;border-radius:9px;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><dc-import name="Icon" icon-name="{{ r.icon }}" color="#9E5A2C" size="13" hint-size="13,13"></dc-import></div><span style="color:#3A342C;font-weight:500;">{{ r.type }}</span></div>
+          <div style="color:#7C7062;">{{ r.reason }}</div>
+          <div style="color:#463F37;">{{ r.by }}</div>
+          <div><span style="background:{{ r.sevBg }};color:{{ r.sevColor }};border-radius:12px;padding:4px 11px;font-size:11px;font-weight:600;">{{ r.severity }}</span></div>
+          <a href="ModerateReport.dc.html" style="text-decoration:none;color:#9E5A2C;font-size:12.5px;font-weight:600;">Review →</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const tabDefs = ['All (18)', 'Posts (6)', 'Listings (7)', 'Users (3)', 'Messages (2)'];
+    const tabs = tabDefs.map((label, i) => ({
+      label, bg: i === 0 ? '#3A342C' : '#fff', color: i === 0 ? '#F6F0E8' : '#463F37', border: i === 0 ? '#3A342C' : '#DBC9B0', weight: i === 0 ? 600 : 500,
+    }));
+    const SEV = { High: ['#F7E0D6', '#B0462F'], Medium: ['#F2E6D6', '#9E5A2C'], Low: ['#EAEBE1', '#6E7459'] };
+    const mk = (icon, type, reason, by, severity) => ({ icon, type, reason, by, severity, sevBg: SEV[severity][0], sevColor: SEV[severity][1] });
+    return {
+      tabs,
+      reports: [
+        mk('chat', 'Post', 'Harassment in comments', 'Julie Hansen', 'High'),
+        mk('tag', 'Listing', 'Counterfeit item suspected', 'Martin Larsen', 'High'),
+        mk('user', 'User', 'Fake profile', 'Community Team', 'Medium'),
+        mk('chat', 'Message', 'Spam / scam attempt', 'Sara Vik', 'High'),
+        mk('tag', 'Listing', 'Inappropriate photos', 'Anders Berg', 'Medium'),
+        mk('chat', 'Post', 'Misinformation', 'Kids Activities Oslo', 'Low'),
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

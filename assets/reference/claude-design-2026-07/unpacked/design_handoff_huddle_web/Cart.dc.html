@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;} a{color:#9E5A2C;} a:hover{color:#BC7A45;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="marketplace" hint-size="100%,64px"></dc-import>
+
+  <div style="max-width:1080px;margin:0 auto;padding:32px 40px 60px;">
+    <div style="color:#9E5A2C;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;">Marketplace</div>
+    <div style="font-family:'Newsreader',serif;font-size:30px;color:#3A342C;margin-top:4px;margin-bottom:22px;">Your cart</div>
+
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:26px;align-items:start;">
+      <div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ items }}" as="it" hint-placeholder-count="3">
+            <div style="display:flex;align-items:center;gap:16px;background:#fff;border:1px solid #EFE4D4;border-radius:16px;padding:14px;box-shadow:0 8px 20px rgba(150,110,70,.06);">
+              <div style="width:66px;height:66px;border-radius:12px;flex-shrink:0;background:linear-gradient(135deg,{{ it.c1 }},{{ it.c2 }});"></div>
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:14px;font-weight:600;color:#3A342C;">{{ it.name }}</div>
+                <div style="font-size:11.5px;color:#8A7C6C;margin-top:2px;">{{ it.sub }}</div>
+                <div style="font-size:14px;font-weight:700;color:#9E5A2C;margin-top:5px;">{{ it.price }}</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:0;border:1px solid #DBC9B0;border-radius:20px;overflow:hidden;flex-shrink:0;">
+                <div style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#7C7062;cursor:pointer;">–</div>
+                <div style="width:28px;text-align:center;font-size:13px;font-weight:600;">{{ it.qty }}</div>
+                <div style="width:30px;height:30px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#7C7062;cursor:pointer;">+</div>
+              </div>
+              <div style="width:34px;height:34px;border-radius:50%;background:#F2E6D6;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;"><dc-import name="Icon" icon-name="trash" color="#BC7A45" size="15" hint-size="15,15"></dc-import></div>
+            </div>
+          </sc-for>
+        </div>
+
+        <a href="Marketplace.dc.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#9E5A2C;font-size:13px;font-weight:600;margin-top:18px;">← Continue shopping</a>
+
+        <div style="font-family:'Newsreader',serif;font-size:22px;color:#3A342C;margin-top:34px;margin-bottom:14px;">You may also like</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="4">
+            <a href="Marketplace.dc.html" style="text-decoration:none;background:#fff;border:1px solid #EFE4D4;border-radius:14px;padding:9px;box-shadow:0 6px 16px rgba(150,110,70,.05);transition:transform .16s;" style-hover="transform:translateY(-3px);">
+              <div style="height:88px;border-radius:10px;background:linear-gradient(135deg,{{ r.c1 }},{{ r.c2 }});"></div>
+              <div style="font-size:12px;font-weight:600;margin-top:8px;color:#3A342C;">{{ r.name }}</div>
+              <div style="font-size:12px;font-weight:700;color:#9E5A2C;margin-top:2px;">{{ r.price }}</div>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="position:sticky;top:20px;background:#fff;border:1px solid #EFE4D4;border-radius:20px;padding:24px;box-shadow:0 16px 40px rgba(150,110,70,.1);">
+        <div style="font-family:'Newsreader',serif;font-size:20px;color:#3A342C;margin-bottom:16px;">Order summary</div>
+        <div style="display:flex;gap:8px;margin-bottom:16px;">
+          <div style="flex:1;border:1px solid #DBC9B0;border-radius:12px;padding:11px 14px;font-size:13px;color:#A99B89;background:#fff;">Promo code</div>
+          <div style="background:#F2E6D6;color:#9E5A2C;border-radius:12px;padding:11px 18px;font-size:13px;font-weight:600;white-space:nowrap;">Apply</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#7C7062;margin-bottom:9px;"><span>Subtotal ({{ items.length }} items)</span><span style="color:#463F37;font-weight:500;">{{ subtotal }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:13.5px;color:#7C7062;margin-bottom:9px;"><span>Estimated delivery</span><span style="color:#6E7459;font-weight:600;">{{ delivery }}</span></div>
+        <div style="border-top:1px solid #EFE4D4;margin-top:10px;padding-top:14px;display:flex;justify-content:space-between;font-size:17px;font-weight:700;color:#3A342C;"><span>Total</span><span>{{ total }}</span></div>
+        <a href="OrderConfirmation.dc.html" style="display:block;text-align:center;text-decoration:none;background:#BC7A45;color:#fff;border-radius:26px;padding:14px;font-size:14.5px;font-weight:600;margin-top:20px;box-shadow:0 12px 26px rgba(188,122,69,.28);" style-hover="background:#A9663A;">Proceed to checkout</a>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid #F2E9DA;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="lock" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Secure checkout</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="truck" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Local delivery or pickup</div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#6E6154;"><dc-import name="Icon" icon-name="refresh" color="#BC7A45" size="13" hint-size="13,13"></dc-import>Easy 14-day returns</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const items = [
+      { name: 'Stokke Tripp Trapp Chair', sub: 'Partner: BabyShop Norway', price: 'NOK 2 199', qty: 1, c1: '#D79A62', c2: '#B26A38' },
+      { name: 'LEGO DUPLO Town Set', sub: 'Partner: Lekekassen', price: 'NOK 499', qty: 1, c1: '#9BA184', c2: '#6E7459' },
+      { name: 'Jacket Kids Reima', sub: 'Used by Emma A.', price: 'NOK 300', qty: 1, c1: '#C9A87E', c2: '#A97F4E' },
+    ];
+    return {
+      items,
+      subtotal: 'NOK 2 998',
+      delivery: 'Free',
+      total: 'NOK 2 998',
+      related: [
+        { name: 'Liewood Water Bottle', price: '249 NOK', c1: '#A6AD8E', c2: '#7C8460' },
+        { name: 'Konges Sløjd Bunny', price: '229 NOK', c1: '#C9A87E', c2: '#A97F4E' },
+        { name: 'Banwood Balance Bike', price: '1 999 NOK', c1: '#9BA184', c2: '#6E7459' },
+        { name: 'Lily + Sid Dress', price: '399 NOK', c1: '#D3A377', c2: '#B47C4A' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

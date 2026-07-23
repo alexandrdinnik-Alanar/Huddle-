@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#F6F0E8;}</style>
+</helmet>
+<div style="font-family:'Hanken Grotesk',sans-serif;background:#F6F0E8;color:#463F37;min-height:100vh;">
+  <dc-import name="AppHeader" active="community" hint-size="100%,64px"></dc-import>
+  <div style="max-width:420px;margin:0 auto;padding:50px 20px;text-align:center;">
+    <div style="width:64px;height:64px;border-radius:50%;background:#6E7459;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto;"><dc-import name="Icon" icon-name="check" color="#fff" size="28" hint-size="28,28"></dc-import></div>
+    <div style="font-family:'Newsreader',serif;font-size:24px;margin-top:18px;">Your group is live!</div>
+    <div style="font-size:13px;color:#7C7062;margin-top:8px;">Congratulations! Your group has been created successfully.</div>
+
+    <div style="display:flex;gap:12px;background:#fff;border:1px solid #DBC9B0;border-radius:14px;padding:14px;margin-top:22px;text-align:left;">
+      <div style="width:56px;height:56px;border-radius:10px;flex-shrink:0;background:linear-gradient(135deg,#EFE4D4,#DEC9AC);"></div>
+      <div>
+        <div style="font-size:13px;font-weight:600;">Oslo Runners Club</div>
+        <div style="font-size:11px;color:#7C7062;">Sports & Fitness · Public</div>
+        <div style="font-size:11px;color:#7C7062;">12 members</div>
+      </div>
+    </div>
+
+    <div style="text-align:left;margin-top:22px;">
+      <div style="font-size:14px;font-weight:600;">What's next?</div>
+      <sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="3">
+        <div style="font-size:13px;color:#7C7062;margin-top:10px;display:flex;align-items:center;gap:8px;"><dc-import name="Icon" icon-name="check" color="#6E7459" size="13" hint-size="13,13"></dc-import>{{ n }}</div>
+      </sc-for>
+    </div>
+
+    <a href="GroupFeed.dc.html" style="display:block;text-decoration:none;background:#3A342C;color:#fff;border-radius:22px;padding:13px;font-size:14px;font-weight:600;margin-top:22px;">View Group</a>
+    <a href="MyGroupsList.dc.html" style="display:block;text-decoration:none;border:1px solid #DBC9B0;background:#fff;color:#463F37;border-radius:22px;padding:13px;font-size:14px;margin-top:10px;">Go to My Groups</a>
+  </div>
+  <dc-import name="Footer" hint-size="100%,400px"></dc-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return { nextSteps: ['Invite more members', 'Create your first post', 'Set up group events'] }; }
+}
+
+</script>
+</body>
+</html>
