@@ -76,6 +76,7 @@ describe("repository execution integrity", () => {
       "docs/02-architecture/canonical-route-map.csv",
       "docs/05-execution/implementation-roadmap.csv",
       "docs/06-operations/launch-readiness.md",
+      "tasks/design/VIS-002.md",
       "tasks/phase-0/S0-015.md",
       "tasks/phase-0/S0-016.md",
       "tasks/phase-0/S0-017.md",
@@ -87,16 +88,21 @@ describe("repository execution integrity", () => {
     }
   });
 
-  it("points agents unambiguously to S0-015", () => {
+  it("points agents unambiguously to VIS-002 and blocks S0-015", () => {
     const nextTask = readText("NEXT_TASK.md");
     const readme = readText("README.md");
+    const s0015 = readText("tasks/phase-0/S0-015.md");
 
+    expect(nextTask).toContain("VIS-002 — Create the canonical Figma production foundation");
+    expect(nextTask).toContain("tasks/design/VIS-002.md");
     expect(nextTask).toContain("S0-015 — Create base layouts");
-    expect(nextTask).toContain("tasks/phase-0/S0-015.md");
-    expect(nextTask).toContain("S0-001` through `S0-014` and `VIS-001` are completed and merged");
-    expect(readme).toContain("The next executable task is `S0-015 — Create base layouts`");
-    expect(readme).not.toContain("current executable task is S0-011");
-    expect(readme).not.toContain("S0-001 through S0-010 are completed");
+    expect(nextTask).toContain("S0-015 may start only after VIS-002");
+    expect(readme).toContain(
+      "The current executable task is `VIS-002 — Create the canonical Figma production foundation`",
+    );
+    expect(readme).toContain("No approved Huddle product design currently exists in Figma");
+    expect(s0015).toContain("Status: `BLOCKED` until VIS-002 is approved and merged");
+    expect(readme).not.toContain("The next executable task is `S0-015 — Create base layouts`");
   });
 
   it("does not describe the repository as pre-Sprint-0", () => {
@@ -132,26 +138,24 @@ describe("canonical route and design registries", () => {
     }
   });
 
-  it("requires exact Figma metadata for every production-approved design", () => {
+  it("records that no route currently has approved Figma production design", () => {
     const productionRows = registryRows.filter((row) => row.design_status === "PRODUCTION");
 
-    expect(productionRows.map((row) => row.route)).toEqual([
-      "/",
-      "/activities",
-      "/activities/[activityId]",
-    ]);
+    expect(productionRows).toHaveLength(0);
 
-    for (const row of productionRows) {
-      expect(row.figma_page, row.route).not.toBe("");
-      expect(row.figma_node_ids, row.route).not.toBe("");
+    for (const row of registryRows) {
+      expect(row.design_status, row.route).toBe("UNDECIDED");
+      expect(row.figma_page, row.route).toBe("");
+      expect(row.figma_node_ids, row.route).toBe("");
     }
   });
 
-  it("classifies the complete visual-source corpus", () => {
+  it("classifies the complete visual-source corpus without a fake Figma authority", () => {
     const sourceById = new Map(sourceRows.map((row) => [row.source_id, row]));
 
     expect(sourceById.size).toBe(sourceRows.length);
-    expect(sourceById.get("figma-master")?.status).toBe("PRODUCTION");
+    expect(sourceById.has("figma-master")).toBe(false);
+    expect(sourceById.get("figma-draft")?.status).toBe("EMPTY_DRAFT");
     expect(sourceById.get("figma-legacy")?.status).toBe("ARCHIVE");
     expect(sourceById.get("set-54")?.status).toBe("DUPLICATE");
     expect(sourceById.get("claude-design-2026-07")?.status).toBe("REFERENCE");
@@ -164,15 +168,17 @@ describe("canonical route and design registries", () => {
 });
 
 describe("roadmap and toolchain consistency", () => {
-  it("contains the remaining Sprint 0 task sequence", () => {
+  it("contains the corrected remaining Sprint 0 task sequence", () => {
     const roadmap = readCsv("docs/05-execution/implementation-roadmap.csv");
-    const taskIds = roadmap.map((row) => row.task_id);
+    const taskById = new Map(roadmap.map((row) => [row.task_id, row]));
 
-    expect(taskIds).toContain("VIS-001");
-    expect(taskIds).toContain("S0-015");
-    expect(taskIds).toContain("S0-016");
-    expect(taskIds).toContain("S0-017");
-    expect(taskIds).toContain("S0-018");
+    expect(taskById.has("VIS-001")).toBe(true);
+    expect(taskById.has("VIS-002")).toBe(true);
+    expect(taskById.get("VIS-002")?.dependencies).toBe("S0-014");
+    expect(taskById.get("S0-015")?.dependencies).toBe("VIS-002");
+    expect(taskById.has("S0-016")).toBe(true);
+    expect(taskById.has("S0-017")).toBe(true);
+    expect(taskById.has("S0-018")).toBe(true);
   });
 
   it("keeps Node and pnpm versions aligned between package metadata and CI", () => {
