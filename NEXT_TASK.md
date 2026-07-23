@@ -1,45 +1,53 @@
 # NEXT TASK
 
-`S0-001` through `S0-014` and `VIS-001` are completed and merged.
+`S0-001` through `S0-014` are completed and merged.
+
+`VIS-001` is historical, but its claim that approved Figma designs already existed was incorrect and is superseded by the corrected design source of truth.
 
 Current task:
 
 ```text
-S0-015 — Create base layouts
+VIS-002 — Create the canonical Figma production foundation
 ```
 
 Status:
 
 ```text
-READY — VIS-001 is merged. S0-015 may create structural layout foundations only and must preserve the mandatory Figma-first approval gate.
+READY — no approved Huddle product design currently exists in Figma. Create the production design foundation before React layout implementation.
 ```
 
 Task contract:
 
 ```text
-tasks/phase-0/S0-015.md
+tasks/design/VIS-002.md
 ```
 
-Dependency: `VIS-001`
+Dependency: `S0-014`
 
-S0-015 may create only:
+VIS-002 must create and obtain approval for:
 
-- `PublicLayout`;
-- `AuthLayout`;
-- `AppLayout`;
-- `AdminLayout`;
-- optional structural header, footer, navigation, and sidebar helpers;
-- focused tests and the required handoff.
+- the canonical Figma file and page structure;
+- brand and semantic variables based on the locked repository brand system;
+- typography, spacing, radius, elevation, and responsive foundations;
+- reusable shell and navigation components;
+- desktop and mobile Public layout frames;
+- desktop and mobile Auth layout frames;
+- desktop and mobile App layout frames;
+- desktop and mobile Admin layout frames;
+- stable Figma page names and node IDs recorded in the repository.
 
-S0-015 must not:
+VIS-002 must not:
 
-- implement marketplace, activities, events, community, messaging, admin, finance, municipality, or other product features;
-- invent new Figma-dependent visual decisions;
-- copy PNG or Claude Design prototypes into production code;
-- invent app-user reconciliation or trusted roles;
-- treat client-side navigation visibility as authorization;
-- begin S0-016 implementation.
+- claim that existing empty or unverified Figma pages are approved designs;
+- copy Claude Design HTML into Figma or React as production output;
+- treat repository PNG files as approved production screens;
+- implement React layouts or product features;
+- begin S0-015 before product-owner approval is recorded.
 
-Any material visual decision required by S0-015 must be drawn and approved in the canonical Figma master, then recorded with exact node IDs before implementation.
+Blocked task:
 
-After S0-015 is merged and its gates pass, the next task is `S0-016 — Create canonical placeholder pages`.
+```text
+S0-015 — Create base layouts
+```
+
+S0-015 may start only after VIS-002 is approved, the layout frame node IDs are recorded, the repository correction is merged, and all required checks pass.

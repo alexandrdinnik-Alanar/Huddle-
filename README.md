@@ -6,9 +6,11 @@ Huddle is a privacy-first local family platform built as one React codebase for 
 
 The repository is in Sprint 0 foundation execution.
 
-`S0-001` through `S0-014` and the `VIS-001` canonical design gate are completed and merged. The next executable task is `S0-015 — Create base layouts`.
+`S0-001` through `S0-014` are completed and merged. The current executable task is `VIS-002 — Create the canonical Figma production foundation`.
 
-This repository is not launch-ready and should not be represented as a working product. It contains a structured technical foundation, canonical documentation, an approved Figma authority, reference visual corpora, route placeholders, and task contracts for continued implementation.
+No approved Huddle product design currently exists in Figma. `S0-015 — Create base layouts` is blocked until the Public, Auth, App, and Admin layout frames are created, approved, and recorded with stable Figma node IDs.
+
+This repository is not launch-ready and should not be represented as a working product. It contains a structured technical foundation, canonical brand assets and tokens, reference visual corpora, route placeholders, and task contracts for continued implementation.
 
 ## Technology baseline
 
@@ -51,7 +53,8 @@ This repository is not launch-ready and should not be represented as a working p
 └── tasks/
     ├── README.md
     ├── design/
-    │   └── VIS-001.md
+    │   ├── VIS-001.md
+    │   └── VIS-002.md
     ├── maintenance/
     │   └── REPO-001.md
     └── phase-0/
@@ -76,16 +79,21 @@ tests/
 
 ## Design authority
 
-The canonical Figma master named in `docs/00-source-of-truth/design-source-of-truth.md` is the only production visual authority. PNG screen sets and the Claude Design corpus are reference materials and cannot authorize production UI without an approved Figma frame and recorded node ID.
+There is currently no approved route-level Figma design.
+
+The locked repository brand system is authoritative for approved logo assets, palette, accessible semantic tokens, and brand rules. PNG screen sets and the Claude Design corpus are reference materials only.
+
+A Figma frame becomes production authority only after product-owner approval and registration of its exact page name and node ID in `docs/01-product/screen-route-registry.csv`.
 
 ## Source of truth
 
 1. Accepted ADRs and canonical engineering documentation.
 2. Actual merged repository implementation.
-3. Approved Figma master and Screen Implementation Registry.
-4. Canonical visual corpus and Set55 flow maps as reference inputs.
-5. Sprint 0 source material where not superseded.
-6. Older, imported, or duplicate designs.
+3. Locked brand system and approved brand assets.
+4. Future product-owner-approved Figma frames recorded in the Screen Implementation Registry.
+5. Canonical visual corpus and Set55 flow maps as reference inputs.
+6. Sprint 0 source material where not superseded.
+7. Older, imported, or duplicate designs.
 
 ## Development workflow
 

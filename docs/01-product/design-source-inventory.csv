@@ -1,6 +1,6 @@
 source_id,source_type,location,status,scope,notes
-figma-master,Figma,dyT1r12QkL7yF0ynjqCs4E,PRODUCTION,brand/design-system/website/product,Only production visual authority; use exact approved node IDs recorded in the route registry
-figma-legacy,Figma,EsKinLoWFFwul2TzJiXtBO,ARCHIVE,legacy,Superseded single-page file; retained without deletion
+figma-draft,Figma,dyT1r12QkL7yF0ynjqCs4E,EMPTY_DRAFT,none,"File exists but contains no approved Huddle production design; never use as implementation authority until VIS-002 creates and approves the canonical foundation"
+figma-legacy,Figma,EsKinLoWFFwul2TzJiXtBO,ARCHIVE,legacy,"Unapproved historical or empty draft; retained only for traceability"
 set-01,PNG set,assets/screens/set-01-core,REFERENCE,public-home,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-02,PNG set,assets/screens/set-02-core,REFERENCE,parent-dashboard-listings-matching,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-03,PNG set,assets/screens/set-03-core,REFERENCE,activity-event-detail-organizer,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
@@ -50,8 +50,8 @@ set-46,PNG set,assets/screens/set-46-profiles-family-connections,REFERENCE,profi
 set-47,PNG set,assets/screens/set-47-services-professionals-bookings,REFERENCE,services-bookings,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-48,PNG set,assets/screens/set-48-content-posts-media,REFERENCE,content-media,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-49,PNG set,assets/screens/set-49-marketplace-products-orders,REFERENCE,marketplace-catalog-orders,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
-set-50,PNG set,assets/screens/set-50-design-system-foundation,REFERENCE,design-system,"Generated design-system reference; canonical Figma variables, styles, and components take precedence"
-set-51,PNG set,assets/screens/set-51-component-library,REFERENCE,component-library,Component reference; canonical Figma components take precedence
+set-50,PNG set,assets/screens/set-50-design-system-foundation,REFERENCE,design-system,"Generated design-system reference; it may inform VIS-002 but does not define production variables, styles, or components"
+set-51,PNG set,assets/screens/set-51-component-library,REFERENCE,component-library,"Component reference only; future approved Figma components take precedence after VIS-002"
 set-52,PNG set,assets/screens/set-52-mobile-trust-safety,REFERENCE,trust-safety,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-53,PNG set,assets/screens/set-53-community-groups,REFERENCE,community-groups,Reference source only; requires an approved Figma frame and recorded node ID before production implementation
 set-54,PNG set,assets/screens/set-54-component-library,DUPLICATE,component-library,Exact duplicate generation of set 51; traceability only

@@ -1,31 +1,44 @@
 # VIS-001 Handoff
 
-## Outcome
+## Correction notice
 
-The visual source hierarchy is reconciled without modifying Figma or application UI.
+The original VIS-001 handoff incorrectly claimed that approved Huddle product designs, reusable components, variables, and route-level production frames already existed in Figma.
 
-## Confirmed
+The product owner confirmed on 2026-07-23 that no Huddle product design had been created in Figma. The previously recorded Figma page names, production statuses, and node IDs are not valid approval evidence and have been removed from the active registries.
 
-- Canonical Figma file: `dyT1r12QkL7yF0ynjqCs4E`.
-- Figma contains the locked brand foundation, local variables and styles, reusable website/activity components, responsive home frames, and responsive public activity frames.
-- `/` and `/activities` are the only P0 routes with approved route-level Figma frames.
-- `/activities/[activityId]` has approved desktop/mobile frames but remains a P1 route.
-- All current P0 React entries are shared technical placeholders.
-- Set 54 duplicates set 51 and remains traceability-only.
+This correction supersedes the original Figma-specific findings below.
 
-## Decision
+## Valid outcome retained
 
-All future visual work is Figma-first. A PNG, task description, or placeholder route cannot be implemented as production UI until the exact Figma frame is approved and entered in `screen-route-registry.csv`.
+VIS-001 established a useful process boundary without modifying application UI:
 
-## No changes made
+- repository PNG files are reference materials;
+- the Claude Design corpus is reference material;
+- set 54 duplicates set 51 and remains traceability-only;
+- current P0 React entries are technical placeholders;
+- production UI must not be copied directly from PNG files, Claude HTML, task prose, or unapproved visual assumptions.
 
-- no Figma nodes, variables, styles, or components were edited;
+## Corrected decision
+
+All future material visual work is Figma-first, but the canonical Figma production foundation must first be created through `VIS-002`.
+
+A screen or layout becomes production-authorized only when:
+
+1. it is created in the designated canonical Figma file;
+2. the product owner explicitly approves it;
+3. the exact page name and node ID are recorded in the repository;
+4. its registry status is changed to `PRODUCTION`.
+
+At the time of this correction, no route meets those conditions.
+
+## No runtime changes made by VIS-001
+
 - no application layouts or pages were implemented;
 - no screen assets were deleted or moved;
-- no later task was started.
+- no product features were introduced.
 
-## Next task
+## Correct next task
 
-`S0-015 — Create base layouts`
+`VIS-002 — Create the canonical Figma production foundation`
 
-S0-015 may create structural layouts only. If a layout requires a new visual decision beyond the existing approved Figma frames and components, pause implementation, create the proposal in the canonical Figma master, obtain visual approval, and update the registry first.
+`S0-015 — Create base layouts` remains blocked until VIS-002 is approved and merged.
