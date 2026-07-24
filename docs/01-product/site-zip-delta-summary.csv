@@ -1,0 +1,101 @@
+supplemental_id,set_number,screen_number,inferred_screen_name,canonical_route_candidate,delta_relation,exact_sha_overlap,matched_claude_screen_candidates,review_priority
+SITE-001,1,1,Platform home,/,EXACT_OVERLAP,true,Home,P2_TRACE
+SITE-002,1,2,Public community landing,/community,EXACT_OVERLAP,true,Community,P2_TRACE
+SITE-003,1,3,Activities discovery,/activities,EXACT_OVERLAP,true,Activities,P2_TRACE
+SITE-004,1,4,Events discovery,/events,EXACT_OVERLAP,true,Events,P2_TRACE
+SITE-005,1,5,Marketplace discovery,/marketplace,EXACT_OVERLAP,true,Marketplace,P2_TRACE
+SITE-006,1,6,Services discovery,/services,EXACT_OVERLAP,true,ServicesHome | Services,P2_TRACE
+SITE-007,1,7,Municipality participation landing,/municipalities,EXACT_OVERLAP,true,Municipality,P2_TRACE
+SITE-008,1,8,Safety and privacy landing,/safety,EXACT_OVERLAP,true,SafetyPrivacy,P2_TRACE
+SITE-009,1,9,Organizer acquisition landing,/organizers,EXACT_OVERLAP,true,PartnerOverview,P2_TRACE
+SITE-010,1,10,Partner and brand acquisition landing,/partners,EXACT_OVERLAP,true,PartnerStoresLanding | PartnerOverview,P2_TRACE
+SITE-011,2,11,Parent account dashboard,/app,EXACT_OVERLAP,true,ParentDashboard,P2_TRACE
+SITE-012,2,12,"Saved items, activities and events",/app/saved,EXACT_OVERLAP,true,SavedItems,P2_TRACE
+SITE-013,2,13,My listings,/app/marketplace/listings,EXACT_OVERLAP,true,MyListings,P2_TRACE
+SITE-014,2,14,Create listing — category and age,/app/marketplace/listings,EXACT_OVERLAP,true,CreateListing,P2_TRACE
+SITE-015,2,15,Create listing — photos and price,/app/marketplace/listings,EXACT_OVERLAP,true,CreateListingStep2,P2_TRACE
+SITE-016,2,16,Buyer–seller conversation,/app/messages/[conversationId],EXACT_OVERLAP,true,Messages,P2_TRACE
+SITE-017,2,17,Family matching preferences,/app/matching,EXACT_OVERLAP,true,FamilyMatching,P2_TRACE
+SITE-018,2,18,Family match results,/app/matching,EXISTING_ROUTE_NEW_STATE,false,FamilyMatching,P1_REVIEW
+SITE-019,2,19,Family match detail and connect request,/app/matching,EXACT_OVERLAP,true,FamilyMatchDetail,P2_TRACE
+SITE-020,2,20,Connection request chat,/app/messages/[conversationId],EXISTING_ROUTE_NEW_STATE,false,Messages | FamilyMatchDetail,P1_REVIEW
+SITE-021,3,21,Activity detail,/activities/[activityId],EXISTING_ROUTE_NEW_STATE,false,ActivityDetail,P1_REVIEW
+SITE-022,3,22,Event detail,/events/[eventId],EXISTING_ROUTE_NEW_STATE,false,EventDetails,P1_REVIEW
+SITE-023,3,23,Event registration and waitlist,/events/[eventId],EXISTING_ROUTE_NEW_STATE,false,EventRegistrations | TicketConfirmation,P1_REVIEW
+SITE-024,3,24,Waitlist confirmation,/app/events,EXISTING_ROUTE_NEW_STATE,false,EventRegistrations,P1_REVIEW
+SITE-025,3,25,Post-event feedback,/app/events,EXISTING_ROUTE_NEW_STATE,false,EventDetails,P1_REVIEW
+SITE-026,3,26,Public organizer profile,/organizers/[organizerId],NEW_ROUTE_CANDIDATE,false,,P0_RECONCILE
+SITE-027,3,27,Organizer dashboard,/app/organizer,EXISTING_ROUTE_VISUAL_VARIANT,false,EventRegistrations | ActivityRegistrations,P2_TRACE
+SITE-028,3,28,Create event/activity — basic information,/app/organizer/events,EXISTING_ROUTE_NEW_STATE,false,CreateEventBasicInfo | CreateActivityBasicInfo,P1_REVIEW
+SITE-029,3,29,Create event/activity — details,/app/organizer/events,EXISTING_ROUTE_NEW_STATE,false,CreateEventDescription | CreateActivityDetails,P1_REVIEW
+SITE-030,3,30,Organizer analytics,/app/organizer/analytics,EXISTING_ROUTE_VISUAL_VARIANT,false,EventAnalytics | ActivityAnalytics,P2_TRACE
+SITE-031,4,31,Partner store dashboard,/app/partner,EXISTING_ROUTE_VISUAL_VARIANT,false,PartnerOverview,P2_TRACE
+SITE-032,4,32,Product feed synchronization,/app/partner/feed,EXISTING_ROUTE_NEW_STATE,false,ProductFeedSetup | UploadFeed,P1_REVIEW
+SITE-033,4,33,Product feed field mapping,/app/partner/feed,EXISTING_ROUTE_NEW_STATE,false,ProductFeedSetup | FeedDiagnostics,P1_REVIEW
+SITE-034,4,34,Product performance analytics,/app/partner,EXISTING_ROUTE_NEW_STATE,false,PartnerOverview,P1_REVIEW
+SITE-035,4,35,Campaign manager,/app/partner/campaigns,EXISTING_ROUTE_NEW_STATE,false,AffiliateTracking,P1_REVIEW
+SITE-036,4,36,Create sponsored campaign,/app/partner/campaigns,EXISTING_ROUTE_NEW_STATE,false,AffiliateTracking,P1_REVIEW
+SITE-037,4,37,Regional banner placement,/app/partner/campaigns,EXISTING_ROUTE_NEW_STATE,false,AffiliateTracking,P1_REVIEW
+SITE-038,4,38,Billing and commission report,/app/partner/billing,EXISTING_ROUTE_NEW_STATE,false,PartnerAgreement,P1_REVIEW
+SITE-039,4,39,Municipality dashboard,/app/municipality,EXISTING_ROUTE_VISUAL_VARIANT,false,Municipality,P2_TRACE
+SITE-040,4,40,Municipality report detail,/app/municipality/reports,EXISTING_ROUTE_NEW_STATE,false,AdminMunicipalityReports | MunicipalityDetail,P1_REVIEW
+SITE-041,5,41,Family profile,/app/family,EXISTING_ROUTE_VISUAL_VARIANT,false,FamilyMatching | UserProfile,P2_TRACE
+SITE-042,5,42,Notifications center,/app/notifications,EXISTING_ROUTE_VISUAL_VARIANT,false,Notifications,P2_TRACE
+SITE-043,5,43,Community feed,/app/community,EXISTING_ROUTE_VISUAL_VARIANT,false,Community | Feed,P2_TRACE
+SITE-044,5,44,Discussion thread,/app/community,EXISTING_ROUTE_NEW_STATE,false,PostDetails,P1_REVIEW
+SITE-045,5,45,Groups directory,/app/groups,EXISTING_ROUTE_VISUAL_VARIANT,false,MyGroupsList,P2_TRACE
+SITE-046,5,46,Local news and announcements,/app/community,EXISTING_ROUTE_NEW_STATE,false,Community,P1_REVIEW
+SITE-047,5,47,Resources library,/app/resources,NEW_ROUTE_CANDIDATE,false,,P0_RECONCILE
+SITE-048,5,48,Bookmarks and saved content,/app/saved,EXISTING_ROUTE_VISUAL_VARIANT,false,SavedItems | SavedPosts,P2_TRACE
+SITE-049,5,49,Settings and preferences,/app/settings,EXISTING_ROUTE_NEW_STATE,false,Settings,P1_REVIEW
+SITE-050,5,50,Help center,/app/support,EXISTING_ROUTE_VISUAL_VARIANT,false,HelpCenter,P2_TRACE
+SITE-051,6,51,Message conversations,/app/messages,EXISTING_ROUTE_VISUAL_VARIANT,false,Messages,P2_TRACE
+SITE-052,6,52,Message thread,/app/messages/[conversationId],EXISTING_ROUTE_NEW_STATE,false,Messages,P1_REVIEW
+SITE-053,6,53,Create post,/app/community,EXISTING_ROUTE_NEW_STATE,false,CreatePost,P1_REVIEW
+SITE-054,6,54,Create poll,/app/community,EXISTING_ROUTE_NEW_STATE,false,,P1_REVIEW
+SITE-055,6,55,Family calendar — month,/app/calendar,EXISTING_ROUTE_NEW_STATE,false,Calendar,P1_REVIEW
+SITE-056,6,56,Event detail and registration,/events/[eventId],EXISTING_ROUTE_NEW_STATE,false,EventDetails | EventRegistrations,P1_REVIEW
+SITE-057,6,57,Marketplace categories,/marketplace,EXISTING_ROUTE_NEW_STATE,false,Marketplace | Categories,P1_REVIEW
+SITE-058,6,58,Listing management,/app/marketplace/listings,EXISTING_ROUTE_VISUAL_VARIANT,false,MyListings,P2_TRACE
+SITE-059,6,59,Payments and payouts overview,/app/seller/payouts,CANONICAL_GAP_FILLED,false,,P0_RECONCILE
+SITE-060,6,60,Privacy and safety settings,/app/privacy,EXISTING_ROUTE_NEW_STATE,false,SafetyPrivacy | CookieSettings,P1_REVIEW
+SITE-061,7,61,Service directory,/services,EXISTING_ROUTE_VISUAL_VARIANT,false,ServicesHome | ServiceCategories | ServiceListings,P2_TRACE
+SITE-062,7,62,Service provider profile,/experts/[expertId],EXISTING_ROUTE_VISUAL_VARIANT,false,ExpertDetail | ServiceDetails,P2_TRACE
+SITE-063,7,63,Service booking,/app/bookings,EXISTING_ROUTE_NEW_STATE,false,BookAppointment | BookingDetails,P1_REVIEW
+SITE-064,7,64,My bookings,/app/bookings,EXISTING_ROUTE_VISUAL_VARIANT,false,MyBookings,P2_TRACE
+SITE-065,7,65,Family members management,/app/family/members,EXISTING_ROUTE_VISUAL_VARIANT,false,FamilyMembers,P2_TRACE
+SITE-066,7,66,Connections,/app/connections,EXISTING_ROUTE_VISUAL_VARIANT,false,FamilyMatching | FamilyMatchDetail,P2_TRACE
+SITE-067,7,67,Connection request,/app/connections,EXISTING_ROUTE_NEW_STATE,false,FamilyMatchDetail,P1_REVIEW
+SITE-068,7,68,Activity history,/app/activities,EXISTING_ROUTE_NEW_STATE,false,MyActivitiesList,P1_REVIEW
+SITE-069,7,69,Saved items,/app/saved,EXISTING_ROUTE_VISUAL_VARIANT,false,SavedItems,P2_TRACE
+SITE-070,7,70,Account settings,/app/account,EXISTING_ROUTE_NEW_STATE,false,Settings | UserProfile,P1_REVIEW
+SITE-071,8,71,Wallet and transactions,/app/wallet,EXISTING_ROUTE_VISUAL_VARIANT,false,Wallet,P2_TRACE
+SITE-072,8,72,Add payment method,/app/wallet,EXISTING_ROUTE_NEW_STATE,false,Wallet,P1_REVIEW
+SITE-073,8,73,Payment history,/app/wallet,EXISTING_ROUTE_NEW_STATE,false,Wallet,P1_REVIEW
+SITE-074,8,74,Notification settings,/app/settings,EXISTING_ROUTE_NEW_STATE,false,Settings | Notifications,P1_REVIEW
+SITE-075,8,75,Email preferences,/app/settings,EXISTING_ROUTE_NEW_STATE,false,Settings,P1_REVIEW
+SITE-076,8,76,Privacy center,/app/privacy,EXISTING_ROUTE_VISUAL_VARIANT,false,CookieSettings | SafetyPrivacy,P2_TRACE
+SITE-077,8,77,Data download,/app/privacy,EXISTING_ROUTE_NEW_STATE,false,CookieSettings,P1_REVIEW
+SITE-078,8,78,Help center home,/app/support,EXISTING_ROUTE_VISUAL_VARIANT,false,HelpCenter,P2_TRACE
+SITE-079,8,79,Support ticket,/app/support,EXISTING_ROUTE_NEW_STATE,false,ContactUs | AdminSupport,P1_REVIEW
+SITE-080,8,80,Application settings,/app/settings,EXISTING_ROUTE_NEW_STATE,false,Settings,P1_REVIEW
+SITE-081,9,81,Global search results,/app/search,EXISTING_ROUTE_NEW_STATE,false,SearchResults,P1_REVIEW
+SITE-082,9,82,Filter and sort,/app/search,COMPONENT_REFERENCE,false,SearchResults,P1_REVIEW
+SITE-083,9,83,Group page,/app/groups/[groupId],EXISTING_ROUTE_VISUAL_VARIANT,false,GroupFeed | GroupMembers,P2_TRACE
+SITE-084,9,84,Event detail,/events/[eventId],EXISTING_ROUTE_NEW_STATE,false,EventDetails,P1_REVIEW
+SITE-085,9,85,RSVP and guests,/app/events,EXISTING_ROUTE_NEW_STATE,false,EventRegistrations | AttendeeDetail,P1_REVIEW
+SITE-086,9,86,Create group,/app/groups,EXISTING_ROUTE_NEW_STATE,false,CreateGroupBasicInfo,P1_REVIEW
+SITE-087,9,87,Media gallery,/app/community,EXISTING_ROUTE_NEW_STATE,false,Albums,P1_REVIEW
+SITE-088,9,88,File and document viewer,/app/community,COMPONENT_REFERENCE,false,,P1_REVIEW
+SITE-089,9,89,Group member list,/app/groups/[groupId],EXISTING_ROUTE_VISUAL_VARIANT,false,GroupMembers,P2_TRACE
+SITE-090,9,90,Group settings,/app/groups/[groupId],EXISTING_ROUTE_NEW_STATE,false,GroupSettings,P1_REVIEW
+SITE-091,10,91,Activity feed,/app/community,EXISTING_ROUTE_VISUAL_VARIANT,false,Feed,P2_TRACE
+SITE-092,10,92,Compose direct message,/app/messages,EXISTING_ROUTE_NEW_STATE,false,Messages,P1_REVIEW
+SITE-093,10,93,Poll results,/app/community,EXISTING_ROUTE_NEW_STATE,false,,P1_REVIEW
+SITE-094,10,94,Create event,/app/organizer/events,EXISTING_ROUTE_NEW_STATE,false,CreateEventBasicInfo,P1_REVIEW
+SITE-095,10,95,Event registrations,/app/organizer/registrations,EXISTING_ROUTE_NEW_STATE,false,EventRegistrations,P1_REVIEW
+SITE-096,10,96,Marketplace item detail,/marketplace/listings/[listingId],EXISTING_ROUTE_NEW_STATE,false,ListingReview | ProductDetail,P1_REVIEW
+SITE-097,10,97,Request a service,/app/bookings,EXISTING_ROUTE_NEW_STATE,false,BookAppointment | BookingDetails,P1_REVIEW
+SITE-098,10,98,Service request status,/app/bookings,EXISTING_ROUTE_NEW_STATE,false,BookingDetails,P1_REVIEW
+SITE-099,10,99,Family calendar — week,/app/calendar,EXISTING_ROUTE_NEW_STATE,false,Calendar,P1_REVIEW
+SITE-100,10,100,User profile,/app/account,EXACT_OVERLAP,true,UserProfile,P2_TRACE

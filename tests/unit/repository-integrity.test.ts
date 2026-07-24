@@ -73,9 +73,11 @@ describe("repository execution integrity", () => {
       "docs/00-source-of-truth/design-source-of-truth.md",
       "docs/01-product/design-source-inventory.csv",
       "docs/01-product/screen-route-registry.csv",
+      "docs/01-product/site-zip-delta-summary.csv",
       "docs/02-architecture/canonical-route-map.csv",
       "docs/05-execution/implementation-roadmap.csv",
       "docs/06-operations/launch-readiness.md",
+      "docs/execution/VIS-002/CORPUS-RECONCILIATION.md",
       "tasks/design/VIS-002.md",
       "tasks/phase-0/S0-015.md",
       "tasks/phase-0/S0-016.md",
@@ -88,21 +90,25 @@ describe("repository execution integrity", () => {
     }
   });
 
-  it("points agents unambiguously to VIS-002 and blocks S0-015", () => {
+  it("points agents unambiguously to complete-corpus VIS-002 and blocks S0-015", () => {
     const nextTask = readText("NEXT_TASK.md");
     const readme = readText("README.md");
     const s0015 = readText("tasks/phase-0/S0-015.md");
 
-    expect(nextTask).toContain("VIS-002 — Create the canonical Figma production foundation");
+    expect(nextTask).toContain(
+      "VIS-002 — Reconcile and productionize the complete Huddle design corpus",
+    );
     expect(nextTask).toContain("tasks/design/VIS-002.md");
     expect(nextTask).toContain("S0-015 — Create base layouts");
-    expect(nextTask).toContain("S0-015 may start only after VIS-002");
+    expect(nextTask).toContain("S0-015 may start only after");
     expect(readme).toContain(
-      "The current executable task is `VIS-002 — Create the canonical Figma production foundation`",
+      "The current executable task is `VIS-002 — Reconcile and productionize the complete Huddle design corpus`",
     );
-    expect(readme).toContain("No approved Huddle product design currently exists in Figma");
+    expect(readme).toContain("Huddle already has a broad full-platform reference design corpus");
+    expect(readme).toContain("no approved editable route-level production design currently exists in Figma");
     expect(s0015).toContain("Status: `BLOCKED` until VIS-002 is approved and merged");
     expect(readme).not.toContain("The next executable task is `S0-015 — Create base layouts`");
+    expect(nextTask).not.toContain("Create the canonical Figma production foundation");
   });
 
   it("does not describe the repository as pre-Sprint-0", () => {
@@ -117,6 +123,7 @@ describe("canonical route and design registries", () => {
   const routeRows = readCsv("docs/02-architecture/canonical-route-map.csv");
   const registryRows = readCsv("docs/01-product/screen-route-registry.csv");
   const sourceRows = readCsv("docs/01-product/design-source-inventory.csv");
+  const siteDeltaRows = readCsv("docs/01-product/site-zip-delta-summary.csv");
 
   it("keeps the canonical route map unique with 105 routes and 46 P0 routes", () => {
     const routes = routeRows.map((row) => row.route);
@@ -164,6 +171,19 @@ describe("canonical route and design registries", () => {
       const sourceId = `set-${String(setNumber).padStart(2, "0")}`;
       expect(sourceById.has(sourceId), sourceId).toBe(true);
     }
+  });
+
+  it("keeps all 100 supplemental screens traceable without inflating the 105-route baseline", () => {
+    const ids = siteDeltaRows.map((row) => row.supplemental_id);
+    const exactOverlaps = siteDeltaRows.filter((row) => row.exact_sha_overlap === "true");
+    const gapFills = siteDeltaRows.filter((row) => row.delta_relation === "CANONICAL_GAP_FILLED");
+
+    expect(siteDeltaRows).toHaveLength(100);
+    expect(new Set(ids).size).toBe(100);
+    expect(exactOverlaps).toHaveLength(19);
+    expect(gapFills).toHaveLength(1);
+    expect(gapFills[0]?.canonical_route_candidate).toBe("/app/seller/payouts");
+    expect(routeRows).toHaveLength(105);
   });
 });
 
