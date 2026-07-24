@@ -1,0 +1,27 @@
+token_family,candidate_token,locked_or_observed_source,observed_values,evidence,proposed_treatment,approval_state,decision_required
+Typography,--font-display,Observed corpus,Newsreader,"224 CSS files; 229 Google Font imports",Retain as the leading display/editorial candidate,CANDIDATE,Product-owner approval before production
+Typography,--font-body,Observed corpus,Hanken Grotesk,"232 CSS files; 232 Google Font imports",Retain as the leading interface/body candidate,CANDIDATE,Product-owner approval before production
+Color,--color-page-canvas,Locked brand,#F6F0E8,"228 deduplicated HTML files; repeated across supplemental PNGs",Use locked Warm Cream as default canvas,LOCKED_NO_CHANGE,None
+Color,--color-surface-elevated,Locked brand,#FFFFFF,"227 deduplicated HTML files",Use White for cards/dialogs/elevated surfaces,LOCKED_NO_CHANGE,None
+Color,--color-surface-subtle,Locked + observed,"#E8D9C9 | #EFE4D4 | #DBC9B0 | #F2E6D6","border/surface family repeated in 76–211 files",Consolidate into a small sand/beige surface and border scale,CANDIDATE,Choose exact semantic steps
+Color,--color-text-strong,Locked + observed,"locked #62554D | observed #3A342C | #463F37","observed values appear in 201–224 files",Do not replace blindly; test accessible locked token against established visual hierarchy,GOVERNANCE_REVIEW,Decide whether dark neutral is an approved functional extension
+Color,--color-text-default,Locked + observed,"locked #695A52 | observed #7C7062 | #8A7C6C","observed values appear in 176–201 files",Normalize muted text to accessible semantic roles,CANDIDATE,Approve final accessible values
+Color,--color-brand-copper,Locked + observed,"locked #C98A5C | observed #BC7A45 | #A9663A","observed copper variants appear in 107–197 files",Preserve copper identity but reduce the number of visual variants,CANDIDATE,Approve visual copper step
+Color,--color-action-primary,Locked + observed,"locked #9B5C38 | observed #9E5A2C","observed action value appears in 160 files",Prefer accessible locked action token unless parity review proves a needed adjustment,CANDIDATE,Visual parity and WCAG review
+Color,--color-brand-olive,Locked + observed,"locked #8A9076 | observed #6E7459 | #9BA184","observed variants appear in 72–153 files",Consolidate supportive olive and interactive olive roles,CANDIDATE,Approve visual and action steps
+Color,--color-action-secondary,Locked semantic,"#59604A",Repository semantic token,Use for accessible secondary actions unless dark-shell decision changes role,LOCKED_SEMANTIC,None
+Color,--color-shell-dark,Observed HTML + supplemental PNG,"#3A342C | approximate PNG cluster #2D3D26","#3A342C in 201 HTML files; dark olive clusters across supplemental screens",Preserve as an observed platform characteristic but do not canonicalize until the brand conflict is resolved,GOVERNANCE_BLOCKER,Resolve locked no-dark/deep-green rule versus supplied platform design
+Color,--color-danger,Observed functional,#B0462F,"21 files / 42 observed uses",Create a semantic status extension with contrast testing,CANDIDATE,Approve status palette
+Border,--color-border-subtle,Observed + locked,"#EFE4D4 | #DBC9B0 | locked #E8D9C9","211 and 198 files for observed values",Collapse to one subtle border and one stronger divider,CANDIDATE,Choose exact pair
+Radius,--radius-sm,Observed,"8px | 10px","19–79 files",Normalize compact controls and chips,CANDIDATE,None
+Radius,--radius-md,Observed,"12px | 14px | 16px","80–144 files",Choose 12/16 or 12/14/16 based on component parity,CANDIDATE,Approve final scale
+Radius,--radius-lg,Observed,"18px | 20px | 22px | 24px","68–100 files",Reserve for cards, panels and hero containers,CANDIDATE,Reduce redundant steps
+Radius,--radius-pill,Observed,"999px | 50%",Widely used for pills and avatars,Separate pill from circular geometry,CANDIDATE,None
+Spacing,--space-scale,Observed,"4 6 8 10 12 14 16 20 24 26 28 32 40 px","common gaps and padding across 234 files",Normalize to a compact 4-based core with documented exceptions,CANDIDATE,Approve exception policy
+Layout,--container-app,Observed,1280px,"62 files; 126 declarations",Use as the leading authenticated workspace max-width candidate,CANDIDATE,Responsive validation
+Layout,--container-public,Observed,"1180px | 1280px",Multiple public layouts,Choose one public container plus full-bleed sections,CANDIDATE,Responsive validation
+Elevation,--shadow-low,Observed,"0 8px 20px rgba(150,110,70,.06)",58 files,Use for low-elevation cards only,CANDIDATE,Contrast and performance review
+Elevation,--shadow-medium,Observed,"0 12px 30px rgba(150,110,70,.08)",56 files,Use for floating surfaces/dialogs,CANDIDATE,Reduce duplicate shadow family
+Elevation,--shadow-action,Observed,"0 12px 26px rgba(188,122,69,.28)",78 files,Use sparingly for primary actions or remove after parity review,CANDIDATE,Approve motion/elevation restraint
+Motion,--duration-fast,Observed,"~160ms",Repeated hover transitions,Use for hover/focus feedback,CANDIDATE,Reduced-motion validation
+Motion,--duration-standard,Observed,"~220–260ms",Repeated panel/card transitions,Use for state transitions only,CANDIDATE,Reduced-motion validation
