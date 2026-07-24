@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./home.module.css";
 
 export const metadata: Metadata = {
@@ -137,16 +138,30 @@ function Arrow() {
   return <span aria-hidden="true">→</span>;
 }
 
-function PillLink({ href, children, tone = "copper" }: { href: string; children: ReactNode; tone?: "copper" | "light" | "olive" }) {
+function PillLink({
+  href,
+  children,
+  tone = "copper",
+}: {
+  href: string;
+  children: ReactNode;
+  tone?: "copper" | "light" | "olive";
+}) {
   return (
-    <a className={`${styles.pillLink} ${styles[`pill${tone}`]}`} href={href}>
+    <Link className={`${styles.pillLink} ${styles[`pill${tone}`]}`} href={href}>
       <span>{children}</span>
       <Arrow />
-    </a>
+    </Link>
   );
 }
 
-function PhotoCard({ title, note, count, image, className }: (typeof activityCards)[number]) {
+function PhotoCard({
+  title,
+  note,
+  count,
+  image,
+  className,
+}: (typeof activityCards)[number]) {
   return (
     <article className={`${styles.photoCard} ${styles[className]}`} style={photoStyle(image)}>
       <div>
@@ -167,25 +182,43 @@ export default function HomePage() {
       </div>
 
       <header className={styles.header}>
-        <a className={styles.brand} href="/" aria-label="Huddle home">
-          <Image src="/brand/huddle-family-logo.png" alt="Huddle" width={2048} height={782} priority />
-        </a>
+        <Link className={styles.brand} href="/" aria-label="Huddle home">
+          <Image
+            src="/brand/huddle-family-logo.png"
+            alt="Huddle"
+            width={2048}
+            height={782}
+            priority
+          />
+        </Link>
         <nav className={styles.primaryNav} aria-label="Primary navigation">
-          <a href="/activities">Discover</a>
-          <a href="/app/calendar">Plan your day</a>
-          <a href="/community">Community</a>
-          <a href="/services">Services</a>
-          <a href="/marketplace">Marketplace</a>
+          <Link href="/activities">Discover</Link>
+          <Link href="/app/calendar">Plan your day</Link>
+          <Link href="/community">Community</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/marketplace">Marketplace</Link>
         </nav>
         <div className={styles.headerActions}>
-          <a className={styles.searchAction} href="/search" aria-label="Search Huddle">Search</a>
-          <a className={styles.iconAction} href="/login" aria-label="Sign in">◎</a>
-          <a className={styles.iconAction} href="/app/saved" aria-label="Saved items">♡</a>
+          <Link className={styles.searchAction} href="/search" aria-label="Search Huddle">
+            Search
+          </Link>
+          <Link className={styles.iconAction} href="/login" aria-label="Sign in">
+            ◎
+          </Link>
+          <Link className={styles.iconAction} href="/app/saved" aria-label="Saved items">
+            ♡
+          </Link>
         </div>
       </header>
 
       <section className={styles.hero}>
-        <div className={styles.heroPhoto} style={photoStyle("https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=2200&q=92", false)} />
+        <div
+          className={styles.heroPhoto}
+          style={photoStyle(
+            "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=2200&q=92",
+            false,
+          )}
+        />
         <div className={styles.heroWash} />
         <div className={styles.heroContent}>
           <p className={styles.eyebrow}>Real family life, thoughtfully connected</p>
@@ -194,26 +227,55 @@ export default function HomePage() {
             <em>Stronger together.</em>
           </h1>
           <p className={styles.heroLead}>
-            Activities, events, community and trusted services that help your family grow, learn and thrive.
+            Activities, events, community and trusted services that help your family grow, learn and
+            thrive.
           </p>
           <div className={styles.heroActions}>
             <PillLink href="/app/calendar">Plan your day</PillLink>
-            <PillLink href="/activities" tone="light">Explore near you</PillLink>
+            <PillLink href="/activities" tone="light">
+              Explore near you
+            </PillLink>
           </div>
         </div>
 
         <article className={styles.heroPlan}>
           <div className={styles.cardKicker}>Today’s plan</div>
           <ol>
-            <li><time>10:00</time><span><strong>Baby Yoga</strong><small>Oslo · 0–12 months</small></span></li>
-            <li><time>13:00</time><span><strong>Creative Workshop</strong><small>Oslo · 3–6 years</small></span></li>
-            <li><time>16:00</time><span><strong>Nature Walk</strong><small>Frognerparken</small></span></li>
+            <li>
+              <time>10:00</time>
+              <span>
+                <strong>Baby Yoga</strong>
+                <small>Oslo · 0–12 months</small>
+              </span>
+            </li>
+            <li>
+              <time>13:00</time>
+              <span>
+                <strong>Creative Workshop</strong>
+                <small>Oslo · 3–6 years</small>
+              </span>
+            </li>
+            <li>
+              <time>16:00</time>
+              <span>
+                <strong>Nature Walk</strong>
+                <small>Frognerparken</small>
+              </span>
+            </li>
           </ol>
-          <a href="/app/calendar">View full day <Arrow /></a>
+          <Link href="/app/calendar">
+            View full day <Arrow />
+          </Link>
         </article>
 
         <article className={styles.localPick}>
-          <div className={styles.localPhoto} style={photoStyle("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=88", false)} />
+          <div
+            className={styles.localPhoto}
+            style={photoStyle(
+              "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=88",
+              false,
+            )}
+          />
           <div>
             <span>Local pick</span>
             <strong>Spring Family Market</strong>
@@ -225,26 +287,72 @@ export default function HomePage() {
       </section>
 
       <section className={styles.trustRibbon} aria-label="Huddle values">
-        <article><span>◇</span><div><strong>Safe & trusted</strong><small>Verified people and providers</small></div></article>
-        <article><span>◎</span><div><strong>Community first</strong><small>Real connections close to home</small></div></article>
-        <article className={styles.trustFeatured}><span>♧</span><div><strong>Good for families</strong><small>Balanced choices for body, mind & planet</small></div></article>
-        <article><span>▢</span><div><strong>Secure & private</strong><small>Your family data stays protected</small></div></article>
-        <article><span>◌</span><div><strong>Here to help</strong><small>Support from real people</small></div></article>
+        <article>
+          <span>◇</span>
+          <div>
+            <strong>Safe & trusted</strong>
+            <small>Verified people and providers</small>
+          </div>
+        </article>
+        <article>
+          <span>◎</span>
+          <div>
+            <strong>Community first</strong>
+            <small>Real connections close to home</small>
+          </div>
+        </article>
+        <article className={styles.trustFeatured}>
+          <span>♧</span>
+          <div>
+            <strong>Good for families</strong>
+            <small>Balanced choices for body, mind & planet</small>
+          </div>
+        </article>
+        <article>
+          <span>▢</span>
+          <div>
+            <strong>Secure & private</strong>
+            <small>Your family data stays protected</small>
+          </div>
+        </article>
+        <article>
+          <span>◌</span>
+          <div>
+            <strong>Here to help</strong>
+            <small>Support from real people</small>
+          </div>
+        </article>
       </section>
 
       <section className={styles.activitiesSection}>
         <div className={styles.sectionIntro}>
           <p className={styles.eyebrow}>Discover</p>
           <h2>Activities that inspire together</h2>
-          <p>From first steps to new passions. Find classes, workshops, events and outdoor adventures your family will love.</p>
+          <p>
+            From first steps to new passions. Find classes, workshops, events and outdoor adventures
+            your family will love.
+          </p>
           <PillLink href="/activities">Explore all activities</PillLink>
           <article className={styles.supportCard}>
-            <div style={photoStyle("https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?auto=format&fit=crop&w=600&q=88", false)} />
-            <p><strong>Not sure where to start?</strong><span>Answer a few questions and we’ll suggest ideas.</span><a href="/onboarding">Get started <Arrow /></a></p>
+            <div
+              style={photoStyle(
+                "https://images.unsplash.com/photo-1542037104857-ffbb0b9155fb?auto=format&fit=crop&w=600&q=88",
+                false,
+              )}
+            />
+            <p>
+              <strong>Not sure where to start?</strong>
+              <span>Answer a few questions and we’ll suggest ideas.</span>
+              <Link href="/onboarding">
+                Get started <Arrow />
+              </Link>
+            </p>
           </article>
         </div>
         <div className={styles.activitiesMosaic}>
-          {activityCards.map((card) => <PhotoCard key={card.title} {...card} />)}
+          {activityCards.map((card) => (
+            <PhotoCard key={card.title} {...card} />
+          ))}
         </div>
       </section>
 
@@ -253,20 +361,35 @@ export default function HomePage() {
           <p className={styles.eyebrowLight}>Community</p>
           <h2>Community around you</h2>
           <p>Find your people. Join local parent groups, meetups and circles built around shared interests.</p>
-          <PillLink href="/community" tone="light">Explore community</PillLink>
+          <PillLink href="/community" tone="light">
+            Explore community
+          </PillLink>
         </div>
         <div className={styles.communityMosaic}>
           {communityCards.map((card, index) => (
-            <article className={index === 0 ? styles.communityHeroCard : styles.communityCard} key={card.title} style={photoStyle(card.image)}>
-              <div><strong>{card.title}</strong><span>{card.meta}</span></div>
+            <article
+              className={index === 0 ? styles.communityHeroCard : styles.communityCard}
+              key={card.title}
+              style={photoStyle(card.image)}
+            >
+              <div>
+                <strong>{card.title}</strong>
+                <span>{card.meta}</span>
+              </div>
             </article>
           ))}
         </div>
         <aside className={styles.communityQuote}>
           <Image src="/brand/icons/icon-192.png" alt="" width={192} height={192} />
-          <h3>Small circles.<br />Big impact.</h3>
+          <h3>
+            Small circles.
+            <br />
+            Big impact.
+          </h3>
           <p>Stronger families start with real connections.</p>
-          <a href="/community">View all groups <Arrow /></a>
+          <Link href="/community">
+            View all groups <Arrow />
+          </Link>
         </aside>
       </section>
 
@@ -275,11 +398,17 @@ export default function HomePage() {
           <p className={styles.eyebrow}>Trusted services</p>
           <h2>Support you can count on</h2>
           <p>Local, vetted and family-approved. From everyday help to life’s big moments.</p>
-          <a href="/services">Browse all services <Arrow /></a>
+          <Link href="/services">
+            Browse all services <Arrow />
+          </Link>
         </div>
         <div className={styles.servicesMosaic}>
           {serviceCards.map((card) => (
-            <article className={`${styles.serviceCard} ${styles[card.className]}`} key={card.title} style={photoStyle(card.image)}>
+            <article
+              className={`${styles.serviceCard} ${styles[card.className]}`}
+              key={card.title}
+              style={photoStyle(card.image)}
+            >
               <h3>{card.title}</h3>
             </article>
           ))}
@@ -291,24 +420,30 @@ export default function HomePage() {
           <p className={styles.eyebrow}>Useful finds</p>
           <h2>Curated family essentials</h2>
           <p>Thoughtfully chosen picks for everyday life and little adventures.</p>
-          <a href="/marketplace">Shop marketplace <Arrow /></a>
+          <Link href="/marketplace">
+            Shop marketplace <Arrow />
+          </Link>
         </div>
         <div className={styles.productGrid}>
           {products.map((product) => (
             <article className={styles.productCard} key={product.title}>
               <div style={photoStyle(product.image, false)} />
-              <button type="button" aria-label={`Save ${product.title}`}>♡</button>
+              <button type="button" aria-label={`Save ${product.title}`}>
+                ♡
+              </button>
               <h3>{product.title}</h3>
               <p>{product.price}</p>
             </article>
           ))}
           <aside className={styles.categoryCard}>
             <span>Shop by category</span>
-            <a href="/marketplace?category=toys">Toys & Games</a>
-            <a href="/marketplace?category=gear">Gear & On the Go</a>
-            <a href="/marketplace?category=home">Home & Safety</a>
-            <a href="/marketplace?category=books">Books & Learning</a>
-            <a href="/marketplace">View all <Arrow /></a>
+            <Link href="/marketplace?category=toys">Toys & Games</Link>
+            <Link href="/marketplace?category=gear">Gear & On the Go</Link>
+            <Link href="/marketplace?category=home">Home & Safety</Link>
+            <Link href="/marketplace?category=books">Books & Learning</Link>
+            <Link href="/marketplace">
+              View all <Arrow />
+            </Link>
           </aside>
         </div>
       </section>
@@ -334,25 +469,70 @@ export default function HomePage() {
             <li>Get reminders that matter</li>
           </ul>
           <div className={styles.storeButtons}>
-            <a href="/app">Download on the App Store</a>
-            <a href="/app">Get it on Google Play</a>
+            <Link href="/app">Download on the App Store</Link>
+            <Link href="/app">Get it on Google Play</Link>
           </div>
         </div>
-        <div className={styles.appPhoto} style={photoStyle("https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1200&q=88", false)} />
+        <div
+          className={styles.appPhoto}
+          style={photoStyle(
+            "https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=1200&q=88",
+            false,
+          )}
+        />
       </section>
 
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>
           <Image src="/brand/huddle-family-logo.png" alt="Huddle" width={2048} height={782} />
           <p>Everything your family needs, all in one trusted community.</p>
-          <div className={styles.socialLinks}><a href="#">Instagram</a><a href="#">Facebook</a><a href="#">TikTok</a></div>
+          <div className={styles.socialLinks}>
+            <a href="https://www.instagram.com/" rel="noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/" rel="noreferrer">Facebook</a>
+            <a href="https://www.tiktok.com/" rel="noreferrer">TikTok</a>
+          </div>
         </div>
-        <div><strong>Discover</strong><a href="/activities">Activities</a><a href="/events">Events</a><a href="/community">Workshops</a><a href="/search">Near me</a></div>
-        <div><strong>Plan your day</strong><a href="/app/calendar">Day Planner</a><a href="/app/calendar">Family Calendar</a><a href="/app/saved">Saved Favourites</a><a href="/app">Recommendations</a></div>
-        <div><strong>Community</strong><a href="/community">Local Groups</a><a href="/community">Meetups</a><a href="/community">Discussions</a><a href="/safety">Community Guidelines</a></div>
-        <div><strong>Services</strong><a href="/services">Childcare</a><a href="/services">Education</a><a href="/services">Health & Wellness</a><a href="/services">Support at Home</a></div>
-        <div><strong>About Huddle</strong><a href="/about">Our Story</a><a href="/sustainability">Sustainability</a><a href="/careers">Careers</a><a href="/contact">Contact</a></div>
-        <div className={styles.footerBottom}><span>© Huddle AS. All rights reserved.</span><a href="/terms">Terms</a><a href="/privacy">Privacy</a><a href="/cookies">Cookies</a></div>
+        <div>
+          <strong>Discover</strong>
+          <Link href="/activities">Activities</Link>
+          <Link href="/events">Events</Link>
+          <Link href="/community">Workshops</Link>
+          <Link href="/search">Near me</Link>
+        </div>
+        <div>
+          <strong>Plan your day</strong>
+          <Link href="/app/calendar">Day Planner</Link>
+          <Link href="/app/calendar">Family Calendar</Link>
+          <Link href="/app/saved">Saved Favourites</Link>
+          <Link href="/app">Recommendations</Link>
+        </div>
+        <div>
+          <strong>Community</strong>
+          <Link href="/community">Local Groups</Link>
+          <Link href="/community">Meetups</Link>
+          <Link href="/community">Discussions</Link>
+          <Link href="/safety">Community Guidelines</Link>
+        </div>
+        <div>
+          <strong>Services</strong>
+          <Link href="/services">Childcare</Link>
+          <Link href="/services">Education</Link>
+          <Link href="/services">Health & Wellness</Link>
+          <Link href="/services">Support at Home</Link>
+        </div>
+        <div>
+          <strong>About Huddle</strong>
+          <Link href="/about">Our Story</Link>
+          <Link href="/sustainability">Sustainability</Link>
+          <Link href="/careers">Careers</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+        <div className={styles.footerBottom}>
+          <span>© Huddle AS. All rights reserved.</span>
+          <Link href="/terms">Terms</Link>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/cookies">Cookies</Link>
+        </div>
       </footer>
     </main>
   );
