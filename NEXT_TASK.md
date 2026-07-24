@@ -2,18 +2,20 @@
 
 `S0-001` through `S0-014` are completed and merged.
 
-`VIS-001` is historical, but its claim that approved Figma designs already existed was incorrect and is superseded by the corrected design source of truth.
+`VIS-001` is historical. Its claim that approved Figma designs already existed was incorrect.
+
+PRs #34 and #35 are closed as superseded because they introduced unrelated visual directions instead of continuing the established Huddle platform design.
 
 Current task:
 
 ```text
-VIS-002 — Create the canonical Figma production foundation
+VIS-002 — Reconcile and productionize the complete Huddle design corpus
 ```
 
 Status:
 
 ```text
-READY — no approved Huddle product design currently exists in Figma. Create the production design foundation before React layout implementation.
+IN PROGRESS — preserve the completed 315-prototype / 105-route baseline, reconcile the supplemental 100-screen Site.zip delta, then reconstruct and approve the established full-platform design system.
 ```
 
 Task contract:
@@ -24,25 +26,55 @@ tasks/design/VIS-002.md
 
 Dependency: `S0-014`
 
-VIS-002 must create and obtain approval for:
+## Verified working baseline
 
-- the canonical Figma file and page structure;
-- brand and semantic variables based on the locked repository brand system;
-- typography, spacing, radius, elevation, and responsive foundations;
-- reusable shell and navigation components;
-- desktop and mobile Public layout frames;
-- desktop and mobile Auth layout frames;
-- desktop and mobile App layout frames;
-- desktop and mobile Admin layout frames;
-- stable Figma page names and node IDs recorded in the repository.
+- 315 HTML prototype records;
+- 234 unique HTML contents;
+- 205 PNG files;
+- 12 PDF files;
+- 542 files in the earlier Claude archive;
+- 105 canonical routes;
+- 286 prototype records already mapped to route candidates;
+- 100 supplemental screens in `Site.zip`.
 
-VIS-002 must not:
+The 100 supplemental screens are not a replacement corpus and must not restart the old audit.
 
-- claim that existing empty or unverified Figma pages are approved designs;
-- copy Claude Design HTML into Figma or React as production output;
-- treat repository PNG files as approved production screens;
-- implement React layouts or product features;
-- begin S0-015 before product-owner approval is recorded.
+## First-pass Site.zip result
+
+- 19 exact image overlaps;
+- 24 existing-route visual variants;
+- 52 new states on existing routes;
+- one direct candidate for the known `/app/seller/payouts` design gap;
+- two route-embedded component references;
+- six supplemental route candidates requiring product-owner decisions.
+
+See:
+
+```text
+docs/execution/VIS-002/CORPUS-RECONCILIATION.md
+```
+
+## VIS-002 must complete
+
+- preserve existing inventory and traceability;
+- reconcile every supplemental screen;
+- resolve route candidates and conflicting variants;
+- extract one shared token and component system from the complete corpus;
+- preserve the established cream / forest-green / copper visual language;
+- validate representative responsive patterns in VS Code/Storybook;
+- reconstruct editable governed components and frames in Figma;
+- obtain product-owner approval;
+- record stable Figma page names and exact node IDs.
+
+## VIS-002 must not
+
+- reduce the project to the newest 100 screens;
+- add 100 to 315 and call the result a canonical page count;
+- restart the completed Claude audit;
+- introduce an unrelated art direction;
+- copy raw HTML directly into production React;
+- mark reference screenshots as production;
+- begin S0-015 before approval is recorded.
 
 Blocked task:
 
@@ -50,4 +82,4 @@ Blocked task:
 S0-015 — Create base layouts
 ```
 
-S0-015 may start only after VIS-002 is approved, the layout frame node IDs are recorded, the repository correction is merged, and all required checks pass.
+S0-015 may start only after the complete corpus is reconciled, representative responsive frames are approved, node IDs are recorded, and the VIS-002 repository correction is merged.
