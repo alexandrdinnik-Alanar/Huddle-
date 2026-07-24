@@ -1,0 +1,23 @@
+wave,component_family,source_evidence,coverage_or_occurrences,target_surfaces,reconstruction_requirement,status
+1,Icon system,dc-import Icon,"153 files / 433 imports",All,"Map existing icon names; replace prototype import with accessible SVG/icon component; preserve approved brand icon separately",READY_FOR_SYSTEM_LAB
+1,Public header,dc-import SiteHeader + Header,"31 + 1 files",Public/Auth,"Desktop and mobile navigation; search/account/language states where present",READY_FOR_SYSTEM_LAB
+1,Global footer,dc-import SiteFooter + Footer,"122 + 53 files",Public/App,"Resolve duplicate footer families; establish public versus compact app footer",READY_FOR_SYSTEM_LAB
+1,Authenticated app header,dc-import AppHeader,"148 files",Family/Organizer/Partner/Municipality/Community/Services,"One responsive shell with role-aware navigation, notifications and account controls",READY_FOR_SYSTEM_LAB
+1,Family/dashboard sidebar,dc-import DashboardSidebar,"63 files",Family/App,"Desktop sidebar plus mobile replacement; active, collapsed and permission states",READY_FOR_SYSTEM_LAB
+1,Admin sidebar,dc-import AdminSidebar,"31 files",Admin,"High-density navigation; audit/security access; responsive fallback",READY_FOR_SYSTEM_LAB
+1,Partner sidebar,dc-import PartnerSidebar,"7 files",Partner,"Determine whether it is a variant of workspace sidebar rather than a separate primitive",READY_FOR_SYSTEM_LAB
+2,Buttons and links,Repeated inline patterns,"primary copper; olive secondary; ghost and text actions",All,"Define size, hierarchy, icon, loading, disabled, destructive and focus states",READY_FOR_SYSTEM_LAB
+2,Form fields and search,Visual form patterns in route screens,"prototype pseudo-markup; almost no native semantic controls",All,"Reconstruct label/help/error/disabled/readonly/autocomplete semantics; do not copy pseudo-HTML",READY_FOR_SYSTEM_LAB
+2,Chips badges and statuses,Repeated filter/status patterns,Activities/Marketplace/Organizer/Admin,"Separate filters, status, category and count chips; establish semantic status palette",READY_FOR_SYSTEM_LAB
+2,Card foundation,Repeated white/sand bordered surfaces,"12–24px radii; low warm shadows",All,"One surface primitive with controlled density/elevation/radius variants",READY_FOR_SYSTEM_LAB
+3,Activity and event cards,Activities Events and organizer flows,Multiple list/detail/dashboard states,Public/Family/Organizer,"Image, date, age, location, price, availability, saved and registration states",PLANNED
+3,Marketplace listing/product cards,Marketplace and seller flows,Discovery/saved/seller/order states,Public/Family/Partner,"Listing versus catalog product variants; reservation/sold/promoted states",PLANNED
+3,Service and provider cards,Services corpus,Directory/detail/booking states,Public/Family/Provider,"Provider identity, trust, price, duration, availability and booking states",PLANNED
+3,Family and community cards,Matching/community/group corpus,Discovery/connection/member/post states,Family/Community,"Privacy-aware identity, distance, common interests and connection states",PLANNED
+3,Data lists and tables,Organizer/Partner/Municipality/Admin screens,High-density management screens,Workspaces/Admin,"Responsive table-to-list behavior; sort/filter/pagination/bulk actions",PLANNED
+3,Calendar and scheduling,Events/bookings/family calendar,Month/week/date/time patterns,Family/Organizer/Services,"Shared date primitives; timezone, availability, waitlist and conflict states",PLANNED
+3,Messaging,Messages and buyer/seller chat,Conversation list/thread/new message,Family/Marketplace/Community,"Unread, attachments, system notices, safety/reporting and mobile composer",PLANNED
+3,Dialogs drawers and confirmations,Create/edit/cancel/report flows,Many route-embedded states,All,"Define modal versus page step; focus trap, escape, destructive confirmation",PLANNED
+4,Creation workflow shell,Listing/event/activity/group/service flows,Multi-step creation sequences,Organizer/Family/Partner,"Shared stepper, draft saving, validation, review/publish and success states",PLANNED
+4,Analytics and reporting shell,Organizer/Partner/Municipality/Admin analytics,Charts/KPIs/tables,Workspaces/Admin,"Shared KPI cards, chart framing, date ranges, exports and empty/error states",PLANNED
+4,Trust privacy and safety patterns,Safety/privacy/support/admin moderation,Public/App/Admin,"Notices, consent, report, appeal, audit trail and data-rights components",PLANNED
