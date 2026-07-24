@@ -12,7 +12,9 @@ for (const viewport of viewports) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.goto("/");
 
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Real family life");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      "Everything your family needs",
+    );
     await expect(page.getByRole("heading", { name: "Activities that inspire together" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Community around you" })).toBeVisible();
     await expect(page.getByRole("heading", { name: "Support you can count on" })).toBeVisible();
@@ -23,6 +25,10 @@ for (const viewport of viewports) {
 
     const logo = page.getByRole("img", { name: "Huddle" }).first();
     await expect(logo).toBeVisible();
+
+    if (viewport.width <= 900) {
+      await expect(page.getByLabel("Open navigation")).toBeVisible();
+    }
 
     await page.screenshot({
       path: `test-results/home-${viewport.name}.png`,
