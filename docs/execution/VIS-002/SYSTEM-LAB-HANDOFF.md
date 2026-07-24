@@ -1,73 +1,35 @@
-# VIS-002 System Lab Foundation — Handoff
+# VIS-002 — Homepage Reconstruction Lab Handoff
 
-Status: coded reference laboratory; not production UI and not Figma-approved.
+## Current state
 
-## Purpose
+The internal `/system-lab` route has been redirected from an abstract design-system specimen to a responsive reconstruction of the product-owner selected Huddle homepage reference.
 
-This System Lab is the first coded reconstruction built after the complete Huddle corpus reconciliation. It must not be confused with the discarded A/B/C art-direction experiments.
+## Included
 
-The route is:
+- utility and main navigation bars;
+- editorial family hero with marketplace and community journeys;
+- trust and category rails;
+- six marketplace cards;
+- community and app promotional panels;
+- life-stage discovery;
+- activities/events rail;
+- partner acquisition;
+- transaction and service guarantees;
+- newsletter, app and social cards;
+- full public footer;
+- desktop, tablet and mobile rules.
 
-```text
-/system-lab
-```
+## Governance
 
-## Source fidelity
+- the lab does not change `/`;
+- the lab does not modify global design tokens;
+- dark olive is demonstrated as a functional public-home action/navigation surface because the selected reference uses it;
+- exact token values still require formal approval;
+- image crops come from the existing `set-01-core` reference PNG and remain temporary, reference-only material;
+- fonts remain fallbacks until Newsreader/Hanken Grotesk delivery is approved.
 
-The lab is derived from repeated evidence across the full source corpus:
+## Required review
 
-- Hanken Grotesk as the dominant UI/body family;
-- Newsreader as the dominant display/editorial family;
-- Warm Cream and White as the primary canvas and elevated surfaces;
-- recurring copper, olive, graphite, sand-border, radius and warm-shadow families;
-- shared AppHeader, SiteHeader, SiteFooter, DashboardSidebar, AdminSidebar and PartnerSidebar patterns;
-- the supplemental screens' repeated dark olive navigation/shell treatment.
+Review the 1440, 768 and 390 px captures for correspondence with the selected reference, hero balance, section order, card hierarchy, mobile information priority and footer completeness.
 
-It does not copy prototype pseudo-elements or inline HTML into production components.
-
-## Included foundation
-
-- public navigation example;
-- source-evidence summary;
-- color-role comparison;
-- typography specimen;
-- radius and elevation comparison;
-- buttons, fields, statuses and privacy notice;
-- activity, marketplace and family-card foundations;
-- responsive family/app shell;
-- responsive admin shell;
-- mobile navigation replacement;
-- reduced-motion support.
-
-## Explicit governance behavior
-
-The lab displays the unresolved dark-shell evidence, but it does not add a production dark token to the canonical repository token file.
-
-Decision `DSD-001` remains open because:
-
-- the supplied platform screens repeatedly use dark olive/deep-green shell surfaces;
-- the current locked brand source restricts deep-green visual brand colors and large dark surfaces.
-
-The comparison remains visible until the source-of-truth conflict is explicitly resolved.
-
-## Boundaries
-
-- no production route is restyled;
-- no database, auth, API or schema changes;
-- no route candidate is silently added;
-- no token is marked approved by this lab;
-- no Figma node or production status is claimed;
-- the current canonical global tokens are not modified.
-
-## Review criteria
-
-1. Does the lab visibly match the established Huddle platform family rather than a new art direction?
-2. Does Hanken Grotesk + Newsreader accurately express the supplied design system?
-3. Are copper, olive, cream, borders and elevation normalized without losing character?
-4. Should dark olive shells become an approved functional system exception?
-5. Do public, family and admin examples feel like one related platform?
-6. Does the mobile restructuring preserve hierarchy and usability?
-
-## Next step after review
-
-Apply approved corrections, then convert the candidate values into governed variables and reusable components. Figma governance and product-owner approval remain required before production screens can be marked `PRODUCTION` or implemented route-by-route.
+Do not merge or mark any public screen `PRODUCTION` until product-owner review is recorded.
